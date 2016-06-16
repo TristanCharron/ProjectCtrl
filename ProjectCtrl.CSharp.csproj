@@ -82,7 +82,11 @@
     <Compile Include="Assets\Scripts\Pathfinding\levelGrid.cs" />
     <Compile Include="Assets\Scripts\Pooler\ObjPoolerManager.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerUIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\Touchable.cs" />
+    <Compile Include="Assets\Scripts\UI\mainCharacterManager.cs" />
     <Compile Include="Assets\Scripts\UI\playerManager.cs" />
+    <Compile Include="Assets\Scripts\UI\robots.cs" />
+    <Compile Include="Assets\Scripts\UI\rotator.cs" />
     <Compile Include="Assets\Scripts\UIEffects\UIEffects.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
     <Compile Include="Assets\Scripts\WeaponManager.cs" />
@@ -99,8 +103,6 @@
     <None Include="Assets\Shaders\Laser\Laser.shader" />
     <None Include="Assets\Shaders\PostScreenEffect.shader" />
     <None Include="Assets\Shaders\VHS.shader" />
-    <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
-    <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />

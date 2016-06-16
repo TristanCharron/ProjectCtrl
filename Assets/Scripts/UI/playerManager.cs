@@ -181,6 +181,9 @@ public class Player : Character
     protected IUltimate ultimate;
     public IUltimate Ultimate { get { return ultimate; } }
 
+    protected string name;
+    public string Name { get { return name; } }
+
     protected virtual void onCheckUltimate() { }
 
 
@@ -238,6 +241,7 @@ public class robot1 : Player
         health = 71;
         pausing = false; firing = false;
         ultimate = new ultimate1();
+        name = "Donkey Konga 3";
     }
 
     protected override void onCheckUltimate()
@@ -258,6 +262,68 @@ public class robot1 : Player
 
 
 }
+
+public class robot2 : Player
+{
+    public robot2()
+    {
+        maxHealth = health;
+        speed = 10;
+        regenRate = 0.02f;
+        health = 123;
+        pausing = false; firing = false;
+        ultimate = new ultimate1();
+        name = "Vaporwave";
+    }
+
+    protected override void onCheckUltimate()
+    {
+        if (Input.GetMouseButtonDown(1) && ultimate.isAvailable)
+        {
+            weapon.onEnableUltimate();
+            ultimate.onEnable();
+        }
+    }
+
+    public override void onUpdate()
+    {
+        base.onUpdate();
+        onCheckUltimate();
+    }
+}
+
+public class robot3 : Player
+{
+    public robot3()
+    {
+        maxHealth = health;
+        speed = 10;
+        regenRate = 0.02f;
+        health = 71;
+        pausing = false; firing = false;
+        ultimate = new ultimate1();
+        name = "Jean-Daniel";
+    }
+
+    protected override void onCheckUltimate()
+    {
+        if (Input.GetMouseButtonDown(1) && ultimate.isAvailable)
+        {
+            weapon.onEnableUltimate();
+            ultimate.onEnable();
+        }
+    }
+
+    public override void onUpdate()
+    {
+        base.onUpdate();
+        onCheckUltimate();
+    }
+}
+
+
+
+
 
 
 

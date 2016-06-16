@@ -53,6 +53,11 @@ public interface IUltimate
         get;
     }
 
+    string name
+    {
+        get;
+    }
+
 }
 
 
@@ -62,6 +67,11 @@ public class ultimate1 : IUltimate
     protected float Amount;
     protected bool available = true, active = false;
     protected float countdown = 0;
+    protected string Name = "";
+    public string name
+    {
+        get { return Name; }
+    }
     public float amount
     {
         get { return Amount; }
