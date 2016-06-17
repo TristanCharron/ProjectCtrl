@@ -10,7 +10,6 @@ public class mainCharacterManager : MonoBehaviour {
     public GameObject bgCharacterS;
     public GameObject startGBtn;
     public GameObject[] prefabs;
-    public List<Player> robots;
     public const int nbPlayers = 4;
     public List<playerSelectionUI> selectPlayerList;
 
@@ -33,14 +32,8 @@ public class mainCharacterManager : MonoBehaviour {
 
     // Use this for initialization
     void Awake() {
-       robots = new List<Player>();
-        for(int i = 0; i <= nbPlayers; i++)
-        {
-            robots.Add(onGenerateRobot(i));
-        }
-
         prefabs = Resources.LoadAll<GameObject>("Prefab");
-
+        robotManager robot = new robotManager();
     }
 
     // Update is called once per frame
@@ -118,10 +111,12 @@ public class mainCharacterManager : MonoBehaviour {
         if (pUI.playerObject != null)
             Destroy(pUI.playerObject);
 
+        Player robot = robotManager.Robots[pUI.selectionIndex];
+
         pUI.playerObject = Instantiate(prefabs[pUI.selectionIndex - 1], pUI.worldPosition.position, Quaternion.identity) as GameObject;
-        pUI.health.text = robots[pUI.selectionIndex].Health.ToString();
-        pUI.speed.text = robots[pUI.selectionIndex].Speed.ToString();
-        pUI.name.text = robots[pUI.selectionIndex].Name;
+        pUI.health.text = robot.Health.ToString();
+        pUI.speed.text = robot.Speed.ToString();
+        pUI.name.text = robot.Name;
 
     }
 
@@ -174,24 +169,7 @@ public class mainCharacterManager : MonoBehaviour {
 
     }
 
-    Player onGenerateRobot(int id)
-    {
-        switch(id)
-        {
-            case 1:
-                return new robot1();
-             
-
-            case 2:
-                return new robot2();
-
-            case 3:
-                return new robot3();
-              
-        }
-
-        return null;
-    }
+   
 
 
 

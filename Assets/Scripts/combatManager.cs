@@ -6,8 +6,9 @@ public class combatManager : MonoBehaviour {
 
     static spawnPoint[] spawnList;
     static playerManager[] playerList;
-    public static int nbPlayers = 1;
+    public static int nbPlayers = 4;
     public static combatManager Instance;
+    public static List<Player> robotList;
 
     public class spawnPoint
     {
@@ -43,6 +44,7 @@ public class combatManager : MonoBehaviour {
         onGeneratePlayers();
     }
 
+   
     void onGeneratePlayers()
     {
         playerList = new playerManager[nbPlayers];
@@ -50,9 +52,8 @@ public class combatManager : MonoBehaviour {
         {
             GameObject player = Instantiate(Resources.Load("Players/Player"), returnSpawnPoint().worldPosition, Quaternion.identity) as GameObject;
             playerList[i] = player.GetComponent<playerManager>();
-            UIManager.onAddPlayer(i, playerList[i]);
-            playerList[i].onStart(i);
-
+            playerList[i].onActivate(i);
+            UIManager.onActivate(i, playerList[i]);
         }
 
     }

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class playerManager : MonoBehaviour
 {
     public Player player = null;
@@ -11,7 +12,7 @@ public class playerManager : MonoBehaviour
     public GameObject ParticleObject;
 
 
-    public void onStart(int index)
+    public void onActivate(int index)
     {
         player = new robot1();
         player.onReset(gameObject, transform.GetChild(0).gameObject, transform.GetChild(1).gameObject, index);

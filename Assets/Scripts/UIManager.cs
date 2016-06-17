@@ -1,38 +1,38 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour
 {
+    public PlayerUIManager[] _uiManagers;
     public static PlayerUIManager[] uiManagers;
     public static UIManager Instance;
 
-    // Use this for initialization
     void Awake()
     {
         Instance = this;
-        uiManagers = new PlayerUIManager[combatManager.nbPlayers];
+        uiManagers = _uiManagers;
     }
+
 
     // Update is called once per frame
     void Update()
     {
         if (uiManagers != null)
         {
-            for (int i = 0; i < uiManagers.Length; i++)
-                if(uiManagers[i] != null)
-                    uiManagers[i].onUpdate();
+            foreach(PlayerUIManager pUI in uiManagers)
+            {  
+                    pUI.onUpdate();
+            }
+                   
         }
             
     }
 
-    public static void onAddPlayer(int index, playerManager player)
+    public static void onActivate(int index, playerManager player)
     {
-        if (uiManagers == null)
-        {
-            uiManagers = new PlayerUIManager[combatManager.nbPlayers];
-        }
-        uiManagers[index] = player.PlayerUIManager;
+        uiManagers[index].onActivate(player);
     }
 
 

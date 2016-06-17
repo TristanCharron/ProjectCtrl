@@ -93,6 +93,7 @@
     <Compile Include="Assets\Scripts\bullet.cs" />
     <Compile Include="Assets\Scripts\combatManager.cs" />
     <Compile Include="Assets\Scripts\enemyManager.cs" />
+    <Compile Include="Assets\Scripts\robotManager.cs" />
     <Compile Include="Assets\Scripts\tools.cs" />
     <Compile Include="Assets\Scripts\ultimateManager.cs" />
     <Compile Include="Assets\Shaders\PostScreenShader.cs" />

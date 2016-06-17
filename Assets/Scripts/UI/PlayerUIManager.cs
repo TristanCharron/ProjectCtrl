@@ -6,15 +6,32 @@ public class PlayerUIManager : MonoBehaviour
     public playerManager PlayerManager;
     public Image[] healthBars;
     public Image ultimateBar;
+    private Text Name;
     private int nbHealthBars;
     private int maxNbHealthBars;
     int currentHealthValue { get { return (nbHealthBars-1) * 33; } }
     int maxHealthValue { get { return (maxNbHealthBars - 1) * 33; } }
-   
+    public bool isActive{
+        get {
+            if (gameObject == null) return false;
+            else return gameObject.activeInHierarchy;
+        }
+    }
+
+
+    public void Awake()
+    {
+        Name = GetComponent<Text>();
+    }
 
     // Use this for initialization
-    public void onReset()
+    public void onActivate(playerManager pManager)
     {
+     
+        gameObject.SetActive(true);
+        PlayerManager = pManager;
+        Name.text = PlayerManager.player.Name;
+
         nbHealthBars = Mathf.CeilToInt(PlayerManager.player.Health / 33);
         maxNbHealthBars = nbHealthBars;
         onGenerateHealthBar();
@@ -23,10 +40,16 @@ public class PlayerUIManager : MonoBehaviour
     // Update is called once per frame
     public void  onUpdate()
     {
-        onUpdateHealthBar();
-        onUpdateUltimateBar();
-        onUltimateChange();
+        if(isActive)
+        {
+            onUpdateHealthBar();
+            onUpdateUltimateBar();
+            onUltimateChange();
+        }
+     
     }
+
+   
 
     void onGenerateHealthBar()
     {
