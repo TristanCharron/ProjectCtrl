@@ -268,7 +268,7 @@ public class robot2 : Player
     public robot2()
     {
         maxHealth = health;
-        speed = 10;
+        speed = 50;
         regenRate = 0.02f;
         health = 123;
         pausing = false; firing = false;
@@ -297,7 +297,7 @@ public class robot3 : Player
     public robot3()
     {
         maxHealth = health;
-        speed = 10;
+        speed = 75;
         regenRate = 0.02f;
         health = 71;
         pausing = false; firing = false;

@@ -66,7 +66,6 @@ Shader "Hidden/PostScreenEffect"
 				v2f vert(appdata input)
 				{
 					v2f output;
-					//float4 offset = float4(0, (sin(_Time[1]) /25 ) ,0,0);
 					output.vertex = mul(UNITY_MATRIX_MVP, input.vertex);
 					output.uv = input.uv;
 					return output;
@@ -88,10 +87,9 @@ Shader "Hidden/PostScreenEffect"
 				fixed4 frag(v2f input) : SV_Target
 				{
 
-				onSetUVFlip(input);
-				float magnitude = 0.009 * distortion;
+				//onSetUVFlip(input);
+				float magnitude = 0.0009 * distortion;
 				half4 normal = tex2D(_MainTex, input.uv.xy * scale);
-				input.uv = input.vertex.xy / _ScreenParams.xy;
 				input.uv.xy += (_Chroma > 1) ? (normal.xy - 0.5) * displace : -(normal.xy - 0.5) * displace;
 
 				//Red offset

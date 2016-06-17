@@ -103,14 +103,11 @@ public class mainCharacterManager : MonoBehaviour {
     public void onNext(Button btn)
     {
         playerSelectionUI pUI = selectPlayerList[returnpUIbyName(btn)];
+        pUI.selectionIndex++;
         if (pUI.selectionIndex > prefabs.Length )
         {
             pUI.selectionIndex = 1;
            
-        }
-        else if(pUI.selectionIndex < prefabs.Length )
-        {
-            pUI.selectionIndex++;
         }
         assignRobot(pUI);
 
@@ -132,15 +129,10 @@ public class mainCharacterManager : MonoBehaviour {
     {
 
         playerSelectionUI pUI = selectPlayerList[returnpUIbyName(btn)];
+        pUI.selectionIndex--;
         if (pUI.selectionIndex < 1)
-        {
-            pUI.selectionIndex = 1;
+            pUI.selectionIndex = prefabs.Length;
 
-        }
-        else if (pUI.selectionIndex >= 2)
-        {
-            pUI.selectionIndex--;
-        }
         assignRobot(pUI);
 
 

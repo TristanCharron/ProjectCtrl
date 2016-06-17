@@ -1,158 +1,92 @@
 Base path: C:/Program Files/Unity/Editor/Data
 Cmd: getPlatforms
 Cmd: preprocess
-  insize=8361 outsize=2043 ok=1
-Cmd: preprocess
-  insize=10964 outsize=662 ok=1
-Cmd: preprocess
-  insize=1248 outsize=340 ok=1
-Cmd: preprocess
-  insize=435 outsize=435 ok=1
-Cmd: preprocess
-  insize=1615 outsize=2302 ok=1
-Cmd: preprocess
-  insize=1063 outsize=406 ok=1
-Cmd: preprocess
-  insize=9585 outsize=798 ok=1
-Cmd: preprocess
-  insize=1624 outsize=334 ok=1
-Cmd: preprocess
-  insize=844 outsize=330 ok=1
-Cmd: preprocess
-  insize=926 outsize=289 ok=1
-Cmd: preprocess
-  insize=1923 outsize=467 ok=1
-Cmd: preprocess
-  insize=1241 outsize=387 ok=1
-Cmd: preprocess
-  insize=3521 outsize=640 ok=1
-Cmd: preprocess
-  insize=1454 outsize=2248 ok=1
-Cmd: preprocess
-  insize=3541 outsize=634 ok=1
-Cmd: preprocess
-  insize=1005 outsize=286 ok=1
-Cmd: preprocess
-  insize=1164 outsize=384 ok=1
-Cmd: preprocess
-  insize=6511 outsize=781 ok=1
-Cmd: preprocess
-  insize=1097 outsize=289 ok=1
-Cmd: preprocess
-  insize=1044 outsize=1035 ok=1
-Cmd: preprocess
-  insize=2413 outsize=753 ok=1
-Cmd: preprocess
-  insize=883 outsize=277 ok=1
-Cmd: preprocess
-  insize=1314 outsize=362 ok=1
-Cmd: preprocess
-  insize=1353 outsize=326 ok=1
-Cmd: preprocess
-  insize=1188 outsize=255 ok=1
-Cmd: preprocess
-  insize=1671 outsize=422 ok=1
-Cmd: preprocess
-  insize=1344 outsize=330 ok=1
-Cmd: preprocess
-  insize=1187 outsize=304 ok=1
-Cmd: preprocess
-  insize=2235 outsize=619 ok=1
-Cmd: preprocess
-  insize=902 outsize=252 ok=1
-Cmd: preprocess
-  insize=636 outsize=302 ok=1
-Cmd: preprocess
-  insize=6131 outsize=973 ok=1
-Cmd: preprocess
-  insize=32573 outsize=255 ok=1
-Cmd: preprocess
-  insize=1154 outsize=242 ok=1
-Cmd: preprocess
-  insize=4302 outsize=504 ok=1
-Cmd: preprocess
-  insize=992 outsize=248 ok=1
-Cmd: preprocess
-  insize=4770 outsize=1779 ok=1
-Cmd: preprocess
-  insize=12787 outsize=1859 ok=1
-Cmd: preprocess
-  insize=963 outsize=333 ok=1
-Cmd: preprocess
-  insize=6023 outsize=731 ok=1
-Cmd: preprocess
-  insize=2705 outsize=762 ok=1
-Cmd: preprocess
-  insize=10750 outsize=2530 ok=1
-Cmd: preprocess
-  insize=2486 outsize=1156 ok=1
-Cmd: preprocess
-  insize=12423 outsize=2312 ok=1
-Cmd: preprocess
-  insize=1909 outsize=438 ok=1
-Cmd: preprocess
-  insize=1357 outsize=642 ok=1
-Cmd: preprocess
-  insize=1530 outsize=277 ok=1
-Cmd: preprocess
-  insize=23967 outsize=4108 ok=1
-Cmd: preprocess
-  insize=3938 outsize=531 ok=1
-Cmd: preprocess
-  insize=1675 outsize=280 ok=1
-Cmd: preprocess
-  insize=965 outsize=333 ok=1
-Cmd: preprocess
-  insize=1082 outsize=404 ok=1
-Cmd: preprocess
-  insize=673 outsize=248 ok=1
-Cmd: preprocess
-  insize=5564 outsize=855 ok=1
-Cmd: preprocess
-  insize=5171 outsize=737 ok=1
-Cmd: preprocess
-  insize=520 outsize=341 ok=1
-Cmd: preprocess
-  insize=6414 outsize=902 ok=1
-Cmd: preprocess
-  insize=1306 outsize=373 ok=1
-Cmd: preprocess
-  insize=32583 outsize=255 ok=1
-Cmd: preprocess
-  insize=5175 outsize=1721 ok=1
-Cmd: preprocess
-  insize=6737 outsize=236 ok=1
-Cmd: preprocess
-  insize=4310 outsize=418 ok=1
-Cmd: preprocess
-  insize=4608 outsize=887 ok=1
-Cmd: preprocess
-  insize=1310 outsize=384 ok=1
-Cmd: preprocess
-  insize=5717 outsize=1219 ok=1
-Cmd: preprocess
-  insize=1982 outsize=252 ok=1
-Cmd: preprocess
-  insize=716 outsize=286 ok=1
-Cmd: preprocess
-  insize=656 outsize=299 ok=1
-Cmd: preprocess
-  insize=3696 outsize=630 ok=1
-Cmd: preprocess
-  insize=799 outsize=276 ok=1
-Cmd: preprocess
-  insize=1265 outsize=272 ok=1
-Cmd: preprocess
-  insize=2015 outsize=946 ok=1
-Cmd: preprocess
-  insize=5095 outsize=700 ok=1
-Cmd: preprocess
-  insize=1017 outsize=470 ok=1
-Cmd: preprocess
-  insize=1139 outsize=364 ok=1
-Cmd: preprocess
-  insize=512 outsize=241 ok=1
-Cmd: preprocess
-  insize=650 outsize=290 ok=1
-Cmd: preprocess
-  insize=5006 outsize=866 ok=1
+  insize=3479 outsize=633 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3146 outsize=489 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3146 outsize=2445 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: preprocess
+  insize=3482 outsize=636 ok=1
+Cmd: preprocess
+  insize=3309 outsize=637 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (0): Program 'vert', error X3501: 'vert': entrypoint not found\nCompiling Vertex program
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING
+  api=4 type=0 insize=2973 outsize=0 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=0
+Cmd: preprocess
+  insize=3317 outsize=637 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (81): 'onSetUVFlip': cannot convert from 'struct v2f_img' to 'struct v2f'\nCompiling Vertex program
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING
+  api=4 type=0 insize=2981 outsize=0 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=0
+Cmd: preprocess
+  insize=3321 outsize=637 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (84): invalid subscript 'vertex'\nCompiling Vertex program
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING
+  api=4 type=0 insize=2985 outsize=0 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=0
+Cmd: preprocess
+  insize=3479 outsize=633 ok=1
+Cmd: preprocess
+  insize=3455 outsize=634 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (69): invalid subscript 'vertex'\nCompiling Vertex program
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING
+  api=4 type=0 insize=3122 outsize=0 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=0
+Cmd: preprocess
+  insize=3479 outsize=633 ok=1
+Cmd: preprocess
+  insize=3473 outsize=634 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3140 outsize=489 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3140 outsize=2413 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: preprocess
+  insize=3483 outsize=634 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3150 outsize=489 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3150 outsize=2397 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: preprocess
+  insize=3429 outsize=634 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3096 outsize=489 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3096 outsize=2397 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: preprocess
+  insize=3428 outsize=634 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3095 outsize=489 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3095 outsize=2397 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: preprocess
+  insize=3431 outsize=633 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3098 outsize=489 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3098 outsize=2397 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: preprocess
+  insize=3421 outsize=634 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3088 outsize=489 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3088 outsize=2373 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: preprocess
+  insize=3424 outsize=634 ok=1
+Cmd: compileSnippet
+  error: 2 plat 4 at (102): undeclared identifier 'magnitude'\nCompiling Vertex program
+Platform defines: UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING
+  api=4 type=0 insize=3091 outsize=0 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=0
+Cmd: preprocess
+  insize=3425 outsize=634 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3092 outsize=489 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3092 outsize=2413 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: preprocess
+  insize=3430 outsize=634 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=3097 outsize=489 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=3097 outsize=2397 kw= pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING ok=1

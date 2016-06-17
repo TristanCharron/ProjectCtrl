@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityStandardAssets.ImageEffects;
 [ExecuteInEditMode]
-public class PostScreenShader : MonoBehaviour {
-    public Material mat;
-    public Texture2D displacementMap;
+[AddComponentMenu("Hidden/PostScreenEffect")]
 
+public class PostScreenShader : ImageEffectBase {
+    public Texture2D displacementMap;
+    public Material mat;
 
     //Shader parameters transfered to Shader.
     public enum PostScreenEffect { none = 0, Cinema3D = 1, Vaporwave = 2,};
