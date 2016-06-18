@@ -76,26 +76,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\DataStructures\Heap.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\combatManager.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\robot\WeaponManager.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\robot\bullet.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\robot\robotManager.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\robot\ultimateManager.cs" />
     <Compile Include="Assets\Scripts\Pathfinding\Node.cs" />
     <Compile Include="Assets\Scripts\Pathfinding\PathFindingManager.cs" />
     <Compile Include="Assets\Scripts\Pathfinding\Pathfinding.cs" />
     <Compile Include="Assets\Scripts\Pathfinding\levelGrid.cs" />
     <Compile Include="Assets\Scripts\Pooler\ObjPoolerManager.cs" />
+    <Compile Include="Assets\Scripts\Tools\tools.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerUIManager.cs" />
     <Compile Include="Assets\Scripts\UI\Touchable.cs" />
+    <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\UI\mainCharacterManager.cs" />
     <Compile Include="Assets\Scripts\UI\playerManager.cs" />
     <Compile Include="Assets\Scripts\UI\robots.cs" />
     <Compile Include="Assets\Scripts\UI\rotator.cs" />
     <Compile Include="Assets\Scripts\UIEffects\UIEffects.cs" />
-    <Compile Include="Assets\Scripts\UIManager.cs" />
-    <Compile Include="Assets\Scripts\WeaponManager.cs" />
-    <Compile Include="Assets\Scripts\bullet.cs" />
-    <Compile Include="Assets\Scripts\combatManager.cs" />
-    <Compile Include="Assets\Scripts\enemyManager.cs" />
-    <Compile Include="Assets\Scripts\robotManager.cs" />
-    <Compile Include="Assets\Scripts\tools.cs" />
-    <Compile Include="Assets\Scripts\ultimateManager.cs" />
     <Compile Include="Assets\Shaders\PostScreenShader.cs" />
   </ItemGroup>
   <ItemGroup>

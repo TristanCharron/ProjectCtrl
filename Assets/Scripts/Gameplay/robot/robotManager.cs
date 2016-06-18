@@ -44,6 +44,8 @@ public class robotManager
     {
         switch (id)
         {
+            default:
+                return new robot1();
             case 1:
                 return new robot1();
             case 2:
@@ -53,7 +55,6 @@ public class robotManager
                 return new robot3();
         }
 
-        return null;
     }
 
 
