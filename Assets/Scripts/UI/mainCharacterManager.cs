@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class mainCharacterManager : MonoBehaviour {
 
     public GameObject bgAccess;
-    public GameObject bgCharacterS;
+    public GameObject bgCharacterS, bgCharacterCustom;
     public GameObject startGBtn;
     public GameObject[] prefabs;
     public const int nbPlayers = 4;
@@ -21,14 +21,15 @@ public class mainCharacterManager : MonoBehaviour {
 
         }
         public bool isConfirm;
-        public Text health, speed, name;
-        public GameObject containerArrow, readyBtn;
+        public Text name;
+        public float speedCurrent, speedMax = 100;
+        public GameObject containerArrow, readyBtn, speedShow, healthShow;
         public Transform worldPosition;
         public GameObject playerLayOut, playerObject;
         public int selectionIndex;
 
     }
-    
+
 
     // Use this for initialization
     void Awake() {
@@ -39,9 +40,9 @@ public class mainCharacterManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
-        foreach(playerSelectionUI pUI in selectPlayerList)
+        foreach (playerSelectionUI pUI in selectPlayerList)
         {
-            if(Input.GetMouseButtonDown(0) && !pUI.containerArrow.activeInHierarchy && pUI.playerLayOut.activeInHierarchy)
+            if (Input.GetMouseButtonDown(0) && !pUI.containerArrow.activeInHierarchy && pUI.playerLayOut.activeInHierarchy)
             {
                 pUI.containerArrow.SetActive(true);
                 pUI.readyBtn.SetActive(false);
@@ -52,7 +53,7 @@ public class mainCharacterManager : MonoBehaviour {
 
     public void onStartCharacterSelection()
     {
-        if(bgAccess.activeInHierarchy)
+        if (bgAccess.activeInHierarchy)
         {
             bgCharacterS.SetActive(true);
             bgAccess.SetActive(false);
@@ -66,23 +67,32 @@ public class mainCharacterManager : MonoBehaviour {
                 assignRobot(pUI);
             }
             startGBtn.SetActive(false);
-           
 
 
-        } 
 
-        else if(bgCharacterS.activeInHierarchy)
+        }
+
+        else if (bgCharacterS.activeInHierarchy)
         {
             bgCharacterS.SetActive(false);
             bgAccess.SetActive(true);
 
-            foreach(playerSelectionUI pUI in selectPlayerList)
+            foreach (playerSelectionUI pUI in selectPlayerList)
             {
                 Destroy(pUI.playerObject);
             }
         }
 
 
+    }
+
+    public void onStartCharacterCustomisation()
+    {
+        if (bgAccess.activeInHierarchy)
+        {
+            bgAccess.SetActive(false);
+            bgCharacterCustom.SetActive(true);
+        }
     }
 
 
@@ -114,8 +124,10 @@ public class mainCharacterManager : MonoBehaviour {
         Player robot = robotManager.Robots[pUI.selectionIndex];
 
         pUI.playerObject = Instantiate(prefabs[pUI.selectionIndex - 1], pUI.worldPosition.position, Quaternion.identity) as GameObject;
-        pUI.health.text = robot.Health.ToString();
-        pUI.speed.text = robot.Speed.ToString();
+       pUI.speedShow.transform.localScale = new Vector3(robot.Speed/pUI.speedMax,1,1);
+        pUI.healthShow.transform.localScale = new Vector3(robot.Health / 150, 1, 1);
+       // iTween.ScaleTo(pUI.speedShow, iTween.Hash("from", 0 , "to", robot.Speed / 100, "time", 5f, "onupdate", "x"));
+        
         pUI.name.text = robot.Name;
 
     }
