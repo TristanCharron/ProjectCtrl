@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\Pooler\ObjPoolerManager.cs" />
     <Compile Include="Assets\Scripts\Tools\tools.cs" />
     <Compile Include="Assets\Scripts\UI\PlayerUIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\Scalable.cs" />
     <Compile Include="Assets\Scripts\UI\Touchable.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\UI\mainCharacterManager.cs" />

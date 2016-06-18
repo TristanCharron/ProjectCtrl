@@ -18,15 +18,28 @@ public class mainCharacterManager : MonoBehaviour {
     {
         public playerSelectionUI()
         {
-
+            confirm = false;
+            selectionIndex = 1;
         }
-        public bool isConfirm;
+      
         public Text name;
-        public float speedCurrent, speedMax = 100;
+        public const float speedMax = 100, healthMax = 150;
         public GameObject containerArrow, readyBtn, speedShow, healthShow;
         public Transform worldPosition;
         public GameObject playerLayOut, playerObject;
-        public int selectionIndex;
+
+        private bool confirm;
+        public bool isConfirm { get { return confirm; } }
+        public void setConfirm(bool state) { confirm = state; }
+       
+
+        public float speedRatio { get { return robotManager.Robots[selectionIndex].Speed / speedMax;  } }
+        public float healthRatio { get { return robotManager.Robots[selectionIndex].Health / healthMax; } }
+
+        private int selectionIndex;
+        public int SelectionIndex { get { return selectionIndex; } }
+        public void setIndex(int i) { selectionIndex = i; }
+
 
     }
 
@@ -98,7 +111,6 @@ public class mainCharacterManager : MonoBehaviour {
 
     public int returnpUIbyName(Button btn)
     {
-        Debug.Log(btn.name.Substring(btn.name.Length - 1, 1));
         int id = int.Parse(btn.name.Substring(btn.name.Length - 1, 1));
         return id - 1;
     }
@@ -106,12 +118,10 @@ public class mainCharacterManager : MonoBehaviour {
     public void onNext(Button btn)
     {
         playerSelectionUI pUI = selectPlayerList[returnpUIbyName(btn)];
-        pUI.selectionIndex++;
-        if (pUI.selectionIndex > prefabs.Length )
-        {
-            pUI.selectionIndex = 1;
-           
-        }
+        pUI.setIndex(pUI.SelectionIndex + 1);
+        if (pUI.SelectionIndex > prefabs.Length)
+            pUI.setIndex(1);
+
         assignRobot(pUI);
 
     }
@@ -121,24 +131,25 @@ public class mainCharacterManager : MonoBehaviour {
         if (pUI.playerObject != null)
             Destroy(pUI.playerObject);
 
-        Player robot = robotManager.Robots[pUI.selectionIndex];
+        Player robot = robotManager.Robots[pUI.SelectionIndex];
 
-        pUI.playerObject = Instantiate(prefabs[pUI.selectionIndex - 1], pUI.worldPosition.position, Quaternion.identity) as GameObject;
-       pUI.speedShow.transform.localScale = new Vector3(robot.Speed/pUI.speedMax,1,1);
-        pUI.healthShow.transform.localScale = new Vector3(robot.Health / 150, 1, 1);
-       // iTween.ScaleTo(pUI.speedShow, iTween.Hash("from", 0 , "to", robot.Speed / 100, "time", 5f, "onupdate", "x"));
-        
+       pUI.playerObject = Instantiate(prefabs[pUI.SelectionIndex - 1], pUI.worldPosition.position, Quaternion.identity) as GameObject;
+        iTween.ValueTo(pUI.speedShow, iTween.Hash("from", 0, "to", pUI.speedRatio, "time", 0.3f, "onupdate", "onScale","easetype","easeInCubic"));
+        iTween.ValueTo(pUI.healthShow, iTween.Hash("from", 0, "to", pUI.healthRatio, "time", 0.3f, "onupdate", "onScale", "easetype", "easeInCubic"));
         pUI.name.text = robot.Name;
 
     }
+
+
+   
 
     public void onPrev(Button btn)
     {
 
         playerSelectionUI pUI = selectPlayerList[returnpUIbyName(btn)];
-        pUI.selectionIndex--;
-        if (pUI.selectionIndex < 1)
-            pUI.selectionIndex = prefabs.Length;
+        pUI.setIndex(pUI.SelectionIndex - 1);
+        if (pUI.SelectionIndex < 1)
+            pUI.setIndex(prefabs.Length);
 
         assignRobot(pUI);
 
@@ -171,7 +182,7 @@ public class mainCharacterManager : MonoBehaviour {
 
     void onSelect(int id)
     {
-        selectPlayerList[id].isConfirm = true;
+        selectPlayerList[id].setConfirm(true);
         selectPlayerList[id].readyBtn.SetActive(true);
         selectPlayerList[id].containerArrow.SetActive(false);
     }
