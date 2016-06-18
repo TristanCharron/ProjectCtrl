@@ -14,7 +14,7 @@ public class playerManager : MonoBehaviour
 
     public void onActivate(int index)
     {
-        player = new robot1();
+        player = robotManager.SelectedInGame[index];
         player.onReset(gameObject, transform.GetChild(0).gameObject, transform.GetChild(1).gameObject, index);
         ParticleObject.GetComponent<ParticleSystem>().Stop();
     }

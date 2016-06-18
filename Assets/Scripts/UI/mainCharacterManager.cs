@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 [ExecuteInEditMode]
 public class mainCharacterManager : MonoBehaviour {
@@ -33,12 +34,14 @@ public class mainCharacterManager : MonoBehaviour {
         public void setConfirm(bool state) { confirm = state; }
        
 
-        public float speedRatio { get { return robotManager.Robots[selectionIndex].Speed / speedMax;  } }
-        public float healthRatio { get { return robotManager.Robots[selectionIndex].Health / healthMax; } }
+        public float speedRatio { get { return robotManager.Database[selectionIndex].Speed / speedMax;  } }
+        public float healthRatio { get { return robotManager.Database[selectionIndex].Health / healthMax; } }
 
-        private int selectionIndex;
+        private int selectionIndex,playerIndex;
         public int SelectionIndex { get { return selectionIndex; } }
-        public void setIndex(int i) { selectionIndex = i; }
+        public int PlayerIndex { get { return playerIndex; } }
+        public void setSelectIndex(int i) { selectionIndex = i; }
+        public void setPlayerIndex(int i) { playerIndex = i; }
 
 
     }
@@ -62,6 +65,16 @@ public class mainCharacterManager : MonoBehaviour {
             }
         }
 
+        if(Input.GetMouseButton(1))
+        {
+            onStartGame();
+        }
+
+    }
+
+    void onStartGame()
+    {
+        SceneManager.LoadSceneAsync(1);
     }
 
     public void onStartCharacterSelection()
@@ -71,13 +84,14 @@ public class mainCharacterManager : MonoBehaviour {
             bgCharacterS.SetActive(true);
             bgAccess.SetActive(false);
 
-            foreach (playerSelectionUI pUI in selectPlayerList)
+            for(int i = 0; i < selectPlayerList.Count;i++)
             {
-                pUI.readyBtn.SetActive(false);
-                if (!pUI.containerArrow.activeInHierarchy)
-                    pUI.containerArrow.SetActive(true);
+                selectPlayerList[i].readyBtn.SetActive(false);
+                if (!selectPlayerList[i].containerArrow.activeInHierarchy)
+                    selectPlayerList[i].containerArrow.SetActive(true);
 
-                assignRobot(pUI);
+                selectPlayerList[i].setPlayerIndex(i);
+                assignRobot(selectPlayerList[i]);
             }
             startGBtn.SetActive(false);
 
@@ -118,9 +132,9 @@ public class mainCharacterManager : MonoBehaviour {
     public void onNext(Button btn)
     {
         playerSelectionUI pUI = selectPlayerList[returnpUIbyName(btn)];
-        pUI.setIndex(pUI.SelectionIndex + 1);
+        pUI.setSelectIndex(pUI.SelectionIndex + 1);
         if (pUI.SelectionIndex > prefabs.Length)
-            pUI.setIndex(1);
+            pUI.setSelectIndex(1);
 
         assignRobot(pUI);
 
@@ -131,12 +145,13 @@ public class mainCharacterManager : MonoBehaviour {
         if (pUI.playerObject != null)
             Destroy(pUI.playerObject);
 
-        Player robot = robotManager.Robots[pUI.SelectionIndex];
+        Player robot = robotManager.Database[pUI.SelectionIndex];
+        robotManager.onSetSelectRobot(pUI.SelectionIndex, pUI.PlayerIndex);
 
        pUI.playerObject = Instantiate(prefabs[pUI.SelectionIndex - 1], pUI.worldPosition.position, Quaternion.identity) as GameObject;
-        iTween.ValueTo(pUI.speedShow, iTween.Hash("from", 0, "to", pUI.speedRatio, "time", 0.3f, "onupdate", "onScale","easetype","easeInCubic"));
-        iTween.ValueTo(pUI.healthShow, iTween.Hash("from", 0, "to", pUI.healthRatio, "time", 0.3f, "onupdate", "onScale", "easetype", "easeInCubic"));
-        pUI.name.text = robot.Name;
+       iTween.ValueTo(pUI.speedShow, iTween.Hash("from", 0, "to", pUI.speedRatio, "time", 0.3f, "onupdate", "onScale","easetype","easeOutCubic"));
+       iTween.ValueTo(pUI.healthShow, iTween.Hash("from", 0, "to", pUI.healthRatio, "time", 0.3f, "onupdate", "onScale", "easetype", "easeOutCubic"));
+       pUI.name.text = robot.Name;
 
     }
 
@@ -147,9 +162,9 @@ public class mainCharacterManager : MonoBehaviour {
     {
 
         playerSelectionUI pUI = selectPlayerList[returnpUIbyName(btn)];
-        pUI.setIndex(pUI.SelectionIndex - 1);
+        pUI.setSelectIndex(pUI.SelectionIndex - 1);
         if (pUI.SelectionIndex < 1)
-            pUI.setIndex(prefabs.Length);
+            pUI.setSelectIndex(prefabs.Length);
 
         assignRobot(pUI);
 

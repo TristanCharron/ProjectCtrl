@@ -19,9 +19,17 @@ public class robotManager
     }
     public const int nbRobots = 4;
 
-    private static List<Player> robots;
+    //List of Robots avaiable in Database
+    private static List<Player> database;
+    public static List<Player> Database { get { return database; } }
 
-    public static List<Player> Robots { get { return robots; } }
+    //List of selected Robots in-game
+    private static Player[] selectedInGame;
+    public static Player[] SelectedInGame { get { return selectedInGame; } }
+    public static void onSetSelectRobot(int robotIndex, int playerIndex) { selectedInGame[playerIndex] = database[robotIndex]; }
+
+
+
 
     public robotManager()
     {
@@ -31,10 +39,11 @@ public class robotManager
 
     void onActivate()
     {
-        robots = new List<Player>();
+        database = new List<Player>();
+        selectedInGame = new Player[combatManager.nbPlayers];
         for (int i = 0; i <= nbRobots; i++)
         {
-            robots.Add(onGenerateRobot(i));
+            database.Add(onGenerateRobot(i));
         }
 
     }
@@ -45,7 +54,7 @@ public class robotManager
         switch (id)
         {
             default:
-                return new robot1();
+                return new Player();
             case 1:
                 return new robot1();
             case 2:

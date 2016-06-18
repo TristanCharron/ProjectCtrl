@@ -6,7 +6,7 @@ public class combatManager : MonoBehaviour {
 
     static spawnPoint[] spawnList;
     static playerManager[] playerList;
-    public static int nbPlayers = 4;
+    public static int nbPlayers = 2;
     public static combatManager Instance;
     public static List<Player> robotList;
 

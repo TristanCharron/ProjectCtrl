@@ -6,9 +6,7 @@ public class bullet : MonoBehaviour {
     private Character shooter;
     private Vector3 direction;
     private Weapon weapon;
-    private GameObject aim;
     private bool[] movementPattern;
-    private Vector3 origin;
     private MeshRenderer render;
     private Rigidbody rBody;
     bool active = false;
@@ -18,7 +16,6 @@ public class bullet : MonoBehaviour {
     {
         shooter = character;
         weapon = shooter.Weapon;
-        aim = shooter.Weapon.gameObject.transform.GetChild(0).gameObject;
     }
 
     void Awake () {
@@ -40,7 +37,6 @@ public class bullet : MonoBehaviour {
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = new Vector3(direction.x, direction.y, 90);
 
-        origin = pos;
         transform.position = pos;
         transform.LookAt(direction);
         active = true;
