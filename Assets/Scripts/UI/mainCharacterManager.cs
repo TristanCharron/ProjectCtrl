@@ -91,7 +91,7 @@ public class mainCharacterManager : MonoBehaviour {
                     selectPlayerList[i].containerArrow.SetActive(true);
 
                 selectPlayerList[i].setPlayerIndex(i);
-                assignRobot(selectPlayerList[i]);
+                onAssignRobot(selectPlayerList[i],1);
             }
             startGBtn.SetActive(false);
 
@@ -131,16 +131,19 @@ public class mainCharacterManager : MonoBehaviour {
 
     public void onNext(Button btn)
     {
+        
         playerSelectionUI pUI = selectPlayerList[returnpUIbyName(btn)];
+        int previousIndex = pUI.SelectionIndex;
         pUI.setSelectIndex(pUI.SelectionIndex + 1);
+
         if (pUI.SelectionIndex > prefabs.Length)
             pUI.setSelectIndex(1);
 
-        assignRobot(pUI);
+        onAssignRobot(pUI, previousIndex);
 
     }
 
-    void assignRobot( playerSelectionUI pUI)
+    void onAssignRobot( playerSelectionUI pUI, int previousIndex)
     {
         if (pUI.playerObject != null)
             Destroy(pUI.playerObject);
@@ -149,24 +152,31 @@ public class mainCharacterManager : MonoBehaviour {
         robotManager.onSetSelectRobot(pUI.SelectionIndex, pUI.PlayerIndex);
 
        pUI.playerObject = Instantiate(prefabs[pUI.SelectionIndex - 1], pUI.worldPosition.position, Quaternion.identity) as GameObject;
-       iTween.ValueTo(pUI.speedShow, iTween.Hash("from", 0, "to", pUI.speedRatio, "time", 0.3f, "onupdate", "onScale","easetype","easeOutCubic"));
-       iTween.ValueTo(pUI.healthShow, iTween.Hash("from", 0, "to", pUI.healthRatio, "time", 0.3f, "onupdate", "onScale", "easetype", "easeOutCubic"));
        pUI.name.text = robot.Name;
-
+       onSetStatsBar(pUI, previousIndex);
     }
 
 
-   
+   void  onSetStatsBar(playerSelectionUI pUI, int prevIndex)
+    {
+        iTween.ValueTo(pUI.speedShow, iTween.Hash("from", robotManager.Database[prevIndex].Speed / playerSelectionUI.speedMax, "to", pUI.speedRatio, "time", 0.3f, "onupdate", "onScale", "easetype", "easeOutCubic"));
+        iTween.ValueTo(pUI.healthShow, iTween.Hash("from", robotManager.Database[prevIndex].Health / playerSelectionUI.healthMax, "to", pUI.healthRatio, "time", 0.3f, "onupdate", "onScale", "easetype", "easeOutCubic"));
+    }
+
+
+
+
 
     public void onPrev(Button btn)
     {
 
         playerSelectionUI pUI = selectPlayerList[returnpUIbyName(btn)];
+        int previousIndex = pUI.SelectionIndex;
         pUI.setSelectIndex(pUI.SelectionIndex - 1);
         if (pUI.SelectionIndex < 1)
             pUI.setSelectIndex(prefabs.Length);
 
-        assignRobot(pUI);
+        onAssignRobot(pUI, previousIndex);
 
 
     }
