@@ -88,33 +88,23 @@ Shader "Hidden/PostScreenEffect"
 				{
 
 				//onSetUVFlip(input);
-				float magnitude = 0.0009 * distortion;
+				float magnitude = 0.009 * distortion;
 				half4 normal = tex2D(_MainTex, input.uv.xy * scale);
 				input.uv.xy += (_Chroma > 1) ? (normal.xy - 0.5) * displace : -(normal.xy - 0.5) * displace;
 
 				//Red offset
 				v2f offsetRedUV = input;
-				offsetRedUV.uv.x = input.uv.x + rand(float2(_Time[1] * 0.03, input.uv.y*0.42)) * 0.001;
-				offsetRedUV.uv.x += cos(rand(float2(_Time[1] * 0.2, input.uv.y)))*magnitude;
+				offsetRedUV.uv.x = input.uv.x + rand(float2(_Time[1] * 0.001, input.uv.y )) * 0.003;
+				offsetRedUV.uv.x += cos(rand(float2(_Time[1], input.uv.y)))*magnitude;
 
 				//Green Offset
 				v2f offsetGreenUV = input;
-				offsetGreenUV.uv.x = input.uv.x + rand(float2(_Time[1] * 0.04, input.uv.y*0.02)) * 0.004;
-				offsetGreenUV.uv.x += (sin(rand(float2(_Time[1] * 0.2, input.uv.y)))*magnitude);
+				offsetGreenUV.uv.x = input.uv.x + rand(float2(_Time[1] * 0.001, input.uv.y)) * 0.001;
+				offsetGreenUV.uv.x += (sin(rand(float2(_Time[1], input.uv.y)))*magnitude);
 
 				float r = tex2D(_MainTex, offsetRedUV.uv).r;
 				float g = tex2D(_MainTex, offsetGreenUV.uv).g;
 				fixed4 col = tex2D(_MainTex, input.uv);
-
-				if (_Intensity != 0)
-				{
-					if (filterRadius > 0)
-						r = r * _Chroma;
-					else
-						col.b = g * _Chroma;
-
-					col.b = filterRadius > 0 ? col.b * _Chroma : g * _Chroma;
-				}
 
 				if (isInversedColor == 1)
 					col = float4(inverseRed > 0 ? inverseRed - r * Red : r * Red, inverseGreen > 0 ? inverseGreen - g * Green : g * Green, inverseBlue > 0 ? inverseBlue - col.b * Blue : col.b * Blue, 1);
