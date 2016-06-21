@@ -25,8 +25,8 @@ public class CharacterCustomUi
         }
 
         public Text name, passiveText, activeText;
-        public const float speedMax = 100, healthMax = 150;
-        public GameObject containerArrow, readyBtn, speedShow, healthShow;
+        public const float speedMax = 100, healthMax = 99, shieldMax = 99, regenMax = 10, accuracyMax = 100, ammoMax = 99;
+        public GameObject containerArrow, readyBtn, speedShow, healthShow, speedShowCustom, healthShowCustom, accuracyShow, regenShow, ammoShow;
         public Transform worldPosition;
         public Transform customPosition;
         public GameObject playerLayOut, playerObject;
@@ -40,6 +40,10 @@ public class CharacterCustomUi
 
         public float speedRatio { get { return robotManager.Database[selectionIndex].Speed / speedMax; } }
         public float healthRatio { get { return robotManager.Database[selectionIndex].Health / healthMax; } }
+        public float shieldRatio { get { return robotManager.Database[selectionIndex].Shield / shieldMax; } }
+        public float accuracyRatio { get { return robotManager.Database[selectionIndex].Accuracy / accuracyMax; } }
+        public float regenRatio { get { return (robotManager.Database[selectionIndex].RegenRate / regenMax) * 10; } }
+        public float ammoRatio { get { return robotManager.Database[selectionIndex].Ammo / ammoMax; } }
 
         private int selectionIndex, playerIndex;
         public int SelectionIndex { get { return selectionIndex; } }
@@ -192,6 +196,11 @@ public class mainCharacterManager : MonoBehaviour
     {
         iTween.ValueTo(pUI.speedShow, iTween.Hash("from", robotManager.Database[prevIndex].Speed / CharacterCustomUi.playerSelectionUI.speedMax, "to", pUI.speedRatio, "time", 0.3f, "onupdate", "onScale", "easetype", "easeOutCubic"));
         iTween.ValueTo(pUI.healthShow, iTween.Hash("from", robotManager.Database[prevIndex].Health / CharacterCustomUi.playerSelectionUI.healthMax, "to", pUI.healthRatio, "time", 0.3f, "onupdate", "onScale", "easetype", "easeOutCubic"));
+
+
+        
+     
+        
     }
 
 

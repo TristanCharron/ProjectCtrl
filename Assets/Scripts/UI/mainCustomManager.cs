@@ -76,8 +76,10 @@ public class mainCustomManager : MonoBehaviour {
         {
             iTween.ValueTo(playerSelection.speedShow, iTween.Hash("from", robotManager.Database[prevIndex].Speed / CharacterCustomUi.playerSelectionUI.speedMax, "to", playerSelection.speedRatio, "time", 0.3f, "onupdate", "onScale", "easetype", "easeOutCubic"));
             iTween.ValueTo(playerSelection.healthShow, iTween.Hash("from", robotManager.Database[prevIndex].Health / CharacterCustomUi.playerSelectionUI.healthMax, "to", playerSelection.healthRatio, "time", 0.3f, "onupdate", "onScale", "easetype", "easeOutCubic"));
-          
-        }
+        iTween.ValueTo(playerSelection.accuracyShow, iTween.Hash("from", robotManager.Database[prevIndex].Accuracy / CharacterCustomUi.playerSelectionUI.accuracyMax, "to", playerSelection.accuracyRatio, "time", 0.3f, "onupdate", "onScale", "easetype", "easeOutCubic"));
+        iTween.ValueTo(playerSelection.regenShow, iTween.Hash("from", robotManager.Database[prevIndex].RegenRate / CharacterCustomUi.playerSelectionUI.regenMax, "to", playerSelection.regenRatio, "time", 0.3f, "onupdate", "onScale", "easetype", "easeOutCubic"));
+
+    }
 
     public void onReturn()
     {

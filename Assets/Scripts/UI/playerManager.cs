@@ -47,7 +47,7 @@ public abstract class Character
 {
     protected bool firing, pausing, attacking, shaking;
     protected int index;
-    protected float speed, health, maxHealth, regenRate;
+    protected float speed, health, maxHealth, regenRate, accuracy, shield, ammo;
 
 
     public bool isAttacking { get { return attacking; } }
@@ -65,6 +65,9 @@ public abstract class Character
     public float Health { get { return health; } }
     public float RegenRate { get { return regenRate; } }
     public float MaxHealth { get { return maxHealth; } }
+    public float Accuracy { get { return accuracy; } } 
+    public float Shield { get { return shield; } }
+    public float Ammo { get { return ammo; } }
 
 
     //gameObject info
@@ -238,7 +241,10 @@ public class robot1 : Player
     {
         maxHealth = health;
         speed = 10;
-        regenRate = 0.02f;
+        regenRate = 0.15f;
+        shield = 50;
+        ammo = 25;
+        accuracy = 70;
         health = 71;
         pausing = false; firing = false;
         ultimate = new ultimate1();
@@ -271,11 +277,14 @@ public class robot2 : Player
     {
         maxHealth = health;
         speed = 50;
-        regenRate = 0.02f;
-        health = 123;
+        regenRate = 0.68f;
+        health = 45;
         pausing = false; firing = false;
         ultimate = new ultimate1();
         name = "Vaporwave";
+        shield = 80;
+        ammo = 15;
+        accuracy = 85;
     }
 
     protected override void onCheckUltimate()
@@ -301,10 +310,13 @@ public class robot3 : Player
         maxHealth = health;
         speed = 75;
         regenRate = 0.02f;
-        health = 71;
+        health = 89;
         pausing = false; firing = false;
         ultimate = new ultimate1();
         name = "Jean-Daniel";
+        shield = 99;
+        ammo = 10;
+        accuracy = 90;
     }
 
     protected override void onCheckUltimate()
