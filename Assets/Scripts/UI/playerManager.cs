@@ -243,6 +243,7 @@ public class robot1 : Player
         pausing = false; firing = false;
         ultimate = new ultimate1();
         name = "Donkey Konga 3";
+
     }
 
     protected override void onCheckUltimate()
