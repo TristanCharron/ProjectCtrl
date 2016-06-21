@@ -12,4 +12,6 @@ public class rotator : MonoBehaviour {
 	void Update () {
         gameObject.transform.Rotate(0, 0.5f, 0);
 	}
+
+
 }

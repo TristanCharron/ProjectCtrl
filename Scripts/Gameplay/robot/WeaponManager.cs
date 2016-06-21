@@ -36,9 +36,14 @@ public class WeaponManager : MonoBehaviour
     {
         //character.setParticleObject(Resources.Load("Particles/" + character.Weapon.ParticleName) as GameObject);
         ParticleSystem pSystem = character.ParticleObject.GetComponent<ParticleSystem>();
-        pSystem.Play();
+        if (pSystem != null)
+            pSystem.Play();
+
         yield return new WaitForSeconds(0.1f);
-        pSystem.Stop();
+
+        if (pSystem != null)
+            pSystem.Stop();
+
         yield break;
     }
 

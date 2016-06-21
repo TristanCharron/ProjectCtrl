@@ -33,7 +33,7 @@ public class ObjPooler
             {
                 list.Add(MonoBehaviour.Instantiate(Resources.Load(prefabName)) as GameObject);
                 list[i].SetActive(false);
-                //list[i].transform.SetParent(holder.gameObject.transform);
+                list[i].transform.SetParent(holder.gameObject.transform);
             }
             return list;
         }

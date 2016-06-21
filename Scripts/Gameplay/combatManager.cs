@@ -5,8 +5,12 @@ using System.Collections.Generic;
 public class combatManager : MonoBehaviour {
 
     static spawnPoint[] spawnList;
+    public static spawnPoint[] SpawnList { get { return spawnList; } }
+
     static playerManager[] playerList;
-    public static int nbPlayers = 4;
+    public static playerManager[] PlayerList { get { return playerList; } }
+
+    public static int nbPlayers = 2;
     public static combatManager Instance;
     public static List<Player> robotList;
 
@@ -75,13 +79,17 @@ public class combatManager : MonoBehaviour {
     static int returnAvailableSpawnIndex()
     {
         int backup = -1;
-        for (int i = 0; i < spawnList.Length; i++)
+        int counter = 0;
+        while (backup < 0)
         {
+            int index = Random.Range(0, spawnList.Length);
+            if (!spawnList[index].isOccupied)
+                backup = index;
 
-            if (!spawnList[i].isOccupied)
-                return i;
-            else if (backup == -1)
-                backup = i;
+            counter++;
+
+            if (counter == spawnList.Length)
+                backup = index;
         }
         return backup;
     }
@@ -94,9 +102,23 @@ public class combatManager : MonoBehaviour {
         return sP;
     }
 
+    public static void onPlayerDeath(int index)
+    {
+        playerList[index].setActive(false);
+        playerList[index].setAlive(false);
+        UIManager.onDesactivate(index);
+    }
+
 
     // Update is called once per frame
     void Update () {
-	
-	}
+
+
+    }
+
+
+    void onCalculateCameraBounds()
+    {
+
+    }
 }

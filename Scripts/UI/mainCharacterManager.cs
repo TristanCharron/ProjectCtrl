@@ -2,45 +2,83 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-[ExecuteInEditMode]
-public class mainCharacterManager : MonoBehaviour {
 
-    public GameObject bgAccess;
-    public GameObject bgCharacterS, bgCharacterCustom;
-    public GameObject startGBtn;
-    public GameObject[] prefabs;
-    public const int nbPlayers = 4;
-    public List<playerSelectionUI> selectPlayerList;
+[System.Serializable]
+public class CharacterCustomUi
+{
+
+    public CharacterCustomUi()
+    {
+
+    }
+
 
     [System.Serializable]
     public class playerSelectionUI
     {
         public playerSelectionUI()
         {
-
+            confirm = false;
+            selectionIndex = 1;
         }
-        public bool isConfirm;
-        public Text name;
-        public float speedCurrent, speedMax = 100;
+
+        public Text name, passiveText, activeText;
+        public const float speedMax = 100, healthMax = 150;
         public GameObject containerArrow, readyBtn, speedShow, healthShow;
         public Transform worldPosition;
+        public Transform customPosition;
         public GameObject playerLayOut, playerObject;
-        public int selectionIndex;
+
+
+
+        private bool confirm;
+        public bool isConfirm { get { return confirm; } }
+        public void setConfirm(bool state) { confirm = state; }
+
+
+        public float speedRatio { get { return robotManager.Database[selectionIndex].Speed / speedMax; } }
+        public float healthRatio { get { return robotManager.Database[selectionIndex].Health / healthMax; } }
+
+        private int selectionIndex, playerIndex;
+        public int SelectionIndex { get { return selectionIndex; } }
+        public int PlayerIndex { get { return playerIndex; } }
+        public void setSelectIndex(int i) { selectionIndex = i; }
+        public void setPlayerIndex(int i) { playerIndex = i; }
+
 
     }
 
+    public List<string> listPassive = new List<string>();
+    public List<string> listActive = new List<string>();
+
+}
+
+[ExecuteInEditMode]
+public class mainCharacterManager : MonoBehaviour
+{
+
+    public GameObject bgAccess;
+    public GameObject bgCharacterS, bgCharacterCustom;
+    public GameObject startGBtn;
+    public GameObject[] prefabs;
+    public const int nbPlayers = 4;
+    public List<CharacterCustomUi.playerSelectionUI> selectPlayerList;
+
 
     // Use this for initialization
-    void Awake() {
+    void Awake()
+    {
         prefabs = Resources.LoadAll<GameObject>("Prefab");
         robotManager robot = new robotManager();
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
 
-        foreach (playerSelectionUI pUI in selectPlayerList)
+        foreach (CharacterCustomUi.playerSelectionUI pUI in selectPlayerList)
         {
             if (Input.GetMouseButtonDown(0) && !pUI.containerArrow.activeInHierarchy && pUI.playerLayOut.activeInHierarchy)
             {
@@ -49,6 +87,16 @@ public class mainCharacterManager : MonoBehaviour {
             }
         }
 
+        if (Input.GetMouseButton(1))
+        {
+            onStartGame();
+        }
+
+    }
+
+    void onStartGame()
+    {
+        SceneManager.LoadSceneAsync(1);
     }
 
     public void onStartCharacterSelection()
@@ -58,13 +106,14 @@ public class mainCharacterManager : MonoBehaviour {
             bgCharacterS.SetActive(true);
             bgAccess.SetActive(false);
 
-            foreach (playerSelectionUI pUI in selectPlayerList)
+            for (int i = 0; i < selectPlayerList.Count; i++)
             {
-                pUI.readyBtn.SetActive(false);
-                if (!pUI.containerArrow.activeInHierarchy)
-                    pUI.containerArrow.SetActive(true);
+                selectPlayerList[i].readyBtn.SetActive(false);
+                if (!selectPlayerList[i].containerArrow.activeInHierarchy)
+                    selectPlayerList[i].containerArrow.SetActive(true);
 
-                assignRobot(pUI);
+                selectPlayerList[i].setPlayerIndex(i);
+                onAssignRobot(selectPlayerList[i], 1);
             }
             startGBtn.SetActive(false);
 
@@ -77,7 +126,7 @@ public class mainCharacterManager : MonoBehaviour {
             bgCharacterS.SetActive(false);
             bgAccess.SetActive(true);
 
-            foreach (playerSelectionUI pUI in selectPlayerList)
+            foreach (CharacterCustomUi.playerSelectionUI pUI in selectPlayerList)
             {
                 Destroy(pUI.playerObject);
             }
@@ -88,77 +137,95 @@ public class mainCharacterManager : MonoBehaviour {
 
     public void onStartCharacterCustomisation()
     {
-        if (bgAccess.activeInHierarchy)
-        {
-            bgAccess.SetActive(false);
-            bgCharacterCustom.SetActive(true);
-        }
+        SceneManager.LoadSceneAsync(2);
+
+
+
+
+
+
+        if (bgCharacterCustom.activeInHierarchy)
+
+            SceneManager.LoadSceneAsync(1);
+
+
     }
 
 
     public int returnpUIbyName(Button btn)
     {
-        Debug.Log(btn.name.Substring(btn.name.Length - 1, 1));
         int id = int.Parse(btn.name.Substring(btn.name.Length - 1, 1));
         return id - 1;
     }
 
     public void onNext(Button btn)
     {
-        playerSelectionUI pUI = selectPlayerList[returnpUIbyName(btn)];
-        pUI.selectionIndex++;
-        if (pUI.selectionIndex > prefabs.Length )
-        {
-            pUI.selectionIndex = 1;
-           
-        }
-        assignRobot(pUI);
+
+        CharacterCustomUi.playerSelectionUI pUI = selectPlayerList[returnpUIbyName(btn)];
+        int previousIndex = pUI.SelectionIndex;
+        pUI.setSelectIndex(pUI.SelectionIndex + 1);
+
+        if (pUI.SelectionIndex > prefabs.Length)
+            pUI.setSelectIndex(1);
+
+        onAssignRobot(pUI, previousIndex);
 
     }
 
-    void assignRobot( playerSelectionUI pUI)
+    void onAssignRobot(CharacterCustomUi.playerSelectionUI pUI, int previousIndex)
     {
         if (pUI.playerObject != null)
             Destroy(pUI.playerObject);
 
-        Player robot = robotManager.Robots[pUI.selectionIndex];
+        Player robot = robotManager.Database[pUI.SelectionIndex];
+        robotManager.onSetSelectRobot(pUI.SelectionIndex, pUI.PlayerIndex);
 
-        pUI.playerObject = Instantiate(prefabs[pUI.selectionIndex - 1], pUI.worldPosition.position, Quaternion.identity) as GameObject;
-       pUI.speedShow.transform.localScale = new Vector3(robot.Speed/pUI.speedMax,1,1);
-        pUI.healthShow.transform.localScale = new Vector3(robot.Health / 150, 1, 1);
-       // iTween.ScaleTo(pUI.speedShow, iTween.Hash("from", 0 , "to", robot.Speed / 100, "time", 5f, "onupdate", "x"));
-        
+        pUI.playerObject = Instantiate(prefabs[pUI.SelectionIndex - 1], pUI.worldPosition.position, Quaternion.identity) as GameObject;
         pUI.name.text = robot.Name;
+        onSetStatsBar(pUI, previousIndex);
+
 
     }
+
+
+    void onSetStatsBar(CharacterCustomUi.playerSelectionUI pUI, int prevIndex)
+    {
+        iTween.ValueTo(pUI.speedShow, iTween.Hash("from", robotManager.Database[prevIndex].Speed / CharacterCustomUi.playerSelectionUI.speedMax, "to", pUI.speedRatio, "time", 0.3f, "onupdate", "onScale", "easetype", "easeOutCubic"));
+        iTween.ValueTo(pUI.healthShow, iTween.Hash("from", robotManager.Database[prevIndex].Health / CharacterCustomUi.playerSelectionUI.healthMax, "to", pUI.healthRatio, "time", 0.3f, "onupdate", "onScale", "easetype", "easeOutCubic"));
+    }
+
+
+
+
 
     public void onPrev(Button btn)
     {
 
-        playerSelectionUI pUI = selectPlayerList[returnpUIbyName(btn)];
-        pUI.selectionIndex--;
-        if (pUI.selectionIndex < 1)
-            pUI.selectionIndex = prefabs.Length;
+        CharacterCustomUi.playerSelectionUI pUI = selectPlayerList[returnpUIbyName(btn)];
+        int previousIndex = pUI.SelectionIndex;
+        pUI.setSelectIndex(pUI.SelectionIndex - 1);
+        if (pUI.SelectionIndex < 1)
+            pUI.setSelectIndex(prefabs.Length);
 
-        assignRobot(pUI);
+        onAssignRobot(pUI, previousIndex);
 
 
     }
 
     public void onConfirm(Button btn)
     {
-        if(returnpUIbyName(btn) < selectPlayerList.Count)
+        if (returnpUIbyName(btn) < selectPlayerList.Count)
         {
             onSelect(returnpUIbyName(btn));
             startGBtn.SetActive(arePlayersReady());
         }
-           
+
     }
 
     bool arePlayersReady()
     {
         bool isReady = true;
-        foreach (playerSelectionUI pUI in selectPlayerList)
+        foreach (CharacterCustomUi.playerSelectionUI pUI in selectPlayerList)
         {
             if (pUI.isConfirm == false)
             {
@@ -171,7 +238,7 @@ public class mainCharacterManager : MonoBehaviour {
 
     void onSelect(int id)
     {
-        selectPlayerList[id].isConfirm = true;
+        selectPlayerList[id].setConfirm(true);
         selectPlayerList[id].readyBtn.SetActive(true);
         selectPlayerList[id].containerArrow.SetActive(false);
     }
@@ -181,10 +248,10 @@ public class mainCharacterManager : MonoBehaviour {
 
     }
 
-   
 
 
 
-  }
+
+}
 
 

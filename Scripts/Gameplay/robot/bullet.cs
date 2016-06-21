@@ -6,9 +6,7 @@ public class bullet : MonoBehaviour {
     private Character shooter;
     private Vector3 direction;
     private Weapon weapon;
-    private GameObject aim;
     private bool[] movementPattern;
-    private Vector3 origin;
     private MeshRenderer render;
     private Rigidbody rBody;
     bool active = false;
@@ -18,7 +16,6 @@ public class bullet : MonoBehaviour {
     {
         shooter = character;
         weapon = shooter.Weapon;
-        aim = shooter.Weapon.gameObject.transform.GetChild(0).gameObject;
     }
 
     void Awake () {
@@ -30,7 +27,7 @@ public class bullet : MonoBehaviour {
     {
         gameObject.SetActive(true);
         render.materials[0].color = new Color(render.materials[0].color.r, render.materials[0].color.g, render.materials[0].color.b, 1);
-        onSetDirection(position);
+        onSetDirection(weapon.gameObject.transform.position);
         Invoke("onDestroy", 2);
        
     }
@@ -40,7 +37,6 @@ public class bullet : MonoBehaviour {
         direction = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = new Vector3(direction.x, direction.y, 90);
 
-        origin = pos;
         transform.position = pos;
         transform.LookAt(direction);
         active = true;
@@ -76,13 +72,22 @@ public class bullet : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Player" && active && col.gameObject.name != shooter.gameObject.name)
+        if (col.gameObject.tag == "Player" && active)
         {
+          
             playerManager playerManager = col.gameObject.GetComponent<playerManager>();
-            playerManager.player.onWeaponHit(weapon.Damage);
-            StartCoroutine(playerManager.player.onPause());
+            Debug.Log(playerManager.player.Index + " , " + shooter.Index);
+            if (playerManager.player.Index != shooter.Index)
+            {
+                playerManager.player.onWeaponHit(weapon.Damage);
+                StartCoroutine(playerManager.player.onPause());
+            }
+
             onDestroy();
         }
+
+       
+
     }
 
     void onDestroy()
