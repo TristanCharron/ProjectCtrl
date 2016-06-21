@@ -114,8 +114,8 @@ public class combatManager : MonoBehaviour {
 
     public static void onPlayerDeath(int index)
     {
-        playerList[index].setActive(false);
-        playerList[index].setAlive(false);
+        playerList[index].onSetActive(false);
+        playerList[index].onSetAlive(false);
         UIManager.onDesactivate(index);
         nbPlayersAlive--;
     }

@@ -7,9 +7,23 @@ public class playerManager : MonoBehaviour
     public Player player = null;
     protected PlayerUIManager pUIManager;
     public PlayerUIManager PlayerUIManager { get { return pUIManager; } }
-    public bool isActive = false;
     public GameObject Weapon;
     public GameObject ParticleObject;
+    bool active = true, alive = true;
+    public bool isActive { get { return active; } }
+    public bool isAlive { get { return alive; } }
+
+
+
+    public void onSetAlive(bool state)
+    {
+        alive = state;
+    }
+
+    public void onSetActive(bool state)
+    {
+        active = state;
+    }
 
 
     public void onActivate(int index)
@@ -49,7 +63,6 @@ public abstract class Character
     protected int index;
     protected float speed, health, maxHealth, regenRate, accuracy, shield, ammo, damage;
 
-
     public bool isAttacking { get { return attacking; } }
     public bool isPausing { get { return pausing; } }
     public bool isFiring { get { return firing; } }
@@ -65,11 +78,11 @@ public abstract class Character
     public float Health { get { return health; } }
     public float RegenRate { get { return regenRate; } }
     public float MaxHealth { get { return maxHealth; } }
-    public float Accuracy { get { return accuracy; } } 
+    public float Accuracy { get { return accuracy; } }
     public float Shield { get { return shield; } }
     public float Ammo { get { return ammo; } }
     public float Damage { get { return damage; } }
-    
+    public int Index { get { return index; } }
 
 
     //gameObject info
@@ -180,12 +193,14 @@ public abstract class Character
 }
 
 
-
 [System.Serializable]
 public class Player : Character
 {
     protected IUltimate ultimate;
     public IUltimate Ultimate { get { return ultimate; } }
+
+    protected IMovable movable;
+    public IMovable Movable { get { return movable; } }
 
     protected string name;
     public string Name { get { return name; } }
@@ -211,19 +226,13 @@ public class Player : Character
         if (weapon != null)
             weapon.onFire();
 
-        onMove();
+        movable.onMove(gameObject);
         onAttack();
         onRotate();
         onRegenerateHealth();
         ultimate.onUpdate();
     }
 
-    protected override void onMove()
-    {
-        base.onMove();
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
-        gameObject.transform.position += new Vector3(move.x, move.y, move.z) * speed * Time.deltaTime;
-    }
 
 
 
@@ -237,106 +246,12 @@ public class Player : Character
 
 }
 
-public class robot1 : Player
-{
-    public robot1()
-    {
-        maxHealth = health;
-        speed = 10;
-        regenRate = 0.15f;
-        shield = 50;
-        ammo = 25;
-        accuracy = 70;
-        health = 71;
-        pausing = false; firing = false;
-        ultimate = new ultimate1();
-        name = "Donkey Konga 3";
-
-
-    }
-
-    protected override void onCheckUltimate()
-    {
-        if (Input.GetMouseButtonDown(1) && ultimate.isAvailable)
-        {
-            weapon.onEnableUltimate();
-            ultimate.onEnable();
-        }
-    }
-
-    public override void onUpdate()
-    {
-        base.onUpdate();
-        onCheckUltimate();
-    }
 
 
 
-}
 
-public class robot2 : Player
-{
-    public robot2()
-    {
-        maxHealth = health;
-        speed = 50;
-        regenRate = 0.68f;
-        health = 45;
-        pausing = false; firing = false;
-        ultimate = new ultimate1();
-        name = "Vaporwave";
-        shield = 80;
-        ammo = 15;
-        accuracy = 85;
-    }
 
-    protected override void onCheckUltimate()
-    {
-        if (Input.GetMouseButtonDown(1) && ultimate.isAvailable)
-        {
-            weapon.onEnableUltimate();
-            ultimate.onEnable();
-        }
-    }
 
-    public override void onUpdate()
-    {
-        base.onUpdate();
-        onCheckUltimate();
-    }
-}
-
-public class robot3 : Player
-{
-    public robot3()
-    {
-        maxHealth = health;
-        speed = 75;
-        regenRate = 0.02f;
-        health = 89;
-        pausing = false; firing = false;
-        ultimate = new ultimate1();
-        name = "Jean-Daniel";
-        shield = 99;
-        ammo = 10;
-        accuracy = 90;
-    }
-
-    protected override void onCheckUltimate()
-    {
-        if (Input.GetMouseButtonDown(1) && ultimate.isAvailable)
-        {
-            weapon.onEnableUltimate();
-            ultimate.onEnable();
-        }
-    }
-
-    public override void onUpdate()
-    {
-        base.onUpdate();
-        onCheckUltimate();
-    }
-}
 
 
 

@@ -5,7 +5,7 @@ public class cameraManager : MonoBehaviour
     [SerializeField]
     float zoomSpeed = 20f, boundingBoxPadding;
 
-    float minOrthoSize,maxOrthoSize;
+    float minOrthoSize, maxOrthoSize;
 
     float minX, maxX, minY, maxY;
 
@@ -21,13 +21,13 @@ public class cameraManager : MonoBehaviour
 
     void Update()
     {
-        if(combatManager.PlayerList != null && combatManager.NbPlayersAlive > 1 )
+        if (combatManager.PlayerList != null && combatManager.NbPlayersAlive > 1)
         {
             onCalculateTargetsBoundingBox();
             Camera.main.transform.position = onCalculateCameraPosition();
             Camera.main.orthographicSize = onCalculateOrthographicSize();
         }
- 
+
     }
 
     /// <summary>
@@ -41,19 +41,25 @@ public class cameraManager : MonoBehaviour
         minY = Mathf.Infinity;
         maxY = Mathf.NegativeInfinity;
 
-        foreach (playerManager player in combatManager.PlayerList)
+        for (int i = 0; i < combatManager.PlayerList.Length; i++)
         {
-            if(player.isAlive)
+            if (combatManager.PlayerList[i] != null)
             {
-                Vector3 position = player.gameObject.transform.position;
+                if (combatManager.PlayerList[i].isAlive)
+                {
+                    Vector3 position = combatManager.PlayerList[i].gameObject.transform.position;
 
-                minX = Mathf.Min(minX, position.x);
-                minY = Mathf.Min(minY, position.y);
-                maxX = Mathf.Max(maxX, position.x);
-                maxY = Mathf.Max(maxY, position.y);
+                    minX = Mathf.Min(minX, position.x);
+                    minY = Mathf.Min(minY, position.y);
+                    maxX = Mathf.Max(maxX, position.x);
+                    maxY = Mathf.Max(maxY, position.y);
+                }
+
             }
-           
         }
+
+
+
 
         boundingBox = Rect.MinMaxRect(minX - boundingBoxPadding, maxY + boundingBoxPadding, maxX + boundingBoxPadding, minY - boundingBoxPadding);
 
@@ -78,7 +84,7 @@ public class cameraManager : MonoBehaviour
     /// <returns>A float for the orthographic size.</returns>
     float onCalculateOrthographicSize()
     {
-        
+
         float orthographicSize = Camera.main.orthographicSize;
         Vector3 topRight = new Vector3(boundingBox.x + boundingBox.width, boundingBox.y, Camera.main.transform.position.z);
         Vector3 topRightAsViewport = Camera.main.WorldToViewportPoint(topRight);
@@ -93,6 +99,6 @@ public class cameraManager : MonoBehaviour
         return Mathf.Clamp(orthoPosition, minOrthoSize, maxOrthoSize);
     }
 
-    
+
 
 }

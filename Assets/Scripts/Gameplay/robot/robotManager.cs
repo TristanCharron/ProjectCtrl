@@ -75,7 +75,10 @@ public class robot1 : Player
     {
         maxHealth = health;
         speed = 10;
-        regenRate = 0.2f;
+        regenRate = 0.15f;
+        shield = 50;
+        ammo = 25;
+        accuracy = 70;
         health = 71;
         pausing = false; firing = false;
         ultimate = new ultimate1();
@@ -108,8 +111,6 @@ public class robot2 : Player
     {
         maxHealth = health;
         speed = 50;
-        regenRate = 0.2f;
-        health = 123;
         pausing = false; firing = false;
         ultimate = new ultimate1();
         movable = new Movable(this);
@@ -120,7 +121,6 @@ public class robot2 : Player
     {
         if (Input.GetMouseButtonDown(1) && ultimate.isAvailable)
         {
-
             weapon.onEnableUltimate();
             ultimate.onEnable();
         }
@@ -139,8 +139,6 @@ public class robot3 : Player
     {
         maxHealth = health;
         speed = 75;
-        regenRate = 0.2f;
-        health = 71;
         pausing = false; firing = false;
         ultimate = new ultimate1();
         movable = new Movable(this);
