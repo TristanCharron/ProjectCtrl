@@ -82,9 +82,10 @@ public class bullet : MonoBehaviour {
                 StartCoroutine(playerManager.player.onPause());
             }
 
-            onDestroy();
+           
         }
 
+        onDestroy();
        
 
     }

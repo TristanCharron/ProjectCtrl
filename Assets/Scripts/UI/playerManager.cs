@@ -137,7 +137,11 @@ public abstract class Character
 
     protected void onDeath()
     {
+
         MonoBehaviour.Destroy(gameObject);
+        combatManager.onPlayerDeath(index);
+
+
     }
     public void onWeaponHit(float damage)
     {

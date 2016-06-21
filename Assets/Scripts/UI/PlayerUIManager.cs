@@ -53,7 +53,7 @@ public class PlayerUIManager : MonoBehaviour
             onUpdateUltimateBar();
             onUltimateChange();
         }
-        gameObject.SetActive(isActive);
+       
      
     }
 

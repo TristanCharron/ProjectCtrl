@@ -5,20 +5,24 @@ using System.Collections.Generic;
 
 public class UIManager : MonoBehaviour
 {
-    public PlayerUIManager[] _uiManagers;
+    public Transform[] uiPositions;
     public static PlayerUIManager[] uiManagers;
     public static UIManager Instance;
 
     void Awake()
     {
         Instance = this;
-        uiManagers = _uiManagers;
+        uiManagers = new PlayerUIManager[combatManager.nbPlayers];
     }
 
 
 
     public static void onActivate(int index, playerManager player)
     {
+        GameObject ui = Instantiate(Resources.Load("UI/playerUI"),Instance.uiPositions[index].position, Quaternion.identity) as GameObject;
+        ui.transform.SetParent(Instance.uiPositions[index].gameObject.transform);
+        ui.transform.localScale = Vector3.one;
+        uiManagers[index] = ui.GetComponent<PlayerUIManager>();
         uiManagers[index].onActivate(player);
     }
 
