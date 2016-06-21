@@ -68,3 +68,102 @@ public class robotManager
 
 
 }
+
+public class robot1 : Player
+{
+    public robot1()
+    {
+        maxHealth = health;
+        speed = 10;
+        regenRate = 0.2f;
+        health = 71;
+        pausing = false; firing = false;
+        ultimate = new ultimate1();
+        movable = new Movable(this);
+        name = "Donkey Konga 3";
+    }
+
+    protected override void onCheckUltimate()
+    {
+        if (Input.GetMouseButtonDown(1) && ultimate.isAvailable)
+        {
+            weapon.onEnableUltimate();
+            ultimate.onEnable();
+        }
+    }
+
+    public override void onUpdate()
+    {
+        base.onUpdate();
+        onCheckUltimate();
+    }
+
+
+
+}
+
+public class robot2 : Player
+{
+    public robot2()
+    {
+        maxHealth = health;
+        speed = 50;
+        regenRate = 0.2f;
+        health = 123;
+        pausing = false; firing = false;
+        ultimate = new ultimate1();
+        movable = new Movable(this);
+        name = "Vaporwave";
+    }
+
+    protected override void onCheckUltimate()
+    {
+        if (Input.GetMouseButtonDown(1) && ultimate.isAvailable)
+        {
+
+            weapon.onEnableUltimate();
+            ultimate.onEnable();
+        }
+    }
+
+    public override void onUpdate()
+    {
+        base.onUpdate();
+        onCheckUltimate();
+    }
+}
+
+public class robot3 : Player
+{
+    public robot3()
+    {
+        maxHealth = health;
+        speed = 75;
+        regenRate = 0.2f;
+        health = 71;
+        pausing = false; firing = false;
+        ultimate = new ultimate1();
+        movable = new Movable(this);
+        name = "Jean-Daniel";
+    }
+
+    protected override void onCheckUltimate()
+    {
+        if (Input.GetMouseButtonDown(1) && ultimate.isAvailable)
+        {
+            weapon.onEnableUltimate();
+            ultimate.onEnable();
+        }
+    }
+
+    public override void onUpdate()
+    {
+        base.onUpdate();
+        onCheckUltimate();
+    }
+}
+
+
+
+
+

@@ -16,23 +16,15 @@ public class UIManager : MonoBehaviour
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (uiManagers != null)
-        {
-            foreach(PlayerUIManager pUI in uiManagers)
-            {  
-                    pUI.onUpdate();
-            }
-                   
-        }
-            
-    }
 
     public static void onActivate(int index, playerManager player)
     {
         uiManagers[index].onActivate(player);
+    }
+
+    public static void onDesactivate(int index)
+    {
+        uiManagers[index].onDesactivate();
     }
 
 

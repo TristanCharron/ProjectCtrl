@@ -27,7 +27,7 @@ public class bullet : MonoBehaviour {
     {
         gameObject.SetActive(true);
         render.materials[0].color = new Color(render.materials[0].color.r, render.materials[0].color.g, render.materials[0].color.b, 1);
-        onSetDirection(position);
+        onSetDirection(weapon.gameObject.transform.position);
         Invoke("onDestroy", 2);
        
     }
@@ -72,13 +72,21 @@ public class bullet : MonoBehaviour {
 
     void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.tag == "Player" && active && col.gameObject.name != shooter.gameObject.name)
+        if (col.gameObject.tag == "Player" && active)
         {
+          
             playerManager playerManager = col.gameObject.GetComponent<playerManager>();
-            playerManager.player.onWeaponHit(weapon.Damage);
-            StartCoroutine(playerManager.player.onPause());
+            if (playerManager.player.Index != shooter.Index)
+            {
+                playerManager.player.onWeaponHit(weapon.Damage);
+                StartCoroutine(playerManager.player.onPause());
+            }
+
             onDestroy();
         }
+
+       
+
     }
 
     void onDestroy()

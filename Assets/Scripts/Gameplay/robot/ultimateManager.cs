@@ -19,21 +19,21 @@ public interface IUltimate
     void onBonus();
     void onCharge();
 
-    float amount
+    float Amount
     {
         get;
     }
 
-    float bonusAmount
+    float BonusAmount
     {
         get;
     }
 
-    float maxAmount
+    float MaxAmount
     {
         get;
     }
-    float regenRate
+    float RegenRate
     {
         get;
     }
@@ -48,12 +48,12 @@ public interface IUltimate
         get;
     }
 
-    float length
+    float Length
     {
         get;
     }
 
-    string name
+    string Name
     {
         get;
     }
@@ -64,25 +64,25 @@ public interface IUltimate
 
 public class ultimate1 : IUltimate
 {
-    protected float Amount;
+    protected float amount = 0;
     protected bool available = true, active = false;
     protected float countdown = 0;
-    protected string Name = "";
-    public string name
+    protected string name = "";
+    public string Name
     {
-        get { return Name; }
+        get { return name; }
     }
-    public float amount
+    public float Amount
     {
-        get { return Amount; }
+        get { return Mathf.Clamp(amount,0, MaxAmount); }
     }
 
-    public float maxAmount
+    public float MaxAmount
     {
         get { return 100; }
     }
 
-    public float regenRate
+    public float RegenRate
     {
         get { return 2f; }
     }
@@ -103,7 +103,7 @@ public class ultimate1 : IUltimate
         }
     }
 
-    public float bonusAmount
+    public float BonusAmount
     {
         get
         {
@@ -111,7 +111,7 @@ public class ultimate1 : IUltimate
         }
     }
 
-    public float length
+    public float Length
     {
         get
         {
@@ -119,9 +119,11 @@ public class ultimate1 : IUltimate
         }
     }
 
+    
+
     public ultimate1()
     {
-        Amount = 0;
+        amount = 0;
         active = false;
         available = false;
     }
@@ -129,24 +131,21 @@ public class ultimate1 : IUltimate
     public void onRegenerate()
     {
         if (!active)
-        {
-            Amount += regenRate;
-            Mathf.Clamp(Amount, 0, maxAmount);
-
-        }
-
+            amount += RegenRate;
+        
+        Mathf.Clamp(amount, 0, MaxAmount);
 
     }
     public void onUpdate()
     {
         onRegenerate();
-        available = Amount >= maxAmount;
+        available = amount >= MaxAmount;
         if (active)
             onCharge();
     }
     public void onEnable()
     {
-        Amount = 0;
+        amount = 0;
         active = true;
         available = false;
 
@@ -160,14 +159,14 @@ public class ultimate1 : IUltimate
 
     public void onBonus()
     {
-        Amount += bonusAmount;
-        Mathf.Clamp(Amount, 0, maxAmount);
+        amount += BonusAmount;
+        Mathf.Clamp(Amount, 0, MaxAmount);
     }
 
     public void onCharge()
     {
         countdown += Time.deltaTime;
-        if (countdown >= length)
+        if (countdown >= Length)
         {
             countdown = 0;
             onDisable();

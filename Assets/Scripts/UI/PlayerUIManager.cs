@@ -11,10 +11,10 @@ public class PlayerUIManager : MonoBehaviour
     private int maxNbHealthBars;
     int currentHealthValue { get { return (nbHealthBars-1) * 33; } }
     int maxHealthValue { get { return (maxNbHealthBars - 1) * 33; } }
+    bool active = false;
     public bool isActive{
         get {
-            if (gameObject == null) return false;
-            else return gameObject.activeInHierarchy;
+            return active;
         }
     }
 
@@ -27,7 +27,7 @@ public class PlayerUIManager : MonoBehaviour
     // Use this for initialization
     public void onActivate(playerManager pManager)
     {
-     
+        active = true;
         gameObject.SetActive(true);
         PlayerManager = pManager;
         Name.text = PlayerManager.player.Name;
@@ -37,37 +37,45 @@ public class PlayerUIManager : MonoBehaviour
         onGenerateHealthBar();
     }
 
-    // Update is called once per frame
-    public void  onUpdate()
+    public void onDesactivate()
     {
-        if(isActive)
+        active = false;
+        gameObject.SetActive(false);
+    }
+
+
+    // Update is called once per frame
+    public void  Update()
+    {
+        if(active)
         {
             onUpdateHealthBar();
             onUpdateUltimateBar();
             onUltimateChange();
         }
+        gameObject.SetActive(isActive);
      
     }
 
    
+    
 
     void onGenerateHealthBar()
     {
        
 
         for (int i = 0; i < healthBars.Length; i++)
-        {
             healthBars[i].gameObject.SetActive(i < nbHealthBars ? true : false);
-        }
+
         if (nbHealthBars == 0)
             healthBars[0].gameObject.SetActive(false);
+
         onHealthChange();
     }
 
 
     public void onHealthChange(Image healthBar)
     {
-
         float health = PlayerManager.player.Health - currentHealthValue;
         healthBar.fillAmount = Mathf.Clamp01(health / 33);
 
@@ -84,7 +92,7 @@ public class PlayerUIManager : MonoBehaviour
 
     public void onUltimateChange()
     {
-            ultimateBar.fillAmount = Mathf.Clamp01(PlayerManager.player.Ultimate.amount/ PlayerManager.player.Ultimate.maxAmount);
+       ultimateBar.fillAmount = Mathf.Clamp01(PlayerManager.player.Ultimate.Amount/ PlayerManager.player.Ultimate.MaxAmount);
     }
 
     public void onHealthChange()
