@@ -6,9 +6,7 @@ Shader "Hidden/PostScreenEffect"
 	Properties
 	{
 		_MainTex("Texture", 2D) = "white" {}
-		_DispTex("Base (RGB)", 2D) = "bump" {}
 		_Intensity("Glitch Intensity", Range(0.1, 1.0)) = 1
-		_Chroma("Chroma Intensity", Range(0, 2)) = 1
 	}
 		SubShader
 		{
@@ -28,7 +26,7 @@ Shader "Hidden/PostScreenEffect"
 				#include "UnityCG.cginc"
 
 				uniform sampler2D _MainTex;
-				float _Intensity, _Chroma, filterRadius;
+				float _Intensity;
 				float distortion;
 				float flip_up, flip_down;
 				float displace, scale;
@@ -61,8 +59,6 @@ Shader "Hidden/PostScreenEffect"
 				}
 
 
-
-
 				v2f vert(appdata input)
 				{
 					v2f output;
@@ -89,9 +85,13 @@ Shader "Hidden/PostScreenEffect"
 
 				//onSetUVFlip(input);
 				float magnitude = 0.009 * distortion;
-				half4 normal = tex2D(_MainTex, input.uv.xy * scale);
-				input.uv.xy += (_Chroma > 1) ? (normal.xy - 0.5) * displace : -(normal.xy - 0.5) * displace;
-
+				half4 normal = tex2D(_MainTex, input.uv.xy);
+				
+				//Glitch Offset
+				input.uv.x += (_Intensity * 5 > 1) ? (normal.y - _Intensity) * displace : -(normal.y - _Intensity) * displace;
+				input.uv.y += (_Intensity * 5 > 1) ? (normal.x - _Intensity) * displace : -(normal.x - _Intensity) * displace;
+				
+				
 				//Red offset
 				v2f offsetRedUV = input;
 				offsetRedUV.uv.x = input.uv.x + rand(float2(_Time[1] * 0.001, input.uv.y )) * 0.003;

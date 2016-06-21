@@ -5,7 +5,6 @@ using UnityStandardAssets.ImageEffects;
 [AddComponentMenu("Hidden/PostScreenEffect")]
 
 public class PostScreenShader : ImageEffectBase {
-    public Texture2D displacementMap;
     public Material mat;
 
     //Shader parameters transfered to Shader.
@@ -14,7 +13,10 @@ public class PostScreenShader : ImageEffectBase {
 
 
     [Range(0, 1)]
-    public float intensity, filterRadius, Red, Green, Blue, distortion;
+    public float intensity, distortion;
+
+    [Range(0, 2)]
+    public float Red, Green, Blue;
 
     public bool flipDown = false, flipUp = false;
     static bool isGlitching = false;
@@ -57,7 +59,6 @@ public class PostScreenShader : ImageEffectBase {
 
 
         float _intensity = isGlitching ? intensity : 0;
-        float _filterRadius = isGlitching ? Random.Range(-filterRadius, filterRadius) : 0;
         isGlitching = intensity / 3 > Random.value;
 
         mat.SetFloat("distortion", distortion);
@@ -66,8 +67,6 @@ public class PostScreenShader : ImageEffectBase {
         mat.SetFloat("Red", Red);
         mat.SetFloat("Green", Green);
         mat.SetFloat("Blue", Blue);
-        mat.SetTexture("_DispTex", displacementMap);
-        mat.SetFloat("filterRadius", _filterRadius);
         mat.SetFloat("flip_up", isGlitching ? Random.Range(0.3f, 0.6f) : 0);
         mat.SetFloat("flip_down", isGlitching ? Random.Range(0.3f, 0.6f) : 1);
         mat.SetFloat("displace", isGlitching ? Random.Range(0, _intensity) : 0);
