@@ -84,6 +84,9 @@ public class robot1 : Player
         ultimate = new ultimate1();
         movable = new Movable(this);
         name = "Donkey Konga 3";
+        activeInfo = "Can use his roller blade to roll and drift";
+        passiveInfo = "When in roller blade form, he will have a greater recoil when he shoots";
+        ultInfo = "Will emit a flash from his head, paralysing enemies for 3 seconds";
     }
 
     protected override void onCheckUltimate()
@@ -111,10 +114,18 @@ public class robot2 : Player
     {
         maxHealth = health;
         speed = 50;
+        regenRate = 0.45f;
+        shield = 70;
+        ammo = 25;
+        accuracy = 55;
+        health = 81;
         pausing = false; firing = false;
         ultimate = new ultimate1();
         movable = new Movable(this);
         name = "Vaporwave";
+        activeInfo = "Can bring you a very good vapor";
+        passiveInfo = "When he flex, little smoke poison the enemy";
+        ultInfo = "Will emit a flash from his head, paralysing enemies for 3 seconds";
     }
 
     protected override void onCheckUltimate()
@@ -138,11 +149,19 @@ public class robot3 : Player
     public robot3()
     {
         maxHealth = health;
-        speed = 75;
+        speed = 46;
+        regenRate = 0.55f;
+        shield = 50;
+        ammo = 35;
+        accuracy = 65;
+        health = 99;
         pausing = false; firing = false;
         ultimate = new ultimate1();
         movable = new Movable(this);
         name = "Jean-Daniel";
+        activeInfo = "Can be amusement and daniel";
+        passiveInfo = "Cool 2014 nice dude";
+        ultInfo = "Will emit a flash from his head, paralysing enemies for 3 seconds";
     }
 
     protected override void onCheckUltimate()
