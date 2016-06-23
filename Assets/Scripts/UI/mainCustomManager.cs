@@ -16,7 +16,7 @@ public class mainCustomManager : MonoBehaviour {
         mainCharacter = new CharacterCustomUi();
       //  managerCharacter = new mainCharacterManager();
 
-        prefabCustom  = Resources.LoadAll<GameObject>("Prefab");
+        prefabCustom  = Resources.LoadAll<GameObject>("Menu");
 
         robotManager robot = new robotManager();
         if (playerSelection.playerObject != null)
@@ -39,9 +39,11 @@ public class mainCustomManager : MonoBehaviour {
            playerSelection.playerObject = Instantiate(prefabCustom[playerSelection.SelectionIndex - 1], playerSelection.customPosition.position, Quaternion.identity) as GameObject;
            playerSelection.name.text = robot.Name;
           onSetStatsBar(previousIndex);
+        playerSelection.activeText.text = robot.ActivInfo;
+        playerSelection.passiveText.text = robot.PassivInfo;
 
 
-       }
+    }
 
     public void onNextCustom(Button btn)
     {

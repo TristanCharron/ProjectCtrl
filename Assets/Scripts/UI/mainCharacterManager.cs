@@ -74,7 +74,7 @@ public class mainCharacterManager : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        prefabs = Resources.LoadAll<GameObject>("Prefab");
+        prefabs = Resources.LoadAll<GameObject>("Menu");
         robotManager robot = new robotManager();
     }
 
@@ -100,7 +100,7 @@ public class mainCharacterManager : MonoBehaviour
 
     void onStartGame()
     {
-        SceneManager.LoadSceneAsync(1);
+        SceneManager.LoadSceneAsync(0);
     }
 
     public void onStartCharacterSelection()
@@ -187,6 +187,7 @@ public class mainCharacterManager : MonoBehaviour
         pUI.playerObject = Instantiate(prefabs[pUI.SelectionIndex - 1], pUI.worldPosition.position, Quaternion.identity) as GameObject;
         pUI.name.text = robot.Name;
         onSetStatsBar(pUI, previousIndex);
+        
 
 
     }

@@ -62,6 +62,7 @@ public abstract class Character
     protected bool firing, pausing, attacking, shaking;
     protected int index;
     protected float speed, health, maxHealth, regenRate, accuracy, shield, ammo, damage;
+    protected string activeInfo, passiveInfo, ultInfo;
 
     public bool isAttacking { get { return attacking; } }
     public bool isPausing { get { return pausing; } }
@@ -83,6 +84,10 @@ public abstract class Character
     public float Ammo { get { return ammo; } }
     public float Damage { get { return damage; } }
     public int Index { get { return index; } }
+    public string ActivInfo {  get { return activeInfo; } }
+    public string PassivInfo { get { return passiveInfo; } }
+    public string UltInfo { get { return ultInfo; } }
+
 
 
     //gameObject info
