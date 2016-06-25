@@ -41,6 +41,9 @@ public class mainCustomManager : MonoBehaviour {
           onSetStatsBar(previousIndex);
         playerSelection.activeText.text = robot.ActivInfo;
         playerSelection.passiveText.text = robot.PassivInfo;
+        playerSelection.healthShowCustom.text = robot.Health.ToString();
+        playerSelection.shieldShowCustom.text = robot.Shield.ToString();
+        playerSelection.ammoShowCustom.text = robot.Ammo.ToString();
 
 
     }

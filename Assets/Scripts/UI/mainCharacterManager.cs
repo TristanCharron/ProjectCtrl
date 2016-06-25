@@ -24,12 +24,13 @@ public class CharacterCustomUi
             selectionIndex = 1;
         }
 
-        public Text name, passiveText, activeText;
+        public Text name, passiveText, activeText, healthShowCustom,  shieldShowCustom, ammoShowCustom;
         public const float speedMax = 100, healthMax = 99, shieldMax = 99, regenMax = 10, accuracyMax = 100, ammoMax = 99;
-        public GameObject containerArrow, readyBtn, speedShow, healthShow, speedShowCustom, healthShowCustom, accuracyShow, regenShow, ammoShow;
+        public GameObject containerArrow, readyBtn, speedShow, healthShow, accuracyShow, regenShow, ammoShow;
         public Transform worldPosition;
         public Transform customPosition;
         public GameObject playerLayOut, playerObject;
+
 
 
 
