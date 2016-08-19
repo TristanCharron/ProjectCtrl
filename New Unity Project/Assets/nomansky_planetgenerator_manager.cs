@@ -3,6 +3,7 @@ using System.Collections;
 
 public class nomansky_planetgenerator_manager : MonoBehaviour {
     float nbPlanets = 0;
+    int test = 10;
 	// Use this for initialization
 	void Start () {
 	
