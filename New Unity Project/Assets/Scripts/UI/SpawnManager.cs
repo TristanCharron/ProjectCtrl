@@ -4,14 +4,29 @@ using System.Collections.Generic;
 
 public class SpawnManager : MonoBehaviour {
 
+    public static SpawnManager Instance
+    {
+        get
+        {
+            return instance;
+        }
+    }
+    private static SpawnManager instance;
     public GameObject gameOverContainer, monkReviveCharge;
     public Transform[] SpawnPoints;
     //public GameObject player;
-    public GameObject[] players;
-   public bool allPlayerDead, aPlayerDead;
-    public List<int> nbPlayerDead = new List<int>();
+    public GameObject[] _Players;
+    private static GameObject[] players;
+    public static GameObject[] Players { get { return players; } }
+    public static bool IsTeamDead { get { return isTeamDead; } }
+    private static bool isTeamDead;
+    private static List<int> listPlayerDead = new List<int>();
+    public static List<int> ListPlayerDead { get { return ListPlayerDead; } }
+    
     // Use this for initialization
     void Start () {
+        instance = this;
+        players = _Players;
         gameOverContainer.SetActive(false);
 	}
 	
@@ -20,7 +35,13 @@ public class SpawnManager : MonoBehaviour {
 	    
 	}
 
-    void SpawnPosition(int id)
+    static void onReset()
+    {
+        instance.gameOverContainer.SetActive(true);
+        listPlayerDead.Clear();
+    }
+
+    static void onSpawnPosition(int id)
     {
         for (int x = 0; x <= players.Length; x++)
         {
@@ -28,7 +49,7 @@ public class SpawnManager : MonoBehaviour {
         }
     }
 
-    public void resetPosition()
+    public static void onResetPosition()
     {
         foreach(GameObject player in players)
         {
@@ -36,60 +57,44 @@ public class SpawnManager : MonoBehaviour {
             {
                 if(!player.activeInHierarchy)
                 player.SetActive(true);
-
-                
-
                 player.transform.position = player.transform.parent.position;
             }
       
         }
 
-        gameOverContainer.SetActive(false);
-        if (allPlayerDead)
+        instance.gameOverContainer.SetActive(false);
+        if (IsTeamDead)
         {
-            allPlayerDead = false;
-            gameOverContainer.SetActive(false);
+            isTeamDead = false;
+            instance.gameOverContainer.SetActive(false);
         }
             
     }
 
-  public void checkPlayerAlive()
+  public static void isTeamDefeated()
     {
-       
-        
-      /*
-        for(int x = 0; x < players.Length; x++)
-        {
-            if (!players[x].activeInHierarchy)
-                aPlayerDead = false;
-            else
-                allPlayerDead = true;
-                
-        }
-        */
-        if(nbPlayerDead.Contains(1) && nbPlayerDead.Contains(2))
+
+        if(listPlayerDead.Contains(1) && listPlayerDead.Contains(2))
         {
             Debug.Log("Red Team Wins");
-            gameOverContainer.SetActive(true);
-            nbPlayerDead.Clear();
+            onReset();
         }
-        else if (nbPlayerDead.Contains(3) && nbPlayerDead.Contains(4))
+        else if (listPlayerDead.Contains(3) && listPlayerDead.Contains(4))
         {
             Debug.Log("Blue Team Wins");
-            gameOverContainer.SetActive(true);
-            nbPlayerDead.Clear();
+            onReset();
         }
     }
 
-   public void killPlayer(int id)
+   public static void onPlayerDeath(int id)
     {
-        nbPlayerDead.Add(id);
+        listPlayerDead.Add(id);
         players[id - 1].gameObject.SetActive(false);
-        checkPlayerAlive();
+        isTeamDefeated();
 
     }
 
-    public void reviveAlly()
+    public void onReviveAlly()
     {
 
     }

@@ -27,6 +27,10 @@ public class ballManager : MonoBehaviour
 
     public Rigidbody RigidBody { get { return rBody; } }
 
+    private static MonkController.PlayerTeam possessedTeam = 0;
+
+    public static MonkController.PlayerTeam PossessedTeam {get {return possessedTeam;}}
+
     private static bool isPushed;
 
 
@@ -38,6 +42,11 @@ public class ballManager : MonoBehaviour
         onSetProperties();
 
 
+    }
+
+    public static void onChangeTeamPossession(MonkController.PlayerTeam newTeam)
+    {
+        possessedTeam = newTeam;
     }
 
     private void onSetComponents()

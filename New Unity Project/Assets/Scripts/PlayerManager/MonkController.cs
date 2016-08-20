@@ -26,6 +26,8 @@ public class MonkController : MonoBehaviour
     [SerializeField]
     float coolDownLength = 10;
     BoxCollider PlayerCollider;
+    [SerializeField]
+    Animator handAnimator;
 
     //cursor
     Transform cursorTransform;
@@ -63,6 +65,20 @@ public class MonkController : MonoBehaviour
         MoveCharacter();
         PushButton();
         PullButton();
+    }
+
+    bool isHitValid()
+    {
+        return Team != ballManager.PossessedTeam;
+    }
+
+
+    void OnTriggerEnter(Collider other)
+    {
+        
+        if(isHitValid())
+            SpawnManager.onPlayerDeath(PlayerID);
+        
     }
 
     void CursorRotation()
@@ -241,6 +257,18 @@ public class MonkController : MonoBehaviour
         isPullActionTriggered = state;
     }
 
+    void onPush()
+    {
+        ballManager.onPush(Quaternion.LookRotation(LookAtTransform.position - transform.position) * -transform.forward, 75 * buildingSpeed);
+        ballManager.onChangeTeamPossession(Team);
+        handAnimator.Play("Push");
+    }
+
+    void onPull()
+    {
+        ballManager.onPull(Vector3.zero, -ballManager.CurrentVelocity);
+        handAnimator.Play("Pull");
+    }
 
 
     IEnumerator TimerActionCooldown(string action)
@@ -253,13 +281,13 @@ public class MonkController : MonoBehaviour
                 PushCollider.enabled = true;
                 yield return new WaitForSeconds(0.1f);
                 if (isPushActionTriggered)
-                    ballManager.onPush(Quaternion.LookRotation(LookAtTransform.position - transform.position) * -transform.forward, 100);
+                    onPush();
                 break;
             case "Pull":
                 PullCollider.enabled = true;
                 yield return new WaitForSeconds(0.1f);
                 if (isPullActionTriggered)
-                    ballManager.onPull(Vector3.zero, -ballManager.CurrentVelocity);
+                    onPull();
                 break;
         }
 
