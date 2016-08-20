@@ -472,6 +472,8 @@ GameObject:
   - 114: {fileID: 248399989}
   - 95: {fileID: 248399990}
   - 114: {fileID: 248399991}
+  - 114: {fileID: 248399992}
+  - 114: {fileID: 248399993}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -543,7 +545,7 @@ Transform:
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
   m_LocalPosition: {x: 1, y: -153.5, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 75.86, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -601,14 +603,40 @@ MonoBehaviour:
   - {fileID: 1571048563}
   - {fileID: 1504411237}
   - {fileID: 1525176284}
-  players:
-  - {fileID: 600915316}
-  - {fileID: 1103582788}
-  - {fileID: 1091797052}
-  - {fileID: 1268594803}
-  allPlayerDead: 0
-  aPlayerDead: 0
-  nbPlayerDead: 
+  _Players: []
+--- !u!114 &248399992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 248399983}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452aa60ecb806be41af6028970490603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 600915316}
+  zoomSpeed: 20
+  boundingBoxPadding: 10
+--- !u!114 &248399993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 248399983}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd973fc170a004c44b093d743f5224b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targets:
+  - {fileID: 600915317}
+  - {fileID: 1103582789}
+  - {fileID: 1091797053}
+  - {fileID: 1268594804}
+  boundingBoxPadding: 10
+  minimumOrthographicSize: 10
+  zoomSpeed: 15
 --- !u!1 &266185791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1527,6 +1555,7 @@ GameObject:
   - 65: {fileID: 600915319}
   - 23: {fileID: 600915318}
   - 114: {fileID: 600915321}
+  - 114: {fileID: 600915322}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -1610,6 +1639,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeBar: {fileID: 2096805001}
   meterReload: {fileID: 454220498}
+--- !u!114 &600915322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 600915316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8961651b221e6e4459e508a0a80caf1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &613409691
 GameObject:
   m_ObjectHideFlags: 0
@@ -2498,6 +2538,7 @@ GameObject:
   - 65: {fileID: 1103582791}
   - 23: {fileID: 1103582790}
   - 114: {fileID: 1103582793}
+  - 114: {fileID: 1103582794}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -2580,6 +2621,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeBar: {fileID: 432591511}
   meterReload: {fileID: 1374059707}
+--- !u!114 &1103582794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1103582788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8961651b221e6e4459e508a0a80caf1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1118704230
 GameObject:
   m_ObjectHideFlags: 0
