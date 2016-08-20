@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour {
 
-    public GameObject titleContainer;
+    public GameObject titleContainer, startContainer;
     public GameObject playerIDcontainer;
     public List<Text> playerId = new List<Text>();
     float duration = 1, alpha = 0, t;
     int nbPlayers;
+    bool startGame;
 
 
 	// Use this for initialization
@@ -17,7 +18,7 @@ public class UiManager : MonoBehaviour {
         
         nbPlayers = 4;
         playerIDcontainer.SetActive(false);
-       
+        startContainer.SetActive(false);
         //iTween.MoveTo(gameObject, iTween.Hash("x", 3, "time", 4, "delay", 1, "onupdate", "myUpdateFunction", "looptype", iTween.LoopType.pingPong));
 
     }
@@ -29,11 +30,12 @@ public class UiManager : MonoBehaviour {
        
 
         
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("L_Press_1") && startGame == false)
         {
             titleContainer.SetActive(false);
             gameObject.GetComponent<Animator>().enabled = true;
             StartCoroutine(makeIDAppear());
+            startGame = true;
         }
 
        
@@ -52,6 +54,10 @@ public class UiManager : MonoBehaviour {
            g.CrossFadeAlpha(1.0f, 2.0f, false);
             g.CrossFadeAlpha(0.0f, 2.0f, false);
         }
+        yield return new WaitForSeconds(3f);
+        startContainer.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        startContainer.SetActive(false);
     }
 
    /* void chargeBarActive()

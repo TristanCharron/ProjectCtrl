@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class SpawnManager : MonoBehaviour {
 
-    public GameObject gameOverContainer;
+    public GameObject gameOverContainer, monkReviveCharge;
     public Transform[] SpawnPoints;
     //public GameObject player;
     public GameObject[] players;
@@ -86,6 +86,11 @@ public class SpawnManager : MonoBehaviour {
         nbPlayerDead.Add(id);
         players[id - 1].gameObject.SetActive(false);
         checkPlayerAlive();
+
+    }
+
+    public void reviveAlly()
+    {
 
     }
 }

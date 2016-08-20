@@ -27,7 +27,7 @@ public class monkChargeBall : MonoBehaviour {
             meterReload.SetActive(false);
         }
 
-        if(Input.GetButtonDown("Jump"))
+        if(Input.GetButtonDown("Jump") || Input.GetButtonDown("R_Press_1"))
         {
             if(chargeBar.transform.localPosition.x < -0.1006f && chargeBar.transform.localPosition.x > -0.1465f)
             {
