@@ -11,7 +11,7 @@ public class ballManager : MonoBehaviour
 
     public static Vector3 VelocityAngle { get { return velocityAngle; } }
 
-    private static float currentVelocity; //Speed variables
+    private static float currentVelocity, destinationVelocity, LerpTimer; //Speed variables
 
     public static float MaxVelocity { get { return Instance._MaxVelocity; } }
 
@@ -34,6 +34,7 @@ public class ballManager : MonoBehaviour
     {
         onSetComponents();
         onSetProperties();
+        rBody.AddForce(transform.forward * MinVelocity);
 
     }
 
@@ -46,36 +47,23 @@ public class ballManager : MonoBehaviour
     private void onSetProperties()
     {
         currentVelocity = MinVelocity;
+        destinationVelocity = currentVelocity;
         velocityAngle = Vector3.forward;
+        rBody.velocity = new Vector3(Random.Range(0, 2) == 0 ? -1 : 1, 0, Random.Range(0, 2) == 0 ? -1 : 1);
+        rBody.velocity = rBody.velocity * MinVelocity;
         isPushed = false;
+        LerpTimer = 0;
     }
 
-    public static void onPush(Vector3 newAngle, float velocityApplied)
+    public static void onPush(float velocityApplied)
     {
-        velocityAngle = newAngle;
-        Instance.StartCoroutine(Instance.onLerpPushedBall(velocityApplied, 0.05f));
+        isPushed = true;
+        //velocityAngle = newAngle;
+        destinationVelocity = currentVelocity + velocityApplied;
     }
 
 
-    public IEnumerator onLerpPushedBall(float destVelocity, float length)
-    {
-        if (!isPushed)
-        {
-            isPushed = true;
-            float timer = 0;
-            // Lerp velocity
-            while (timer <= length)
-            {
-                currentVelocity = Mathf.Lerp(currentVelocity, destVelocity, timer);
-                timer += Time.fixedDeltaTime;
-                yield return new WaitForFixedUpdate();
-            }
-            timer = 0;
-          
-            isPushed = false;
-        }
-        yield break;
-    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -84,19 +72,40 @@ public class ballManager : MonoBehaviour
 
     private void onChangeVelocity()
     {
-        currentVelocity -= DecreaseVelocity;
+        if(isPushed)
+        {
+            currentVelocity = Mathf.Lerp(currentVelocity, destinationVelocity, LerpTimer);
+            LerpTimer += Time.fixedDeltaTime;
+            if (LerpTimer >= 1)
+            {
+                LerpTimer = 0;
+                isPushed = false;
+            }
+           
+        }
+        else
+        {
+            currentVelocity -= DecreaseVelocity;
+         
+        }
+
         currentVelocity = Mathf.Clamp(currentVelocity, MinVelocity, MaxVelocity);
+        rBody.velocity = rBody.velocity.normalized * currentVelocity;
     }
 
     private void onMove()
     {
-        Vector3 force = transform.forward * currentVelocity;
-        force.y = 0;
-        rBody.AddForce(force);
-        rBody.velocity = new Vector3(rBody.velocity.x, 0, rBody.velocity.z);
         onChangeVelocity();
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Mage"))
+        {
+            onPush(100);
+        }
+           
+    }
 
 
 

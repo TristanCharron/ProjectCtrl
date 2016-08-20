@@ -15,7 +15,7 @@ public class Mage : MonoBehaviour {
         onRotate();
         if(Input.GetMouseButtonDown(0))
         {
-            ballManager.onPush(transform.forward, 100);
+            //ballManager.onPush(transform.forward, 100);
         }
 
 
