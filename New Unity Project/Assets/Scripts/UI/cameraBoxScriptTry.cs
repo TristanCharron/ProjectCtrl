@@ -77,7 +77,7 @@ public class cameraBoxScriptTry : MonoBehaviour {
         Vector3 boundingBoxCenter = boundingBox.center;
 
         
-        return new Vector3(boundingBoxCenter.x, /*camera.transform.position.y*/ boundingBoxCenter.y + 40, boundingBoxCenter.z - 5);
+        return new Vector3(boundingBoxCenter.x, /*camera.transform.position.y*/ boundingBoxCenter.y + 105, boundingBoxCenter.z);
         
     }
 

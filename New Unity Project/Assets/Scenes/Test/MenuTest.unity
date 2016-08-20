@@ -616,7 +616,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 600915316}
-  zoomSpeed: 20
+  zoomSpeed: 200
   boundingBoxPadding: 10
 --- !u!114 &248399993
 MonoBehaviour:
@@ -1639,6 +1639,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeBar: {fileID: 2096805001}
   meterReload: {fileID: 454220498}
+  collectBall: {fileID: 0}
 --- !u!114 &600915322
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2447,6 +2448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeBar: {fileID: 1118704230}
   meterReload: {fileID: 348468318}
+  collectBall: {fileID: 0}
 --- !u!1 &1094976500
 GameObject:
   m_ObjectHideFlags: 0
@@ -2621,6 +2623,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeBar: {fileID: 432591511}
   meterReload: {fileID: 1374059707}
+  collectBall: {fileID: 0}
 --- !u!114 &1103582794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3035,6 +3038,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chargeBar: {fileID: 1243912649}
   meterReload: {fileID: 1205676533}
+  collectBall: {fileID: 0}
 --- !u!1 &1312411159
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using System.Collections;
 public class monkChargeBall : MonoBehaviour {
 
     float t;
-    public GameObject chargeBar, meterReload;
+    public GameObject chargeBar, meterReload, collectBall;
     bool isChargeActive;
 
 	// Use this for initialization
@@ -33,6 +33,16 @@ public class monkChargeBall : MonoBehaviour {
             {
 
                 Debug.Log(chargeBar.transform.localPosition.x);
+                
+                if(collectBall != null)
+                {
+                    collectBall.GetComponent<Rigidbody>().AddForce(0,0,1);
+                }
+                
+            }
+            else
+            {
+                Debug.Log("ur suck");
             }
 
             meterReload.SetActive(false);
