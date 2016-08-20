@@ -3,130 +3,131 @@ using System.Collections;
 
 public class MonkController : MonoBehaviour
 {
-    public const string PRESS_L = "L_Press_";
-    public const string PRESS_R = "R_Press_";
+	public const string PRESS_L = "L_Press_";
+	public const string PRESS_R = "R_Press_";
 
-    [SerializeField]
-    bool UsingController;
+	[SerializeField]
+	bool UsingController;
 
-    //Player ID - Team
+	//Player ID - Team
 
-    public enum PlayerTeam { Team1, Team2 };
-    public PlayerTeam Team;
-    public int PlayerID;
+	public enum PlayerTeam
+	{
+		Team1,
+		Team2}
 
+	;
 
-    /// 
-    Vector3 velocity;
-
-    [SerializeField]
-    float buildingSpeed = 0;
-    [SerializeField]
-    float SpeedPlayer = 10;
-    [SerializeField]
-    float coolDownLength = 10;
-    BoxCollider PlayerCollider;
-    [SerializeField]
-    Animator handAnimator;
-
-    //cursor
-    Transform cursorTransform;
-    Transform LookAtTransform;
-    Vector3 startRotation;
-    Vector3 endRotation;
-    float cursor_t;
-    [SerializeField]
-    float cursorSpeed = 10;
-    [SerializeField]
-    bool isPushActionTriggered = false;
-    [SerializeField]
-    bool isPullActionTriggered = false;
-
-    [SerializeField]
-    BoxCollider PushCollider;
-    [SerializeField]
-    BoxCollider PullCollider;
+	public PlayerTeam Team;
+	public int PlayerID;
 
 
+	/// 
+	Vector3 velocity;
 
-    [SerializeField]
-    bool canDoAction = true;
+	[SerializeField]
+	float buildingSpeed = 0;
+	[SerializeField]
+	float SpeedPlayer = 10;
+	[SerializeField]
+	float coolDownLength = 10;
+	BoxCollider PlayerCollider;
+	[SerializeField]
+	Animator handAnimator;
 
-    void Start()
-    {
-        PlayerCollider = GetComponent<BoxCollider>();
-        cursorTransform = transform.GetChild(0);
-        LookAtTransform = cursorTransform.GetChild(cursorTransform.childCount - 1);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        CursorRotation();
-        MoveCharacter();
-        PushButton();
-        PullButton();
-    }
+	//cursor
+	[SerializeField]
+	Transform cursorTransform;
+	[SerializeField]
+	Transform LookAtTransform;
+	Vector3 startRotation;
+	Vector3 endRotation;
+	float cursor_t;
+	[SerializeField]
+	float cursorSpeed = 10;
+	[SerializeField]
+	bool isPushActionTriggered = false;
+	[SerializeField]
+	bool isPullActionTriggered = false;
 
-    bool isHitValid()
-    {
-        return Team != ballManager.PossessedTeam;
-    }
+	[SerializeField]
+	BoxCollider PushCollider;
+	[SerializeField]
+	BoxCollider PullCollider;
 
 
-    void OnTriggerEnter(Collider other)
-    {
+
+	[SerializeField]
+	bool canDoAction = true;
+
+	void Start ()
+	{
+		PlayerCollider = GetComponent<BoxCollider> ();
+	}
+	// Update is called once per frame
+	void Update ()
+	{
+		CursorRotation ();
+		MoveCharacter ();
+		PushButton ();
+		PullButton ();
+	}
+
+	bool isHitValid ()
+	{
+		return Team != ballManager.PossessedTeam;
+	}
+
+
+	void OnTriggerEnter (Collider other)
+	{
         
-        if(isHitValid())
-            SpawnManager.onPlayerDeath(PlayerID);
+		if (isHitValid ())
+			SpawnManager.onPlayerDeath (PlayerID);
         
-    }
+	}
 
-    void CursorRotation()
-    {
+	void CursorRotation ()
+	{
 
-        //lerp
-        if (cursor_t < 1)
-        {
-            cursor_t += Time.deltaTime * cursorSpeed;
-            //transform.GetChild (0).localEulerAngles = new Vector3 (0, 0, Mathf.Lerp (startRotation.z, endRotation.z, cursor_t));
-            transform.GetChild(0).localEulerAngles = new Vector3(0, 0, Mathf.LerpAngle(startRotation.z, endRotation.z, cursor_t));
-
-
-        }
+		//lerp
+		if (cursor_t < 1) {
+			cursor_t += Time.deltaTime * cursorSpeed;
+			//transform.GetChild (0).localEulerAngles = new Vector3 (0, 0, Mathf.Lerp (startRotation.z, endRotation.z, cursor_t));
+			transform.GetChild (0).localEulerAngles = new Vector3 (0, 0, Mathf.LerpAngle (startRotation.z, endRotation.z, cursor_t));
 
 
+		}
 
-        //Control rotation
-        float inputX;
-        float inputY;
 
-        if (UsingController)
-        {
-            inputX = Input.GetAxis("Horizontal_Rotation_" + PlayerID);
-            inputY = Input.GetAxis("Vertical_Rotation_" + PlayerID);
-        }
-        else
-        {
-            inputX = Input.GetAxis("Horizontal2");
-            inputY = Input.GetAxis("Vertical2");
-        }
+
+		//Control rotation
+		float inputX;
+		float inputY;
+
+		if (UsingController) {
+			inputX = Input.GetAxis ("Horizontal_Rotation_" + PlayerID);
+			inputY = Input.GetAxis ("Vertical_Rotation_" + PlayerID);
+		} else {
+			inputX = Input.GetAxis ("Horizontal2");
+			inputY = Input.GetAxis ("Vertical2");
+		}
 
 
 
 
-        if ((inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f))
-        {
+		if ((inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f)) {
 
 
-            //Child(0) == null du cursor
-            startRotation = transform.GetChild(0).localEulerAngles;
+			//Child(0) == null du cursor
+			startRotation = transform.GetChild (0).localEulerAngles;
 
-            endRotation = new Vector3(0, 0, Mathf.Atan2(inputX, inputY) * 180 / Mathf.PI);
-
-
+			endRotation = new Vector3 (0, 0, Mathf.Atan2 (inputX, inputY) * 180 / Mathf.PI);
 
 
-            /*
+
+
+			/*
 
 
 			//If rotation is broken
@@ -138,34 +139,31 @@ public class MonkController : MonoBehaviour
 			
 			*/
 
-            cursor_t = 0;
-            //	transform.GetChild (0).localEulerAngles = new Vector3 (0, 0, Mathf.Atan2 (inputX, inputY) * 180 / Mathf.PI);
-        }
-    }
-    void MoveCharacter()
-    {
-        float inputX;
-        float inputY;
+			cursor_t = 0;
+			//	transform.GetChild (0).localEulerAngles = new Vector3 (0, 0, Mathf.Atan2 (inputX, inputY) * 180 / Mathf.PI);
+		}
+	}
+
+	void MoveCharacter ()
+	{
+		float inputX;
+		float inputY;
 
 
-        if (UsingController)
-        {
-            inputX = Input.GetAxis("Horizontal_Move_" + PlayerID);
-            inputY = Input.GetAxis("Vertical_Move_" + PlayerID);
-        }
-        else
-        {
-            inputX = Input.GetAxis("Horizontal");
-            inputY = Input.GetAxis("Vertical");
-        }
+		if (UsingController) {
+			inputX = Input.GetAxis ("Horizontal_Move_" + PlayerID);
+			inputY = Input.GetAxis ("Vertical_Move_" + PlayerID);
+		} else {
+			inputX = Input.GetAxis ("Horizontal");
+			inputY = Input.GetAxis ("Vertical");
+		}
 
 
 
 
 
-        if ((inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f))
-        {
-            /*
+		if ((inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f)) {
+			/*
 			Vector3 velocity = new Vector3
 				(
 					transform.position.x + (inputX * SpeedPlayer * Time.deltaTime),
@@ -175,14 +173,14 @@ public class MonkController : MonoBehaviour
 			*/
 
 
-            buildingSpeed += 0.05f;
-            if (buildingSpeed > 2)
-                buildingSpeed = 2;
+			buildingSpeed += 0.05f;
+			if (buildingSpeed > 2)
+				buildingSpeed = 2;
 
 
 
           
-            float tempSpeed = (1 / (Mathf.Abs(inputX) + Mathf.Abs(inputY)));
+			float tempSpeed = (1 / (Mathf.Abs (inputX) + Mathf.Abs (inputY)));
 
 
 
@@ -190,20 +188,17 @@ public class MonkController : MonoBehaviour
 
 
 
-            velocity = new Vector3
-            (
-                    inputX * tempSpeed * SpeedPlayer * buildingSpeed * Time.deltaTime,
-                0,
-                    inputY * tempSpeed * SpeedPlayer * buildingSpeed * Time.deltaTime
-            );
+			velocity = new Vector3 (
+				inputX * tempSpeed * SpeedPlayer * buildingSpeed * Time.deltaTime,
+				0,
+				inputY * tempSpeed * SpeedPlayer * buildingSpeed * Time.deltaTime
+			);
 
 
-            //newPosition.Normalize();
-            transform.position += velocity;
+			//newPosition.Normalize();
+			transform.position += velocity;
 
-        }
-        else
-        {
+		} else {
 
 
 
@@ -211,99 +206,102 @@ public class MonkController : MonoBehaviour
 
 
 
-            buildingSpeed -= 0.1f;
-            if (buildingSpeed < 0)
-                buildingSpeed = 0;
+			buildingSpeed -= 0.1f;
+			if (buildingSpeed < 0)
+				buildingSpeed = 0;
 
-        }
-        transform.position += velocity * buildingSpeed;
-
-
-    }
-    void PushButton()
-    {
-        if (!canDoAction)
-            return;
+		}
+		transform.position += velocity * buildingSpeed;
 
 
-        if (Input.GetButtonDown(PRESS_R + PlayerID))
-        {
-            PushCollider.enabled = true;
-            StartCoroutine(TimerActionCooldown("Push"));
-        }
-    }
-    void PullButton()
-    {
+	}
 
-        if (!canDoAction)
-            return;
+	void PushButton ()
+	{
+		if (!canDoAction)
+			return;
 
 
-        if (Input.GetButtonDown(PRESS_L + PlayerID) && isPullActionTriggered)
-        {
-            StartCoroutine(TimerActionCooldown("Pull"));
+		if (Input.GetButtonDown (PRESS_R + PlayerID)) {
+			handAnimator.Play ("Push");
+			StartCoroutine (TimerActionCooldown ("Push"));
+		}
+	}
 
-        }
+	void PullButton ()
+	{
 
-    }
-
-    public void onTriggerPush(bool state)
-    {
-        isPushActionTriggered = state;
-    }
-
-    public void onTriggerPull(bool state)
-    {
-        isPullActionTriggered = state;
-    }
-
-    void onPush()
-    {
-        ballManager.onPush(Quaternion.LookRotation(LookAtTransform.position - transform.position) * -transform.forward, 75 * buildingSpeed);
-        ballManager.onChangeTeamPossession(Team);
-        handAnimator.Play("Push");
-    }
-
-    void onPull()
-    {
-        ballManager.onPull(Vector3.zero, -ballManager.CurrentVelocity);
-        handAnimator.Play("Pull");
-    }
+		if (!canDoAction)
+			return;
 
 
-    IEnumerator TimerActionCooldown(string action)
-    {
-        canDoAction = false;
+        
+		if (Input.GetButtonDown (PRESS_L + PlayerID)) {	
+			handAnimator.Play ("Pull");
+			StartCoroutine (TimerActionCooldown ("Pull"));
+		}
+       
 
-        switch (action)
-        {
-            case "Push":
-                PushCollider.enabled = true;
-                yield return new WaitForSeconds(0.1f);
-                if (isPushActionTriggered)
-                    onPush();
-                break;
-            case "Pull":
-                PullCollider.enabled = true;
-                yield return new WaitForSeconds(0.1f);
-                if (isPullActionTriggered)
-                    onPull();
-                break;
-        }
+        
 
-        yield return new WaitForSeconds(coolDownLength);
+	}
 
-        canDoAction = true;
+	public void onTriggerPush (bool state)
+	{
+		isPushActionTriggered = state;
+	}
 
-        switch (action)
-        {
-            case "Push":
-                PushCollider.enabled = false;
-                break;
-            case "Pull":
-                PullCollider.enabled = false;
-                break;
-        }
-    }
+	public void onTriggerPull (bool state)
+	{
+		isPullActionTriggered = state;
+	}
+
+	void onPush ()
+	{
+		ballManager.onPush (Quaternion.LookRotation (LookAtTransform.position - transform.position) * -transform.forward, 25 * buildingSpeed);
+		ballManager.onChangeTeamPossession (Team);
+		UiManager.OnFreezeFrame (0.1f);
+       
+	}
+
+	void onPull ()
+	{
+		ballManager.onPull (Vector3.zero, -ballManager.CurrentVelocity);
+		ballManager.onChangeTeamPossession (Team);
+	}
+
+
+	IEnumerator TimerActionCooldown (string action)
+	{
+		canDoAction = false;
+
+		switch (action) {
+		case "Push":
+			PushCollider.enabled = true;
+			//yield return new WaitForSeconds (0.1f);
+			if (isPushActionTriggered)
+				onPush ();
+			break;
+		case "Pull":
+			PullCollider.enabled = true;
+			//yield return new WaitForSeconds (0.1f);
+			if (isPullActionTriggered)
+				onPull ();
+			break;
+		}
+
+		yield return new WaitForSeconds (coolDownLength);
+
+		canDoAction = true;
+
+		switch (action) {
+		case "Push":
+			PushCollider.enabled = false;
+			break;
+		case "Pull":
+			PullCollider.enabled = false;
+			break;
+		}
+	}
 
 }

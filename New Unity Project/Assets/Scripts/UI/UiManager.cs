@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour {
-
+	public static UiManager Instance { get {return instance; }} 
+	private static UiManager instance;
     public GameObject titleContainer, startContainer;
     public GameObject playerIDcontainer;
     public List<Text> playerId = new List<Text>();
@@ -13,15 +14,32 @@ public class UiManager : MonoBehaviour {
     bool startGame;
 
 
+
+	public static void OnFreezeFrame(float sec)
+	{
+		instance.StartCoroutine (instance.FreezeFrame (sec));
+
+	}
 	// Use this for initialization
-	void Start () {
-        
+	void Awake () {
+		instance = this;
         nbPlayers = 4;
         playerIDcontainer.SetActive(false);
         startContainer.SetActive(false);
         //iTween.MoveTo(gameObject, iTween.Hash("x", 3, "time", 4, "delay", 1, "onupdate", "myUpdateFunction", "looptype", iTween.LoopType.pingPong));
 
     }
+
+	public IEnumerator FreezeFrame(float sec)
+	{
+		Time.timeScale = 0.01f;
+		float pauseEndTime = Time.realtimeSinceStartup + sec;
+		while (Time.realtimeSinceStartup < pauseEndTime)
+			yield return 0;
+				
+		Time.timeScale = 1;
+
+	}
 
     // Update is called once per frame
     void Update () {
