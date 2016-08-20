@@ -57,12 +57,21 @@ public class ballManager : MonoBehaviour
         LerpTimer = 0;
     }
 
+
     public static void onPush(Vector3 angle, float velocityApplied)
     {
         isPushed = true;
         //velocityAngle = newAngle;
         destinationVelocity = currentVelocity + velocityApplied;
         Instance.RigidBody.velocity = (angle * destinationVelocity);
+    }
+
+    public static void onPull(Vector3 angle, float velocityApplied)
+    {
+        isPushed = true;
+        //velocityAngle = newAngle;
+        destinationVelocity = currentVelocity + velocityApplied;
+        Instance.RigidBody.velocity = (angle * -destinationVelocity);
     }
 
 

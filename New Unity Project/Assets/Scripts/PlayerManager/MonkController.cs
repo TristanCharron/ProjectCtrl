@@ -19,6 +19,7 @@ public class MonkController : MonoBehaviour {
 
 	//cursor
 	Transform cursorTransform;
+    Transform LookAtTransform;
 	Vector3 startRotation;
 	Vector3 endRotation;
 	float cursor_t;
@@ -36,7 +37,9 @@ public class MonkController : MonoBehaviour {
 	{
 		BoxCollider[] colliders = transform.GetChild (0).GetChild (0).GetComponents<BoxCollider> ();
 		PlayerCollider = GetComponent<BoxCollider> ();
-		PushCollider = colliders [0];
+        cursorTransform = transform.GetChild(0);
+        LookAtTransform = cursorTransform.GetChild(cursorTransform.childCount - 1);
+        PushCollider = colliders [0];
 		PullCollider = colliders [1];
 
 	}
@@ -56,7 +59,7 @@ public class MonkController : MonoBehaviour {
 		if (cursor_t < 1) 
 		{
 			cursor_t += Time.deltaTime * cursorSpeed;
-			//transform.GetChild (0).localEulerAngles = new Vector3 (0, 0, Mathf.Lerp (startRotation.z, endRotation.z, cursor_t));
+			transform.GetChild (0).localEulerAngles = new Vector3 (0, 0, Mathf.Lerp (startRotation.z, endRotation.z, cursor_t));
 			transform.GetChild (0).localEulerAngles = new Vector3(0,0,Mathf.LerpAngle(startRotation.z, endRotation.z, cursor_t));
 
 
@@ -147,7 +150,7 @@ public class MonkController : MonoBehaviour {
 				buildingSpeed = 1;
 				
 
-			Debug.Log (1 / (Mathf.Abs (inputX) + Mathf.Abs (inputY) ));
+			
 			float tempSpeed = (1 / (Mathf.Abs (inputX) + Mathf.Abs (inputY) ));
 
 			Vector3 velocity = new Vector3 
@@ -181,7 +184,7 @@ public class MonkController : MonoBehaviour {
 
 		if(Input.GetButtonDown("L_Press_" + PlayerID))
 		{
-			//ballManager.onPush (cursorTransform.up, 30);
+            ballManager.onPush(Quaternion.LookRotation(LookAtTransform.position - transform.position) * -transform.forward, 100);
 			Debug.Log ("Push");
 			StartCoroutine (TimerActionCooldown ("Push"));
 		}
@@ -192,12 +195,11 @@ public class MonkController : MonoBehaviour {
 		if (!canDoAction)
 			return;
 
-
 		if(Input.GetButtonDown("R_Press_" + PlayerID))
 		{
 			Debug.Log ("Pull");
-
-			StartCoroutine (TimerActionCooldown ("Pull"));
+            ballManager.onPush(Quaternion.LookRotation(LookAtTransform.position - transform.position) * transform.forward, 100);
+            StartCoroutine (TimerActionCooldown ("Pull"));
 
 		}
 
