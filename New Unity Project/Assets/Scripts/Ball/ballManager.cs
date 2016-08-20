@@ -31,6 +31,8 @@ public class ballManager : MonoBehaviour
 
     public static MonkController.PlayerTeam PossessedTeam {get {return possessedTeam;}}
 
+	public MonkController.PlayerTeam CurrentPossessedTeam;
+
     private static bool isPushed;
 
 
@@ -71,20 +73,12 @@ public class ballManager : MonoBehaviour
 		destinationVelocity = currentVelocity + velocityApplied;
 		Instance.onSetVelocity (angle * destinationVelocity);
 
-		Debug.Log (Instance.RigidBody.velocity + " instance rigid");
-
-		Debug.Log (destinationVelocity + " velocytytyt");
-		Debug.Log (velocityApplied + " veloctity apply");
-		Debug.Log (angle + " angel");
-
-
     }
 
 	void onSetVelocity(Vector3 vel)
 	{
 
 		rBody.velocity = vel;
-		Debug.Log (rBody.velocity + "real rigid body");
 	}
 
 
@@ -103,6 +97,7 @@ public class ballManager : MonoBehaviour
     void FixedUpdate()
     {
 		onChangeVelocity ();
+		CurrentPossessedTeam = PossessedTeam;
     }
 
 

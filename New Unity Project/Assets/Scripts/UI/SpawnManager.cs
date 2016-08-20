@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.SceneManagement;
 public class SpawnManager : MonoBehaviour {
 
     public static SpawnManager Instance
@@ -37,17 +37,14 @@ public class SpawnManager : MonoBehaviour {
 
     static void onReset()
     {
-        instance.gameOverContainer.SetActive(true);
-        listPlayerDead.Clear();
+		instance.Reset ();
     }
 
-    static void onSpawnPosition(int id)
-    {
-        for (int x = 0; x <= players.Length; x++)
-        {
-           
-        }
-    }
+	void Reset()
+	{
+		SceneManager.LoadScene (0);
+	}
+    
 
     public static void onResetPosition()
     {

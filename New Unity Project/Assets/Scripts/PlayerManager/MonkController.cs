@@ -13,8 +13,10 @@ public class MonkController : MonoBehaviour
 
 	public enum PlayerTeam
 	{
+		Neutral,
 		Team1,
-		Team2}
+		Team2
+	}
 
 	;
 
@@ -49,6 +51,8 @@ public class MonkController : MonoBehaviour
 	bool isPushActionTriggered = false;
 	[SerializeField]
 	bool isPullActionTriggered = false;
+	[SerializeField]
+	bool isDead = false;
 
 	[SerializeField]
 	BoxCollider PushCollider;
@@ -67,10 +71,12 @@ public class MonkController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		if (!isDead) {
 		CursorRotation ();
 		MoveCharacter ();
 		PushButton ();
 		PullButton ();
+		}
 	}
 
 	bool isHitValid ()
@@ -79,12 +85,20 @@ public class MonkController : MonoBehaviour
 	}
 
 
-	void OnTriggerEnter (Collider other)
+	void OnCollisionEnter (Collision other)
 	{
-        
-		if (isHitValid ())
-			SpawnManager.onPlayerDeath (PlayerID);
-        
+		Debug.Log ("Dead");
+		if (isHitValid () && other.gameObject.CompareTag("Orb"))
+		{
+			Debug.Log ("Dead");
+
+			if(!isDead)
+			{
+				SpawnManager.onPlayerDeath (PlayerID);
+				Destroy (gameObject);
+	
+			}
+		}
 	}
 
 	void CursorRotation ()
@@ -259,7 +273,7 @@ public class MonkController : MonoBehaviour
 	public void onPush ()
 	{
 		Debug.Log ("tappe la balle");
-		ballManager.onPush (Quaternion.LookRotation (LookAtTransform.position - cursorTransform.transform.position) * -transform.up, 75);
+		ballManager.onPush (Quaternion.LookRotation (LookAtTransform.position - cursorTransform.transform.position) * -transform.up, 25);
 		ballManager.onChangeTeamPossession (Team);
 		//UiManager.OnFreezeFrame (0.1f);
        
