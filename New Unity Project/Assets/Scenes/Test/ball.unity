@@ -2369,7 +2369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsingController: 1
+  UsingController: 0
   Team: 2
   PlayerID: 4
   buildingSpeed: 0
@@ -2384,6 +2384,8 @@ MonoBehaviour:
   isDead: 0
   PushCollider: {fileID: 9392405}
   PullCollider: {fileID: 1534211191}
+  MonkCollider: {fileID: 271096989}
+  nonBouncy: {fileID: 13400000, guid: f6f7b13b7f35c774f8f1ec4a5cd38092, type: 2}
   canDoAction: 1
 --- !u!95 &271096988
 Animator:
@@ -5062,7 +5064,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsingController: 1
+  UsingController: 0
   Team: 1
   PlayerID: 1
   buildingSpeed: 0
@@ -5077,6 +5079,8 @@ MonoBehaviour:
   isDead: 0
   PushCollider: {fileID: 1459608655}
   PullCollider: {fileID: 1455670972}
+  MonkCollider: {fileID: 793283482}
+  nonBouncy: {fileID: 13400000, guid: f6f7b13b7f35c774f8f1ec4a5cd38092, type: 2}
   canDoAction: 1
 --- !u!95 &793283481
 Animator:
@@ -5322,7 +5326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsingController: 1
+  UsingController: 0
   Team: 1
   PlayerID: 2
   buildingSpeed: 0
@@ -5337,6 +5341,8 @@ MonoBehaviour:
   isDead: 0
   PushCollider: {fileID: 743510222}
   PullCollider: {fileID: 1782048057}
+  MonkCollider: {fileID: 864777158}
+  nonBouncy: {fileID: 13400000, guid: f6f7b13b7f35c774f8f1ec4a5cd38092, type: 2}
   canDoAction: 1
 --- !u!95 &864777157
 Animator:
@@ -9539,7 +9545,7 @@ MonoBehaviour:
   _MinVelocity: 0
   _DecreaseVelocity: 0.1
   CurrentPossessedTeam: 0
-  teamColor: {fileID: 2100000, guid: febad3f7c54b8de4ba8a976fd45fa31f, type: 2}
+  pSystem: {fileID: 1664275171}
 --- !u!95 &1216636386
 Animator:
   serializedVersion: 3
@@ -9680,7 +9686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsingController: 1
+  UsingController: 0
   Team: 2
   PlayerID: 3
   buildingSpeed: 0
@@ -9695,6 +9701,8 @@ MonoBehaviour:
   isDead: 0
   PushCollider: {fileID: 1511348400}
   PullCollider: {fileID: 709601847}
+  MonkCollider: {fileID: 1245415164}
+  nonBouncy: {fileID: 13400000, guid: f6f7b13b7f35c774f8f1ec4a5cd38092, type: 2}
   canDoAction: 1
 --- !u!95 &1245415163
 Animator:

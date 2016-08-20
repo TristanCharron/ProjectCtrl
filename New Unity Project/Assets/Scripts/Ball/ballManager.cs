@@ -21,7 +21,7 @@ public class ballManager : MonoBehaviour
 
     public static float DecreaseVelocity { get { return Instance._DecreaseVelocity; } }
 
-	public static Material ColorTeam { get { return Instance.teamColor; } }
+    public static ParticleSystem ParticleSystemRender { get { return Instance.pSystem; } }
 
 
     public float _MaxVelocity, _MinVelocity, _DecreaseVelocity;
@@ -32,35 +32,44 @@ public class ballManager : MonoBehaviour
 
     private static MonkController.PlayerTeam possessedTeam = 0;
 
-    public static MonkController.PlayerTeam PossessedTeam {get {return possessedTeam;}}
+    public static MonkController.PlayerTeam PossessedTeam { get { return possessedTeam; } }
 
-	public MonkController.PlayerTeam CurrentPossessedTeam;
+    public MonkController.PlayerTeam CurrentPossessedTeam;
 
     private static bool isPushed;
 
-	[SerializeField] Material teamColor;
+    [SerializeField]
+    public ParticleSystem pSystem;
 
     // Use this for initialization
     void Awake()
     {
         onSetComponents();
         onSetProperties();
-		onChangeTeamPossession (MonkController.PlayerTeam.Neutral);
+        onChangeTeamPossession(MonkController.PlayerTeam.Neutral);
 
     }
 
     public static void onChangeTeamPossession(MonkController.PlayerTeam newTeam)
     {
+        Debug.Log("THIS");
         possessedTeam = newTeam;
-		if (newTeam == MonkController.PlayerTeam.Neutral)
-			Instance.teamColor.color = new Color32 (255, 255, 255, 255);
-		else if (newTeam == MonkController.PlayerTeam.Team1)
-			Instance.teamColor.color = new Color32 (0, 0, 255, 255);
-		else if (newTeam == MonkController.PlayerTeam.Team2)
-			Instance.teamColor.color = new Color32 (255, 0, 0, 255);
-		
-		Debug.Log (newTeam);
+        if (newTeam == MonkController.PlayerTeam.Neutral)
+            Instance.pSystem.startColor = new Color(255, 255, 255, 255);
+        else if (newTeam == MonkController.PlayerTeam.Team1)
+            Instance.pSystem.startColor = new Color(0, 0, 255, 255);
+        else if (newTeam == MonkController.PlayerTeam.Team2)
+            Instance.pSystem.startColor = new Color(255, 0, 0, 255);
+
+        Instance.pSystem.GetComponent<ParticleSystemRenderer>().material.SetColor("_EmisColor", Instance.pSystem.startColor);
+
+
+
+
+
     }
+
+
 
     private void onSetComponents()
     {
@@ -81,16 +90,16 @@ public class ballManager : MonoBehaviour
     public static void onPush(Vector3 angle, float velocityApplied)
     {
         isPushed = true;
-		destinationVelocity = currentVelocity + velocityApplied;
-		Instance.onSetVelocity (angle * destinationVelocity);
+        destinationVelocity = currentVelocity + velocityApplied;
+        Instance.onSetVelocity(angle * destinationVelocity);
 
     }
 
-	void onSetVelocity(Vector3 vel)
-	{
+    void onSetVelocity(Vector3 vel)
+    {
 
-		rBody.velocity = vel;
-	}
+        rBody.velocity = vel;
+    }
 
 
     public static void onPull(Vector3 angle, float velocityApplied)
@@ -99,7 +108,7 @@ public class ballManager : MonoBehaviour
         //velocityAngle = newAngle;
         destinationVelocity = currentVelocity + velocityApplied;
         Instance.RigidBody.velocity = (angle * -destinationVelocity);
-		Debug.Log ("on pull");
+        Debug.Log("on pull");
     }
 
 
@@ -107,19 +116,19 @@ public class ballManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-		onChangeVelocity ();
-		CurrentPossessedTeam = PossessedTeam;
+        onChangeVelocity();
+        CurrentPossessedTeam = PossessedTeam;
     }
 
 
- 
+
 
 
     private void onChangeVelocity()
     {
-		//transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, transform.localPosition.z + Time.deltaTime * 10);
+        //transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, transform.localPosition.z + Time.deltaTime * 10);
 
-        if(isPushed)
+        if (isPushed)
         {
             currentVelocity = Mathf.Lerp(currentVelocity, destinationVelocity, LerpTimer);
             LerpTimer += Time.fixedDeltaTime;
@@ -133,22 +142,22 @@ public class ballManager : MonoBehaviour
         else
         {
             currentVelocity -= DecreaseVelocity;
-         
+
         }
 
-		currentVelocity = Mathf.Clamp(currentVelocity, _MinVelocity, _MaxVelocity);
+        currentVelocity = Mathf.Clamp(currentVelocity, _MinVelocity, _MaxVelocity);
 
-		//rBody.velocity = rBody.velocity * (currentVelocity * 0.01f);
+        //rBody.velocity = rBody.velocity * (currentVelocity * 0.01f);
 
-	//	Debug.Log (rBody.velocity.normalized);
-			
-		rBody.velocity = rBody.velocity.normalized * currentVelocity;
+        //	Debug.Log (rBody.velocity.normalized);
 
-		//rBody.velocity =  rBody.velocity * currentVelocity;
+        rBody.velocity = rBody.velocity.normalized * currentVelocity;
+
+        //rBody.velocity =  rBody.velocity * currentVelocity;
 
     }
 
- 
+
 
 
 
