@@ -45,7 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\PlayerManager\CharacterController.cs" />
+     <Compile Include="Assets\Scripts\Ball\ballManager.cs" />
+     <Compile Include="Assets\Scripts\PlayerManager\MonkController.cs" />
+     <Compile Include="Assets\Scripts\UI\UiManager.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/UnityPixel2/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
