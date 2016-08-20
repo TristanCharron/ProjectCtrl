@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Test/Character.unity
+- path: Assets/Scenes/Test/ball.unity
   isLoaded: 1
   isActive: 1

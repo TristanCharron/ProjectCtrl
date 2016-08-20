@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692492, g: 0.4967869, b: 0.57508546, a: 1}
+  m_IndirectSpecularColor: {r: 0.44711876, g: 0.49739325, b: 0.57615495, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -228,6 +228,59 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!1 &878106714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 878106715}
+  - 65: {fileID: 878106716}
+  - 114: {fileID: 878106717}
+  m_Layer: 0
+  m_Name: PullCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &878106715
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 878106714}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 10, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1154075859}
+  m_RootOrder: 1
+--- !u!65 &878106716
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 878106714}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.14, y: 0.76, z: 0.27}
+  m_Center: {x: 0, y: 0.48, z: 0}
+--- !u!114 &878106717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 878106714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59c588fd3eeaf4a43a439e30027f049a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1021799285
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,6 +498,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1742638176}
+  - {fileID: 878106715}
   - {fileID: 2052917762}
   m_Father: {fileID: 1314828358}
   m_RootOrder: 0
@@ -463,7 +517,7 @@ GameObject:
   - 54: {fileID: 1216636390}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Orb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -567,9 +621,9 @@ GameObject:
   m_Component:
   - 4: {fileID: 1314828358}
   - 212: {fileID: 1314828357}
-  - 114: {fileID: 1314828356}
   - 65: {fileID: 1314828355}
   - 95: {fileID: 1314828354}
+  - 114: {fileID: 1314828356}
   m_Layer: 0
   m_Name: Player1 (1)
   m_TagString: Untagged
@@ -604,7 +658,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16, z: 0.2}
+  m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1314828356
 MonoBehaviour:
@@ -617,14 +671,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsingController: 1
+  UsingController: 0
   Team: 0
   PlayerID: 1
   buildingSpeed: 0
   SpeedPlayer: 10
   coolDownLength: 0.2
   cursorSpeed: 10
-  isCollidingWithBall: 0
+  isPushActionTriggered: 0
+  isPullActionTriggered: 0
+  PushCollider: {fileID: 1742638178}
+  PullCollider: {fileID: 878106716}
   canDoAction: 1
 --- !u!212 &1314828357
 SpriteRenderer:
@@ -865,9 +922,9 @@ GameObject:
   - 4: {fileID: 1742638176}
   - 212: {fileID: 1742638179}
   - 65: {fileID: 1742638178}
-  - 65: {fileID: 1742638177}
+  - 114: {fileID: 1742638180}
   m_Layer: 0
-  m_Name: Cursor
+  m_Name: PushCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -886,18 +943,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1154075859}
   m_RootOrder: 0
---- !u!65 &1742638177
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1742638175}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.14, y: 0.76, z: 0.27}
-  m_Center: {x: 0, y: 0.48, z: 0}
 --- !u!65 &1742638178
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -906,7 +951,7 @@ BoxCollider:
   m_GameObject: {fileID: 1742638175}
   m_Material: {fileID: 13400000, guid: 64bbc64763de35e4d8a40ba5e7161b62, type: 2}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.1, y: 4.05, z: 0.27}
   m_Center: {x: 0, y: 2.1, z: 0}
@@ -943,6 +988,17 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1742638180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1742638175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8901f4ef1ede51248b3aeaa8bde740c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1831423114
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,7 +1182,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2052917762}
   m_Layer: 0
-  m_Name: LookAtNull
+  m_Name: LookAt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1144,4 +1200,4 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1154075859}
-  m_RootOrder: 1
+  m_RootOrder: 2

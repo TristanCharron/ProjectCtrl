@@ -82,6 +82,10 @@ public class ballManager : MonoBehaviour
         onMove();
     }
 
+
+ 
+
+
     private void onChangeVelocity()
     {
         if(isPushed)
