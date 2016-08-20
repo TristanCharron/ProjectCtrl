@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}" SchemaVersion="70">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="MONK" ID="{9E7D6E19-7531-439E-A86C-8BCD526B81E2}" ShortID="886785803">
+					<ChildrenList>
+						<Event Name="MONK_CATCH" ID="{3D130452-50BB-4907-B1E5-4AEE5D1691E9}">
+							<ChildrenList>
+								<Action Name="Play" ID="{FCB1624B-0301-474D-AD19-BD06E19A3343}" ShortID="1049981927" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{FCF43AE3-A0B9-44CD-BFD2-380E04D4E03A}" Global="false">
+											<ObjectRef Name="SFX_monk_catch" ID="{C5AA4D82-B248-4663-A6EE-8F7FBD44C82A}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="MONK_PITCH" ID="{2924AAA4-00B0-47FF-9A1E-7AE376E1AA16}">
+							<ChildrenList>
+								<Action Name="Play" ID="{3FAEF419-CFA0-4EF1-8F74-2E77A532E774}" ShortID="741492566" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{A1D6C353-B77E-49A1-AB24-F83B7562E081}" Global="false">
+											<ObjectRef Name="SFX_monk_pitch" ID="{610ED6EB-A45C-44D6-BFA3-28639614056D}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="MONK_DEAD" ID="{9E3342EC-423F-46F4-8FCD-A6844D2B8F0A}">
+							<ChildrenList>
+								<Action Name="Play" ID="{689CDFFC-36A2-48B4-9C0A-266CAC7791C5}" ShortID="346419006" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{4EDA0750-A568-44BB-BEE0-03EF651064AA}" Global="false">
+											<ObjectRef Name="SFX_monk_dead" ID="{DCB2D00E-EEBF-418C-9262-57B5543896AE}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="STAGE" ID="{3DD4E8C1-F6CA-41F0-9CCE-3E32DD14B45F}" ShortID="382148455">
+					<ChildrenList>
+						<Event Name="STAGE_BELL" ID="{53BF3D8D-F7FF-4862-B803-F2008C496199}">
+							<ChildrenList>
+								<Action Name="Play" ID="{D330CECF-8BCF-4981-8C83-2EA7405C2CB8}" ShortID="742483208" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{77AAB1B9-43C9-4B70-BECA-AC626DE7DB4F}" Global="false">
+											<ObjectRef Name="SFX_stage_bell" ID="{AC22F216-129A-4ECB-93C5-CC8130E3C3FB}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="STAGE_FORCE_FIELD" ID="{A32A94EE-E7FF-4FB9-84BC-1906282CB3DC}">
+							<ChildrenList>
+								<Action Name="Play" ID="{ADEB06E5-D003-49F2-947C-19146C2E5DE0}" ShortID="350869504" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{1F46F38F-814E-4E19-A435-E10988061ED3}" Global="false">
+											<ObjectRef Name="SFX_stage_force_field" ID="{ADAF847B-A318-4087-A0EF-02F069FA03DB}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="BALL" ID="{1B11E998-0043-4A94-AE01-0AEE47F3E942}" ShortID="390214694">
+					<ChildrenList>
+						<Event Name="BALL_STATE_UP" ID="{2B83D311-551A-4487-8592-E1BF42392E2A}">
+							<ChildrenList>
+								<Action Name="Play" ID="{295CD175-6732-4ADF-B563-7AF98226B854}" ShortID="268584009" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{10D03ED3-17A9-469B-A23B-1AE39A91EEEB}" Global="false">
+											<ObjectRef Name="SFX_ball_state" ID="{A1589A03-2E07-49C6-BA9D-8F259B8D6670}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="BALL_STATE_DOWN" ID="{085F389E-FBEE-4CE0-941F-9B71F7F8085E}">
+							<ChildrenList>
+								<Action Name="Play" ID="{691BB4A3-1BF7-443F-9C0E-AC7E3AA28A20}" ShortID="867615779" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{0C3C0184-BF50-4E91-8223-F77B159C8C99}" Global="false">
+											<ObjectRef Name="SFX_ball_state_change_01" ID="{20B3B417-929B-4972-B970-EE4438D6FB9B}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="BALL_IMPACT" ID="{64B6BDD2-CD83-4789-9AEB-1CA6E2037E9C}">
+							<ChildrenList>
+								<Action Name="Play" ID="{EB316424-8CDC-4BCD-98BF-66774EE1F2D6}" ShortID="287192652" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{9B54FC17-7C4B-4759-B4F4-1E2E36647BAB}" Global="false">
+											<ObjectRef Name="SFX_ball_impact" ID="{CE409AB0-57D7-40CC-925F-B2A035928139}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Event Name="UI_SELECT" ID="{9CB6303B-98DC-440F-95F7-B6169997ECDA}"/>
+				<Folder Name="GAME" ID="{E4FA3733-9200-43FF-B92D-F41D69410AB0}" ShortID="862903908">
+					<ChildrenList>
+						<Event Name="GAME_PLAY" ID="{9A9A68C1-7FCD-4403-8069-14D01EB0B86C}"/>
+						<Event Name="GAME_OPEN" ID="{AB61D847-BD07-4F3A-B051-2A279A98AF3B}"/>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

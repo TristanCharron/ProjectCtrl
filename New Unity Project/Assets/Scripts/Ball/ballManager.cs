@@ -21,6 +21,9 @@ public class ballManager : MonoBehaviour
 
     public static float DecreaseVelocity { get { return Instance._DecreaseVelocity; } }
 
+	public static Material ColorTeam { get { return Instance.teamColor; } }
+
+
     public float _MaxVelocity, _MinVelocity, _DecreaseVelocity;
 
     private Rigidbody rBody;
@@ -35,20 +38,28 @@ public class ballManager : MonoBehaviour
 
     private static bool isPushed;
 
-
+	[SerializeField] Material teamColor;
 
     // Use this for initialization
     void Awake()
     {
         onSetComponents();
         onSetProperties();
-
+		onChangeTeamPossession (MonkController.PlayerTeam.Neutral);
 
     }
 
     public static void onChangeTeamPossession(MonkController.PlayerTeam newTeam)
     {
         possessedTeam = newTeam;
+		if (newTeam == MonkController.PlayerTeam.Neutral)
+			Instance.teamColor.color = new Color32 (255, 255, 255, 255);
+		else if (newTeam == MonkController.PlayerTeam.Team1)
+			Instance.teamColor.color = new Color32 (0, 0, 255, 255);
+		else if (newTeam == MonkController.PlayerTeam.Team2)
+			Instance.teamColor.color = new Color32 (255, 0, 0, 255);
+		
+		Debug.Log (newTeam);
     }
 
     private void onSetComponents()
