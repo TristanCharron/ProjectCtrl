@@ -13,11 +13,12 @@ public class MonkController : MonoBehaviour {
 
 
 	/// 
+	[SerializeField]float buildingSpeed = 0;
 	[SerializeField]float SpeedPlayer = 10;
 	BoxCollider PlayerCollider;
 
-
 	//cursor
+	Transform cursorTransform;
 	Vector3 startRotation;
 	Vector3 endRotation;
 	float cursor_t;
@@ -114,6 +115,7 @@ public class MonkController : MonoBehaviour {
 		float inputX;
 		float inputY;
 
+
 		if (UsingController)
 		{
 			inputX = Input.GetAxis("Horizontal_Move_" + PlayerID);
@@ -129,7 +131,7 @@ public class MonkController : MonoBehaviour {
 
 
 
-		if ((inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f))
+		if ((inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f)) 
 		{
 			/*
 			Vector3 velocity = new Vector3
@@ -140,17 +142,35 @@ public class MonkController : MonoBehaviour {
 				);
 			*/
 			 
+			buildingSpeed += 0.05f;
+			if (buildingSpeed > 1)
+				buildingSpeed = 1;
 				
-			Vector3 velocity = new Vector3
-			(
-				inputX * SpeedPlayer * Time.deltaTime,
-				0,
-				inputY * SpeedPlayer * Time.deltaTime
-			);
 
+			Debug.Log (1 / (Mathf.Abs (inputX) + Mathf.Abs (inputY) ));
+			float tempSpeed = (1 / (Mathf.Abs (inputX) + Mathf.Abs (inputY) ));
+
+			Vector3 velocity = new Vector3 
+					(
+					inputX  *  tempSpeed * SpeedPlayer * buildingSpeed * Time.deltaTime,
+				                   0,
+					inputY  *  tempSpeed * SpeedPlayer * buildingSpeed * Time.deltaTime
+			        );
+
+
+
+
+		
 			//newPosition.Normalize();
 
 			transform.position += velocity;
+		} 
+		else 
+		{
+			buildingSpeed -= 0.05f;
+			if (buildingSpeed < 0)
+				buildingSpeed = 0;
+
 		}
 	}
 	void PushButton()
@@ -161,6 +181,7 @@ public class MonkController : MonoBehaviour {
 
 		if(Input.GetButtonDown("L_Press_" + PlayerID))
 		{
+			//ballManager.onPush (cursorTransform.up, 30);
 			Debug.Log ("Push");
 			StartCoroutine (TimerActionCooldown ("Push"));
 		}

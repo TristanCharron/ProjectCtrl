@@ -51,6 +51,7 @@
      <Compile Include="Assets\Scripts\PlayerManager\MonkController.cs" />
      <Compile Include="Assets\Scripts\UI\SpawnManager.cs" />
      <Compile Include="Assets\Scripts\UI\UiManager.cs" />
+     <Compile Include="Assets\Scripts\UI\monkChargeBall.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/UnityPixel2/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
