@@ -23,7 +23,8 @@ public class MonkController : MonoBehaviour {
 
 	//cursor
 	Transform cursorTransform;
-	Vector3 startRotation;
+    Transform LookAtTransform;
+    Vector3 startRotation;
 	Vector3 endRotation;
 	float cursor_t;
 	[SerializeField]float cursorSpeed = 10;
@@ -43,7 +44,8 @@ public class MonkController : MonoBehaviour {
 		PushCollider = colliders [0];
 		PullCollider = colliders [1];
 		cursorTransform = transform.GetChild(0);
-	}
+        LookAtTransform = cursorTransform.GetChild(cursorTransform.childCount - 1);
+    }
 	// Update is called once per frame
 	void Update ()
 	{
@@ -200,8 +202,8 @@ public class MonkController : MonoBehaviour {
 
 		if(Input.GetButtonDown("L_Press_" + PlayerID))
 		{
-			//ballManager.onPush (cursorTransform.up, 30);
-			Debug.Log ("Push");
+            ballManager.onPush(Quaternion.LookRotation(LookAtTransform.position - transform.position) * -transform.forward, 100);
+            Debug.Log ("Push");
 			StartCoroutine (TimerActionCooldown ("Push"));
 		}
 	}
@@ -215,9 +217,8 @@ public class MonkController : MonoBehaviour {
 		if(Input.GetButtonDown("R_Press_" + PlayerID))
 		{
 			Debug.Log ("Pull");
-		//	ballManager.onPush(cursorTransform.up * -1, -100);
-
-			StartCoroutine (TimerActionCooldown ("Pull"));
+            ballManager.onPull(Vector3.zero, -ballManager.CurrentVelocity);
+            StartCoroutine(TimerActionCooldown ("Pull"));
 
 		}
 
