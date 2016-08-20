@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour {
 
     public GameObject titleContainer;
     public GameObject playerIDcontainer;
-    public List<GameObject> playerId = new List<GameObject>();
-    
+    public List<Text> playerId = new List<Text>();
+    float duration = 1, alpha = 0;
     int nbPlayers;
 
 	// Use this for initialization
@@ -34,12 +35,20 @@ public class UiManager : MonoBehaviour {
         yield return new WaitForSeconds(6f);
         playerIDcontainer.SetActive(true);
 
-       foreach(GameObject g in playerId)
+         foreach(Text g in playerId)
         {
-            g.GetComponent<Animator>().Play("playerIDAnimation");
+          /*  float cool = lerp();
+            g.canvasRenderer.SetAlpha(cool);
+            */
+           g.CrossFadeAlpha(1.0f, 2.0f, false);
+            g.CrossFadeAlpha(0.0f, 2.0f, false);
         }
     }
 
+    float lerp()
+    {
+        return Mathf.PingPong(Time.time, duration) / duration;
+    }
     
 
    
