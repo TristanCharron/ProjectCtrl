@@ -14,7 +14,7 @@ public class MonkController : MonoBehaviour {
 
 	/// 
 	[SerializeField]float SpeedPlayer = 10;
-	BoxCollider collider;
+	BoxCollider PlayerCollider;
 
 
 	//cursor
@@ -24,13 +24,20 @@ public class MonkController : MonoBehaviour {
 	[SerializeField]float cursorSpeed = 10;
 
 
-	BoxCollider CursorCollider;
+	BoxCollider PushCollider;
+	BoxCollider PullCollider;
+
+
+
 	[SerializeField] bool canDoAction = true;
 
 	void Start()
 	{
-		collider = GetComponent<BoxCollider> ();
-		CursorCollider = transform.GetChild (0).GetChild (0).GetComponent<BoxCollider> ();
+		BoxCollider[] colliders = transform.GetChild (0).GetChild (0).GetComponents<BoxCollider> ();
+		PlayerCollider = GetComponent<BoxCollider> ();
+		PushCollider = colliders [0];
+		PullCollider = colliders [1];
+
 	}
 	// Update is called once per frame
 	void Update ()
@@ -74,7 +81,7 @@ public class MonkController : MonoBehaviour {
 
 
 
-		if ((inputX > 0.01f || inputY > 0.01f) || (inputX < -0.01f || inputY < -0.01f))
+		if ((inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f))
 		{
 
 
@@ -122,13 +129,29 @@ public class MonkController : MonoBehaviour {
 
 
 
-		transform.position = new Vector3
-		(
-			transform.position.x + (inputX * SpeedPlayer * Time.deltaTime),
-			transform.position.y,
-			transform.position.z + (inputY * SpeedPlayer * Time.deltaTime)
-		);
+		if ((inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f))
+		{
+			/*
+			Vector3 velocity = new Vector3
+				(
+					transform.position.x + (inputX * SpeedPlayer * Time.deltaTime),
+					transform.position.y,
+					transform.position.z + (inputY * SpeedPlayer * Time.deltaTime)
+				);
+			*/
+			 
+				
+			Vector3 velocity = new Vector3
+			(
+				inputX * SpeedPlayer * Time.deltaTime,
+				0,
+				inputY * SpeedPlayer * Time.deltaTime
+			);
 
+			//newPosition.Normalize();
+
+			transform.position += velocity;
+		}
 	}
 	void PushButton()
 	{
@@ -162,15 +185,19 @@ public class MonkController : MonoBehaviour {
 	{
 		canDoAction = false;
 
-		if(action == "Pull")
-			CursorCollider.enabled = true;
-	
+		if (action == "Push")
+			PushCollider.enabled = true;
+		else if (action == "Pull")
+			PullCollider.enabled = true;
+		
+
 		yield return new WaitForSeconds (.5f);
 		canDoAction = true;
 
-		if(action == "Pull")
-			CursorCollider.enabled = false;
-
+		if (action == "Push")
+			PushCollider.enabled = false;
+		else if (action == "Pull")
+			PullCollider.enabled = false;
 	}
 
 }
