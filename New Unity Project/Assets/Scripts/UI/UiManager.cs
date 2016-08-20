@@ -27,6 +27,7 @@ public class UiManager : MonoBehaviour {
         playerIDcontainer.SetActive(false);
         startContainer.SetActive(false);
         //iTween.MoveTo(gameObject, iTween.Hash("x", 3, "time", 4, "delay", 1, "onupdate", "myUpdateFunction", "looptype", iTween.LoopType.pingPong));
+		AkSoundEngine.PostEvent ("GAME_START", gameObject);
 
     }
 
@@ -50,6 +51,7 @@ public class UiManager : MonoBehaviour {
         
         if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("L_Press_1") && startGame == false)
         {
+			AkSoundEngine.PostEvent ("GAME_PLAY", gameObject);
             titleContainer.SetActive(false);
             gameObject.GetComponent<Animator>().enabled = true;
             StartCoroutine(makeIDAppear());

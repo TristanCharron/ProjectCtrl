@@ -1,0 +1,56 @@
+Event	ID	Name			Wwise Object Path	Notes
+	65694047	STAGE_BELL			\Default Work Unit\STAGE\STAGE_BELL	
+	465026768	GAME_PLAY			\Default Work Unit\GAME\GAME_PLAY	
+	671479072	MONK_CATCH			\Default Work Unit\MONK\MONK_CATCH	
+	1165162655	BALL_IMPACT			\Default Work Unit\BALL\BALL_IMPACT	
+	1365208458	GAME_OPEN			\Default Work Unit\GAME\GAME_OPEN	
+	1828712247	MONK_PITCH			\Default Work Unit\MONK\MONK_PITCH	
+	2097794929	MONK_DEAD			\Default Work Unit\MONK\MONK_DEAD	
+	2180046864	BALL_STATE_UP			\Default Work Unit\BALL\BALL_STATE_UP	
+	2318505031	BALL_STATE_DOWN			\Default Work Unit\BALL\BALL_STATE_DOWN	
+	2774129122	UI_SELECT			\Default Work Unit\UI_SELECT	
+	3869063860	STAGE_FORCE_FIELD			\Default Work Unit\STAGE\STAGE_FORCE_FIELD	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	53519056	SFX_monk_pitch_03	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_monk_pitch_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_pitch\SFX_monk_pitch_03		192064
+	76714761	SFX_stage_bell_03	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_bell_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_bell\SFX_stage_bell_03		336064
+	101623049	SFX_ball_impact_07	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_impact_07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_07		13476
+	142195123	SFX_monk_dead_01	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_monk_dead_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_dead\SFX_monk_dead_01		133546
+	144397240	SFX_ball_impact_12	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_impact_12_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_12		12234
+	191926282	SFX_stage_force_field_03	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_force_field_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_03		96064
+	301987023	SFX_ball_state_change_impact_07	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_state_change_impact_07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_impact\SFX_ball_state_change_impact_07		96064
+	319476681	SFX_stage_force_field_07	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_force_field_07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_07		96064
+	340439844	SFX_monk_pitch_01	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_monk_pitch_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_pitch\SFX_monk_pitch_01		192064
+	352387304	SFX_ball_impact_01	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_impact_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_01		12366
+	358899287	SFX_stage_force_field_02	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_force_field_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_02		96064
+	372731733	SFX_ball_impact_06	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_impact_06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_06		11850
+	402833836	SFX_ball_impact_08	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_impact_08_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_08		14290
+	409724193	SFX_stage_force_field_01	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_force_field_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_01		96064
+	441533319	SFX_ball_state_change_01	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_state_change_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_01		144064
+	442771861	SFX_ball_impact_03	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_impact_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_03		13680
+	495750079	SFX_stage_force_field_09	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_force_field_09_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_09		96064
+	517181763	SFX_monk_dead_03	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_monk_dead_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_dead\SFX_monk_dead_03		129574
+	550775938	SFX_ball_state_change_impact_05	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_state_change_impact_05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_impact\SFX_ball_state_change_impact_05		96064
+	553638073	SFX_stage_bell_02	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_bell_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_bell\SFX_stage_bell_02		336064
+	593040896	SFX_stage_force_field_10	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_force_field_10_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_10		96064
+	599474688	SFX_ball_impact_09	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_impact_09_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_09		13370
+	652897039	SFX_monk_dead_04	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_monk_dead_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_dead\SFX_monk_dead_04		135084
+	679378681	SFX_stage_bell_04	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_bell_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_bell\SFX_stage_bell_04		336064
+	685376325	SFX_stage_bell_01	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_bell_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_bell\SFX_stage_bell_01		336064
+	699771603	SFX_monk_dead_02	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_monk_dead_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_dead\SFX_monk_dead_02		134240
+	740786913	SFX_stage_force_field_04	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_force_field_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_04		96064
+	762416247	SFX_stage_force_field_11	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_force_field_11_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_11		96064
+	827977947	SFX_ball_state_change_impact_01	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_state_change_impact_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_impact\SFX_ball_state_change_impact_01		96064
+	847576650	SFX_ball_state_change_impact_03	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_state_change_impact_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_impact\SFX_ball_state_change_impact_03		96064
+	858460743	SFX_ball_impact_05	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_impact_05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_05		11648
+	864532649	SFX_ball_impact_10	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_impact_10_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_10		16606
+	893996882	SFX_ball_impact_02	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_impact_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_02		12866
+	922727794	SFX_stage_force_field_08	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_force_field_08_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_08		96064
+	935138882	SFX_monk_pitch_02	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_monk_pitch_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_pitch\SFX_monk_pitch_02		204960
+	947517471	SFX_ball_state_change_impact_06	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_state_change_impact_06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_impact\SFX_ball_state_change_impact_06		96064
+	950887372	SFX_stage_force_field_05	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_force_field_05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_05		96064
+	962110797	SFX_ball_state_change_impact_02	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_state_change_impact_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_impact\SFX_ball_state_change_impact_02		96064
+	991388798	SFX_ball_state_change_impact_04	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_ball_state_change_impact_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_impact\SFX_ball_state_change_impact_04		96064
+	1006472324	SFX_monk_catch	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_monk_catch_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_catch		59820
+	1028499817	SFX_stage_force_field_06	C:\Users\Dominic\Documents\FrenchFrogsCreativeJam\New Unity Project\drift\.cache\Windows\SFX\SFX_stage_force_field_06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_06		96064
+
