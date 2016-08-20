@@ -25,6 +25,8 @@ public class ballManager : MonoBehaviour
 
     private Rigidbody rBody;
 
+    public Rigidbody RigidBody { get { return rBody; } }
+
     private static bool isPushed;
 
 
@@ -55,11 +57,12 @@ public class ballManager : MonoBehaviour
         LerpTimer = 0;
     }
 
-    public static void onPush(float velocityApplied)
+    public static void onPush(Vector3 angle, float velocityApplied)
     {
         isPushed = true;
         //velocityAngle = newAngle;
         destinationVelocity = currentVelocity + velocityApplied;
+        Instance.RigidBody.velocity = (angle * destinationVelocity);
     }
 
 
@@ -98,14 +101,7 @@ public class ballManager : MonoBehaviour
         onChangeVelocity();
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Mage"))
-        {
-            onPush(100);
-        }
-           
-    }
+
 
 
 
