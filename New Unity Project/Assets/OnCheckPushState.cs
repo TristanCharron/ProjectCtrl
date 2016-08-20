@@ -11,13 +11,16 @@ public class OnCheckPushState : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Orb"))
-            m_Controller.onTriggerPush(true);
+		if (other.gameObject.CompareTag ("Orb"))
+			m_Controller.onPush ();
+
+
+			//m_Controller.onTriggerPush(true);
     }
 
     void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.CompareTag("Orb"))
-            m_Controller.onTriggerPush(false);
+        /*if (other.gameObject.CompareTag("Orb"))
+            m_Controller.onTriggerPush(false);*/
     }
 }

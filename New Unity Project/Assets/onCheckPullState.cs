@@ -11,13 +11,14 @@ public class onCheckPullState : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Orb"))
-            m_Controller.onTriggerPull(true);
+		if (other.gameObject.CompareTag ("Orb"))
+			m_Controller.onPull ();
     }
 
     void OnTriggerExit(Collider other)
     {
+		/*
         if (other.gameObject.CompareTag("Orb"))
-            m_Controller.onTriggerPull(false);
+            m_Controller.onTriggerPull(false);*/
     }
 }

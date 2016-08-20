@@ -59,8 +59,6 @@ public class ballManager : MonoBehaviour
     {
         currentVelocity = MinVelocity;
         destinationVelocity = currentVelocity;
-        velocityAngle = Vector3.forward;
-		rBody.velocity = Vector3.zero;
         rBody.velocity = rBody.velocity * MinVelocity;
         isPushed = false;
         LerpTimer = 0;
@@ -70,10 +68,25 @@ public class ballManager : MonoBehaviour
     public static void onPush(Vector3 angle, float velocityApplied)
     {
         isPushed = true;
-        //velocityAngle = newAngle;
-        destinationVelocity = currentVelocity + velocityApplied;
-        Instance.RigidBody.velocity = (angle * destinationVelocity);
+		destinationVelocity = currentVelocity + velocityApplied;
+		Instance.onSetVelocity (angle * destinationVelocity);
+
+		Debug.Log (Instance.RigidBody.velocity + " instance rigid");
+
+		Debug.Log (destinationVelocity + " velocytytyt");
+		Debug.Log (velocityApplied + " veloctity apply");
+		Debug.Log (angle + " angel");
+
+
     }
+
+	void onSetVelocity(Vector3 vel)
+	{
+
+		rBody.velocity = vel;
+		Debug.Log (rBody.velocity + "real rigid body");
+	}
+
 
     public static void onPull(Vector3 angle, float velocityApplied)
     {
@@ -81,6 +94,7 @@ public class ballManager : MonoBehaviour
         //velocityAngle = newAngle;
         destinationVelocity = currentVelocity + velocityApplied;
         Instance.RigidBody.velocity = (angle * -destinationVelocity);
+		Debug.Log ("on pull");
     }
 
 
@@ -88,7 +102,7 @@ public class ballManager : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        onMove();
+		onChangeVelocity ();
     }
 
 
@@ -97,6 +111,8 @@ public class ballManager : MonoBehaviour
 
     private void onChangeVelocity()
     {
+		//transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, transform.localPosition.z + Time.deltaTime * 10);
+
         if(isPushed)
         {
             currentVelocity = Mathf.Lerp(currentVelocity, destinationVelocity, LerpTimer);
@@ -106,7 +122,7 @@ public class ballManager : MonoBehaviour
                 LerpTimer = 0;
                 isPushed = false;
             }
-           
+
         }
         else
         {
@@ -114,14 +130,19 @@ public class ballManager : MonoBehaviour
          
         }
 
-        currentVelocity = Mathf.Clamp(currentVelocity, MinVelocity, MaxVelocity);
-        rBody.velocity = rBody.velocity.normalized * currentVelocity;
+		currentVelocity = Mathf.Clamp(currentVelocity, _MinVelocity, _MaxVelocity);
+
+		//rBody.velocity = rBody.velocity * (currentVelocity * 0.01f);
+
+	//	Debug.Log (rBody.velocity.normalized);
+			
+		rBody.velocity = rBody.velocity.normalized * currentVelocity;
+
+		//rBody.velocity =  rBody.velocity * currentVelocity;
+
     }
 
-    private void onMove()
-    {
-        onChangeVelocity();
-    }
+ 
 
 
 

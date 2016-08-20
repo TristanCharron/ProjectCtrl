@@ -256,15 +256,16 @@ public class MonkController : MonoBehaviour
 		isPullActionTriggered = state;
 	}
 
-	void onPush ()
+	public void onPush ()
 	{
-		ballManager.onPush (Quaternion.LookRotation (LookAtTransform.position - transform.position) * -transform.forward, 25 * buildingSpeed);
+		Debug.Log ("tappe la balle");
+		ballManager.onPush (Quaternion.LookRotation (LookAtTransform.position - cursorTransform.transform.position) * -transform.up, 75);
 		ballManager.onChangeTeamPossession (Team);
-		UiManager.OnFreezeFrame (0.1f);
+		//UiManager.OnFreezeFrame (0.1f);
        
 	}
 
-	void onPull ()
+	public void onPull ()
 	{
 		ballManager.onPull (Vector3.zero, -ballManager.CurrentVelocity);
 		ballManager.onChangeTeamPossession (Team);
@@ -279,20 +280,20 @@ public class MonkController : MonoBehaviour
 		case "Push":
 			PushCollider.enabled = true;
 			//yield return new WaitForSeconds (0.1f);
-			if (isPushActionTriggered)
-				onPush ();
+			/*if (isPushActionTriggered)
+				onPush ();*/
 			break;
 		case "Pull":
 			PullCollider.enabled = true;
 			//yield return new WaitForSeconds (0.1f);
-			if (isPullActionTriggered)
-				onPull ();
+			/*if (isPullActionTriggered)
+				onPull ();*/
 			break;
 		}
 
-		yield return new WaitForSeconds (coolDownLength);
+		yield return new WaitForSeconds (.1f);
 
-		canDoAction = true;
+
 
 		switch (action) {
 		case "Push":
@@ -302,6 +303,14 @@ public class MonkController : MonoBehaviour
 			PullCollider.enabled = false;
 			break;
 		}
+
+		yield return new WaitForSeconds (coolDownLength - .1f);
+
+		canDoAction = true;
+		//isPushActionTriggered = false;
+		//isPullActionTriggered = false;
+
+
 	}
 
 }
