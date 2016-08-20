@@ -29,10 +29,13 @@ public class monkChargeBall : MonoBehaviour {
 
         if(Input.GetButtonDown("Jump"))
         {
-            if(chargeBar.transform.localPosition.x < -0.1006f || chargeBar.transform.localPosition.x > -0.1465f)
+            if(chargeBar.transform.localPosition.x < -0.1006f && chargeBar.transform.localPosition.x > -0.1465f)
             {
-                Debug.Log("patrice keka");
+
+                Debug.Log(chargeBar.transform.localPosition.x);
             }
+
+            meterReload.SetActive(false);
         }
 
         if(Input.GetKeyDown(KeyCode.X))
