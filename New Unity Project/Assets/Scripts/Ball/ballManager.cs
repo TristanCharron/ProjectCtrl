@@ -90,7 +90,10 @@ public class ballManager : MonoBehaviour
 
     private void onMove()
     {
-        rBody.AddForce(transform.forward * currentVelocity);
+        Vector3 force = transform.forward * currentVelocity;
+        force.y = 0;
+        rBody.AddForce(force);
+        rBody.velocity = new Vector3(rBody.velocity.x, 0, rBody.velocity.z);
         onChangeVelocity();
     }
 
