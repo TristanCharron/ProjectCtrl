@@ -36,7 +36,7 @@ public class ballManager : MonoBehaviour
     {
         onSetComponents();
         onSetProperties();
-        rBody.AddForce(transform.forward * MinVelocity);
+
 
     }
 
@@ -51,7 +51,7 @@ public class ballManager : MonoBehaviour
         currentVelocity = MinVelocity;
         destinationVelocity = currentVelocity;
         velocityAngle = Vector3.forward;
-        rBody.velocity = new Vector3(Random.Range(0, 2) == 0 ? -1 : 1, 0, Random.Range(0, 2) == 0 ? -1 : 1);
+		rBody.velocity = Vector3.zero;
         rBody.velocity = rBody.velocity * MinVelocity;
         isPushed = false;
         LerpTimer = 0;

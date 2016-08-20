@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class MonkController : MonoBehaviour {
+	public const string PRESS_L = "L_Press_";
+	public const string PRESS_R = "R_Press_";
 
 	[SerializeField]bool UsingController;
 
@@ -16,9 +18,8 @@ public class MonkController : MonoBehaviour {
 	Vector3 velocity;
 
 	[SerializeField]float buildingSpeed = 0;
-
-
 	[SerializeField]float SpeedPlayer = 10;
+	[SerializeField]float coolDownLength = 10;
 	BoxCollider PlayerCollider;
 
 	//cursor
@@ -28,6 +29,7 @@ public class MonkController : MonoBehaviour {
 	Vector3 endRotation;
 	float cursor_t;
 	[SerializeField]float cursorSpeed = 10;
+	[SerializeField]bool isCollidingWithBall = false;
 
 
 	BoxCollider PushCollider;
@@ -200,8 +202,9 @@ public class MonkController : MonoBehaviour {
 			return;
 
 
-		if(Input.GetButtonDown("L_Press_" + PlayerID))
+		if(Input.GetButtonDown(PRESS_R + PlayerID))
 		{
+			PushCollider.enabled = true;
             ballManager.onPush(Quaternion.LookRotation(LookAtTransform.position - transform.position) * -transform.forward, 100);
             Debug.Log ("Push");
 			StartCoroutine (TimerActionCooldown ("Push"));
@@ -214,26 +217,38 @@ public class MonkController : MonoBehaviour {
 			return;
 
 
-		if(Input.GetButtonDown("R_Press_" + PlayerID))
+		if(Input.GetButtonDown(PRESS_L + PlayerID) && isCollidingWithBall)
 		{
 			Debug.Log ("Pull");
-            ballManager.onPull(Vector3.zero, -ballManager.CurrentVelocity);
             StartCoroutine(TimerActionCooldown ("Pull"));
 
 		}
 
 	}
+
+
+	void OnTriggerEnter(Collider other) {
+		isCollidingWithBall = true;
+	}
+
+	void OnTriggerExit(Collider other) {
+		isCollidingWithBall = false;
+	}
+
 	IEnumerator TimerActionCooldown(string action)
 	{
 		canDoAction = false;
+
 
 		if (action == "Push")
 			PushCollider.enabled = true;
 		else if (action == "Pull")
 			PullCollider.enabled = true;
+		if(isCollidingWithBall)
+			ballManager.onPush(Vector3.zero, -ballManager.CurrentVelocity);
 		
 
-		yield return new WaitForSeconds (.5f);
+		yield return new WaitForSeconds (coolDownLength);
 		canDoAction = true;
 
 		if (action == "Push")
