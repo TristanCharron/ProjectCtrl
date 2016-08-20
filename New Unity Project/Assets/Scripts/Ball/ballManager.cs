@@ -2,15 +2,19 @@
 using System.Collections;
 
 public class ballManager : MonoBehaviour {
-    private static float currentSpeed,minSpeed,maxSpeed; //Speed variables
 
-    public static float MaxSpeed { get { return maxSpeed; } }
+    public static ballManager Instance { get { return instance; } }
+    static ballManager instance;
 
-    public static float MinSpeed { get { return minSpeed; } }
+    private static float currentVelocity,minVelocity,maxVelocity; //Speed variables
 
-    public static float CurrentSpeed { get { return Mathf.Clamp(currentSpeed,minSpeed,MaxSpeed); } } //Clamp & Return speed
+    public static float MaxVelocity { get { return maxVelocity; } }
 
-    public float _MaxSpeed, _MinSpeed;
+    public static float MinVelocity { get { return minVelocity; } }
+
+    public static float CurrentSpeed { get { return Mathf.Clamp(currentVelocity, minVelocity, maxVelocity); } } //Clamp & Return speed
+
+    public float _MaxVelocity, _MinVelocity;
 
     private Rigidbody rBody;
     
@@ -26,23 +30,31 @@ public class ballManager : MonoBehaviour {
     private void onSetComponents()
     {
         rBody = GetComponent<Rigidbody>();
+        instance = this;
     }
 
     private void onSetProperties()
     {
-        minSpeed = _MinSpeed;
-        maxSpeed = _MaxSpeed;
-        currentSpeed = minSpeed;
+        minVelocity = _MinVelocity;
+        maxVelocity = _MaxVelocity;
+        currentVelocity = minVelocity;
     }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-        rBody.AddForce(Vector3.forward * currentSpeed);
+        onMove();
+
+    }
+
+    private void onChangeVelocity()
+    {
 
     }
     
-    private static void onMove()
+    private void onMove()
     {
+        rBody.AddForce(Vector3.forward * currentVelocity);
+        currentVelocity--;
 
     }
 }
