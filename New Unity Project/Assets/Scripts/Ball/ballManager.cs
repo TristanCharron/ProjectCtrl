@@ -47,6 +47,7 @@ public class ballManager : MonoBehaviour
 	int BallStage = 0;
 
 
+
     // Use this for initialization
     void Awake()
     {
@@ -98,11 +99,22 @@ public class ballManager : MonoBehaviour
 
     public static void onPush(Vector3 angle)
     {
+		
         isPushed = true;
 		destinationVelocity = currentVelocity + MomentumVelocity;
         Instance.onSetVelocity(angle * destinationVelocity);
 
     }
+
+	public static void onPush(Vector3 angle, float destVelocity)
+	{
+		Debug.Log (destVelocity);
+		isPushed = true;
+		destinationVelocity = destVelocity;
+		Instance.onSetVelocity(angle * destinationVelocity);
+
+	}
+
 
     void onSetVelocity(Vector3 vel)
     {

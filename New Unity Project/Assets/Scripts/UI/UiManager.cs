@@ -8,7 +8,7 @@ public class UiManager : MonoBehaviour {
 	public static bool IsFreezeFraming  { get {return isFreezeFraming; }} 
 	private static bool isFreezeFraming = false, isScreenShake = false;
 	private static UiManager instance;
-    public GameObject titleContainer, startContainer;
+	public GameObject titleContainer, startContainer,readyContainer,GameOverContainer,BlueTeamWin,RedTeamWin;
     public GameObject playerIDcontainer;
 	public Animator FadeToWhite;
     public List<Text> playerId = new List<Text>();
@@ -22,7 +22,7 @@ public class UiManager : MonoBehaviour {
 	public GameObject theBall;
 	[SerializeField]
 	public Transform[] nullSpawnBall;
-
+	public Transform Everything;
 
 	public static void OnFreezeFrame(float sec)
 	{
@@ -48,6 +48,12 @@ public class UiManager : MonoBehaviour {
 
     }
 
+	void OnResetProperties(){
+		isFreezeFraming = false;
+		isScreenShake = false;
+		isGameStarted = false;
+	}
+
 	public IEnumerator FreezeFrame(float sec)
 	{
 		if(!isFreezeFraming)
@@ -60,6 +66,7 @@ public class UiManager : MonoBehaviour {
 		Time.timeScale = 1;
 		isFreezeFraming = false;
 		}
+
 		yield break;
 	}
 
@@ -72,11 +79,11 @@ public class UiManager : MonoBehaviour {
 			isScreenShake = true;
 			float elapsed = 0.0f;
 
-			Vector3 originalCamPos = Camera.main.transform.position;
+			Vector3 originalCamPos = Everything.transform.position;
 
 			while (elapsed < sec) {
 
-				elapsed += Time.deltaTime;          
+				elapsed += Time.fixedDeltaTime;          
 
 				float percentComplete = elapsed / sec;         
 				float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
@@ -87,7 +94,7 @@ public class UiManager : MonoBehaviour {
 				x *= 1 * damper;
 				y *= 1 * damper;
 
-				Camera.main.transform.position = new Vector3(x, y, originalCamPos.z);
+				Everything.transform.position = new Vector3(x, y, originalCamPos.z);
 
 				yield return null;
 			}
@@ -105,12 +112,24 @@ public class UiManager : MonoBehaviour {
 	}
 	public void EndCinematic()
 	{
-		UiManager.isGameStarted = true;
 		GetComponent<cameraBoxScriptTry> ().enabled = true;
 		SpawnBall ();
 		AkSoundEngine.PostEvent ("GAME_START", gameObject);
+		StartCoroutine (onStartGame2 ());
 
 	}
+
+	IEnumerator onStartGame2()
+	{
+		readyContainer.SetActive (true);
+		yield return new WaitForSeconds (3.2f);
+		readyContainer.SetActive (false);
+
+		UiManager.isGameStarted = true;
+		startGame = true;
+
+	}
+
 
 	public void SpawnBall()
 	{
@@ -161,13 +180,13 @@ public class UiManager : MonoBehaviour {
     **/
 	public void onStartGame()
 	{
+		AkSoundEngine.PostEvent ("UI_SELECT", gameObject);
+
 		AkSoundEngine.PostEvent ("GAME_PLAY", gameObject);
 		//titleContainer.SetActive(false);
 		gameObject.GetComponent<Animator>().enabled = true;
 		FadeToWhite.enabled = true;
 		StartCoroutine(makeIDAppear());
-		startGame = true;
-
 	}
 
     float lerp()

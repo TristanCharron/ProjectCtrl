@@ -22,12 +22,18 @@ public class SpawnManager : MonoBehaviour {
     private static bool isTeamDead;
     private static List<int> listPlayerDead = new List<int>();
     public static List<int> ListPlayerDead { get { return ListPlayerDead; } }
-    
+	[SerializeField] UiManager accesUI;
     // Use this for initialization
     void Start () {
-        instance = this;
-        players = _Players;
-//        gameOverContainer.SetActive(false);
+		instance = this;
+		OnResetProperties();
+	}
+
+	void OnResetProperties(){
+		listPlayerDead = new List<int>();
+		isTeamDead = false;
+		players = _Players;
+
 	}
 	
 	// Update is called once per frame
@@ -80,11 +86,15 @@ public class SpawnManager : MonoBehaviour {
 
 		if(listPlayerDead.Contains(1) && listPlayerDead.Contains(2))
 		{
-			
+			UiManager.isGameStarted = false;
+
+			accesUI.GameOverContainer.SetActive (true);
 			AkSoundEngine.PostEvent ("GAME_OVER", gameObject);
 
 			yield return new WaitForSeconds (2f);
 
+			accesUI.GameOverContainer.SetActive (false);
+			accesUI.RedTeamWin.SetActive (true);
 			AkSoundEngine.PostEvent ("GAME_END_RED", gameObject);
 
 			Debug.Log("Red Team Wins");
@@ -95,10 +105,15 @@ public class SpawnManager : MonoBehaviour {
 		}
 		else if (listPlayerDead.Contains(3) && listPlayerDead.Contains(4))
 		{
-			
+
+			UiManager.isGameStarted = false;
+
 			AkSoundEngine.PostEvent ("GAME_OVER", gameObject);
+			accesUI.GameOverContainer.SetActive (true);
 
 			yield return new WaitForSeconds (2f);
+			accesUI.GameOverContainer.SetActive (false);
+			accesUI.BlueTeamWin.SetActive (true);
 
 			AkSoundEngine.PostEvent ("GAME_END_BLUE", gameObject);
 
