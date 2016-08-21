@@ -42,7 +42,9 @@ public class SpawnManager : MonoBehaviour {
 
 	void Reset()
 	{
-		SceneManager.LoadScene (0);
+		//SceneManager.LoadScene (0);
+		//SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+		SceneManager.LoadScene (1);
 	}
     
 
@@ -68,26 +70,35 @@ public class SpawnManager : MonoBehaviour {
             
     }
 
-  public static void isTeamDefeated()
+  public void isTeamDefeated()
     {
+		AkSoundEngine.PostEvent ("GAME_OVER", gameObject);
 
         if(listPlayerDead.Contains(1) && listPlayerDead.Contains(2))
         {
+			AkSoundEngine.PostEvent ("GAME_END_RED", gameObject);
+
             Debug.Log("Red Team Wins");
             onReset();
         }
         else if (listPlayerDead.Contains(3) && listPlayerDead.Contains(4))
         {
+			AkSoundEngine.PostEvent ("GAME_END_BLUE", gameObject);
+
             Debug.Log("Blue Team Wins");
             onReset();
         }
     }
 
-   public static void onPlayerDeath(int id)
+   public void onPlayerDeath(int id)
     {
+		AkSoundEngine.PostEvent ("MONK_DEAD", players [id - 1].gameObject);
+
+
         listPlayerDead.Add(id);
         players[id - 1].gameObject.SetActive(false);
         isTeamDefeated();
+
 
     }
 

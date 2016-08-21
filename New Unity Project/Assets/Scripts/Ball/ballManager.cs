@@ -25,7 +25,6 @@ public class ballManager : MonoBehaviour
 
     public static ParticleSystem ParticleSystemRender { get { return Instance.pSystem; } }
 
-
     public float _MaxVelocity, _MinVelocity, _DecreaseVelocity, _MomentumVelocity;
 
     private Rigidbody rBody;
@@ -42,6 +41,11 @@ public class ballManager : MonoBehaviour
 
     [SerializeField]
     public ParticleSystem pSystem;
+
+
+	[SerializeField] GameObject StageBall;
+	int BallStage = 0;
+
 
     // Use this for initialization
     void Awake()
@@ -73,6 +77,9 @@ public class ballManager : MonoBehaviour
 
 
 
+
+
+
     private void onSetComponents()
     {
         rBody = GetComponent<Rigidbody>();
@@ -99,8 +106,52 @@ public class ballManager : MonoBehaviour
 
     void onSetVelocity(Vector3 vel)
     {
+		int oldBallStage = BallStage;
+
+
+		AkSoundEngine.PostEvent ("BALL_IMPACT", gameObject);
+
+
+
+		if (ballManager.CurrentVelocity > 100) {
+			StageBall.SetActive (true);
+
+			if (ballManager.CurrentVelocity > 500)
+			{
+				BallStage = 3;
+				StageBall.GetComponent<Animator> ().Play ("stage3");
+			}
+			else if (ballManager.CurrentVelocity > 300)
+			{
+				BallStage = 2;
+				StageBall.GetComponent<Animator> ().Play ("stage2");
+			} 
+			else 
+			{
+				BallStage = 1;
+				StageBall.GetComponent<Animator> ().Play ("stage1");
+			}
+			
+
+		}
+		else 
+		{
+			BallStage = 0;
+			StageBall.SetActive (false);
+		}
+
 
         rBody.velocity = vel;
+
+
+		if (oldBallStage != BallStage) 
+		{
+			if (oldBallStage < BallStage)
+				AkSoundEngine.PostEvent ("BALL_STATE_UP", gameObject);
+			else
+				AkSoundEngine.PostEvent ("BALL_STATE_DOWN", gameObject);
+		}
+
     }
 
 

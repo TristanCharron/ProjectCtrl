@@ -66,14 +66,22 @@ public class MonkController : MonoBehaviour
 	[SerializeField]
 	GameObject WindGust;
 
+	Rigidbody rBody;
+	[SerializeField]SpawnManager accesSpawn;
+
     void Start()
     {
-        PlayerCollider = GetComponent<BoxCollider>();
+		PlayerCollider = GetComponent<BoxCollider> ();
+		rBody = GetComponent<Rigidbody> ();
     }
     // Update is called once per frame
     void Update()
     {
-        if (!isDead)
+		if (!UiManager.isGameStarted)
+			return;
+
+
+		if (!isDead)
         {
             CursorRotation();
             MoveCharacter();
@@ -108,7 +116,7 @@ public class MonkController : MonoBehaviour
             {
                 if (!isDead)
                 {
-                    SpawnManager.onPlayerDeath(PlayerID);
+					accesSpawn.onPlayerDeath(PlayerID);
                     //Destroy(gameObject);
                 }
 
@@ -182,9 +190,39 @@ public class MonkController : MonoBehaviour
             //	transform.GetChild (0).localEulerAngles = new Vector3 (0, 0, Mathf.Atan2 (inputX, inputY) * 180 / Mathf.PI);
         }
     }
-
+	IEnumerator OnLerpBackInertia()
+	{
+		float timer = 0;
+		while(timer <= 1)
+		{
+			timer += Time.fixedDeltaTime;
+			rBody.velocity = Vector3.Lerp(rBody.velocity, Vector3.zero, timer);
+		}
+		yield break;
+	}
     void MoveCharacter()
     {
+		/*
+		float inputX = UsingController ? Input.GetAxis("Horizontal_Move_" + PlayerID) : Input.GetAxis("Horizontal");
+		float inputY = UsingController ? Input.GetAxis("Vertical_Move_" + PlayerID) : Input.GetAxis("Vertical");
+		Vector3 input = new Vector3(inputX, 0, inputY);
+
+		if ((inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f)) 
+		{
+			
+
+			if (Mathf.Abs (input.magnitude) > 0.25f) {
+				rBody.AddForce (input.normalized * 200);
+				rBody.velocity = Vector3.ClampMagnitude (rBody.velocity, 125);
+			}
+
+		}
+
+		else	
+			StartCoroutine(OnLerpBackInertia());
+
+		/*
+*/
         float inputX;
         float inputY;
 
@@ -205,15 +243,6 @@ public class MonkController : MonoBehaviour
 
         if ((inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f))
         {
-            /*
-			Vector3 velocity = new Vector3
-				(
-					transform.position.x + (inputX * SpeedPlayer * Time.deltaTime),
-					transform.position.y,
-					transform.position.z + (inputY * SpeedPlayer * Time.deltaTime)
-				);
-			*/
-
 
             buildingSpeed += 0.05f;
             if (buildingSpeed > 2)
@@ -256,7 +285,7 @@ public class MonkController : MonoBehaviour
         }
         transform.position += velocity * buildingSpeed;
 
-
+	
     }
 
     void PushButton()
@@ -268,6 +297,8 @@ public class MonkController : MonoBehaviour
         if (Input.GetButtonDown(PRESS_R + PlayerID))
         {
             handAnimator.Play("Push");
+			AkSoundEngine.PostEvent ("MONK_WIND", gameObject);
+
             StartCoroutine(TimerActionCooldown("Push"));
         }
     }
@@ -284,6 +315,8 @@ public class MonkController : MonoBehaviour
         {
             handAnimator.Play("Pull");
             StartCoroutine(TimerActionCooldown("Pull"));
+			AkSoundEngine.PostEvent ("MONK_WIND", gameObject);
+
         }
 
 
@@ -310,11 +343,14 @@ public class MonkController : MonoBehaviour
 		UiManager.OnScreenShake(0 + ((ballManager.CurrentVelocity / ballManager.MaxVelocity) / 2) );
 
 		WindGust.GetComponent<BoxCollider>().enabled = false;
+		AkSoundEngine.PostEvent ("MONK_PITCH", gameObject);
 
     }
 
     public void onPull()
     {
+		AkSoundEngine.PostEvent ("MONK_CATCH", gameObject);
+
         ballManager.onPull(Vector3.zero, -ballManager.CurrentVelocity);
         ballManager.onChangeTeamPossession(Team);
     }

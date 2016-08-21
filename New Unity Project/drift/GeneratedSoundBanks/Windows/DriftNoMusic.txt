@@ -1,0 +1,124 @@
+Event	ID	Name			Wwise Object Path	Notes
+	65694047	STAGE_BELL			\Default Work Unit\STAGE\STAGE_BELL	
+	465026768	GAME_PLAY			\Default Work Unit\GAME\GAME_PLAY	
+	671479072	MONK_CATCH			\Default Work Unit\MONK\MONK_CATCH	
+	733168346	GAME_START			\Default Work Unit\GAME\GAME_START	
+	1165162655	BALL_IMPACT			\Default Work Unit\BALL\BALL_IMPACT	
+	1365208458	GAME_OPEN			\Default Work Unit\GAME\GAME_OPEN	
+	1432716332	GAME_OVER			\Default Work Unit\END\GAME_OVER	
+	1828712247	MONK_PITCH			\Default Work Unit\MONK\MONK_PITCH	
+	2097794929	MONK_DEAD			\Default Work Unit\MONK\MONK_DEAD	
+	2180046864	BALL_STATE_UP			\Default Work Unit\BALL\BALL_STATE_UP	
+	2318505031	BALL_STATE_DOWN			\Default Work Unit\BALL\BALL_STATE_DOWN	
+	2626967201	MONK_WIND			\Default Work Unit\MONK\MONK_WIND	
+	2724220905	GAME_END_RED			\Default Work Unit\END\GAME_END_RED	
+	2774129122	UI_SELECT			\Default Work Unit\UI_SELECT	
+	3149584576	GAME_END_BLUE			\Default Work Unit\END\GAME_END_BLUE	
+	3869063860	STAGE_FORCE_FIELD			\Default Work Unit\STAGE\STAGE_FORCE_FIELD	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	3265786	VO_go_05	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_go_05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_start_game\VO_start_sequence\VO_go\VO_go_05		86652
+	20435260	VO_ready_04	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_ready_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_start_game\VO_start_sequence\VO_ready\VO_ready_04		66052
+	25385823	SFX_Gong_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_Gong_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_Gong_02		2116864
+	27969851	SFX_monk_wind_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_monk_wind_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_wind\SFX_monk_wind_03		85266
+	43401585	VO_monk_pitch_07	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_pitch_07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_pitch\VO_monk_pitch_07		29000
+	47837521	VO_monk_pitch_09	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_pitch_09_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_pitch\VO_monk_pitch_09		29446
+	49826921	VO_monk_dead_05	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_dead_05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_dead\VO_monk_dead_05		42740
+	50157710	VO_go_04	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_go_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_start_game\VO_start_sequence\VO_go\VO_go_04		53308
+	53519056	SFX_monk_pitch_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_monk_pitch_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_pitch\SFX_monk_pitch_03		176464
+	59981578	VO_ready_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_ready_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_start_game\VO_start_sequence\VO_ready\VO_ready_02		78818
+	67886433	VO_set_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_set_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_start_game\VO_start_sequence\VO_set\VO_set_01		76742
+	76714761	SFX_stage_bell_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_bell_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_bell\SFX_stage_bell_03		308764
+	101623049	SFX_ball_impact_07	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_impact_07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_07		12386
+	115286555	SFX_game_transition_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_game_transition_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_game_transition\SFX_game_transition_02		220564
+	139779194	VO_monk_pitch_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_pitch_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_pitch\VO_monk_pitch_02		35260
+	140988573	VO_red_team_04	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_red_team_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_red_team_win\VO_red_team_04		162080
+	142195123	SFX_monk_dead_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_monk_dead_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_dead\SFX_monk_dead_01		122700
+	144397240	SFX_ball_impact_12	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_impact_12_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_12		11246
+	177370756	VO_go_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_go_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_start_game\VO_start_sequence\VO_go\VO_go_02		52482
+	190422403	SFX_UI_select_06	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_UI_select_06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_Select\SFX_UI_select_06		21982
+	191926282	SFX_stage_force_field_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_force_field_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_03		88264
+	215042224	SFX_UI_select_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_UI_select_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_Select\SFX_UI_select_03		21982
+	215973960	VO_game_over_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_game_over_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_game_over\VO_game_over_01		126900
+	244028663	SFX_UI_select_07	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_UI_select_07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_Select\SFX_UI_select_07		21982
+	250296388	VO_monk_pitch_04	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_pitch_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_pitch\VO_monk_pitch_04		36394
+	253161790	VO_blue_team_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_blue_team_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_blue_team_win\VO_blue_team_03		175050
+	260064738	VO_set_04	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_set_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_start_game\VO_start_sequence\VO_set\VO_set_04		69570
+	261371960	SFX_monk_wind_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_monk_wind_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_wind\SFX_monk_wind_02		92894
+	269933970	SFX_UI_select_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_UI_select_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_Select\SFX_UI_select_02		22284
+	276694304	VO_blue_team_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_blue_team_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_blue_team_win\VO_blue_team_02		169400
+	294088964	VO_red_team_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_red_team_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_red_team_win\VO_red_team_02		169708
+	299205047	VO_monk_pitch_06	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_pitch_06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_pitch\VO_monk_pitch_06		37014
+	301987023	SFX_ball_state_change_impact_07	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_state_change_impact_07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_impact\SFX_ball_state_change_impact_07		88264
+	319476681	SFX_stage_force_field_07	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_force_field_07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_07		88264
+	324862555	VO_set_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_set_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_start_game\VO_start_sequence\VO_set\VO_set_03		73552
+	340439844	SFX_monk_pitch_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_monk_pitch_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_pitch\SFX_monk_pitch_01		176464
+	342984192	SFX_monk_wind_04	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_monk_wind_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_wind\SFX_monk_wind_04		88264
+	352387304	SFX_ball_impact_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_impact_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_01		11366
+	358899287	SFX_stage_force_field_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_force_field_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_02		88264
+	365769185	AMB_river_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\AMB_river_01_40B6063D.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMB_forest\AMB_river_01		4863248
+	402833836	SFX_ball_impact_08	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_impact_08_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_08		13134
+	409724193	SFX_stage_force_field_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_force_field_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_01		88264
+	441533319	SFX_ball_state_change_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_state_change_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_01		132364
+	448870299	VO_monk_pitch_05	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_pitch_05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_pitch\VO_monk_pitch_05		20734
+	452298535	VO_monk_dead_08	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_dead_08_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_dead\VO_monk_dead_08		92350
+	453183788	VO_game_over_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_game_over_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_game_over\VO_game_over_03		85866
+	471334907	SFX_UI_select_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_UI_select_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_Select\SFX_UI_select_01		22116
+	479403849	VO_monk_pitch_10	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_pitch_10_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_pitch\VO_monk_pitch_10		43924
+	481973158	VO_monk_pitch_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_pitch_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_pitch\VO_monk_pitch_01		29696
+	487407061	AMB_wind_loop	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\AMB_wind_loop_457F8F1E.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMB_wind_loop		8903808
+	495750079	SFX_stage_force_field_09	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_force_field_09_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_09		88264
+	497111161	VO_monk_dead_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_dead_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_dead\VO_monk_dead_03		63276
+	517181763	SFX_monk_dead_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_monk_dead_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_dead\SFX_monk_dead_03		119052
+	527811619	SFX_intro_chimes_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_intro_chimes_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_intro_chimes\SFX_intro_chimes_01		1058464
+	545105311	VO_game_over_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_game_over_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_game_over\VO_game_over_02		132780
+	550775938	SFX_ball_state_change_impact_05	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_state_change_impact_05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_impact\SFX_ball_state_change_impact_05		88264
+	553638073	SFX_stage_bell_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_bell_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_bell\SFX_stage_bell_02		308764
+	565432905	SFX_intro_chimes_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_intro_chimes_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_intro_chimes\SFX_intro_chimes_02		766852
+	584609824	VO_red_team_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_red_team_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_red_team_win\VO_red_team_03		178834
+	593040896	SFX_stage_force_field_10	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_force_field_10_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_10		88264
+	594738270	VO_monk_pitch_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_pitch_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_pitch\VO_monk_pitch_03		42606
+	594962202	VO_ready_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_ready_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_start_game\VO_start_sequence\VO_ready\VO_ready_01		73632
+	595788183	SFX_monk_wind_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_monk_wind_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_wind\SFX_monk_wind_01		68096
+	599474688	SFX_ball_impact_09	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_impact_09_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_09		12288
+	615863826	VO_monk_pitch_08	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_pitch_08_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_pitch\VO_monk_pitch_08		36124
+	636258489	SFX_Gong_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_Gong_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_start_game\VO_start_sequence\SFX_Gong_01		2469664
+	652897039	SFX_monk_dead_04	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_monk_dead_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_dead\SFX_monk_dead_04		124114
+	675290095	VO_game_over_04	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_game_over_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_game_over\VO_game_over_04		58096
+	679378681	SFX_stage_bell_04	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_bell_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_bell\SFX_stage_bell_04		308764
+	685376325	SFX_stage_bell_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_bell_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_bell\SFX_stage_bell_01		308764
+	692258731	VO_go_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_go_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_start_game\VO_start_sequence\VO_go\VO_go_03		60402
+	699771603	SFX_monk_dead_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_monk_dead_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_dead\SFX_monk_dead_02		123338
+	733638433	SFX_game_transition_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_game_transition_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_game_transition\SFX_game_transition_01		176464
+	740786913	SFX_stage_force_field_04	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_force_field_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_04		88264
+	762416247	SFX_stage_force_field_11	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_force_field_11_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_11		88264
+	789561440	SFX_UI_select_08	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_UI_select_08_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_Select\SFX_UI_select_08		21982
+	799339773	SFX_UI_select_09	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_UI_select_09_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_Select\SFX_UI_select_09		21982
+	827977947	SFX_ball_state_change_impact_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_state_change_impact_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_impact\SFX_ball_state_change_impact_01		88264
+	844194393	AMB_forest_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\AMB_forest_01_2A138D62.wem		\Actor-Mixer Hierarchy\Default Work Unit\AMB_forest\AMB_forest_01		4057360
+	847576650	SFX_ball_state_change_impact_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_state_change_impact_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_impact\SFX_ball_state_change_impact_03		88264
+	850186369	SFX_UI_select_04	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_UI_select_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_Select\SFX_UI_select_04		21982
+	855129994	SFX_monk_wind_05	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_monk_wind_05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_wind\SFX_monk_wind_05		73090
+	858460743	SFX_ball_impact_05	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_impact_05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_05		10706
+	861571880	VO_red_team_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_red_team_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_red_team_win\VO_red_team_01		166130
+	864532649	SFX_ball_impact_10	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_impact_10_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_10		15262
+	872109975	VO_monk_dead_06	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_dead_06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_dead\VO_monk_dead_06		41498
+	883639866	VO_monk_dead_04	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_dead_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_dead\VO_monk_dead_04		52416
+	893219736	VO_monk_dead_07	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_dead_07_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_dead\VO_monk_dead_07		83438
+	893996882	SFX_ball_impact_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_impact_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_impact\SFX_ball_impact_02		11826
+	897091420	SFX_UI_select_05	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_UI_select_05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\UI_Select\SFX_UI_select_05		21982
+	912193778	VO_monk_dead_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_dead_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_dead\VO_monk_dead_01		58232
+	920660837	VO_blue_team_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_blue_team_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_blue_team_win\VO_blue_team_01		158668
+	922727794	SFX_stage_force_field_08	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_force_field_08_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_08		88264
+	935138882	SFX_monk_pitch_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_monk_pitch_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_pitch\SFX_monk_pitch_02		188312
+	944387481	VO_monk_dead_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_monk_dead_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_monk\VO_monk_dead\VO_monk_dead_02		71204
+	947517471	SFX_ball_state_change_impact_06	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_state_change_impact_06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_impact\SFX_ball_state_change_impact_06		88264
+	950887372	SFX_stage_force_field_05	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_force_field_05_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_05		88264
+	962110797	SFX_ball_state_change_impact_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_state_change_impact_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_impact\SFX_ball_state_change_impact_02		88264
+	987608260	VO_ready_03	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_ready_03_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_start_game\VO_start_sequence\VO_ready\VO_ready_03		72226
+	991388798	SFX_ball_state_change_impact_04	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_ball_state_change_impact_04_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_ball_state\SFX_ball_state_change_impact\SFX_ball_state_change_impact_04		88264
+	1000891486	VO_set_02	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_set_02_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_start_game\VO_start_sequence\VO_set\VO_set_02		85618
+	1006472324	SFX_monk_catch	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_monk_catch_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_monk_catch		54964
+	1011368823	VO_go_01	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\VO_go_01_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\Voices\VO_start_game\VO_start_sequence\VO_go\VO_go_01		89048
+	1028499817	SFX_stage_force_field_06	D:\160819_creativejam\wwise\drift\.cache\Windows\SFX\SFX_stage_force_field_06_9E69E797.wem		\Actor-Mixer Hierarchy\Default Work Unit\SFX_stage_force_field\SFX_stage_force_field_06		88264
+

@@ -15,6 +15,12 @@ public class UiManager : MonoBehaviour {
     int nbPlayers;
     bool startGame;
 
+	public static bool isGameStarted;
+
+	[SerializeField]
+	public GameObject theBall;
+	[SerializeField]
+	public Transform[] nullSpawnBall;
 
 
 	public static void OnFreezeFrame(float sec)
@@ -31,13 +37,13 @@ public class UiManager : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Awake () {
+	void Start () {
 		instance = this;
         nbPlayers = 4;
         playerIDcontainer.SetActive(false);
         startContainer.SetActive(false);
         //iTween.MoveTo(gameObject, iTween.Hash("x", 3, "time", 4, "delay", 1, "onupdate", "myUpdateFunction", "looptype", iTween.LoopType.pingPong));
-		AkSoundEngine.PostEvent ("GAME_START", gameObject);
+		AkSoundEngine.PostEvent ("GAME_OPEN", gameObject);
 
     }
 
@@ -107,12 +113,35 @@ public class UiManager : MonoBehaviour {
 
        
 	}
-
 	public void EndCinematic()
 	{
+		UiManager.isGameStarted = true;
 		Debug.Log ("end");
 		GetComponent<cameraBoxScriptTry> ().enabled = true;
+		SpawnBall ();
+		AkSoundEngine.PostEvent ("GAME_START", gameObject);
+
 	}
+
+	public void SpawnBall()
+	{
+ 		//Animation ball spawn
+		theBall.SetActive (true);
+		int random = Random.Range (0, 2);
+		switch (random)
+		{
+		case 0:
+			theBall.transform.position = nullSpawnBall [0].position;
+			break;
+
+		case 1:
+			theBall.transform.position = nullSpawnBall [1].position;
+			break;
+		}
+
+	}
+
+
     IEnumerator makeIDAppear()
     {
         yield return new WaitForSeconds(6f);
