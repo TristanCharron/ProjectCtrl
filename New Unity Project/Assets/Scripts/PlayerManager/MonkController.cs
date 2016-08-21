@@ -67,6 +67,9 @@ public class MonkController : MonoBehaviour
     [SerializeField]
     bool canDoAction = true;
 
+	[SerializeField]
+	GameObject WindGust;
+
     void Start()
     {
         PlayerCollider = GetComponent<BoxCollider>();
@@ -305,7 +308,7 @@ public class MonkController : MonoBehaviour
     public void onPush()
     {
         Debug.Log("tappe la balle");
-        ballManager.onPush(Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up, 25);
+        ballManager.onPush(Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up);
         ballManager.onChangeTeamPossession(Team);
         //UiManager.OnFreezeFrame (0.1f);
 
@@ -318,47 +321,48 @@ public class MonkController : MonoBehaviour
     }
 
 
-    IEnumerator TimerActionCooldown(string action)
-    {
-        canDoAction = false;
+	IEnumerator TimerActionCooldown(string action)
+	{
+		canDoAction = false;
 
-        switch (action)
-        {
-            case "Push":
-                PushCollider.enabled = true;
-                //yield return new WaitForSeconds (0.1f);
-                /*if (isPushActionTriggered)
+		switch (action)
+		{
+		case "Push":
+			WindGust.SetActive(true);
+			WindGust.GetComponent<BoxCollider>().enabled = true;
+			//yield return new WaitForSeconds (0.1f);
+			/*if (isPushActionTriggered)
                     onPush ();*/
-                break;
-            case "Pull":
-                PullCollider.enabled = true;
-                //yield return new WaitForSeconds (0.1f);
-                /*if (isPullActionTriggered)
+			break;
+		case "Pull":
+			PullCollider.enabled = true;
+			//yield return new WaitForSeconds (0.1f);
+			/*if (isPullActionTriggered)
                     onPull ();*/
-                break;
-        }
+			break;
+		}
 
-        yield return new WaitForSeconds(.1f);
-
-
-
-        switch (action)
-        {
-            case "Push":
-                PushCollider.enabled = false;
-                break;
-            case "Pull":
-                PullCollider.enabled = false;
-                break;
-        }
-
-        yield return new WaitForSeconds(coolDownLength - .1f);
-
-        canDoAction = true;
-        //isPushActionTriggered = false;
-        //isPullActionTriggered = false;
+		yield return new WaitForSeconds(.2f);
 
 
-    }
 
+		switch (action)
+		{
+		case "Push":
+			WindGust.GetComponent<BoxCollider>().enabled = false;
+			break;
+		case "Pull":
+			PullCollider.enabled = false;
+			break;
+		}
+
+		yield return new WaitForSeconds(.4f);
+		WindGust.SetActive(false);
+
+		canDoAction = true;
+		//isPushActionTriggered = false;
+		//isPullActionTriggered = false;
+
+
+	}
 }

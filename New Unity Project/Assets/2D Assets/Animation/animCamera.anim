@@ -86,13 +86,13 @@ AnimationClip:
         tangentMode: 0
       - time: 5
         value: {x: 1, y: 25, z: -43}
-        inSlope: {x: 0, y: 12.63, z: 27.965}
-        outSlope: {x: 0, y: 12.63, z: 27.965}
+        inSlope: {x: 77.65, y: 161.9, z: 179.6}
+        outSlope: {x: 77.65, y: 161.9, z: 179.6}
         tangentMode: 0
       - time: 6
-        value: {x: 1, y: 26.26, z: -7.07}
-        inSlope: {x: 0, y: 1.2600002, z: 35.93}
-        outSlope: {x: 0, y: 1.2600002, z: 35.93}
+        value: {x: 156.3, y: 324.8, z: 296.2}
+        inSlope: {x: 155.3, y: 299.8, z: 339.2}
+        outSlope: {x: 155.3, y: 299.8, z: 339.2}
         tangentMode: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -224,13 +224,13 @@ AnimationClip:
         tangentMode: 10
       - time: 5
         value: 1
-        inSlope: 0
-        outSlope: 0
+        inSlope: 77.65
+        outSlope: 77.65
         tangentMode: 10
       - time: 6
-        value: 1
-        inSlope: 0
-        outSlope: 0
+        value: 156.3
+        inSlope: 155.3
+        outSlope: 155.3
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -269,13 +269,13 @@ AnimationClip:
         tangentMode: 10
       - time: 5
         value: 25
-        inSlope: 12.63
-        outSlope: 12.63
+        inSlope: 161.9
+        outSlope: 161.9
         tangentMode: 10
       - time: 6
-        value: 26.26
-        inSlope: 1.2600002
-        outSlope: 1.2600002
+        value: 324.8
+        inSlope: 299.8
+        outSlope: 299.8
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -314,13 +314,13 @@ AnimationClip:
         tangentMode: 10
       - time: 5
         value: -43
-        inSlope: 27.965
-        outSlope: 27.965
+        inSlope: 179.6
+        outSlope: 179.6
         tangentMode: 10
       - time: 6
-        value: -7.07
-        inSlope: 35.93
-        outSlope: 35.93
+        value: 296.2
+        inSlope: 339.2
+        outSlope: 339.2
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2

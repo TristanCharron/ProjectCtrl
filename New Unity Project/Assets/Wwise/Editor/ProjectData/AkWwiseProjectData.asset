@@ -186,8 +186,7 @@ MonoBehaviour:
         ObjectType: 7
       ID: -222937841
       Guid: d4f69179addc864cb097220d5356b682
-  ExpandedItems:
-  - /drift
+  ExpandedItems: []
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1
