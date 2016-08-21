@@ -1,15 +1,16 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UI\SpawnManager.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\UI\CallEventWwise.cs">
     <Files>
-      <File FileName="Assets\Scripts\PlayerManager\MonkController.cs" Line="256" Column="5" />
+      <File FileName="Assets\Scripts\PlayerManager\MonkController.cs" Line="1" Column="1" />
       <File FileName="Assets\OnCheckPushState.cs" Line="1" Column="1" />
       <File FileName="Assets\onCheckPullState.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\UI\UiManager.cs" Line="128" Column="26" />
-      <File FileName="Assets\Scripts\Ball\ballManager.cs" Line="24" Column="1" />
-      <File FileName="Assets\Scripts\UI\SpawnManager.cs" Line="110" Column="4" />
+      <File FileName="Assets\Scripts\UI\UiManager.cs" Line="185" Column="28" />
+      <File FileName="Assets\Scripts\Ball\ballManager.cs" Line="46" Column="29" />
+      <File FileName="Assets\Scripts\UI\SpawnManager.cs" Line="112" Column="4" />
       <File FileName="Assets\Scripts\UI\cameraBoxScriptTry.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\UI\monkChargeBall.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\UI\CallEventWwise.cs" Line="9" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

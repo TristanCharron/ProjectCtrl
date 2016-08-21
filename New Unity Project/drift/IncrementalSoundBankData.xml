@@ -2,7 +2,7 @@
 <IncrementalBankBuild Version="4" Flags="601859981">
 	<Platform GUID="{6D3E2DE1-D7AB-4BF9-B762-473F3FCC5109}">
 		<Language ID="0">
-			<Bank Name="DriftNoMusic" Hash="545580567" StreamHash="157587662" Timestamp="131162410525618318"/>
+			<Bank Name="DriftNoMusic" Hash="4170283314" StreamHash="157587662" Timestamp="131162664764131476"/>
 			<Bank Name="Init" Hash="2766525704" StreamHash="157587662" Timestamp="131162409649646592"/>
 		</Language>
 	</Platform>

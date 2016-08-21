@@ -16,8 +16,8 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}'
-    m_lastTimePsrt1: 452795300
-    m_lastTimePart2: -1999386180
+    m_lastTimePsrt1: 1990443776
+    m_lastTimePart2: -1999386154
     List:
     - Name: BALL_IMPACT
       Path: Default Work Unit\BALL\BALL_IMPACT
@@ -79,6 +79,18 @@ MonoBehaviour:
       ID: -1570746391
       Guid: 3de7e1b9e0b7da46a06e536b9fb5ee95
       maxAttenuation: 0
+    - Name: GAME_GO
+      Path: Default Work Unit\GAME\GAME_GO
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: GAME
+        ObjectType: 4
+      - ElementName: GAME_GO
+        ObjectType: 3
+      ID: -1941744876
+      Guid: 5497f4cee1c27e45aa6f54ba72348db7
+      maxAttenuation: 0
     - Name: GAME_OPEN
       Path: Default Work Unit\GAME\GAME_OPEN
       PathAndIcons:
@@ -114,6 +126,30 @@ MonoBehaviour:
         ObjectType: 3
       ID: 465026768
       Guid: c1689a9acd7f0344806914d01eb0b86c
+      maxAttenuation: 0
+    - Name: GAME_READY
+      Path: Default Work Unit\GAME\GAME_READY
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: GAME
+        ObjectType: 4
+      - ElementName: GAME_READY
+        ObjectType: 3
+      ID: -1283995761
+      Guid: 13ffcc0fced0344d85c40b1c2e11012e
+      maxAttenuation: 0
+    - Name: GAME_SET
+      Path: Default Work Unit\GAME\GAME_SET
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: GAME
+        ObjectType: 4
+      - ElementName: GAME_SET
+        ObjectType: 3
+      ID: -606126974
+      Guid: b5b74ea428f88945bc6aafa993be261c
       maxAttenuation: 0
     - Name: GAME_START
       Path: Default Work Unit\GAME\GAME_START
@@ -227,15 +263,36 @@ MonoBehaviour:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{FEA3C75C-AC2C-43E2-AB3E-EC2E6BF974B8}'
-    m_lastTimePsrt1: -189694464
-    m_lastTimePart2: -1999386465
-    List: []
+    m_lastTimePsrt1: -1210341120
+    m_lastTimePart2: -1999386179
+    List:
+    - Name: SwitchMusic
+      Path: Default Work Unit\SwitchMusic
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SwitchMusic
+        ObjectType: 11
+      ID: 253724022
+      Guid: 10f59317827a8e469b9b0c434069e315
+      values:
+      - intro
+      - main
+      ValueIcons:
+      - ElementName: intro
+        ObjectType: 10
+      - ElementName: main
+        ObjectType: 10
+      valueIDs: 29c71543bae676bc
+      ValueGuids:
+      - bytes: dc4c162d7485e6448a07b5d4098456c8
+      - bytes: 4e93c45b29ba50419aaf0d82e9727234
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{A2D49259-6C18-4DCE-BC74-35CB9CF9887A}'
-    m_lastTimePsrt1: 533450324
-    m_lastTimePart2: -1999386180
+    m_lastTimePsrt1: -824523520
+    m_lastTimePart2: -1999386154
     List:
     - Name: DriftNoMusic
       Path: Default Work Unit\DriftNoMusic

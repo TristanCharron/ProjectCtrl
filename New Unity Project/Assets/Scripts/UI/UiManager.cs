@@ -23,7 +23,7 @@ public class UiManager : MonoBehaviour {
 	[SerializeField]
 	public Transform[] nullSpawnBall;
 	public Transform Everything;
-
+	public GameObject Sakuras;
 	public static void OnFreezeFrame(float sec)
 	{
 		instance.StartCoroutine (instance.FreezeFrame (sec));
@@ -112,6 +112,8 @@ public class UiManager : MonoBehaviour {
 	}
 	public void EndCinematic()
 	{
+	
+		Sakuras.SetActive (false);
 		GetComponent<cameraBoxScriptTry> ().enabled = true;
 		SpawnBall ();
 		AkSoundEngine.PostEvent ("GAME_START", gameObject);
@@ -180,6 +182,7 @@ public class UiManager : MonoBehaviour {
     **/
 	public void onStartGame()
 	{
+		Sakuras.SetActive (true);
 		AkSoundEngine.PostEvent ("UI_SELECT", gameObject);
 
 		AkSoundEngine.PostEvent ("GAME_PLAY", gameObject);

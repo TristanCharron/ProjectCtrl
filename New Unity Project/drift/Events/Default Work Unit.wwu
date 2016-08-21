@@ -154,16 +154,12 @@
 									</ElementList>
 								</Action>
 								<Action Name="Play" ID="{C2137842-2BA9-4E04-A25C-D66F59AF0B7D}" ShortID="363360218" Type="Play" Scope="One" Global="false">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.5"/>
+									</PropertyList>
 									<ElementList>
 										<Element ID="{B48233D9-5FB7-4C7E-9606-646F4AF05A03}" Global="false">
 											<ObjectRef Name="SFX_game_transition" ID="{5826969A-0F27-4C0D-B7C3-5791BB851C4B}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
-										</Element>
-									</ElementList>
-								</Action>
-								<Action Name="Stop" ID="{F6CCEA98-D3BC-48B0-877C-475D1BD21634}" ShortID="788769674" Type="Stop" Scope="One" Global="false">
-									<ElementList>
-										<Element ID="{B14B5676-5AE7-4A0C-A17F-B3EC4DE58463}" Global="false">
-											<ObjectRef Name="SFX_intro_chimes" ID="{0BB598E2-5357-4082-AB92-36A507F43539}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
 										</Element>
 									</ElementList>
 								</Action>
@@ -188,10 +184,16 @@
 										</Element>
 									</ElementList>
 								</Action>
-								<Action Name="Play" ID="{DC895706-D0D0-4A19-B595-884A26E80B2C}" ShortID="772382552" Type="Play" Scope="One" Global="false">
+								<Action Name="Set Switch" ID="{E4C86077-AB0E-469C-A971-9D4DB2BEE7DD}" ShortID="114446074" Type="SetSwitch" Scope="All" Global="false">
+									<SetItemParam>
+										<Group Name="SwitchMusic" ID="{1793F510-7A82-468E-9B9B-0C434069E315}"/>
+										<GroupItem Name="intro" ID="{2D164CDC-8574-44E6-8A07-B5D4098456C8}"/>
+									</SetItemParam>
+								</Action>
+								<Action Name="Play" ID="{1C0DBB76-812B-418E-AFBF-BB03CC3B8C84}" ShortID="895477673" Type="Play" Scope="One" Global="false">
 									<ElementList>
-										<Element ID="{7F775CEB-2465-4C65-9E24-74C3BB7AD770}" Global="false">
-											<ObjectRef Name="SFX_intro_chimes" ID="{0BB598E2-5357-4082-AB92-36A507F43539}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+										<Element ID="{45F2F46F-FC74-4A81-AD60-E06067A6F83A}" Global="false">
+											<ObjectRef Name="New Music Switch Container" ID="{7B86B001-B9CB-44C8-9986-BC9AD66EB5D8}" WorkUnitID="{A648EB30-6BFF-4F13-BBFE-A423B5B907E0}"/>
 										</Element>
 									</ElementList>
 								</Action>
@@ -199,10 +201,52 @@
 						</Event>
 						<Event Name="GAME_START" ID="{63950649-9D64-460A-846D-5C1DCDC9B500}">
 							<ChildrenList>
-								<Action Name="Play" ID="{E6C0B357-7CCD-4888-9DE2-4F7AFB2BB740}" ShortID="220335451" Type="Play" Scope="One" Global="false">
+								<Action Name="Set Switch" ID="{6A5A25AE-E834-4602-A288-030D41A3C94D}" ShortID="81914032" Type="SetSwitch" Scope="All" Global="false">
+									<SetItemParam>
+										<Group Name="SwitchMusic" ID="{1793F510-7A82-468E-9B9B-0C434069E315}"/>
+										<GroupItem Name="main" ID="{5BC4934E-BA29-4150-9AAF-0D82E9727234}"/>
+									</SetItemParam>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="GAME_READY" ID="{0FCCFF13-D0CE-4D34-85C4-0B1C2E11012E}">
+							<ChildrenList>
+								<Action Name="Play" ID="{E11E271B-9E99-4D11-8D16-4D6E389B0DC2}" ShortID="400599576" Type="Play" Scope="One" Global="false">
 									<ElementList>
-										<Element ID="{79B8DBB6-6C07-485D-AE47-2E726CAAED80}" Global="false">
-											<ObjectRef Name="VO_start_sequence" ID="{FA97DC22-CC1D-46C9-A5AF-48248B24CCCC}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+										<Element ID="{315D4AA4-B1F4-4B71-8353-D8CAB9322735}" Global="false">
+											<ObjectRef Name="VO_ready" ID="{9059B3CC-F075-44B7-932D-01A45B07A79B}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="GAME_SET" ID="{A44EB7B5-F828-4589-BC6A-AFA993BE261C}">
+							<ChildrenList>
+								<Action Name="Play" ID="{5B4A7DB3-4103-4129-AB05-08001A5E8AF6}" ShortID="74266970" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{24360C91-FD06-443C-B087-A78318695A8F}" Global="false">
+											<ObjectRef Name="VO_set" ID="{2BA8FC08-7DB5-47CB-964C-13AFC173D4AD}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+										</Element>
+									</ElementList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="GAME_GO" ID="{CEF49754-C2E1-457E-AA6F-54BA72348DB7}">
+							<ChildrenList>
+								<Action Name="Play" ID="{03143535-E040-4342-B8F9-A0E69F64557A}" ShortID="1068281623" Type="Play" Scope="One" Global="false">
+									<ElementList>
+										<Element ID="{8C624FC6-D424-4641-B033-5663AC43721F}" Global="false">
+											<ObjectRef Name="VO_go" ID="{8BF07BB2-EC05-4C09-A94C-277466F9F073}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+										</Element>
+									</ElementList>
+								</Action>
+								<Action Name="Play" ID="{7EC30F20-2BCD-4F5C-901C-1FB9267F375A}" ShortID="115097714" Type="Play" Scope="One" Global="false">
+									<PropertyList>
+										<Property Name="Delay" Type="Real64" Value="0.7"/>
+									</PropertyList>
+									<ElementList>
+										<Element ID="{08033355-9722-4F1C-ADE3-66B3B083E27C}" Global="false">
+											<ObjectRef Name="SFX_Gong_01" ID="{A0A51B7A-5DFA-4D33-8A9A-449D88753604}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
 										</Element>
 									</ElementList>
 								</Action>

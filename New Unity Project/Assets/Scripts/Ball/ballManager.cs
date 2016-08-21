@@ -43,7 +43,7 @@ public class ballManager : MonoBehaviour
     public ParticleSystem pSystem;
 
 
-	[SerializeField] GameObject StageBall;
+	public GameObject StageBall;
 	int BallStage = 0;
 
 

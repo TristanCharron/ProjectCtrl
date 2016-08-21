@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\Ball\Shake.cs" />
      <Compile Include="Assets\Scripts\Ball\ballManager.cs" />
      <Compile Include="Assets\Scripts\PlayerManager\MonkController.cs" />
+     <Compile Include="Assets\Scripts\UI\CallEventWwise.cs" />
      <Compile Include="Assets\Scripts\UI\SpawnManager.cs" />
      <Compile Include="Assets\Scripts\UI\UiManager.cs" />
      <Compile Include="Assets\Scripts\UI\cameraBoxScript.cs" />

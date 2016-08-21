@@ -540,7 +540,7 @@
 						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
-								<Value>-9</Value>
+								<Value>-6</Value>
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -2246,11 +2246,6 @@
 									<ChildrenList>
 										<RandomSequenceContainer Name="VO_go" ID="{8BF07BB2-EC05-4C09-A94C-277466F9F073}" ShortID="231469043">
 											<PropertyList>
-												<Property Name="InitialDelay" Type="Real64">
-													<ValueList>
-														<Value>0.5</Value>
-													</ValueList>
-												</Property>
 												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
 											</PropertyList>
@@ -2454,11 +2449,6 @@
 										</RandomSequenceContainer>
 										<RandomSequenceContainer Name="VO_set" ID="{2BA8FC08-7DB5-47CB-964C-13AFC173D4AD}" ShortID="113402949">
 											<PropertyList>
-												<Property Name="InitialDelay" Type="Real64">
-													<ValueList>
-														<Value>0.5</Value>
-													</ValueList>
-												</Property>
 												<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
 											</PropertyList>
@@ -2841,7 +2831,7 @@
 									<Modifier Name="" ID="{DC701366-1E3A-47A7-9175-835DCF09035D}">
 										<PropertyList>
 											<Property Name="Enabled" Type="bool" Value="True"/>
-											<Property Name="Max" Type="Real64" Value="40"/>
+											<Property Name="Max" Type="Real64" Value="30"/>
 										</PropertyList>
 									</Modifier>
 								</ModifierInfo>
@@ -2863,7 +2853,7 @@
 						</Property>
 						<Property Name="Lowpass" Type="int16">
 							<ValueList>
-								<Value>41</Value>
+								<Value>29</Value>
 							</ValueList>
 							<ModifierList>
 								<ModifierInfo>
@@ -2886,7 +2876,7 @@
 									<Modifier Name="" ID="{BF47622A-EC9C-499F-8209-703292088038}">
 										<PropertyList>
 											<Property Name="Enabled" Type="bool" Value="True"/>
-											<Property Name="Max" Type="Real64" Value="20"/>
+											<Property Name="Max" Type="Real64" Value="15"/>
 										</PropertyList>
 									</Modifier>
 								</ModifierInfo>
@@ -3058,6 +3048,11 @@
 						<Sound Name="AMB_river_01" ID="{6EF745C8-224C-4F56-AE63-345E93BEFC49}" ShortID="413833610" Type="SoundFX">
 							<PropertyList>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>-5</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">

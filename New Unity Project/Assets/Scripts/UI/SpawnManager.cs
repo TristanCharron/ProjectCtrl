@@ -23,6 +23,7 @@ public class SpawnManager : MonoBehaviour {
     private static List<int> listPlayerDead = new List<int>();
     public static List<int> ListPlayerDead { get { return ListPlayerDead; } }
 	[SerializeField] UiManager accesUI;
+
     // Use this for initialization
     void Start () {
 		instance = this;
@@ -87,7 +88,7 @@ public class SpawnManager : MonoBehaviour {
 		if(listPlayerDead.Contains(1) && listPlayerDead.Contains(2))
 		{
 			UiManager.isGameStarted = false;
-
+			accesUI.theBall.SetActive (false);
 			accesUI.GameOverContainer.SetActive (true);
 			AkSoundEngine.PostEvent ("GAME_OVER", gameObject);
 
@@ -107,6 +108,7 @@ public class SpawnManager : MonoBehaviour {
 		{
 
 			UiManager.isGameStarted = false;
+			accesUI.theBall.SetActive (false);
 
 			AkSoundEngine.PostEvent ("GAME_OVER", gameObject);
 			accesUI.GameOverContainer.SetActive (true);

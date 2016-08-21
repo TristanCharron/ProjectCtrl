@@ -24,9 +24,12 @@
 				<Event Id="2180046864" Name="BALL_STATE_UP"/>
 				<Event Id="3149584576" Name="GAME_END_BLUE"/>
 				<Event Id="2724220905" Name="GAME_END_RED"/>
+				<Event Id="2353222420" Name="GAME_GO"/>
 				<Event Id="1365208458" Name="GAME_OPEN"/>
 				<Event Id="1432716332" Name="GAME_OVER"/>
 				<Event Id="465026768" Name="GAME_PLAY"/>
+				<Event Id="3010971535" Name="GAME_READY"/>
+				<Event Id="3688840322" Name="GAME_SET"/>
 				<Event Id="733168346" Name="GAME_START"/>
 				<Event Id="671479072" Name="MONK_CATCH"/>
 				<Event Id="2097794929" Name="MONK_DEAD"/>
@@ -233,6 +236,10 @@
 					<ShortName>VO_monk_pitch_01.wav</ShortName>
 					<Path>SFX\VO_monk_pitch_01_9E69E797.wem</Path>
 				</File>
+				<File Id="484009721" Language="SFX">
+					<ShortName>MUS_guitare.wav</ShortName>
+					<Path>SFX\MUS_guitare_4B8CC0C5.wem</Path>
+				</File>
 				<File Id="487407061" Language="SFX">
 					<ShortName>AMB_wind_loop.wav</ShortName>
 					<Path>SFX\AMB_wind_loop_457F8F1E.wem</Path>
@@ -249,10 +256,6 @@
 					<ShortName>SFX_monk_dead_03.wav</ShortName>
 					<Path>SFX\SFX_monk_dead_03_9E69E797.wem</Path>
 				</File>
-				<File Id="527811619" Language="SFX">
-					<ShortName>SFX_intro_chimes_01.wav</ShortName>
-					<Path>SFX\SFX_intro_chimes_01_9E69E797.wem</Path>
-				</File>
 				<File Id="545105311" Language="SFX">
 					<ShortName>VO_game_over_02.wav</ShortName>
 					<Path>SFX\VO_game_over_02_9E69E797.wem</Path>
@@ -265,9 +268,9 @@
 					<ShortName>SFX_stage_bell_02.wav</ShortName>
 					<Path>SFX\SFX_stage_bell_02_9E69E797.wem</Path>
 				</File>
-				<File Id="565432905" Language="SFX">
-					<ShortName>SFX_intro_chimes_02.wav</ShortName>
-					<Path>SFX\SFX_intro_chimes_02_9E69E797.wem</Path>
+				<File Id="578602196" Language="SFX">
+					<ShortName>MUS_complet.wav</ShortName>
+					<Path>SFX\MUS_complet_4B8CC0C5.wem</Path>
 				</File>
 				<File Id="584609824" Language="SFX">
 					<ShortName>VO_red_team_03.wav</ShortName>
