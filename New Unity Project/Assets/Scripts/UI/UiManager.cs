@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class UiManager : MonoBehaviour {
 	public static UiManager Instance { get {return instance; }} 
+	public static bool IsFreezeFraming  { get {return isFreezeFraming; }} 
+	private static bool isFreezeFraming = false, isScreenShake = false;
 	private static UiManager instance;
     public GameObject titleContainer, startContainer;
     public GameObject playerIDcontainer;
@@ -20,6 +22,14 @@ public class UiManager : MonoBehaviour {
 		instance.StartCoroutine (instance.FreezeFrame (sec));
 
 	}
+
+	public static void OnScreenShake(float sec)
+	{
+		instance.StartCoroutine (instance.ScreenShake (sec));
+
+	}
+
+
 	// Use this for initialization
 	void Awake () {
 		instance = this;
@@ -33,13 +43,50 @@ public class UiManager : MonoBehaviour {
 
 	public IEnumerator FreezeFrame(float sec)
 	{
+		if(!isFreezeFraming)
+		{
+		isFreezeFraming = true;
 		Time.timeScale = 0.01f;
 		float pauseEndTime = Time.realtimeSinceStartup + sec;
 		while (Time.realtimeSinceStartup < pauseEndTime)
 			yield return 0;
-				
 		Time.timeScale = 1;
+		isFreezeFraming = false;
+		}
+		yield break;
+	}
 
+	public IEnumerator ScreenShake(float sec)
+	{
+
+
+		if(!isScreenShake)
+		{
+			isScreenShake = true;
+			float elapsed = 0.0f;
+
+			Vector3 originalCamPos = Camera.main.transform.position;
+
+			while (elapsed < sec) {
+
+				elapsed += Time.deltaTime;          
+
+				float percentComplete = elapsed / sec;         
+				float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
+
+				// map value to [-1, 1]
+				float x = Random.value * 2.0f - 1.0f;
+				float y = Random.value * 2.0f - 1.0f;
+				x *= 1 * damper;
+				y *= 1 * damper;
+
+				Camera.main.transform.position = new Vector3(x, y, originalCamPos.z);
+
+				yield return null;
+			}
+			isScreenShake = false;
+		}
+		yield break;
 	}
 
     // Update is called once per frame

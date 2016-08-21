@@ -8352,7 +8352,7 @@ MonoBehaviour:
   _MaxVelocity: 1000
   _MinVelocity: 35
   _DecreaseVelocity: 0.4
-  _MomentumVelocity: 100
+  _MomentumVelocity: 60
   CurrentPossessedTeam: 0
   pSystem: {fileID: 1664275171}
 --- !u!95 &1216636386

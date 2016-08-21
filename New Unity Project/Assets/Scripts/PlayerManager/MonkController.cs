@@ -306,7 +306,8 @@ public class MonkController : MonoBehaviour
         Debug.Log("tappe la balle");
         ballManager.onPush(Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up);
         ballManager.onChangeTeamPossession(Team);
-        //UiManager.OnFreezeFrame (0.1f);
+		UiManager.OnFreezeFrame (0 + ((ballManager.CurrentVelocity / ballManager.MaxVelocity) / 2) );
+		UiManager.OnScreenShake(0 + ((ballManager.CurrentVelocity / ballManager.MaxVelocity) / 2) );
 
     }
 
