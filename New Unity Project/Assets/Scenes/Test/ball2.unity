@@ -225,8 +225,6 @@ MonoBehaviour:
   isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 534357828}
-  MonkCollider: {fileID: 0}
-  nonBouncy: {fileID: 0}
   canDoAction: 1
   WindGust: {fileID: 698443958}
 --- !u!95 &35232885
@@ -498,8 +496,6 @@ MonoBehaviour:
   isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 1145829370}
-  MonkCollider: {fileID: 0}
-  nonBouncy: {fileID: 0}
   canDoAction: 1
   WindGust: {fileID: 1078657687}
 --- !u!95 &115000726
@@ -2979,8 +2975,6 @@ MonoBehaviour:
   isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 839302185}
-  MonkCollider: {fileID: 0}
-  nonBouncy: {fileID: 0}
   canDoAction: 1
   WindGust: {fileID: 165241169}
 --- !u!95 &407643785
@@ -3989,8 +3983,6 @@ MonoBehaviour:
   isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 1455670972}
-  MonkCollider: {fileID: 0}
-  nonBouncy: {fileID: 0}
   canDoAction: 1
   WindGust: {fileID: 265155809}
 --- !u!95 &793283481
@@ -8358,8 +8350,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _MaxVelocity: 1000
-  _MinVelocity: 75
-  _DecreaseVelocity: 2
+  _MinVelocity: 35
+  _DecreaseVelocity: 0.4
   _MomentumVelocity: 100
   CurrentPossessedTeam: 0
   pSystem: {fileID: 1664275171}
@@ -8433,7 +8425,7 @@ Transform:
   m_GameObject: {fileID: 1216636384}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 22.9, y: 16.83, z: 340.6}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_Children:
   - {fileID: 544248183}

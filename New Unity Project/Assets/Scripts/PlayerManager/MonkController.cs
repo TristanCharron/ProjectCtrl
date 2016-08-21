@@ -58,10 +58,6 @@ public class MonkController : MonoBehaviour
     BoxCollider PushCollider;
     [SerializeField]
     BoxCollider PullCollider;
-    [SerializeField]
-    BoxCollider MonkCollider;
-    [SerializeField]
-    PhysicMaterial nonBouncy;
 
 
     [SerializeField]
@@ -94,17 +90,16 @@ public class MonkController : MonoBehaviour
 
     IEnumerator onGoingThrough()
     {
-        MonkCollider.material = null;
-        MonkCollider.isTrigger = true;
-        yield return new WaitForSeconds(1f);
-        MonkCollider.isTrigger = false;
+		PlayerCollider.enabled = false;
+		GetComponent<Rigidbody> ().isKinematic = true;
+        yield return new WaitForSeconds(1.2f);
+		GetComponent<Rigidbody> ().isKinematic = false;
+		PlayerCollider.enabled = true;
 
     }
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Wall")
-            MonkCollider.material = nonBouncy;
 
         if (other.gameObject.tag == "Orb")
         {
@@ -114,14 +109,15 @@ public class MonkController : MonoBehaviour
                 if (!isDead)
                 {
                     SpawnManager.onPlayerDeath(PlayerID);
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
                 }
 
+
             }
-            else
-            {
-                StartCoroutine(onGoingThrough());
-            }
+			else
+				StartCoroutine(onGoingThrough());
+
+            
         }
 
     }
