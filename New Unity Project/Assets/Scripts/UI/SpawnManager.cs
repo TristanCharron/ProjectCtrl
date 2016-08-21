@@ -27,7 +27,7 @@ public class SpawnManager : MonoBehaviour {
     void Start () {
         instance = this;
         players = _Players;
-        gameOverContainer.SetActive(false);
+//        gameOverContainer.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -37,14 +37,18 @@ public class SpawnManager : MonoBehaviour {
 
     static void onReset()
     {
+		Debug.Log ("RESET2");
+
 		instance.Reset ();
     }
 
 	void Reset()
 	{
+
+		Debug.Log ("RESET");
 		//SceneManager.LoadScene (0);
 		//SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
-		SceneManager.LoadScene (1);
+		SceneManager.LoadScene (0);
 	}
     
 
@@ -70,26 +74,44 @@ public class SpawnManager : MonoBehaviour {
             
     }
 
-  public void isTeamDefeated()
-    {
-		AkSoundEngine.PostEvent ("GAME_OVER", gameObject);
 
-        if(listPlayerDead.Contains(1) && listPlayerDead.Contains(2))
-        {
+	IEnumerator TestTeamWins()
+	{
+
+		if(listPlayerDead.Contains(1) && listPlayerDead.Contains(2))
+		{
+			
+			AkSoundEngine.PostEvent ("GAME_OVER", gameObject);
+
+			yield return new WaitForSeconds (2f);
+
 			AkSoundEngine.PostEvent ("GAME_END_RED", gameObject);
 
-            Debug.Log("Red Team Wins");
-            onReset();
-        }
-        else if (listPlayerDead.Contains(3) && listPlayerDead.Contains(4))
-        {
+			Debug.Log("Red Team Wins");
+
+			yield return new WaitForSeconds (5f);
+
+			onReset();
+		}
+		else if (listPlayerDead.Contains(3) && listPlayerDead.Contains(4))
+		{
+			
+			AkSoundEngine.PostEvent ("GAME_OVER", gameObject);
+
+			yield return new WaitForSeconds (2f);
+
 			AkSoundEngine.PostEvent ("GAME_END_BLUE", gameObject);
 
-            Debug.Log("Blue Team Wins");
-            onReset();
-        }
-    }
+			Debug.Log("Blue Team Wins");
 
+			yield return new WaitForSeconds (5f);
+			onReset();
+		}
+
+
+	
+
+	}
    public void onPlayerDeath(int id)
     {
 		AkSoundEngine.PostEvent ("MONK_DEAD", players [id - 1].gameObject);
@@ -97,7 +119,7 @@ public class SpawnManager : MonoBehaviour {
 
         listPlayerDead.Add(id);
         players[id - 1].gameObject.SetActive(false);
-        isTeamDefeated();
+		StartCoroutine (TestTeamWins ());
 
 
     }

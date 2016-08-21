@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Orb
   - Wall
+  - Cloche
   layers:
   - Default
   - TransparentFX

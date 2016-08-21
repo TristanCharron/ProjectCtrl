@@ -10,6 +10,7 @@ public class UiManager : MonoBehaviour {
 	private static UiManager instance;
     public GameObject titleContainer, startContainer;
     public GameObject playerIDcontainer;
+	public Animator FadeToWhite;
     public List<Text> playerId = new List<Text>();
     float duration = 1, alpha = 0, t;
     int nbPlayers;
@@ -41,7 +42,7 @@ public class UiManager : MonoBehaviour {
 		instance = this;
         nbPlayers = 4;
         playerIDcontainer.SetActive(false);
-        startContainer.SetActive(false);
+       // startContainer.SetActive(false);
         //iTween.MoveTo(gameObject, iTween.Hash("x", 3, "time", 4, "delay", 1, "onupdate", "myUpdateFunction", "looptype", iTween.LoopType.pingPong));
 		AkSoundEngine.PostEvent ("GAME_OPEN", gameObject);
 
@@ -99,24 +100,12 @@ public class UiManager : MonoBehaviour {
     void Update () {
         
 
-       
-
-        
-        if (Input.GetMouseButtonDown(0) || Input.GetButtonDown("L_Press_1") && startGame == false)
-        {
-			AkSoundEngine.PostEvent ("GAME_PLAY", gameObject);
-            titleContainer.SetActive(false);
-            gameObject.GetComponent<Animator>().enabled = true;
-            StartCoroutine(makeIDAppear());
-            startGame = true;
-        }
 
        
 	}
 	public void EndCinematic()
 	{
 		UiManager.isGameStarted = true;
-		Debug.Log ("end");
 		GetComponent<cameraBoxScriptTry> ().enabled = true;
 		SpawnBall ();
 		AkSoundEngine.PostEvent ("GAME_START", gameObject);
@@ -156,9 +145,11 @@ public class UiManager : MonoBehaviour {
             g.CrossFadeAlpha(0.0f, 2.0f, false);
         }
         yield return new WaitForSeconds(3f);
-        startContainer.SetActive(true);
+       
+		//startContainer.SetActive(true);
         yield return new WaitForSeconds(1f);
-        startContainer.SetActive(false);
+        
+		//startContainer.SetActive(false);
     }
 
    /* void chargeBarActive()
@@ -168,7 +159,16 @@ public class UiManager : MonoBehaviour {
         chargeBar.transform.localPosition = new Vector3( Mathf.Lerp(-0.255f, 0.2569f, t ) , chargeBar.transform.localPosition.y, chargeBar.transform.localPosition.z);
     }
     **/
+	public void onStartGame()
+	{
+		AkSoundEngine.PostEvent ("GAME_PLAY", gameObject);
+		//titleContainer.SetActive(false);
+		gameObject.GetComponent<Animator>().enabled = true;
+		FadeToWhite.enabled = true;
+		StartCoroutine(makeIDAppear());
+		startGame = true;
 
+	}
 
     float lerp()
     {
