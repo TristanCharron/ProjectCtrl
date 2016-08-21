@@ -309,6 +309,8 @@ public class MonkController : MonoBehaviour
 		UiManager.OnFreezeFrame (0 + ((ballManager.CurrentVelocity / ballManager.MaxVelocity) / 2) );
 		UiManager.OnScreenShake(0 + ((ballManager.CurrentVelocity / ballManager.MaxVelocity) / 2) );
 
+		WindGust.GetComponent<BoxCollider>().enabled = false;
+
     }
 
     public void onPull()

@@ -15,6 +15,7 @@ public class cameraBoxScriptTry : MonoBehaviour {
     [SerializeField]
     float zoomSpeed = 20f;
 
+	[SerializeField] Vector3 CameraAjust;
     float yCam;
 
     Camera camera;
@@ -77,7 +78,7 @@ public class cameraBoxScriptTry : MonoBehaviour {
         Vector3 boundingBoxCenter = boundingBox.center;
 
         
-        return new Vector3(boundingBoxCenter.x, /*camera.transform.position.y*/ boundingBoxCenter.y + 105, boundingBoxCenter.z);
+		return new Vector3(boundingBoxCenter.x, /*camera.transform.position.y*/ boundingBoxCenter.y - 105, boundingBoxCenter.z) + CameraAjust;
         
     }
 

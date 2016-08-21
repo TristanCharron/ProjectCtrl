@@ -108,6 +108,11 @@ public class UiManager : MonoBehaviour {
        
 	}
 
+	public void EndCinematic()
+	{
+		Debug.Log ("end");
+		GetComponent<cameraBoxScriptTry> ().enabled = true;
+	}
     IEnumerator makeIDAppear()
     {
         yield return new WaitForSeconds(6f);
