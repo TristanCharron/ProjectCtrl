@@ -103,6 +103,8 @@ public class SpawnManager : MonoBehaviour {
 			yield return new WaitForSeconds (5f);
 
 			onReset();
+			AkSoundEngine.PostEvent ("GAME_OPEN", gameObject);
+
 		}
 		else if (listPlayerDead.Contains(3) && listPlayerDead.Contains(4))
 		{
@@ -123,6 +125,8 @@ public class SpawnManager : MonoBehaviour {
 
 			yield return new WaitForSeconds (5f);
 			onReset();
+			AkSoundEngine.PostEvent ("GAME_OPEN", gameObject);
+
 		}
 
 

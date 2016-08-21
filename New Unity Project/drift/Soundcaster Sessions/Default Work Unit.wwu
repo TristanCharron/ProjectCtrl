@@ -22,7 +22,7 @@
 							<Position X="0" Y="3"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="UI_SELECT" ID="{9CB6303B-98DC-440F-95F7-B6169997ECDA}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<ObjectRef Name="UI_HOVER" ID="{9CB6303B-98DC-440F-95F7-B6169997ECDA}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
 							<Position X="0" Y="4"/>
 						</Module>
 						<Module>
@@ -40,6 +40,10 @@
 						<Module>
 							<ObjectRef Name="GAME_GO" ID="{CEF49754-C2E1-457E-AA6F-54BA72348DB7}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
 							<Position X="1" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="UI_SELECT" ID="{7985C468-BDFC-4DBB-AE47-6FB3EF68AF31}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="1" Y="4"/>
 						</Module>
 						<Module>
 							<ObjectRef Name="MONK_PITCH" ID="{2924AAA4-00B0-47FF-9A1E-7AE376E1AA16}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
@@ -68,10 +72,6 @@
 						<Module>
 							<ObjectRef Name="GAME_END_RED" ID="{B9E1E73D-B7E0-46DA-A06E-536B9FB5EE95}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
 							<Position X="3" Y="2"/>
-						</Module>
-						<Module>
-							<ObjectRef Name="GAME_START" ID="{63950649-9D64-460A-846D-5C1DCDC9B500}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
-							<Position X="3" Y="3"/>
 						</Module>
 						<Module>
 							<ObjectRef Name="BALL_STATE_DOWN" ID="{085F389E-FBEE-4CE0-941F-9B71F7F8085E}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>

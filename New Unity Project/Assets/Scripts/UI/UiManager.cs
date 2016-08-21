@@ -45,6 +45,7 @@ public class UiManager : MonoBehaviour {
        // startContainer.SetActive(false);
         //iTween.MoveTo(gameObject, iTween.Hash("x", 3, "time", 4, "delay", 1, "onupdate", "myUpdateFunction", "looptype", iTween.LoopType.pingPong));
 		AkSoundEngine.PostEvent ("GAME_OPEN", gameObject);
+		Debug.Log ("game open");
 
     }
 
@@ -116,7 +117,9 @@ public class UiManager : MonoBehaviour {
 		Sakuras.SetActive (false);
 		GetComponent<cameraBoxScriptTry> ().enabled = true;
 		SpawnBall ();
-		AkSoundEngine.PostEvent ("GAME_START", gameObject);
+
+	//	AkSoundEngine.PostEvent ("GAME_START", gameObject);
+
 		StartCoroutine (onStartGame2 ());
 
 	}
@@ -126,7 +129,7 @@ public class UiManager : MonoBehaviour {
 		readyContainer.SetActive (true);
 		yield return new WaitForSeconds (3.2f);
 		readyContainer.SetActive (false);
-
+		Debug.Log ("coucou");
 		UiManager.isGameStarted = true;
 		startGame = true;
 
@@ -172,7 +175,10 @@ public class UiManager : MonoBehaviour {
         
 		//startContainer.SetActive(false);
     }
+	public void changeUI()
+	{
 
+	}
    /* void chargeBarActive()
     {
         

@@ -16,8 +16,8 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}'
-    m_lastTimePsrt1: 1990443776
-    m_lastTimePart2: -1999386154
+    m_lastTimePsrt1: 430967040
+    m_lastTimePart2: -1999386138
     List:
     - Name: BALL_IMPACT
       Path: Default Work Unit\BALL\BALL_IMPACT
@@ -151,18 +151,6 @@ MonoBehaviour:
       ID: -606126974
       Guid: b5b74ea428f88945bc6aafa993be261c
       maxAttenuation: 0
-    - Name: GAME_START
-      Path: Default Work Unit\GAME\GAME_START
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: GAME
-        ObjectType: 4
-      - ElementName: GAME_START
-        ObjectType: 3
-      ID: 733168346
-      Guid: 49069563649d0a46846d5c1dcdc9b500
-      maxAttenuation: 0
     - Name: MONK_CATCH
       Path: Default Work Unit\MONK\MONK_CATCH
       PathAndIcons:
@@ -235,6 +223,16 @@ MonoBehaviour:
       ID: -425903436
       Guid: ee942aa3ffe7b94f84bc1906282cb3dc
       maxAttenuation: 0
+    - Name: UI_HOVER
+      Path: Default Work Unit\UI_HOVER
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: UI_HOVER
+        ObjectType: 3
+      ID: 2118900976
+      Guid: 3b30b69cdc980f4495f7b6169997ecda
+      maxAttenuation: 0
     - Name: UI_SELECT
       Path: Default Work Unit\UI_SELECT
       PathAndIcons:
@@ -243,7 +241,7 @@ MonoBehaviour:
       - ElementName: UI_SELECT
         ObjectType: 3
       ID: -1520838174
-      Guid: 3b30b69cdc980f4495f7b6169997ecda
+      Guid: 68c48579fcbdbb4dae476fb3ef68af31
       maxAttenuation: 0
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -291,8 +289,8 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{A2D49259-6C18-4DCE-BC74-35CB9CF9887A}'
-    m_lastTimePsrt1: -824523520
-    m_lastTimePart2: -1999386154
+    m_lastTimePsrt1: 830811159
+    m_lastTimePart2: -1999386136
     List:
     - Name: DriftNoMusic
       Path: Default Work Unit\DriftNoMusic
@@ -303,7 +301,8 @@ MonoBehaviour:
         ObjectType: 7
       ID: 2024809976
       Guid: ec4b457647480b48939206e615aab209
-  ExpandedItems: []
+  ExpandedItems:
+  - /drift
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1

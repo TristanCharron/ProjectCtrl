@@ -5,6 +5,13 @@
 			<ChildrenList>
 				<MusicSwitchContainer Name="New Music Switch Container" ID="{7B86B001-B9CB-44C8-9986-BC9AD66EB5D8}" ShortID="336208976">
 					<PropertyList>
+						<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+						<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+						<Property Name="MaxSoundPerInstance" Type="int16">
+							<ValueList>
+								<Value>2</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Tempo" Type="Real64" Value="165"/>
 						<Property Name="UseMaxSoundPerInstance" Type="bool">
 							<ValueList>
@@ -50,7 +57,6 @@
 												<Value>1</Value>
 											</ValueList>
 										</Property>
-										<Property Name="OverrideMaxSoundInstance" Type="bool" Value="True"/>
 										<Property Name="Tempo" Type="Real64" Value="165"/>
 										<Property Name="UseMaxSoundPerInstance" Type="bool">
 											<ValueList>
@@ -59,7 +65,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-8</Value>
+												<Value>-10</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -226,7 +232,6 @@
 												<Value>1</Value>
 											</ValueList>
 										</Property>
-										<Property Name="OverrideMaxSoundInstance" Type="bool" Value="True"/>
 										<Property Name="Tempo" Type="Real64" Value="165"/>
 										<Property Name="UseMaxSoundPerInstance" Type="bool">
 											<ValueList>
@@ -235,7 +240,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-4</Value>
+												<Value>-10</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -297,155 +302,6 @@
 										</MusicCue>
 									</CueList>
 								</MusicSegment>
-								<MusicSegment Name="MUS_guitare" ID="{60570EE8-485A-4EC3-97F4-65A64057D612}" ShortID="26144037">
-									<PropertyList>
-										<Property Name="EndPosition" Type="Real64" Value="58181.8181818182"/>
-										<Property Name="Highpass" Type="int16">
-											<ValueList>
-												<Value>39</Value>
-											</ValueList>
-										</Property>
-										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
-										<Property Name="Lowpass" Type="int16">
-											<ValueList>
-												<Value>42</Value>
-											</ValueList>
-										</Property>
-										<Property Name="MaxSoundPerInstance" Type="int16">
-											<ValueList>
-												<Value>1</Value>
-											</ValueList>
-										</Property>
-										<Property Name="OverrideMaxSoundInstance" Type="bool" Value="True"/>
-										<Property Name="Tempo" Type="Real64" Value="165"/>
-										<Property Name="UseMaxSoundPerInstance" Type="bool">
-											<ValueList>
-												<Value>True</Value>
-											</ValueList>
-										</Property>
-										<Property Name="Volume" Type="Real64">
-											<ValueList>
-												<Value>-8</Value>
-											</ValueList>
-										</Property>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Conversion">
-											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0C588E55-620B-4C96-905B-CAC30B94D3E4}"/>
-										</Reference>
-										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1698C7EC-DCF8-4AD3-84C6-1AFC5B27A400}"/>
-										</Reference>
-									</ReferenceList>
-									<ChildrenList>
-										<MusicTrack Name="MUS_guitare" ID="{70A77FAF-C8EC-46AA-88DC-D194E2EE4CEF}" ShortID="63166584">
-											<ReferenceList>
-												<Reference Name="OutputBus">
-													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1698C7EC-DCF8-4AD3-84C6-1AFC5B27A400}"/>
-												</Reference>
-											</ReferenceList>
-											<ChildrenList>
-												<AudioFileSource Name="MUS_guitare" ID="{62A39B88-D301-41C6-B77F-19657E20CCFC}" ShortID="762404657">
-													<Language>SFX</Language>
-													<AudioFile>MUS_guitare.wav</AudioFile>
-													<ConvertedFileIDList>
-														<File ID="484009721"/>
-													</ConvertedFileIDList>
-												</AudioFileSource>
-											</ChildrenList>
-											<TransitionList>
-												<MusicTransition Name="Root" ID="{BCFB5A03-A9F4-43BC-864D-1651A6C8DC3C}">
-													<PropertyList>
-														<Property Name="IsFolder" Type="bool" Value="True"/>
-													</PropertyList>
-													<TransitionInfo/>
-												</MusicTransition>
-											</TransitionList>
-											<SequenceList>
-												<MusicTrackSequence Name="" ID="{B5BFC0E7-B821-4015-A1F2-34EA0DE1C29B}">
-													<ClipList>
-														<MusicClip Name="MUS_guitare" ID="{ECAA373F-A385-4E0B-9F9D-84C09CF250A8}">
-															<PropertyList>
-																<Property Name="EndTrimOffset" Type="Real64" Value="55272.7272727273"/>
-																<Property Name="FadeInMode" Type="int16" Value="0"/>
-																<Property Name="FadeOutMode" Type="int16" Value="0"/>
-															</PropertyList>
-															<AudioSourceRef Name="MUS_guitare" ID="{62A39B88-D301-41C6-B77F-19657E20CCFC}"/>
-															<PropertyCurveList>
-																<PropertyCurve PropertyName="Highpass">
-																	<Curve Name="" ID="{F2491810-707F-4691-BA61-E8DADEB8A346}">
-																		<PropertyList>
-																			<Property Name="Flags" Type="int32" Value="1"/>
-																		</PropertyList>
-																		<PointList>
-																			<Point>
-																				<XPos>0</XPos>
-																				<YPos>0</YPos>
-																				<Flags>5</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>55.27273</XPos>
-																				<YPos>0</YPos>
-																				<Flags>37</Flags>
-																			</Point>
-																		</PointList>
-																	</Curve>
-																</PropertyCurve>
-																<PropertyCurve PropertyName="Lowpass">
-																	<Curve Name="" ID="{F0838332-393D-4494-81A3-77907789C663}">
-																		<PropertyList>
-																			<Property Name="Flags" Type="int32" Value="1"/>
-																		</PropertyList>
-																		<PointList>
-																			<Point>
-																				<XPos>0</XPos>
-																				<YPos>0</YPos>
-																				<Flags>5</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>55.27273</XPos>
-																				<YPos>0</YPos>
-																				<Flags>37</Flags>
-																			</Point>
-																		</PointList>
-																	</Curve>
-																</PropertyCurve>
-																<PropertyCurve PropertyName="Volume">
-																	<Curve Name="" ID="{CBAC55A1-2C75-4EC1-BB68-D33993E2141E}">
-																		<PropertyList>
-																			<Property Name="Flags" Type="int32" Value="3"/>
-																		</PropertyList>
-																		<PointList>
-																			<Point>
-																				<XPos>0</XPos>
-																				<YPos>0</YPos>
-																				<Flags>5</Flags>
-																			</Point>
-																			<Point>
-																				<XPos>55.27273</XPos>
-																				<YPos>0</YPos>
-																				<Flags>37</Flags>
-																			</Point>
-																		</PointList>
-																	</Curve>
-																</PropertyCurve>
-															</PropertyCurveList>
-														</MusicClip>
-													</ClipList>
-												</MusicTrackSequence>
-											</SequenceList>
-										</MusicTrack>
-									</ChildrenList>
-									<CueList>
-										<MusicCue Name="Entry Cue" ID="{5642D86B-2EB3-464E-8C69-E80A0003B48B}"/>
-										<MusicCue Name="Exit Cue" ID="{C744C3E1-5AF7-4AC6-AD3A-C76819FE678B}">
-											<PropertyList>
-												<Property Name="CueType" Type="int16" Value="1"/>
-												<Property Name="TimeMs" Type="Real64" Value="55272.7272727273"/>
-											</PropertyList>
-										</MusicCue>
-									</CueList>
-								</MusicSegment>
 							</ChildrenList>
 							<TransitionList>
 								<MusicTransition Name="Root" ID="{86B1AFF7-6CD4-4894-994E-8EC460C25375}">
@@ -471,12 +327,6 @@
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
 											<SegmentRef Name="MUS_complet" ID="{00BAD503-073D-4971-862B-824AA9DF7E4A}"/>
-										</MusicPlaylistItem>
-										<MusicPlaylistItem Name="" ID="{E9376291-E8AB-42CE-B79B-85EA72948A3C}" ShortID="22788554">
-											<PropertyList>
-												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
-											</PropertyList>
-											<SegmentRef Name="MUS_guitare" ID="{60570EE8-485A-4EC3-97F4-65A64057D612}"/>
 										</MusicPlaylistItem>
 									</ChildrenList>
 								</MusicPlaylistItem>
@@ -535,6 +385,7 @@
 										<Property Name="DestinationContextType" Type="int16" Value="2"/>
 										<Property Name="EnableDestinationFadeIn" Type="bool" Value="True"/>
 										<Property Name="EnableSourceFadeOut" Type="bool" Value="True"/>
+										<Property Name="ExitSourceAt" Type="int16" Value="2"/>
 										<Property Name="PlayDestinationPreEntry" Type="bool" Value="False"/>
 										<Property Name="PlaySourcePostExit" Type="bool" Value="False"/>
 										<Property Name="SourceContextType" Type="int16" Value="2"/>

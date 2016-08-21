@@ -10,6 +10,8 @@ public class Cloche : MonoBehaviour {
 			AkSoundEngine.PostEvent ("STAGE_BELL", gameObject);
 
 			GetComponent<Animator> ().Play ("DONG");
+
+			ballManager.onPush (ballManager.MomentumBell + ballManager.CurrentVelocity);
 		}
 	}
 

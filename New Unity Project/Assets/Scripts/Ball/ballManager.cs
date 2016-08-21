@@ -23,9 +23,11 @@ public class ballManager : MonoBehaviour
 
     public static float DecreaseVelocity { get { return Instance._DecreaseVelocity; } }
 
+	public static float MomentumBell { get { return Instance._MomentumBell; } }
+
     public static ParticleSystem ParticleSystemRender { get { return Instance.pSystem; } }
 
-    public float _MaxVelocity, _MinVelocity, _DecreaseVelocity, _MomentumVelocity;
+	public float _MaxVelocity, _MinVelocity, _DecreaseVelocity, _MomentumVelocity, _MomentumBell;
 
     private Rigidbody rBody;
 
@@ -105,6 +107,15 @@ public class ballManager : MonoBehaviour
         Instance.onSetVelocity(angle * destinationVelocity);
 
     }
+
+
+	public static void onPush(float destVelocity)
+	{
+
+		isPushed = true;
+		destinationVelocity = destVelocity;
+
+	}
 
 	public static void onPush(Vector3 angle, float destVelocity)
 	{

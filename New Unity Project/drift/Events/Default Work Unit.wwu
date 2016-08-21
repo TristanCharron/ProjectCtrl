@@ -95,10 +95,10 @@
 					<ChildrenList>
 						<Event Name="BALL_STATE_UP" ID="{2B83D311-551A-4487-8592-E1BF42392E2A}">
 							<ChildrenList>
-								<Action Name="Play" ID="{295CD175-6732-4ADF-B563-7AF98226B854}" ShortID="268584009" Type="Play" Scope="One" Global="false">
+								<Action Name="Play" ID="{427F0D8B-0406-4612-856A-47F117740C76}" ShortID="188919177" Type="Play" Scope="One" Global="false">
 									<ElementList>
-										<Element ID="{10D03ED3-17A9-469B-A23B-1AE39A91EEEB}" Global="false">
-											<ObjectRef Name="SFX_ball_state" ID="{A1589A03-2E07-49C6-BA9D-8F259B8D6670}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+										<Element ID="{607604D9-D9D1-4DBB-95D6-83E00A424417}" Global="false">
+											<ObjectRef Name="SFX_ball_state_change_impact" ID="{617BE8DA-3F76-4F32-9DB6-192990D05C4A}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
 										</Element>
 									</ElementList>
 								</Action>
@@ -128,7 +128,7 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
-				<Event Name="UI_SELECT" ID="{9CB6303B-98DC-440F-95F7-B6169997ECDA}">
+				<Event Name="UI_HOVER" ID="{9CB6303B-98DC-440F-95F7-B6169997ECDA}">
 					<ChildrenList>
 						<Action Name="Play" ID="{5B10CF8C-BE45-4EA2-AA19-E545366A458B}" ShortID="11123387" Type="Play" Scope="One" Global="false">
 							<ElementList>
@@ -145,7 +145,7 @@
 							<ChildrenList>
 								<Action Name="Stop" ID="{A6DEE544-6E26-4591-99F4-D5F7DDB5D69B}" ShortID="1047593893" Type="Stop" Scope="One" Global="false">
 									<PropertyList>
-										<Property Name="FadeTime" Type="Real64" Value="2"/>
+										<Property Name="FadeTime" Type="Real64" Value="3"/>
 									</PropertyList>
 									<ElementList>
 										<Element ID="{B65CDC7F-D314-4AF7-A5ED-99089DC442CA}" Global="false">
@@ -163,10 +163,17 @@
 										</Element>
 									</ElementList>
 								</Action>
+								<Action Name="Set Switch" ID="{415AC988-7279-4015-B60B-C2F23AEB5DDD}" ShortID="896479057" Type="SetSwitch" Scope="All" Global="false">
+									<SetItemParam>
+										<Group Name="SwitchMusic" ID="{1793F510-7A82-468E-9B9B-0C434069E315}"/>
+										<GroupItem Name="main" ID="{5BC4934E-BA29-4150-9AAF-0D82E9727234}"/>
+									</SetItemParam>
+								</Action>
 							</ChildrenList>
 						</Event>
 						<Event Name="GAME_OPEN" ID="{AB61D847-BD07-4F3A-B051-2A279A98AF3B}">
 							<ChildrenList>
+								<Action Name="Stop All" ID="{7B02311F-E4D3-4192-BFC0-2B36B42FD07B}" ShortID="99423356" Type="Stop" Scope="All" Global="false"/>
 								<Action Name="Play" ID="{6CB47173-BEC1-4135-9D59-5F488D4B5D6A}" ShortID="18003820" Type="Play" Scope="One" Global="false">
 									<PropertyList>
 										<Property Name="FadeTime" Type="Real64" Value="2"/>
@@ -191,21 +198,14 @@
 									</SetItemParam>
 								</Action>
 								<Action Name="Play" ID="{1C0DBB76-812B-418E-AFBF-BB03CC3B8C84}" ShortID="895477673" Type="Play" Scope="One" Global="false">
+									<PropertyList>
+										<Property Name="FadeTime" Type="Real64" Value="5"/>
+									</PropertyList>
 									<ElementList>
 										<Element ID="{45F2F46F-FC74-4A81-AD60-E06067A6F83A}" Global="false">
 											<ObjectRef Name="New Music Switch Container" ID="{7B86B001-B9CB-44C8-9986-BC9AD66EB5D8}" WorkUnitID="{A648EB30-6BFF-4F13-BBFE-A423B5B907E0}"/>
 										</Element>
 									</ElementList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="GAME_START" ID="{63950649-9D64-460A-846D-5C1DCDC9B500}">
-							<ChildrenList>
-								<Action Name="Set Switch" ID="{6A5A25AE-E834-4602-A288-030D41A3C94D}" ShortID="81914032" Type="SetSwitch" Scope="All" Global="false">
-									<SetItemParam>
-										<Group Name="SwitchMusic" ID="{1793F510-7A82-468E-9B9B-0C434069E315}"/>
-										<GroupItem Name="main" ID="{5BC4934E-BA29-4150-9AAF-0D82E9727234}"/>
-									</SetItemParam>
 								</Action>
 							</ChildrenList>
 						</Event>
@@ -298,6 +298,24 @@
 						</Event>
 					</ChildrenList>
 				</Folder>
+				<Event Name="UI_SELECT" ID="{7985C468-BDFC-4DBB-AE47-6FB3EF68AF31}">
+					<ChildrenList>
+						<Action Name="Play" ID="{8C4A6824-2333-45E8-8093-D1D0958BF101}" ShortID="346449330" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{CBD5FF52-C904-4E99-BFBE-241877D78DEC}" Global="false">
+									<ObjectRef Name="VO_monk_pitch" ID="{743A922C-F37C-4E7C-9026-C9BB7316AF4D}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+								</Element>
+							</ElementList>
+						</Action>
+						<Action Name="Play" ID="{05587DBD-2884-42A5-91A1-57B4D3A3557D}" ShortID="144812439" Type="Play" Scope="One" Global="false">
+							<ElementList>
+								<Element ID="{0E39CD55-396A-4EC6-9B9F-72C601DF85FE}" Global="false">
+									<ObjectRef Name="UI_Select" ID="{E136E781-D851-4D7E-8FE1-B3D83B9C3EF8}" WorkUnitID="{A02FDC13-610F-494A-A722-C9869936D014}"/>
+								</Element>
+							</ElementList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

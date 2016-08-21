@@ -89,7 +89,7 @@ public class MonkController : MonoBehaviour
 	{
 		PlayerCollider.enabled = false;
 		GetComponent<Rigidbody> ().isKinematic = true;
-		yield return new WaitForSeconds(1.2f);
+		yield return new WaitForSeconds(.2f);
 		GetComponent<Rigidbody> ().isKinematic = false;
 		PlayerCollider.enabled = true;
 	}
@@ -102,6 +102,8 @@ public class MonkController : MonoBehaviour
 			{
 				if (!isDead)
 				{
+					GameObject DeathAnimParticle = Instantiate (Resources.Load<GameObject> ("DeathMonkParticle"), gameObject.transform.position, Quaternion.identity) as GameObject;
+					Destroy (DeathAnimParticle, 5);
 					accesSpawn.onPlayerDeath(PlayerID);
 					//Destroy(gameObject);
 				}
