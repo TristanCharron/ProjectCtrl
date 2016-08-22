@@ -16,21 +16,9 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}'
-    m_lastTimePsrt1: 430967040
-    m_lastTimePart2: -1999386138
+    m_lastTimePsrt1: -1383346176
+    m_lastTimePart2: -1999386118
     List:
-    - Name: BALL_IMPACT
-      Path: Default Work Unit\BALL\BALL_IMPACT
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: BALL
-        ObjectType: 4
-      - ElementName: BALL_IMPACT
-        ObjectType: 3
-      ID: 1165162655
-      Guid: d2bdb66483cd89479aeb1ca6e2037e9c
-      maxAttenuation: 0
     - Name: BALL_STATE_DOWN
       Path: Default Work Unit\BALL\BALL_STATE_DOWN
       PathAndIcons:
@@ -289,8 +277,8 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{A2D49259-6C18-4DCE-BC74-35CB9CF9887A}'
-    m_lastTimePsrt1: 830811159
-    m_lastTimePart2: -1999386136
+    m_lastTimePsrt1: 961686528
+    m_lastTimePart2: -1999386116
     List:
     - Name: DriftNoMusic
       Path: Default Work Unit\DriftNoMusic

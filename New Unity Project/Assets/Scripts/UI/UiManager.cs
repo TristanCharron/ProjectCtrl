@@ -12,6 +12,8 @@ public class UiManager : MonoBehaviour {
     public GameObject playerIDcontainer;
 	public Animator FadeToWhite;
     public List<Text> playerId = new List<Text>();
+	public static Vector3 ShakeAmount { get {return shakeAmount; }} 
+	private static Vector3 shakeAmount;
     float duration = 1, alpha = 0, t;
     int nbPlayers;
     bool startGame;
@@ -24,9 +26,9 @@ public class UiManager : MonoBehaviour {
 	public Transform[] nullSpawnBall;
 	public Transform Everything;
 	public GameObject Sakuras;
-	public static void OnFreezeFrame(float sec)
+	public static void OnFreezeFrame(float sec,float power)
 	{
-		instance.StartCoroutine (instance.FreezeFrame (sec));
+		instance.StartCoroutine (instance.FreezeFrame (sec,power));
 
 	}
 
@@ -55,7 +57,7 @@ public class UiManager : MonoBehaviour {
 		isGameStarted = false;
 	}
 
-	public IEnumerator FreezeFrame(float sec)
+	public IEnumerator FreezeFrame(float sec, float Power)
 	{
 		if(!isFreezeFraming)
 		{
@@ -67,6 +69,9 @@ public class UiManager : MonoBehaviour {
 		Time.timeScale = 1;
 		isFreezeFraming = false;
 		}
+
+		Camera.main.GetComponentInParent<Shake> ().enabled = true;
+		Camera.main.GetComponentInParent<Shake> ().Power = Power;
 
 		yield break;
 	}
@@ -80,25 +85,15 @@ public class UiManager : MonoBehaviour {
 			isScreenShake = true;
 			float elapsed = 0.0f;
 
-			Vector3 originalCamPos = Everything.transform.position;
+			Vector3 originalCamPos = Camera.main.transform.position;
 
-			while (elapsed < sec) {
+			while (elapsed < sec * 2) 
+			{
+				elapsed += Time.deltaTime;
+				shakeAmount = originalCamPos + Random.insideUnitSphere * 50f;
 
-				elapsed += Time.fixedDeltaTime;          
-
-				float percentComplete = elapsed / sec;         
-				float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
-
-				// map value to [-1, 1]
-				float x = Random.value * 2.0f - 1.0f;
-				float y = Random.value * 2.0f - 1.0f;
-				x *= 1 * damper;
-				y *= 1 * damper;
-
-				Everything.transform.position = new Vector3(x, y, originalCamPos.z);
-
-				yield return null;
 			}
+			shakeAmount = Vector3.zero;
 			isScreenShake = false;
 		}
 		yield break;

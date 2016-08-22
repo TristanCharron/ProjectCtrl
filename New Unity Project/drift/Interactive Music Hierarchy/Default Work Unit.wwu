@@ -13,11 +13,6 @@
 							</ValueList>
 						</Property>
 						<Property Name="Tempo" Type="Real64" Value="165"/>
-						<Property Name="UseMaxSoundPerInstance" Type="bool">
-							<ValueList>
-								<Value>True</Value>
-							</ValueList>
-						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -29,6 +24,20 @@
 					</ReferenceList>
 					<ChildrenList>
 						<MusicPlaylistContainer Name="intro" ID="{2EA13740-E4C0-46D2-9771-AE2856C62E60}" ShortID="162295920">
+							<PropertyList>
+								<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverrideMaxSoundInstance" Type="bool" Value="True"/>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0C588E55-620B-4C96-905B-CAC30B94D3E4}"/>
@@ -199,12 +208,10 @@
 							</TransitionList>
 							<Playlist>
 								<MusicPlaylistItem Name="" ID="{280ADD6A-D6EA-48DE-99A6-9D3EB70FE16B}" ShortID="187058792">
-									<PropertyList>
-										<Property Name="LoopCount" Type="int16" Value="0"/>
-									</PropertyList>
 									<ChildrenList>
 										<MusicPlaylistItem Name="" ID="{F7654222-3A2A-4D3F-9691-E320051AAC0B}" ShortID="231346225">
 											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="0"/>
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
 											<SegmentRef Name="MUS_guitare" ID="{6EBFDB71-971B-4F2A-B874-6CF8CBA01443}"/>
@@ -214,6 +221,20 @@
 							</Playlist>
 						</MusicPlaylistContainer>
 						<MusicPlaylistContainer Name="main" ID="{19E2350B-6725-4825-A72A-135738B27D47}" ShortID="246269972">
+							<PropertyList>
+								<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="OverrideMaxSoundInstance" Type="bool" Value="True"/>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0C588E55-620B-4C96-905B-CAC30B94D3E4}"/>
@@ -240,7 +261,7 @@
 										</Property>
 										<Property Name="Volume" Type="Real64">
 											<ValueList>
-												<Value>-10</Value>
+												<Value>-11</Value>
 											</ValueList>
 										</Property>
 									</PropertyList>
@@ -282,7 +303,6 @@
 														<MusicClip Name="MUS_complet" ID="{29F76444-1E75-4D9B-BDA1-D15FDBEEEE59}">
 															<PropertyList>
 																<Property Name="EndTrimOffset" Type="Real64" Value="127999.863945578"/>
-																<Property Name="FadeInMode" Type="int16" Value="0"/>
 																<Property Name="FadeOutMode" Type="int16" Value="0"/>
 															</PropertyList>
 															<AudioSourceRef Name="MUS_complet" ID="{96ECD7AD-3494-4BD4-961D-81AB20247004}"/>
@@ -324,6 +344,7 @@
 									<ChildrenList>
 										<MusicPlaylistItem Name="" ID="{D3C1D0BC-354C-4755-8947-D40D55647C63}" ShortID="378632698">
 											<PropertyList>
+												<Property Name="LoopCount" Type="int16" Value="0"/>
 												<Property Name="PlaylistItemType" Type="int16" Value="1"/>
 											</PropertyList>
 											<SegmentRef Name="MUS_complet" ID="{00BAD503-073D-4971-862B-824AA9DF7E4A}"/>

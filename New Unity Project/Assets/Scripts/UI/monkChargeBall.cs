@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class monkChargeBall : MonoBehaviour {
-
+	/*
     float t;
     public GameObject chargeBar, meterReload, collectBall;
     bool isChargeActive;
@@ -60,5 +60,5 @@ public class monkChargeBall : MonoBehaviour {
         t = 0;
         isChargeActive = true;
         meterReload.SetActive(true);
-    }
+    }*/
 }

@@ -132,7 +132,7 @@ public class ballManager : MonoBehaviour
 		int oldBallStage = BallStage;
 
 
-		AkSoundEngine.PostEvent ("BALL_IMPACT", gameObject);
+		//AkSoundEngine.PostEvent ("BALL_IMPACT", gameObject);
 
 
 

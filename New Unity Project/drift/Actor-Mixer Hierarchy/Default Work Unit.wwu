@@ -153,6 +153,16 @@
 				</RandomSequenceContainer>
 				<RandomSequenceContainer Name="SFX_ball_impact" ID="{CE409AB0-57D7-40CC-925F-B2A035928139}" ShortID="153383431">
 					<PropertyList>
+						<Property Name="Highpass" Type="int16">
+							<ValueList>
+								<Value>23</Value>
+							</ValueList>
+						</Property>
+						<Property Name="Lowpass" Type="int16">
+							<ValueList>
+								<Value>42</Value>
+							</ValueList>
+						</Property>
 						<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="8"/>
 					</PropertyList>
@@ -323,11 +333,6 @@
 					<PropertyList>
 						<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>-6</Value>
-							</ValueList>
-						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -440,6 +445,94 @@
 							</ChildrenList>
 							<ActiveSourceList>
 								<ActiveSource Name="SFX_monk_dead_04" ID="{FA5E9057-78CB-4B04-86DE-8E1929D11C75}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SFX_monk_dead_05" ID="{211D126E-1237-43AA-8453-C6C57EBDDDA5}" ShortID="12662745" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0C588E55-620B-4C96-905B-CAC30B94D3E4}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1698C7EC-DCF8-4AD3-84C6-1AFC5B27A400}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SFX_monk_dead_01" ID="{0A10F807-43AD-4305-A53E-6F7D967C2D9F}" ShortID="915828198">
+									<Language>SFX</Language>
+									<AudioFile>SFX_monk_dead_01.wav</AudioFile>
+									<ConvertedFileIDList>
+										<File ID="142195123"/>
+									</ConvertedFileIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SFX_monk_dead_01" ID="{0A10F807-43AD-4305-A53E-6F7D967C2D9F}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SFX_monk_dead_06" ID="{94B9272A-1478-4100-9674-1AD56C63151C}" ShortID="637905778" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0C588E55-620B-4C96-905B-CAC30B94D3E4}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1698C7EC-DCF8-4AD3-84C6-1AFC5B27A400}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SFX_monk_dead_02" ID="{27D3D53E-A590-47F7-ABC4-4443133EB857}" ShortID="325905566">
+									<Language>SFX</Language>
+									<AudioFile>SFX_monk_dead_02.wav</AudioFile>
+									<ConvertedFileIDList>
+										<File ID="699771603"/>
+									</ConvertedFileIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SFX_monk_dead_02" ID="{27D3D53E-A590-47F7-ABC4-4443133EB857}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SFX_monk_dead_07" ID="{55772F6B-C90F-4215-9CBC-EBAB4A75956A}" ShortID="616681643" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0C588E55-620B-4C96-905B-CAC30B94D3E4}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1698C7EC-DCF8-4AD3-84C6-1AFC5B27A400}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SFX_monk_dead_03" ID="{CA4EDF87-5B82-43AE-A38E-58CC9A13D874}" ShortID="479270124">
+									<Language>SFX</Language>
+									<AudioFile>SFX_monk_dead_03.wav</AudioFile>
+									<ConvertedFileIDList>
+										<File ID="517181763"/>
+									</ConvertedFileIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SFX_monk_dead_03" ID="{CA4EDF87-5B82-43AE-A38E-58CC9A13D874}" Platform="Linked"/>
+							</ActiveSourceList>
+						</Sound>
+						<Sound Name="SFX_monk_dead_08" ID="{A42FBEC8-BD1C-4BB8-9C6A-95377D034AD9}" ShortID="607117608" Type="SoundFX">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0C588E55-620B-4C96-905B-CAC30B94D3E4}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1698C7EC-DCF8-4AD3-84C6-1AFC5B27A400}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<AudioFileSource Name="SFX_monk_dead_04" ID="{BEC44A0F-A518-4BCE-8656-421B69778DE6}" ShortID="1068623844">
+									<Language>SFX</Language>
+									<AudioFile>SFX_monk_dead_04.wav</AudioFile>
+									<ConvertedFileIDList>
+										<File ID="652897039"/>
+									</ConvertedFileIDList>
+								</AudioFileSource>
+							</ChildrenList>
+							<ActiveSourceList>
+								<ActiveSource Name="SFX_monk_dead_04" ID="{BEC44A0F-A518-4BCE-8656-421B69778DE6}" Platform="Linked"/>
 							</ActiveSourceList>
 						</Sound>
 					</ChildrenList>
@@ -747,6 +840,11 @@
 				</RandomSequenceContainer>
 				<RandomSequenceContainer Name="SFX_stage_force_field" ID="{ADAF847B-A318-4087-A0EF-02F069FA03DB}" ShortID="677132896">
 					<PropertyList>
+						<Property Name="Highpass" Type="int16">
+							<ValueList>
+								<Value>35</Value>
+							</ValueList>
+						</Property>
 						<Property Name="Lowpass" Type="int16">
 							<ModifierList>
 								<ModifierInfo>
@@ -774,6 +872,11 @@
 							</ModifierList>
 						</Property>
 						<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="8"/>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-9</Value>
+							</ValueList>
+						</Property>
 					</PropertyList>
 					<ReferenceList>
 						<Reference Name="Conversion">
@@ -1845,6 +1948,11 @@
 						<RandomSequenceContainer Name="VO_blue_team_win" ID="{631C527C-4D06-4328-AFEF-9ED65CF0C9E6}" ShortID="154073898">
 							<PropertyList>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>2</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -1918,6 +2026,11 @@
 							<PropertyList>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>2</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -2022,6 +2135,11 @@
 										<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="0.5"/>
 										<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
 										<Property Name="RandomOrSequence" Type="int16" Value="0"/>
+										<Property Name="Volume" Type="Real64">
+											<ValueList>
+												<Value>1</Value>
+											</ValueList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -2329,6 +2447,11 @@
 							<PropertyList>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="2"/>
+								<Property Name="Volume" Type="Real64">
+									<ValueList>
+										<Value>2</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -2573,121 +2696,6 @@
 						</Sound>
 					</ChildrenList>
 				</RandomSequenceContainer>
-				<RandomSequenceContainer Name="SFX_intro_chimes" ID="{0BB598E2-5357-4082-AB92-36A507F43539}" ShortID="485806852">
-					<PropertyList>
-						<Property Name="Highpass" Type="int16">
-							<ModifierList>
-								<ModifierInfo>
-									<Modifier Name="" ID="{DC701366-1E3A-47A7-9175-835DCF09035D}">
-										<PropertyList>
-											<Property Name="Enabled" Type="bool" Value="True"/>
-											<Property Name="Max" Type="Real64" Value="30"/>
-										</PropertyList>
-									</Modifier>
-								</ModifierInfo>
-							</ModifierList>
-						</Property>
-						<Property Name="InitialDelay" Type="Real64">
-							<ValueList>
-								<Value>3</Value>
-							</ValueList>
-							<ModifierList>
-								<ModifierInfo>
-									<Modifier Name="" ID="{04AA707F-425C-4BD8-AEFA-A645B00A90FE}">
-										<PropertyList>
-											<Property Name="Max" Type="Real64" Value="10"/>
-										</PropertyList>
-									</Modifier>
-								</ModifierInfo>
-							</ModifierList>
-						</Property>
-						<Property Name="Lowpass" Type="int16">
-							<ValueList>
-								<Value>29</Value>
-							</ValueList>
-							<ModifierList>
-								<ModifierInfo>
-									<Modifier Name="" ID="{F5698068-82E4-41FC-A193-482D4EC80BE7}">
-										<PropertyList>
-											<Property Name="Enabled" Type="bool" Value="True"/>
-											<Property Name="Max" Type="Real64" Value="10"/>
-										</PropertyList>
-									</Modifier>
-								</ModifierInfo>
-							</ModifierList>
-						</Property>
-						<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
-						<Property Name="PlayMechanismLoop" Type="bool" Value="True"/>
-						<Property Name="PlayMechanismSpecialTransitions" Type="bool" Value="True"/>
-						<Property Name="PlayMechanismSpecialTransitionsType" Type="int16" Value="1"/>
-						<Property Name="PlayMechanismSpecialTransitionsValue" Type="Real64" Value="5">
-							<ModifierList>
-								<ModifierInfo>
-									<Modifier Name="" ID="{BF47622A-EC9C-499F-8209-703292088038}">
-										<PropertyList>
-											<Property Name="Enabled" Type="bool" Value="True"/>
-											<Property Name="Max" Type="Real64" Value="15"/>
-										</PropertyList>
-									</Modifier>
-								</ModifierInfo>
-							</ModifierList>
-						</Property>
-						<Property Name="PlayMechanismStepOrContinuous" Type="int16" Value="0"/>
-						<Property Name="Volume" Type="Real64">
-							<ValueList>
-								<Value>-3</Value>
-							</ValueList>
-						</Property>
-					</PropertyList>
-					<ReferenceList>
-						<Reference Name="Conversion">
-							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0C588E55-620B-4C96-905B-CAC30B94D3E4}"/>
-						</Reference>
-						<Reference Name="OutputBus">
-							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1698C7EC-DCF8-4AD3-84C6-1AFC5B27A400}"/>
-						</Reference>
-					</ReferenceList>
-					<ChildrenList>
-						<Sound Name="SFX_intro_chimes_01" ID="{9426E9F3-1BCA-4126-9EC4-DA803090619F}" ShortID="415149918" Type="SoundFX">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0C588E55-620B-4C96-905B-CAC30B94D3E4}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1698C7EC-DCF8-4AD3-84C6-1AFC5B27A400}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="SFX_intro_chimes_01" ID="{903BB617-7579-41CB-8494-79D09A6D20FB}" ShortID="527811619">
-									<Language>SFX</Language>
-									<AudioFile>SFX_intro_chimes_01.wav</AudioFile>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="SFX_intro_chimes_01" ID="{903BB617-7579-41CB-8494-79D09A6D20FB}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-						<Sound Name="SFX_intro_chimes_02" ID="{914CBC51-B0D6-43F1-9C65-549179806B2A}" ShortID="964020086" Type="SoundFX">
-							<ReferenceList>
-								<Reference Name="Conversion">
-									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{0C588E55-620B-4C96-905B-CAC30B94D3E4}"/>
-								</Reference>
-								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{1698C7EC-DCF8-4AD3-84C6-1AFC5B27A400}"/>
-								</Reference>
-							</ReferenceList>
-							<ChildrenList>
-								<AudioFileSource Name="SFX_intro_chimes_02" ID="{65F6A977-9DBF-47A1-A923-113D2440EE2C}" ShortID="565432905">
-									<Language>SFX</Language>
-									<AudioFile>SFX_intro_chimes_02.wav</AudioFile>
-								</AudioFileSource>
-							</ChildrenList>
-							<ActiveSourceList>
-								<ActiveSource Name="SFX_intro_chimes_02" ID="{65F6A977-9DBF-47A1-A923-113D2440EE2C}" Platform="Linked"/>
-							</ActiveSourceList>
-						</Sound>
-					</ChildrenList>
-				</RandomSequenceContainer>
 				<RandomSequenceContainer Name="SFX_game_transition" ID="{5826969A-0F27-4C0D-B7C3-5791BB851C4B}" ShortID="341823459">
 					<PropertyList>
 						<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
@@ -2797,10 +2805,20 @@
 						</Sound>
 						<Sound Name="AMB_river_01" ID="{6EF745C8-224C-4F56-AE63-345E93BEFC49}" ShortID="413833610" Type="SoundFX">
 							<PropertyList>
+								<Property Name="Highpass" Type="int16">
+									<ValueList>
+										<Value>16</Value>
+									</ValueList>
+								</Property>
 								<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+								<Property Name="Lowpass" Type="int16">
+									<ValueList>
+										<Value>22</Value>
+									</ValueList>
+								</Property>
 								<Property Name="Volume" Type="Real64">
 									<ValueList>
-										<Value>-5</Value>
+										<Value>-6</Value>
 									</ValueList>
 								</Property>
 							</PropertyList>

@@ -28,13 +28,15 @@ public class cameraBoxScriptTry : MonoBehaviour {
 
     void LateUpdate()
     {
+
+
         Rect boundingBox = CalculateTargetsBoundingBox();
-        transform.position = CalculateCameraPosition(boundingBox);
+        transform.localPosition = CalculateCameraPosition(boundingBox);
         camera.orthographicSize = CalculateOrthographicSize(boundingBox);
  
 
-        yCam = camera.transform.position.y;
-        if (camera.transform.position.y <= 20)
+		yCam = camera.transform.localPosition.y;
+		if (camera.transform.localPosition.y <= 20)
         {
             //camera.transform.position += new Vector3(transform.position.x, 0.5f, transform.position.z);
         }

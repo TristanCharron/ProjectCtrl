@@ -73,6 +73,7 @@ public class MonkController : MonoBehaviour
 	{
 		if (!UiManager.isGameStarted)
 			return;
+		
 		if (!isDead)
 		{
 			CursorRotation();
@@ -105,7 +106,7 @@ public class MonkController : MonoBehaviour
 					GameObject DeathAnimParticle = Instantiate (Resources.Load<GameObject> ("DeathMonkParticle"), gameObject.transform.position, Quaternion.identity) as GameObject;
 					Destroy (DeathAnimParticle, 5);
 					accesSpawn.onPlayerDeath(PlayerID);
-					//Destroy(gameObject);
+
 				}
 			}
 			else
@@ -113,6 +114,8 @@ public class MonkController : MonoBehaviour
 
 		}
 	}
+
+
 	void CursorRotation()
 	{
 		//lerp
@@ -216,6 +219,7 @@ public class MonkController : MonoBehaviour
 	{
 		if (!canDoAction)
 			return;
+		
 		if (Input.GetButtonDown(PRESS_R + PlayerID))
 		{
 			handAnimator.Play("Push");
@@ -252,10 +256,27 @@ public class MonkController : MonoBehaviour
 		else
 			ballManager.onPush(Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up);
 		ballManager.onChangeTeamPossession(Team);
-		float freezeLength = 0 + ((ballManager.CurrentVelocity / ballManager.MaxVelocity) / 4);
-		Debug.Log (freezeLength);
-		UiManager.OnFreezeFrame (freezeLength );
-		//UiManager.OnScreenShake(freezeLength);
+
+
+		if (ballManager.CurrentVelocity > 500)
+		{
+			UiManager.OnFreezeFrame (.15f,3f);
+
+		}
+		else if (ballManager.CurrentVelocity > 300)
+		{
+			UiManager.OnFreezeFrame (.05f,1f);
+
+		}
+
+
+
+
+		//float freezeLength = 0 + ((ballManager.CurrentVelocity / ballManager.MaxVelocity) / 4);
+	//	UiManager.OnFreezeFrame (freezeLength );
+
+
+
 		WindGust.GetComponent<BoxCollider>().enabled = false;
 		AkSoundEngine.PostEvent ("MONK_PITCH", gameObject);
 	}
@@ -289,7 +310,7 @@ public class MonkController : MonoBehaviour
 			PullCollider.enabled = false;
 			break;
 		}
-		yield return new WaitForSeconds(.2f);
+		yield return new WaitForSeconds(.4f);
 		WindGust.SetActive(false);
 		canDoAction = true;
 	}
