@@ -90,13 +90,15 @@ public class SpawnManager : MonoBehaviour {
 			UiManager.isGameStarted = false;
 			accesUI.theBall.SetActive (false);
 			accesUI.GameOverContainer.SetActive (true);
-			AkSoundEngine.PostEvent ("GAME_OVER", gameObject);
+            if (WwiseManager.isWwiseEnabled)
+                AkSoundEngine.PostEvent ("GAME_OVER", gameObject);
 
 			yield return new WaitForSeconds (2f);
 
 			accesUI.GameOverContainer.SetActive (false);
 			accesUI.RedTeamWin.SetActive (true);
-			AkSoundEngine.PostEvent ("GAME_END_RED", gameObject);
+            if (WwiseManager.isWwiseEnabled)
+                AkSoundEngine.PostEvent ("GAME_END_RED", gameObject);
 
 			Debug.Log("Red Team Wins");
 
@@ -110,15 +112,16 @@ public class SpawnManager : MonoBehaviour {
 
 			UiManager.isGameStarted = false;
 			accesUI.theBall.SetActive (false);
-
-			AkSoundEngine.PostEvent ("GAME_OVER", gameObject);
+            if (WwiseManager.isWwiseEnabled)
+                AkSoundEngine.PostEvent ("GAME_OVER", gameObject);
 			accesUI.GameOverContainer.SetActive (true);
 
 			yield return new WaitForSeconds (2f);
 			accesUI.GameOverContainer.SetActive (false);
 			accesUI.BlueTeamWin.SetActive (true);
 
-			AkSoundEngine.PostEvent ("GAME_END_BLUE", gameObject);
+            if (WwiseManager.isWwiseEnabled)
+                AkSoundEngine.PostEvent ("GAME_END_BLUE", gameObject);
 
 			Debug.Log("Blue Team Wins");
 
@@ -133,7 +136,8 @@ public class SpawnManager : MonoBehaviour {
 	}
    public void onPlayerDeath(int id)
     {
-		AkSoundEngine.PostEvent ("MONK_DEAD", players [id - 1].gameObject);
+        if (WwiseManager.isWwiseEnabled)
+            AkSoundEngine.PostEvent ("MONK_DEAD", players [id - 1].gameObject);
 
 
         listPlayerDead.Add(id);

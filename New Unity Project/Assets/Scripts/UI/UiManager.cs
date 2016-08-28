@@ -44,9 +44,10 @@ public class UiManager : MonoBehaviour {
 		instance = this;
         nbPlayers = 4;
         playerIDcontainer.SetActive(false);
-       // startContainer.SetActive(false);
+        // startContainer.SetActive(false);
         //iTween.MoveTo(gameObject, iTween.Hash("x", 3, "time", 4, "delay", 1, "onupdate", "myUpdateFunction", "looptype", iTween.LoopType.pingPong));
-		AkSoundEngine.PostEvent ("GAME_OPEN", gameObject);
+        if (WwiseManager.isWwiseEnabled)
+            AkSoundEngine.PostEvent ("GAME_OPEN", gameObject);
 		Debug.Log ("game open");
 
     }
@@ -124,8 +125,7 @@ public class UiManager : MonoBehaviour {
 		readyContainer.SetActive (true);
 		yield return new WaitForSeconds (3.2f);
 		readyContainer.SetActive (false);
-		Debug.Log ("coucou");
-		UiManager.isGameStarted = true;
+		isGameStarted = true;
 		startGame = true;
 
 	}
@@ -133,7 +133,6 @@ public class UiManager : MonoBehaviour {
 
 	public void SpawnBall()
 	{
- 		//Animation ball spawn
 		theBall.SetActive (true);
 		int random = Random.Range (0, 2);
 		switch (random)
@@ -157,37 +156,27 @@ public class UiManager : MonoBehaviour {
 
          foreach(Text g in playerId)
         {
-          /*  float cool = lerp();
-            g.canvasRenderer.SetAlpha(cool);
-            */
            g.CrossFadeAlpha(1.0f, 2.0f, false);
             g.CrossFadeAlpha(0.0f, 2.0f, false);
         }
-        yield return new WaitForSeconds(3f);
-       
-		//startContainer.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        
-		//startContainer.SetActive(false);
+         
+        yield break;
     }
 	public void changeUI()
 	{
 
 	}
-   /* void chargeBarActive()
-    {
-        
-        chargeBar.SetActive(true);
-        chargeBar.transform.localPosition = new Vector3( Mathf.Lerp(-0.255f, 0.2569f, t ) , chargeBar.transform.localPosition.y, chargeBar.transform.localPosition.z);
-    }
-    **/
+
 	public void onStartGame()
 	{
 		Sakuras.SetActive (true);
-		AkSoundEngine.PostEvent ("UI_SELECT", gameObject);
 
-		AkSoundEngine.PostEvent ("GAME_PLAY", gameObject);
-		//titleContainer.SetActive(false);
+        if (WwiseManager.isWwiseEnabled)
+            AkSoundEngine.PostEvent ("UI_SELECT", gameObject);
+
+        if (WwiseManager.isWwiseEnabled)
+            AkSoundEngine.PostEvent ("GAME_PLAY", gameObject);
+
 		gameObject.GetComponent<Animator>().enabled = true;
 		FadeToWhite.enabled = true;
 		StartCoroutine(makeIDAppear());

@@ -17,17 +17,17 @@ public class ballManager : MonoBehaviour
 
     public static float MinVelocity { get { return Instance._MinVelocity; } }
 
-	public static float MomentumVelocity { get { return Instance._MomentumVelocity; } }
+    public static float MomentumVelocity { get { return Instance._MomentumVelocity; } }
 
     public static float CurrentVelocity { get { return Mathf.Clamp(currentVelocity, MinVelocity, MaxVelocity); } } //Clamp & Return speed
 
     public static float DecreaseVelocity { get { return Instance._DecreaseVelocity; } }
 
-	public static float MomentumBell { get { return Instance._MomentumBell; } }
+    public static float MomentumBell { get { return Instance._MomentumBell; } }
 
     public static ParticleSystem ParticleSystemRender { get { return Instance.pSystem; } }
 
-	public float _MaxVelocity, _MinVelocity, _DecreaseVelocity, _MomentumVelocity, _MomentumBell;
+    public float _MaxVelocity, _MinVelocity, _DecreaseVelocity, _MomentumVelocity, _MomentumBell;
 
     private Rigidbody rBody;
 
@@ -45,8 +45,8 @@ public class ballManager : MonoBehaviour
     public ParticleSystem pSystem;
 
 
-	public GameObject StageBall;
-	int BallStage = 0;
+    public GameObject StageBall;
+    int BallStage = 0;
 
 
 
@@ -61,7 +61,6 @@ public class ballManager : MonoBehaviour
 
     public static void onChangeTeamPossession(MonkController.PlayerTeam newTeam)
     {
-        Debug.Log("THIS");
         possessedTeam = newTeam;
         if (newTeam == MonkController.PlayerTeam.Neutral)
             Instance.pSystem.startColor = new Color(255, 255, 255, 255);
@@ -101,79 +100,80 @@ public class ballManager : MonoBehaviour
 
     public static void onPush(Vector3 angle)
     {
-		
+
         isPushed = true;
-		destinationVelocity = currentVelocity + MomentumVelocity;
+        destinationVelocity = currentVelocity + MomentumVelocity;
         Instance.onSetVelocity(angle * destinationVelocity);
 
     }
 
 
-	public static void onPush(float destVelocity)
-	{
+    public static void onPush(float destVelocity)
+    {
 
-		isPushed = true;
-		destinationVelocity = destVelocity;
+        isPushed = true;
+        destinationVelocity = destVelocity;
 
-	}
+    }
 
-	public static void onPush(Vector3 angle, float destVelocity)
-	{
-		Debug.Log (destVelocity);
-		isPushed = true;
-		destinationVelocity = destVelocity;
-		Instance.onSetVelocity(angle * destinationVelocity);
-
-	}
+    public static void onPush(Vector3 angle, float destVelocity)
+    {
+        isPushed = true;
+        destinationVelocity = destVelocity;
+        Instance.onSetVelocity(angle * destinationVelocity);
+    }
 
 
     void onSetVelocity(Vector3 vel)
     {
-		int oldBallStage = BallStage;
+        int oldBallStage = BallStage;
+
+        if (WwiseManager.isWwiseEnabled)
+            AkSoundEngine.PostEvent ("BALL_IMPACT", gameObject);
 
 
-		//AkSoundEngine.PostEvent ("BALL_IMPACT", gameObject);
+
+            if (CurrentVelocity > 100)
+        {
+            StageBall.SetActive(true);
+
+            if (CurrentVelocity > 500)
+            {
+                BallStage = 3;
+                StageBall.GetComponent<Animator>().Play("stage3");
+            }
+            else if (CurrentVelocity > 300)
+            {
+                BallStage = 2;
+                StageBall.GetComponent<Animator>().Play("stage2");
+            }
+            else
+            {
+                BallStage = 1;
+                StageBall.GetComponent<Animator>().Play("stage1");
+            }
 
 
-
-		if (ballManager.CurrentVelocity > 100) {
-			StageBall.SetActive (true);
-
-			if (ballManager.CurrentVelocity > 500)
-			{
-				BallStage = 3;
-				StageBall.GetComponent<Animator> ().Play ("stage3");
-			}
-			else if (ballManager.CurrentVelocity > 300)
-			{
-				BallStage = 2;
-				StageBall.GetComponent<Animator> ().Play ("stage2");
-			} 
-			else 
-			{
-				BallStage = 1;
-				StageBall.GetComponent<Animator> ().Play ("stage1");
-			}
-			
-
-		}
-		else 
-		{
-			BallStage = 0;
-			StageBall.SetActive (false);
-		}
+        }
+        else
+        {
+            BallStage = 0;
+            StageBall.SetActive(false);
+        }
 
 
         rBody.velocity = vel;
 
 
-		if (oldBallStage != BallStage) 
-		{
-			if (oldBallStage < BallStage)
-				AkSoundEngine.PostEvent ("BALL_STATE_UP", gameObject);
-			else
-				AkSoundEngine.PostEvent ("BALL_STATE_DOWN", gameObject);
-		}
+        if (oldBallStage != BallStage)
+        {
+            if (oldBallStage < BallStage)
+                if (WwiseManager.isWwiseEnabled)
+                    AkSoundEngine.PostEvent("BALL_STATE_UP", gameObject);
+            else
+                if (WwiseManager.isWwiseEnabled)
+                    AkSoundEngine.PostEvent("BALL_STATE_DOWN", gameObject);
+        }
 
     }
 
@@ -181,10 +181,8 @@ public class ballManager : MonoBehaviour
     public static void onPull(Vector3 angle, float velocityApplied)
     {
         isPushed = true;
-        //velocityAngle = newAngle;
         destinationVelocity = currentVelocity + velocityApplied;
         Instance.RigidBody.velocity = (angle * -destinationVelocity);
-        Debug.Log("on pull");
     }
 
 
@@ -202,8 +200,6 @@ public class ballManager : MonoBehaviour
 
     private void onChangeVelocity()
     {
-        //transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, transform.localPosition.z + Time.deltaTime * 10);
-
         if (isPushed)
         {
             currentVelocity = Mathf.Lerp(currentVelocity, destinationVelocity, LerpTimer);
@@ -222,14 +218,7 @@ public class ballManager : MonoBehaviour
         }
 
         currentVelocity = Mathf.Clamp(currentVelocity, _MinVelocity, _MaxVelocity);
-
-        //rBody.velocity = rBody.velocity * (currentVelocity * 0.01f);
-
-        //	Debug.Log (rBody.velocity.normalized);
-
         rBody.velocity = rBody.velocity.normalized * currentVelocity;
-
-        //rBody.velocity =  rBody.velocity * currentVelocity;
 
     }
 

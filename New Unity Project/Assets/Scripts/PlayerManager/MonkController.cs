@@ -4,7 +4,8 @@ public class MonkController : MonoBehaviour
 {
 	public const string PRESS_L = "L_Press_";
 	public const string PRESS_R = "R_Press_";
-	[SerializeField]
+
+    [SerializeField]
 	bool UsingController;
 	//Player ID - Team
 	public enum PlayerTeam
@@ -122,7 +123,6 @@ public class MonkController : MonoBehaviour
 		if (cursor_t < 1)
 		{
 			cursor_t += Time.deltaTime * cursorSpeed;
-			//transform.GetChild (0).localEulerAngles = new Vector3 (0, 0, Mathf.Lerp (startRotation.z, endRotation.z, cursor_t));
 			transform.GetChild(0).localEulerAngles = new Vector3(0, 0, Mathf.LerpAngle(startRotation.z, endRotation.z, cursor_t));
 		}
 		//Control rotation
@@ -139,19 +139,9 @@ public class MonkController : MonoBehaviour
 		}
 		if ((inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f))
 		{
-			//Child(0) == null du cursor
 			startRotation = transform.GetChild(0).localEulerAngles;
 			endRotation = new Vector3(0, 0, Mathf.Atan2(inputX, inputY) * 180 / Mathf.PI);
-			/*
-			//If rotation is broken
-			if (endRotation.z + startRotation.z >= 180)
-				endRotation = new Vector3 (0, 0,startRotation.z + 360);
-			else if (endRotation.z - startRotation.z <= -180)
-				endRotation = new Vector3 (0, 0,startRotation.z - 360);
-
-			*/
 			cursor_t = 0;
-			//	transform.GetChild (0).localEulerAngles = new Vector3 (0, 0, Mathf.Atan2 (inputX, inputY) * 180 / Mathf.PI);
 		}
 	}
 	IEnumerator OnLerpBackInertia()
@@ -204,7 +194,6 @@ public class MonkController : MonoBehaviour
 				0,
 				inputY * tempSpeed * SpeedPlayer * buildingSpeed * Time.deltaTime
 			);
-			//newPosition.Normalize();
 			transform.position += velocity;
 		}
 		else {
@@ -223,7 +212,8 @@ public class MonkController : MonoBehaviour
 		if (Input.GetButtonDown(PRESS_R + PlayerID))
 		{
 			handAnimator.Play("Push");
-			AkSoundEngine.PostEvent ("MONK_WIND", gameObject);
+            if (WwiseManager.isWwiseEnabled)
+                AkSoundEngine.PostEvent ("MONK_WIND", gameObject);
 			StartCoroutine(TimerActionCooldown("Push"));
 		}
 	}
@@ -235,7 +225,9 @@ public class MonkController : MonoBehaviour
 		{
 			handAnimator.Play("Pull");
 			StartCoroutine(TimerActionCooldown("Pull"));
-			AkSoundEngine.PostEvent ("MONK_WIND", gameObject);
+
+            if (WwiseManager.isWwiseEnabled)
+			    AkSoundEngine.PostEvent ("MONK_WIND", gameObject);
 		}
 	}
 	public void onTriggerPush(bool state)
@@ -278,11 +270,13 @@ public class MonkController : MonoBehaviour
 
 
 		WindGust.GetComponent<BoxCollider>().enabled = false;
-		AkSoundEngine.PostEvent ("MONK_PITCH", gameObject);
+        if (WwiseManager.isWwiseEnabled)
+            AkSoundEngine.PostEvent ("MONK_PITCH", gameObject);
 	}
 	public void onPull()
 	{
-		AkSoundEngine.PostEvent ("MONK_CATCH", gameObject);
+        if(WwiseManager.isWwiseEnabled)
+		    AkSoundEngine.PostEvent ("MONK_CATCH", gameObject);
 		pulledVelocity = ballManager.CurrentVelocity;
 		ballManager.onPull(Vector3.zero, -ballManager.CurrentVelocity);
 		ballManager.onChangeTeamPossession(Team);

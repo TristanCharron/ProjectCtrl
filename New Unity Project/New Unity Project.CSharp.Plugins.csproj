@@ -110,6 +110,9 @@
     <Compile Include="Assets\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Sonic Ether\Natural Bloom\Shaders\SEEmissiveTextured.shader" />
+    <None Include="Assets\Sonic Ether\Natural Bloom\Shaders\SENaturalBloomAndDirtyLens.shader" />
+    <None Include="Assets\Sonic Ether\Natural Bloom\Shaders\SEParticlesAdditive.shader" />
     <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader" />
@@ -187,32 +190,14 @@
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
     <None Include="Assets\Standard Assets\Effects\ToonShading\Shaders\ToonLitOutline.shader" />
+    <None Include="Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\DriftNoMusic.txt" />
+    <None Include="Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\Init.txt" />
+    <None Include="Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\PluginInfo.xml" />
+    <None Include="Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\SoundbanksInfo.xml" />
     <None Include="Assets\StreamingAssets\desc.txt" />
-    <None Include="Assets\drift\Actor-Mixer Hierarchy\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Attenuations\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Control Surface Sessions\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Conversion Settings\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Conversion Settings\Factory Conversion Settings.wwu.xml" />
-    <None Include="Assets\drift\Dynamic Dialogue\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Effects\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Effects\Factory Effects.wwu.xml" />
-    <None Include="Assets\drift\Events\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Game Parameters\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Interactive Music Hierarchy\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Master-Mixer Hierarchy\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Mixing Sessions\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Modulators\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Presets\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Queries\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Queries\Factory Queries.wwu.xml" />
-    <None Include="Assets\drift\SoundBanks\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Soundcaster Sessions\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\States\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Switches\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\Triggers\Default Work Unit.wwu.xml" />
-    <None Include="Assets\drift\drift.GuillaumeRaymond.validationcache.xml" />
-    <None Include="Assets\drift\drift.GuillaumeRaymond.wsettings.xml" />
-    <None Include="Assets\drift\drift.wproj.xml" />
+    <None Include="Assets\Wwise\Readme.txt" />
+    <None Include="Assets\Wwise\Version.txt" />
+    <None Include="Assets\WwiseSettings.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
