@@ -61,12 +61,6 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.iOS.Extensions.Common">
-      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="New Unity Project.CSharp.Plugins.csproj">
@@ -77,9 +71,10 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Ball\Shake.cs" />
     <Compile Include="Assets\Scripts\Ball\ballManager.cs" />
-    <Compile Include="Assets\Scripts\Cloche.cs" />
+    <Compile Include="Assets\Scripts\Bell.cs" />
     <Compile Include="Assets\Scripts\OnCheckPushState.cs" />
     <Compile Include="Assets\Scripts\PlayerManager\MonkController.cs" />
+    <Compile Include="Assets\Scripts\PlayerManager\teamManager.cs" />
     <Compile Include="Assets\Scripts\UI\CallEventWwise.cs" />
     <Compile Include="Assets\Scripts\UI\SpawnManager.cs" />
     <Compile Include="Assets\Scripts\UI\UiManager.cs" />

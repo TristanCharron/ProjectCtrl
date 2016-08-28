@@ -33,11 +33,9 @@ public class ballManager : MonoBehaviour
 
     public Rigidbody RigidBody { get { return rBody; } }
 
-    private static MonkController.PlayerTeam possessedTeam = 0;
+    private static teamManager.teamID possessedTeam = 0;
 
-    public static MonkController.PlayerTeam PossessedTeam { get { return possessedTeam; } }
-
-    public MonkController.PlayerTeam CurrentPossessedTeam;
+    public static teamManager.teamID PossessedTeam { get { return possessedTeam; } }
 
     private static bool isPushed;
 
@@ -55,18 +53,18 @@ public class ballManager : MonoBehaviour
     {
         onSetComponents();
         onSetProperties();
-        onChangeTeamPossession(MonkController.PlayerTeam.Neutral);
+        onChangeTeamPossession(teamManager.teamID.Neutral);
 
     }
 
-    public static void onChangeTeamPossession(MonkController.PlayerTeam newTeam)
+    public static void onChangeTeamPossession(teamManager.teamID newTeam)
     {
         possessedTeam = newTeam;
-        if (newTeam == MonkController.PlayerTeam.Neutral)
+        if (newTeam == teamManager.teamID.Neutral)
             Instance.pSystem.startColor = new Color(255, 255, 255, 255);
-        else if (newTeam == MonkController.PlayerTeam.Team1)
+        else if (newTeam == teamManager.teamID.Team1)
             Instance.pSystem.startColor = new Color(0, 0, 255, 255);
-        else if (newTeam == MonkController.PlayerTeam.Team2)
+        else if (newTeam == teamManager.teamID.Team2)
             Instance.pSystem.startColor = new Color(255, 0, 0, 255);
 
         Instance.pSystem.GetComponent<ParticleSystemRenderer>().material.SetColor("_EmisColor", Instance.pSystem.startColor);
@@ -98,12 +96,14 @@ public class ballManager : MonoBehaviour
     }
 
 
-    public static void onPush(Vector3 angle)
+    public static void onPush(Vector3 angle, MonkController pushingPlayer)
     {
 
         isPushed = true;
-        destinationVelocity = currentVelocity + MomentumVelocity;
-        Instance.onSetVelocity(angle * destinationVelocity);
+        Debug.Log(pushingPlayer.ChargingPower);
+        destinationVelocity = currentVelocity + (MomentumVelocity * pushingPlayer.ChargingPower);
+        velocityAngle = angle;
+        Instance.onSetBallStage();
 
     }
 
@@ -113,27 +113,30 @@ public class ballManager : MonoBehaviour
 
         isPushed = true;
         destinationVelocity = destVelocity;
-
+        Instance.onSetBallStage();
     }
 
     public static void onPush(Vector3 angle, float destVelocity)
     {
         isPushed = true;
         destinationVelocity = destVelocity;
-        Instance.onSetVelocity(angle * destinationVelocity);
+        velocityAngle = angle;
+        Instance.onSetBallStage();
     }
 
 
-    void onSetVelocity(Vector3 vel)
+
+
+    void onSetBallStage()
     {
         int oldBallStage = BallStage;
 
         if (WwiseManager.isWwiseEnabled)
-            AkSoundEngine.PostEvent ("BALL_IMPACT", gameObject);
+            AkSoundEngine.PostEvent("BALL_IMPACT", gameObject);
 
 
 
-            if (CurrentVelocity > 100)
+        if (CurrentVelocity > 100)
         {
             StageBall.SetActive(true);
 
@@ -162,7 +165,7 @@ public class ballManager : MonoBehaviour
         }
 
 
-        rBody.velocity = vel;
+
 
 
         if (oldBallStage != BallStage)
@@ -170,11 +173,11 @@ public class ballManager : MonoBehaviour
             if (oldBallStage < BallStage)
                 if (WwiseManager.isWwiseEnabled)
                     AkSoundEngine.PostEvent("BALL_STATE_UP", gameObject);
-            else
+                else
                 if (WwiseManager.isWwiseEnabled)
                     AkSoundEngine.PostEvent("BALL_STATE_DOWN", gameObject);
         }
-
+        
     }
 
 
@@ -191,7 +194,6 @@ public class ballManager : MonoBehaviour
     void FixedUpdate()
     {
         onChangeVelocity();
-        CurrentPossessedTeam = PossessedTeam;
     }
 
 
@@ -203,7 +205,8 @@ public class ballManager : MonoBehaviour
         if (isPushed)
         {
             currentVelocity = Mathf.Lerp(currentVelocity, destinationVelocity, LerpTimer);
-            LerpTimer += Time.fixedDeltaTime;
+            rBody.velocity = Vector3.Lerp(rBody.velocity, destinationVelocity * velocityAngle, LerpTimer);
+            LerpTimer += Time.fixedDeltaTime * 5;
             if (LerpTimer >= 1)
             {
                 LerpTimer = 0;

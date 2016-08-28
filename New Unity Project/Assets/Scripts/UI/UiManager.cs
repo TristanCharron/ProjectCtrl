@@ -48,7 +48,6 @@ public class UiManager : MonoBehaviour {
         //iTween.MoveTo(gameObject, iTween.Hash("x", 3, "time", 4, "delay", 1, "onupdate", "myUpdateFunction", "looptype", iTween.LoopType.pingPong));
         if (WwiseManager.isWwiseEnabled)
             AkSoundEngine.PostEvent ("GAME_OPEN", gameObject);
-		Debug.Log ("game open");
 
     }
 
