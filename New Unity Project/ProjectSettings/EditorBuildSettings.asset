@@ -6,6 +6,4 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Test/ball2.unity
-  - enabled: 1
-    path: Assets/Scenes/Test/load.unity
+    path: Assets/Scenes/Official/Gameplay.unity

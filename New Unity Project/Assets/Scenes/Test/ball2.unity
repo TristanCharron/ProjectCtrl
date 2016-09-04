@@ -318,13 +318,10 @@ MonoBehaviour:
   PlayerID: 3
   buildingSpeed: 0
   SpeedPlayer: 25
-  coolDownLength: 0.5
   handAnimator: {fileID: 2049575264}
   cursorTransform: {fileID: 882831462}
   LookAtTransform: {fileID: 1735601621}
   cursorSpeed: 10
-  isPushActionTriggered: 0
-  isPullActionTriggered: 0
   isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 534357828}
@@ -458,13 +455,10 @@ MonoBehaviour:
   PlayerID: 4
   buildingSpeed: 0
   SpeedPlayer: 25
-  coolDownLength: 0.5
   handAnimator: {fileID: 2012042758}
   cursorTransform: {fileID: 667673400}
   LookAtTransform: {fileID: 363160779}
   cursorSpeed: 10
-  isPushActionTriggered: 0
-  isPullActionTriggered: 0
   isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 1145829370}
@@ -622,7 +616,7 @@ GameObject:
   - 54: {fileID: 132087195}
   - 114: {fileID: 132087197}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: RightWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -889,7 +883,6 @@ MonoBehaviour:
   - {fileID: 407643782}
   - {fileID: 35232882}
   - {fileID: 115000723}
-  accesUI: {fileID: 1683788609}
 --- !u!4 &248026819
 Transform:
   m_ObjectHideFlags: 0
@@ -1032,7 +1025,7 @@ GameObject:
   - 198: {fileID: 341646973}
   - 199: {fileID: 341646972}
   m_Layer: 0
-  m_Name: Particle System (1)
+  m_Name: PlayerParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3007,13 +3000,10 @@ MonoBehaviour:
   PlayerID: 2
   buildingSpeed: 0
   SpeedPlayer: 25
-  coolDownLength: 0.5
   handAnimator: {fileID: 1790731296}
   cursorTransform: {fileID: 331155418}
   LookAtTransform: {fileID: 1910013910}
   cursorSpeed: 10
-  isPushActionTriggered: 0
-  isPullActionTriggered: 0
   isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 839302185}
@@ -3216,7 +3206,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 528283169}
   m_Layer: 0
-  m_Name: NullBall
+  m_Name: Orb_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3555,7 +3545,7 @@ GameObject:
   - 54: {fileID: 556721589}
   - 114: {fileID: 556721591}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DownWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4026,7 +4016,7 @@ GameObject:
   - 65: {fileID: 750590359}
   - 54: {fileID: 750590358}
   m_Layer: 8
-  m_Name: GameObject (4)
+  m_Name: MiddleWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4393,13 +4383,10 @@ MonoBehaviour:
   PlayerID: 1
   buildingSpeed: 0
   SpeedPlayer: 25
-  coolDownLength: 0.5
   handAnimator: {fileID: 1967005220}
   cursorTransform: {fileID: 859500343}
   LookAtTransform: {fileID: 507586338}
   cursorSpeed: 10
-  isPushActionTriggered: 0
-  isPullActionTriggered: 0
   isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 1455670972}
@@ -4507,7 +4494,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 823290612}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: MainLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5095,7 +5082,7 @@ GameObject:
   - 198: {fileID: 1009003531}
   - 199: {fileID: 1009003530}
   m_Layer: 0
-  m_Name: Particle System (1)
+  m_Name: PlayerParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7225,7 +7212,7 @@ GameObject:
   - 198: {fileID: 1096464110}
   - 199: {fileID: 1096464109}
   m_Layer: 0
-  m_Name: Particle System (1)
+  m_Name: PlayerParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9023,7 +9010,7 @@ GameObject:
   - 54: {fileID: 1120622878}
   - 114: {fileID: 1120622877}
   m_Layer: 0
-  m_Name: GameObject (3)
+  m_Name: LeftWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9429,6 +9416,9 @@ MonoBehaviour:
   _DecreaseVelocity: 0.4
   _MomentumVelocity: 180
   _MomentumBell: 45
+  _NeutralColor: {r: 0, g: 0, b: 0, a: 0}
+  _Team1Color: {r: 1, g: 0, b: 0, a: 0}
+  _Team2Color: {r: 0, g: 0.21379304, b: 1, a: 0}
   pSystem: {fileID: 1664275171}
   StageBall: {fileID: 544248182}
 --- !u!95 &1216636386
@@ -9574,7 +9564,7 @@ GameObject:
   m_Component:
   - 224: {fileID: 1254032618}
   m_Layer: 5
-  m_Name: titleContainer
+  m_Name: MenuCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14406,10 +14396,9 @@ MonoBehaviour:
   - {fileID: 407643788}
   - {fileID: 35232888}
   - {fileID: 115000729}
-  boundingBoxPadding: 20
+  boundingBoxPadding: 2
   minimumOrthographicSize: 80
-  zoomSpeed: 20
-  CameraAjust: {x: 6.2, y: 261, z: 291.5}
+  zoomSpeed: 2
 --- !u!114 &1683788609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14428,10 +14417,11 @@ MonoBehaviour:
   BlueTeamWin: {fileID: 2005981031}
   RedTeamWin: {fileID: 902399553}
   playerIDcontainer: {fileID: 1849764979}
+  CameraBoxFollower: {fileID: 1683788608}
   FadeToWhite: {fileID: 528879099}
   playerId: []
-  theBall: {fileID: 1216636384}
-  nullSpawnBall:
+  mainOrb: {fileID: 1216636384}
+  mainOrbSpawnPoints:
   - {fileID: 1299775437}
   - {fileID: 1480405112}
   Everything: {fileID: 960608504}
@@ -14485,7 +14475,7 @@ GameObject:
   - 54: {fileID: 1704665391}
   - 114: {fileID: 1704665393}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: TopWall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14553,7 +14543,7 @@ GameObject:
   - 198: {fileID: 1722788365}
   - 199: {fileID: 1722788364}
   m_Layer: 0
-  m_Name: Particle System (1)
+  m_Name: PlayerParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17116,6 +17106,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100026, guid: 4cf860949dc78c74db4d034c5ec9b298, type: 3}
+      propertyPath: m_Name
+      value: IntroScene
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4cf860949dc78c74db4d034c5ec9b298, type: 3}
   m_IsPrefabParent: 0
@@ -17408,7 +17402,7 @@ GameObject:
   - 4: {fileID: 2024365702}
   - 114: {fileID: 2024365703}
   m_Layer: 0
-  m_Name: Players
+  m_Name: Players_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19308,7 +19302,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2092155558}
   m_Layer: 0
-  m_Name: WALL_DO_NOT_REMOVE_PLS_SAM
+  m_Name: InvisibleWalls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

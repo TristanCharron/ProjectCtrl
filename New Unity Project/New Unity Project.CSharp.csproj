@@ -61,6 +61,12 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Xcode">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.iOS.Extensions.Common">
+      <HintPath>Library\UnityAssemblies\UnityEditor.iOS.Extensions.Common.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="New Unity Project.CSharp.Plugins.csproj">
@@ -69,23 +75,20 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Ball\Shake.cs" />
-    <Compile Include="Assets\Scripts\Ball\ballManager.cs" />
-    <Compile Include="Assets\Scripts\Bell.cs" />
-    <Compile Include="Assets\Scripts\OnCheckPushState.cs" />
-    <Compile Include="Assets\Scripts\PlayerManager\MonkController.cs" />
-    <Compile Include="Assets\Scripts\PlayerManager\teamManager.cs" />
+    <Compile Include="Assets\Scripts\Bell\Bell.cs" />
+    <Compile Include="Assets\Scripts\CameraEffects\Shake.cs" />
+    <Compile Include="Assets\Scripts\Obstacles\BounceObstacle.cs" />
+    <Compile Include="Assets\Scripts\Orb\OrbManager.cs" />
+    <Compile Include="Assets\Scripts\Players\Colliders\OnCheckPushState.cs" />
+    <Compile Include="Assets\Scripts\Players\Colliders\onCheckPullState.cs" />
+    <Compile Include="Assets\Scripts\Players\Controller\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Players\Teams\TeamController.cs" />
     <Compile Include="Assets\Scripts\UI\CallEventWwise.cs" />
+    <Compile Include="Assets\Scripts\UI\CameraActionBoxFollower.cs" />
     <Compile Include="Assets\Scripts\UI\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\UI\UIEffectManager.cs" />
     <Compile Include="Assets\Scripts\UI\UiManager.cs" />
-    <Compile Include="Assets\Scripts\UI\cameraBoxScript.cs" />
-    <Compile Include="Assets\Scripts\UI\cameraBoxScriptTry.cs" />
-    <Compile Include="Assets\Scripts\UI\monkChargeBall.cs" />
-    <Compile Include="Assets\Scripts\UI\moveTestCamera.cs" />
-    <Compile Include="Assets\Scripts\WallBounce.cs" />
-    <Compile Include="Assets\Scripts\WwiseManager.cs" />
-    <Compile Include="Assets\Scripts\onCheckPullState.cs" />
-    <Compile Include="Assets\Scripts\reloadMenu.cs" />
+    <Compile Include="Assets\Scripts\Wwise\WwiseManager.cs" />
     <Compile Include="Assets\Sonic Ether\Natural Bloom\Demo Scene\Scripts\SENBDLCameraAnimation.cs" />
     <Compile Include="Assets\Sonic Ether\Natural Bloom\Demo Scene\Scripts\SENBDLGlobal.cs" />
     <Compile Include="Assets\Sonic Ether\Natural Bloom\Demo Scene\Scripts\SENBDLGlowingOrbitingCube.cs" />

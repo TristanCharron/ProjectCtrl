@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
-public class SpawnManager : MonoBehaviour {
+public class SpawnManager : MonoBehaviour
+{
 
     public static SpawnManager Instance
     {
@@ -12,7 +13,7 @@ public class SpawnManager : MonoBehaviour {
         }
     }
     private static SpawnManager instance;
-    public GameObject gameOverContainer, monkReviveCharge;
+    public GameObject monkReviveCharge;
     public Transform[] SpawnPoints;
     //public GameObject player;
     public GameObject[] _Players;
@@ -22,137 +23,106 @@ public class SpawnManager : MonoBehaviour {
     private static bool isTeamDead;
     private static List<int> listPlayerDead = new List<int>();
     public static List<int> ListPlayerDead { get { return ListPlayerDead; } }
-	[SerializeField] UiManager accesUI;
+
 
     // Use this for initialization
-    void Start () {
-		instance = this;
-		OnResetProperties();
-	}
+    void Start()
+    {
+        instance = this;
+        OnResetProperties();
+    }
 
-	void OnResetProperties(){
-		listPlayerDead = new List<int>();
-		isTeamDead = false;
-		players = _Players;
+    void OnResetProperties()
+    {
+        listPlayerDead = new List<int>();
+        isTeamDead = false;
+        players = _Players;
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    
-	}
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     static void onReset()
     {
-		Debug.Log ("RESET2");
-
-		instance.Reset ();
+        SceneManager.LoadScene(0);
     }
-
-	void Reset()
-	{
-
-		Debug.Log ("RESET");
-		//SceneManager.LoadScene (0);
-		//SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
-		SceneManager.LoadScene (0);
-	}
-    
 
     public static void onResetPosition()
     {
-        foreach(GameObject player in players)
+        foreach (GameObject player in players)
         {
-            for(int x = 0; x < players.Length; x++)
+            for (int x = 0; x < players.Length; x++)
             {
-                if(!player.activeInHierarchy)
-                player.SetActive(true);
+                if (!player.activeInHierarchy)
+                    player.SetActive(true);
+
                 player.transform.position = player.transform.parent.position;
             }
-      
+
         }
 
-        instance.gameOverContainer.SetActive(false);
+        UiManager.onGameOverScreen(false);
+
         if (IsTeamDead)
         {
             isTeamDead = false;
-            instance.gameOverContainer.SetActive(false);
+            UiManager.onGameOverScreen(false);
         }
-            
+
     }
 
 
-	IEnumerator TestTeamWins()
-	{
+    public static void onTeamWin()
+    {
+        if (listPlayerDead.Contains(1) && listPlayerDead.Contains(2))
+            instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_RED", UiManager.Instance.RedTeamWin));
+        else if(listPlayerDead.Contains(3) && listPlayerDead.Contains(4))
+            instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_BLUE", UiManager.Instance.BlueTeamWin));
 
-		if(listPlayerDead.Contains(1) && listPlayerDead.Contains(2))
-		{
-			UiManager.isGameStarted = false;
-			accesUI.theBall.SetActive (false);
-			accesUI.GameOverContainer.SetActive (true);
-            if (WwiseManager.isWwiseEnabled)
-                AkSoundEngine.PostEvent ("GAME_OVER", gameObject);
+    }
 
-			yield return new WaitForSeconds (2f);
+    public IEnumerator onTeamWinCoRoutine(string wwiseTeamNameEvent, GameObject teamUIContainer)
+    {
+        UiManager.onSetGameStartedState(false);
+        OrbManager.shouldBallBeEnabled(false);
+        UiManager.onGameOverScreen(true);
 
-			accesUI.GameOverContainer.SetActive (false);
-			accesUI.RedTeamWin.SetActive (true);
-            if (WwiseManager.isWwiseEnabled)
-                AkSoundEngine.PostEvent ("GAME_END_RED", gameObject);
+        if (WwiseManager.isWwiseEnabled)
+            AkSoundEngine.PostEvent("GAME_OVER", gameObject);
 
-			Debug.Log("Red Team Wins");
+        yield return new WaitForSeconds(2f);
 
-			yield return new WaitForSeconds (5f);
-
-			onReset();
-
-		}
-		else if (listPlayerDead.Contains(3) && listPlayerDead.Contains(4))
-		{
-
-			UiManager.isGameStarted = false;
-			accesUI.theBall.SetActive (false);
-            if (WwiseManager.isWwiseEnabled)
-                AkSoundEngine.PostEvent ("GAME_OVER", gameObject);
-			accesUI.GameOverContainer.SetActive (true);
-
-			yield return new WaitForSeconds (2f);
-			accesUI.GameOverContainer.SetActive (false);
-			accesUI.BlueTeamWin.SetActive (true);
-
-            if (WwiseManager.isWwiseEnabled)
-                AkSoundEngine.PostEvent ("GAME_END_BLUE", gameObject);
-
-			Debug.Log("Blue Team Wins");
-
-			yield return new WaitForSeconds (5f);
-			onReset();
-
-		}
+        UiManager.onGameOverScreen(false);
+        teamUIContainer.SetActive(true);
+        if (WwiseManager.isWwiseEnabled)
+            AkSoundEngine.PostEvent(wwiseTeamNameEvent, gameObject);
 
 
-	
+        yield return new WaitForSeconds(5f);
 
-	}
-   public void onPlayerDeath(int id)
+        onReset();
+
+    }
+
+
+
+    public void onPlayerDeath(int id)
     {
         if (WwiseManager.isWwiseEnabled)
-            AkSoundEngine.PostEvent ("MONK_DEAD", players [id - 1].gameObject);
+            AkSoundEngine.PostEvent("MONK_DEAD", players[id - 1].gameObject);
 
 
         listPlayerDead.Add(id);
         players[id - 1].gameObject.SetActive(false);
 
 
-		StartCoroutine (TestTeamWins ());
+        onTeamWin();
 
 
     }
 
-
-
-    public void onReviveAlly()
-    {
-
-    }
 }
