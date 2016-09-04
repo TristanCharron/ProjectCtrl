@@ -14,8 +14,8 @@ public class UIEffectManager : MonoBehaviour {
 
 
     // Use this for initialization
-    void Start () {
-	
+    void Awake () {
+        instance = this;
 	}
 
     public static void OnResetProperties()

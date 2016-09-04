@@ -55,8 +55,8 @@ public class OrbManager : MonoBehaviour
     public ParticleSystem pSystem;
 
 
-    public GameObject StageBall;
-  
+    public GameObject mainOrb;
+
 
 
 
@@ -149,7 +149,7 @@ public class OrbManager : MonoBehaviour
 
         if (CurrentVelocity > 100)
         {
-            StageBall.SetActive(true);
+            mainOrb.SetActive(true);
 
             if (CurrentVelocity > 500)
                 orbStateID = 3;
@@ -161,12 +161,12 @@ public class OrbManager : MonoBehaviour
                 orbStateID = 1;
 
 
-            StageBall.GetComponent<Animator>().Play("stage" + OrbStateID);
+            mainOrb.GetComponent<Animator>().Play("stage" + OrbStateID.ToString());
         }
         else
         {
             orbStateID = 0;
-            StageBall.SetActive(false);
+            mainOrb.SetActive(false);
         }
 
 
@@ -209,32 +209,35 @@ public class OrbManager : MonoBehaviour
         {
             currentVelocity = Mathf.Lerp(currentVelocity, destinationVelocity, LerpTimer);
             rBody.velocity = Vector3.Lerp(rBody.velocity, destinationVelocity * velocityAngle, LerpTimer);
-            LerpTimer += Time.fixedDeltaTime * 5;
+            LerpTimer += Time.fixedDeltaTime * 20;
             if (LerpTimer >= 1)
             {
                 LerpTimer = 0;
                 isPushed = false;
             }
 
-        }
-        else
-        {
-            currentVelocity -= DecreaseVelocity;
+
+            else
+            {
+                currentVelocity -= DecreaseVelocity;
+
+            }
+
+            // Clamp max and min velocity
+            currentVelocity = Mathf.Clamp(currentVelocity, _MinVelocity, _MaxVelocity);
+
+            //rBody.velocity = rBody.velocity.normalized * currentVelocity;
 
         }
 
-        currentVelocity = Mathf.Clamp(currentVelocity, _MinVelocity, _MaxVelocity);
-        rBody.velocity = rBody.velocity.normalized * currentVelocity;
+
+
+
+
+
+
+
+
 
     }
-
-
-
-
-
-
-
-
-
-
 }

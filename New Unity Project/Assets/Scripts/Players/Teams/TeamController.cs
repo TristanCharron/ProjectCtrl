@@ -136,6 +136,7 @@ public class Team
 
     public void onStunt(bool state)
     {
-        stunt = state;
+        if(stunt != true)
+            stunt = state;
     }
 }

@@ -4089,6 +4089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isWwiseEnabled: 0
+  WwiseGlobalObject: {fileID: 491956019}
 --- !u!4 &757753819
 Transform:
   m_ObjectHideFlags: 0
@@ -9345,7 +9346,7 @@ GameObject:
   - 4: {fileID: 1215182625}
   - 114: {fileID: 1215182626}
   m_Layer: 0
-  m_Name: Main Camera Parent
+  m_Name: Main Camera_Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9410,16 +9411,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be69eb959d54e3446996d5846a9e0a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _MaxVelocity: 1000
+  _MaxVelocity: 500
   _MinVelocity: 35
   _DecreaseVelocity: 0.4
   _MomentumVelocity: 180
   _MomentumBell: 45
   _NeutralColor: {r: 0, g: 0, b: 0, a: 0}
-  _Team1Color: {r: 1, g: 0, b: 0, a: 0}
-  _Team2Color: {r: 0, g: 0.21379304, b: 1, a: 0}
+  _Team1Color: {r: 0, g: 0.17241383, b: 1, a: 0}
+  _Team2Color: {r: 1, g: 0, b: 0, a: 0}
   pSystem: {fileID: 1664275171}
-  StageBall: {fileID: 544248182}
+  mainOrb: {fileID: 544248182}
 --- !u!95 &1216636386
 Animator:
   serializedVersion: 3
@@ -14251,6 +14252,7 @@ GameObject:
   - 114: {fileID: 1683788610}
   - 114: {fileID: 1683788611}
   - 114: {fileID: 1683788607}
+  - 114: {fileID: 1683788612}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -14467,6 +14469,17 @@ MonoBehaviour:
   edgesOnly: 0.121
   edgesOnlyBgColor: {r: 0.9264706, g: 0, b: 0.78590244, a: 1}
   edgeDetectShader: {fileID: 4800000, guid: 0d1644bdf064147baa97f235fc5b4903, type: 3}
+--- !u!114 &1683788612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1683788599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f967a4d354f50114392242154b4faf47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1704665389
 GameObject:
   m_ObjectHideFlags: 0

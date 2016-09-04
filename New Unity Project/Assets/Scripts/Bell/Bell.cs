@@ -15,7 +15,7 @@ public class Bell : MonoBehaviour {
             onBellHit();
 
             if (shouldEnableTeamPower())
-                onEnableTeamPower();
+                onEnableTeamPower(true);
             else
                 UIEffectManager.OnFreezeFrame(.1f, 1);
 
@@ -24,31 +24,46 @@ public class Bell : MonoBehaviour {
 
 	}
 
+
+
     bool shouldEnableTeamPower()
     {
         return curNbBellHits >= nbBellHits;
     }
 
-    void onEnableTeamPower()
+    void onEnableTeamPower(bool state)
     {
-        Debug.Log("POWER ENABLED!");
         switch(assignedTeam.powerID)
         {
             case TeamController.powerID.stunt:
-                onEnableStuntPower();
+                onEnableStuntPower(state);
                 break;
             default:
-                onEnableStuntPower();
+                onEnableStuntPower(state);
                 break;
         }
       
         onResetBell();
     }
 
-    void onEnableStuntPower()
+    
+
+    void onEnableStuntPower(bool state)
     {
-        UIEffectManager.OnFreezeFrame(.5f, 5);
-        assignedTeam.onStunt(true);
+        if(state)
+        {
+            UIEffectManager.OnFreezeFrame(.5f, 5);
+            Invoke("onDisableStuntPower", 2f);
+        }
+           
+
+        //assignedTeam.onStunt(state);
+
+    }
+
+    void onDisableStuntPower()
+    {
+        onEnableStuntPower(false);
     }
 
     public void onAssignTeam(Team newTeam)
@@ -64,9 +79,7 @@ public class Bell : MonoBehaviour {
     public void onBellHit()
     {
         curNbBellHits++;
-        if (WwiseManager.isWwiseEnabled)
-            AkSoundEngine.PostEvent("STAGE_BELL", gameObject);
-
+        WwiseManager.onPlayWWiseEvent("STAGE_BELL", gameObject);
         GetComponent<Animator>().Play("DONG", 0, -1);
     }
 }

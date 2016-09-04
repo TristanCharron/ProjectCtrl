@@ -5,13 +5,27 @@ public class WwiseManager : MonoBehaviour {
     private static bool wwiseEnabled;
     public static bool isWwiseEnabled;
     public bool _isWwiseEnabled;
+    public GameObject WwiseGlobalObject;
 
 	// Use this for initialization
 	void Awake () {
         isWwiseEnabled = _isWwiseEnabled;
+        onSetWwiseByState();
+     
+        
     }
+
+    void onSetWwiseByState()
+    {
+        Camera.main.gameObject.GetComponent<AkAudioListener>().enabled = isWwiseEnabled;
+        if(!isWwiseEnabled)
+        {
+            Destroy(WwiseGlobalObject);
+        }
+    }
+
 	
-	// Update is called once per frame
+	
 	void Update () {
 	
 	}

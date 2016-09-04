@@ -64,6 +64,7 @@ public class PlayerController : MonoBehaviour
         pulledVelocity = 0;
         buildingSpeed = 0;
         isDead = false;
+        
 
     }
     // Update is called once per frame

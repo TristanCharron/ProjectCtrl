@@ -30,6 +30,7 @@ public class SpawnManager : MonoBehaviour
     {
         instance = this;
         OnResetProperties();
+        onEnablePlayers();
     }
 
     void OnResetProperties()
@@ -37,6 +38,20 @@ public class SpawnManager : MonoBehaviour
         listPlayerDead = new List<int>();
         isTeamDead = false;
         players = _Players;
+
+    }
+
+    void onEnablePlayers()
+    {
+
+        for (int x = 0; x < players.Length; x++)
+        {
+            if (!players[x].activeInHierarchy)
+                players[x].SetActive(true);
+
+            players[x].transform.position = players[x].transform.parent.position;
+        }
+
 
     }
 
@@ -53,17 +68,6 @@ public class SpawnManager : MonoBehaviour
 
     public static void onResetPosition()
     {
-        foreach (GameObject player in players)
-        {
-            for (int x = 0; x < players.Length; x++)
-            {
-                if (!player.activeInHierarchy)
-                    player.SetActive(true);
-
-                player.transform.position = player.transform.parent.position;
-            }
-
-        }
 
         UiManager.onGameOverScreen(false);
 
@@ -80,7 +84,7 @@ public class SpawnManager : MonoBehaviour
     {
         if (listPlayerDead.Contains(1) && listPlayerDead.Contains(2))
             instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_RED", UiManager.Instance.RedTeamWin));
-        else if(listPlayerDead.Contains(3) && listPlayerDead.Contains(4))
+        else if (listPlayerDead.Contains(3) && listPlayerDead.Contains(4))
             instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_BLUE", UiManager.Instance.BlueTeamWin));
 
     }
@@ -91,16 +95,14 @@ public class SpawnManager : MonoBehaviour
         OrbManager.shouldBallBeEnabled(false);
         UiManager.onGameOverScreen(true);
 
-        if (WwiseManager.isWwiseEnabled)
-            AkSoundEngine.PostEvent("GAME_OVER", gameObject);
+
+        WwiseManager.onPlayWWiseEvent("GAME_OVER", gameObject);
 
         yield return new WaitForSeconds(2f);
 
         UiManager.onGameOverScreen(false);
         teamUIContainer.SetActive(true);
-        if (WwiseManager.isWwiseEnabled)
-            AkSoundEngine.PostEvent(wwiseTeamNameEvent, gameObject);
-
+        WwiseManager.onPlayWWiseEvent(wwiseTeamNameEvent, gameObject);
 
         yield return new WaitForSeconds(5f);
 
@@ -112,14 +114,9 @@ public class SpawnManager : MonoBehaviour
 
     public void onPlayerDeath(int id)
     {
-        if (WwiseManager.isWwiseEnabled)
-            AkSoundEngine.PostEvent("MONK_DEAD", players[id - 1].gameObject);
-
-
+        WwiseManager.onPlayWWiseEvent("MONK_DEAD", players[id - 1].gameObject);
         listPlayerDead.Add(id);
         players[id - 1].gameObject.SetActive(false);
-
-
         onTeamWin();
 
 

@@ -35,9 +35,7 @@ public class UiManager : MonoBehaviour
 
         instance = this;
         OnResetProperties();
-
-        if (WwiseManager.isWwiseEnabled)
-            AkSoundEngine.PostEvent("GAME_OPEN", gameObject);
+        WwiseManager.onPlayWWiseEvent("GAME_OPEN", gameObject);
     }
 
     public static void onSetGameStartedState(bool state)
@@ -99,12 +97,8 @@ public class UiManager : MonoBehaviour
     {
         Sakuras.SetActive(true);
 
-        if (WwiseManager.isWwiseEnabled)
-            AkSoundEngine.PostEvent("UI_SELECT", gameObject);
-
-        if (WwiseManager.isWwiseEnabled)
-            AkSoundEngine.PostEvent("GAME_PLAY", gameObject);
-
+        WwiseManager.onPlayWWiseEvent("UI_SELECT", gameObject);
+        WwiseManager.onPlayWWiseEvent("GAME_PLAY", gameObject);
         gameObject.GetComponent<Animator>().enabled = true;
         FadeToWhite.enabled = true;
         StartCoroutine(makeIDAppear());
