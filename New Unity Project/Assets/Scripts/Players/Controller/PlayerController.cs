@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody rBody;
     [SerializeField]
     SpawnManager accesSpawn;
-    void Start()
+    void Awake()
     {
         OnResetProperties();
     }
@@ -65,6 +65,7 @@ public class PlayerController : MonoBehaviour
         buildingSpeed = 0;
         isDead = false;
         
+
 
     }
     // Update is called once per frame
@@ -203,12 +204,12 @@ public class PlayerController : MonoBehaviour
             //currentHoldPushBtnTIme = 0;
             return;
         }
-            
+
         if (Input.GetButton(PRESS_R + PlayerID))
         {
             currentHoldPushBtnTIme += Time.fixedDeltaTime;
         }
-        else if(Input.GetButtonUp(PRESS_R + PlayerID))
+        else if (Input.GetButtonUp(PRESS_R + PlayerID))
         {
             handAnimator.Play("Push");
             if (WwiseManager.isWwiseEnabled)
@@ -216,7 +217,7 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(TimerActionCooldown("Push"));
         }
         //else
-            //currentHoldPushBtnTIme = 0;
+        //currentHoldPushBtnTIme = 0;
 
     }
     void PullButton()

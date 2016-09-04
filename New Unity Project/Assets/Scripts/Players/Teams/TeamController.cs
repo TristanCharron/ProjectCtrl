@@ -36,8 +36,14 @@ public class TeamController : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        onResetProperties();
         onGenerateTeams();
 
+    }
+
+    void onResetProperties()
+    {
+        nbPlayerCreated = 0;
     }
 
     void onGenerateTeams()

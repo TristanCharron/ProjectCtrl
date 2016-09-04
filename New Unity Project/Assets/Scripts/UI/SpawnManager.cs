@@ -14,7 +14,8 @@ public class SpawnManager : MonoBehaviour
     }
     private static SpawnManager instance;
     public GameObject monkReviveCharge;
-    public Transform[] SpawnPoints;
+    public Transform[] _SpawnPoints;
+    private static Transform[] spawnPoints;
     //public GameObject player;
     public GameObject[] _Players;
     private static GameObject[] players;
@@ -26,7 +27,7 @@ public class SpawnManager : MonoBehaviour
 
 
     // Use this for initialization
-    void Start()
+    void Awake()
     {
         instance = this;
         OnResetProperties();
@@ -38,18 +39,17 @@ public class SpawnManager : MonoBehaviour
         listPlayerDead = new List<int>();
         isTeamDead = false;
         players = _Players;
+        spawnPoints = _SpawnPoints;
 
     }
 
     void onEnablePlayers()
     {
 
-        for (int x = 0; x < players.Length; x++)
+        for (int x = 0; x < _Players.Length; x++)
         {
-            if (!players[x].activeInHierarchy)
-                players[x].SetActive(true);
-
-            players[x].transform.position = players[x].transform.parent.position;
+            if (!_Players[x].activeInHierarchy)
+                _Players[x].SetActive(true);
         }
 
 
@@ -68,6 +68,10 @@ public class SpawnManager : MonoBehaviour
 
     public static void onResetPosition()
     {
+        for (int x = 0; x < players.Length; x++)
+        {
+            players[x].transform.position = spawnPoints[x].transform.position;
+        }
 
         UiManager.onGameOverScreen(false);
 
