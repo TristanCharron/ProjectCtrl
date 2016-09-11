@@ -95,8 +95,8 @@ public class SpawnManager : MonoBehaviour
 
     public IEnumerator onTeamWinCoRoutine(string wwiseTeamNameEvent, GameObject teamUIContainer)
     {
-        UiManager.onSetGameStartedState(false);
-        OrbManager.shouldBallBeEnabled(false);
+        GameController.onSetGameStartedState(false);
+        OrbController.shouldBallBeEnabled(false);
         UiManager.onGameOverScreen(true);
 
 

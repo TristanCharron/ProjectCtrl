@@ -19,7 +19,7 @@ public class Bell : MonoBehaviour {
             else
                 UIEffectManager.OnFreezeFrame(.1f, 1);
 
-            OrbManager.onPush (OrbManager.MomentumBell + OrbManager.CurrentVelocity);
+            OrbController.onPush (OrbController.MomentumBell + OrbController.CurrentVelocity);
 		}
 
 	}
@@ -33,6 +33,10 @@ public class Bell : MonoBehaviour {
 
     void onEnableTeamPower(bool state)
     {
+        if(state)
+        {
+            WindShader.onEnableWind();
+        }
         switch(assignedTeam.powerID)
         {
             case TeamController.powerID.stunt:

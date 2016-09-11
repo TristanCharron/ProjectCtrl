@@ -20,11 +20,6 @@ public class UiManager : MonoBehaviour
 
     public List<Text> playerId = new List<Text>();
 
-    public static bool isGameStarted { get { return gameStarted; } }
-    static bool gameStarted;
-
-    public GameObject mainOrb;
-    public Transform[] mainOrbSpawnPoints;
     public Transform Everything;
     public GameObject Sakuras;
 
@@ -38,16 +33,12 @@ public class UiManager : MonoBehaviour
         WwiseManager.onPlayWWiseEvent("GAME_OPEN", gameObject);
     }
 
-    public static void onSetGameStartedState(bool state)
-    {
-        gameStarted = state;
-    }
+   
 
 
     public static void OnResetProperties()
     {
         UIEffectManager.OnResetProperties();
-        gameStarted = false;
         instance.playerIDcontainer.SetActive(false);
     }
 
@@ -56,7 +47,7 @@ public class UiManager : MonoBehaviour
     {
         Sakuras.SetActive(false);
         CameraBoxFollower.enabled = true;
-        onSpawnOrb();
+        GameController.onSpawnOrb();
         StartCoroutine(OnBeginGame());
     }
 
@@ -66,18 +57,13 @@ public class UiManager : MonoBehaviour
         readyContainer.SetActive(true);
         yield return new WaitForSeconds(3.2f);
         readyContainer.SetActive(false);
-        gameStarted = true;
+        GameController.onSetGameStartedState(true);
         yield break;
 
     }
 
 
-    public void onSpawnOrb()
-    {
-        mainOrb.SetActive(true);
-        mainOrb.transform.position = mainOrbSpawnPoints[Random.Range(0, mainOrbSpawnPoints.Length-1)].position;
-    }
-
+   
 
     IEnumerator makeIDAppear()
     {

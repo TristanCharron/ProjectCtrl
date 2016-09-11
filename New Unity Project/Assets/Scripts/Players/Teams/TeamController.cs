@@ -5,11 +5,18 @@ using System.Collections.Generic;
 
 public class TeamController : MonoBehaviour
 {
-    public static int nbPlayers = 2, nbTeams = 2, nbPlayerCreated = 0;
+    public const int nbPlayers = 2, nbTeams = 2;
+    public static int nbPlayerCreated = 0;
 
-    public List<Team> teamList;
+    private static TeamController instance;
+    public static TeamController Instance { get { return instance; } }
+
+    public List<Team> _teamList;
+    static List<Team> teamList;
+
+
     public GameObject BellRoot;
-
+    public GameObject PlayerRoot;
 
 
     public enum teamID
@@ -36,27 +43,27 @@ public class TeamController : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
-        onResetProperties();
-        onGenerateTeams();
-
+        instance = this;
+        onReset();
     }
 
-    void onResetProperties()
+    public static void onReset()
     {
         nbPlayerCreated = 0;
+        onGenerateTeams();
+        instance._teamList = teamList;
     }
 
-    void onGenerateTeams()
+    static void onGenerateTeams()
     {
         teamList = new List<Team>();
         for (int i = 0; i < nbTeams; i++)
         {
             onGenerateTeam((teamID)(i + 1), powerID.stunt, nbPlayers,i);
-         
         }
     }
 
-    void onGenerateTeam(teamID id, powerID power, int nbPlayers, int teamNb)
+    static void onGenerateTeam(teamID id, powerID power, int nbPlayers, int teamNb)
     {
        Team newTeam = new Team(id, power, nbPlayers);
       
@@ -69,26 +76,19 @@ public class TeamController : MonoBehaviour
 
     }
 
-    void OnConfigurePlayer(int playerID, Team assignedTeam)
+    static void OnConfigurePlayer(int playerID, Team assignedTeam)
     {
-        PlayerController player = transform.GetChild(playerID).GetComponent<PlayerController>();
+        PlayerController player = instance.PlayerRoot.transform.GetChild(playerID).GetComponent<PlayerController>();
         player.onAssignTeam(assignedTeam);
         assignedTeam.PlayerList.Add(player);
         nbPlayerCreated++;
     }
 
-    void OnAssignBell(Team assignedTeam, int bellID)
+    static void OnAssignBell(Team assignedTeam, int bellID)
     {
-        Bell currentBell = BellRoot.transform.GetChild(BellRoot.transform.childCount - (bellID + 1)).GetComponent<Bell>();
+        Bell currentBell = instance.BellRoot.transform.GetChild(instance.BellRoot.transform.childCount - (bellID + 1)).GetComponent<Bell>();
         currentBell.onAssignTeam(assignedTeam);
         assignedTeam.onAssignBell(currentBell);
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
 

@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class OrbManager : MonoBehaviour
+public class OrbController : MonoBehaviour
 {
 
-    public static OrbManager Instance { get { return instance; } }
-    static OrbManager instance;
+    public static OrbController Instance { get { return instance; } }
+    static OrbController instance;
 
     private static Vector3 velocityAngle; // angle pushing the ball
 

@@ -77,12 +77,14 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Bell\Bell.cs" />
     <Compile Include="Assets\Scripts\CameraEffects\Shake.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\GameController.cs" />
     <Compile Include="Assets\Scripts\Obstacles\BounceObstacle.cs" />
-    <Compile Include="Assets\Scripts\Orb\OrbManager.cs" />
+    <Compile Include="Assets\Scripts\Orb\OrbController.cs" />
     <Compile Include="Assets\Scripts\Players\Colliders\OnCheckPushState.cs" />
     <Compile Include="Assets\Scripts\Players\Colliders\onCheckPullState.cs" />
     <Compile Include="Assets\Scripts\Players\Controller\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Players\Teams\TeamController.cs" />
+    <Compile Include="Assets\Scripts\Shaders\WindShader.cs" />
     <Compile Include="Assets\Scripts\UI\CallEventWwise.cs" />
     <Compile Include="Assets\Scripts\UI\CameraActionBoxFollower.cs" />
     <Compile Include="Assets\Scripts\UI\SpawnManager.cs" />
@@ -191,6 +193,7 @@
     <Compile Include="Assets\Wwise\Deployment\Components\AkUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Scripts\Shaders\GlitchShader.shader" />
     <None Include="Assets\Sonic Ether\Natural Bloom\Shaders\SEEmissiveTextured.shader" />
     <None Include="Assets\Sonic Ether\Natural Bloom\Shaders\SENaturalBloomAndDirtyLens.shader" />
     <None Include="Assets\Sonic Ether\Natural Bloom\Shaders\SEParticlesAdditive.shader" />

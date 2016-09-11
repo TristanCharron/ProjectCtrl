@@ -4,8 +4,11 @@ public class PlayerController : MonoBehaviour
 {
     public const string PRESS_L = "L_Press_";
     public const string PRESS_R = "R_Press_";
-    public const float maxHoldPushBtnTime = 3f;
-    public float ChargingPower { get { return Mathf.Clamp01(currentHoldPushBtnTIme / maxHoldPushBtnTime); } }
+
+
+    public const float maxHoldPushBtnTime = 1f;
+
+    public float ChargingPower { get { return Mathf.Clamp01(currentHoldPushBtnTime / maxHoldPushBtnTime); } }
 
     Team currentTeam;
 
@@ -16,10 +19,11 @@ public class PlayerController : MonoBehaviour
     public int PlayerID;
     /// 
     Vector3 velocity;
+
     [SerializeField]
     float buildingSpeed = 0;
 
-    float currentHoldPushBtnTIme = 0f;
+    public float currentHoldPushBtnTime = 0f;
 
     [SerializeField]
     float SpeedPlayer = 10;
@@ -52,6 +56,16 @@ public class PlayerController : MonoBehaviour
     Rigidbody rBody;
     [SerializeField]
     SpawnManager accesSpawn;
+
+    SpriteRenderer sRenderer;
+
+    private Color idleColor;
+
+    [SerializeField]
+    Color chargedColor;
+
+
+
     void Awake()
     {
         OnResetProperties();
@@ -61,17 +75,16 @@ public class PlayerController : MonoBehaviour
     {
         PlayerCollider = GetComponent<BoxCollider>();
         rBody = GetComponent<Rigidbody>();
+        sRenderer = GetComponent<SpriteRenderer>();
+        idleColor = sRenderer.color;
         pulledVelocity = 0;
         buildingSpeed = 0;
         isDead = false;
-        
-
-
     }
     // Update is called once per frame
     void Update()
     {
-        if (!UiManager.isGameStarted)
+        if (!GameController.isGameStarted)
             return;
 
 
@@ -81,9 +94,17 @@ public class PlayerController : MonoBehaviour
             PushButton();
             PullButton();
             CursorRotation();
+          
         }
 
 
+    }
+
+    public void onCharge()
+    {
+        Color currentChargingColor = Color.Lerp(idleColor, chargedColor, ChargingPower);
+        currentChargingColor.a = 1;
+        sRenderer.color = currentChargingColor;
     }
 
     public void onAssignTeam(Team assignedTeam)
@@ -93,16 +114,21 @@ public class PlayerController : MonoBehaviour
 
     bool isHitValid()
     {
-        return currentTeam.TeamID != OrbManager.PossessedTeam && OrbManager.PossessedTeam != TeamController.teamID.Neutral;
+        return currentTeam.TeamID != OrbController.PossessedTeam && OrbController.PossessedTeam != TeamController.teamID.Neutral;
     }
+
+
     IEnumerator onGoingThrough()
     {
         PlayerCollider.enabled = false;
-        GetComponent<Rigidbody>().isKinematic = true;
+        rBody.isKinematic = true;
         yield return new WaitForSeconds(.2f);
-        GetComponent<Rigidbody>().isKinematic = false;
+        rBody.isKinematic = false;
         PlayerCollider.enabled = true;
     }
+
+
+
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Orb")
@@ -152,16 +178,7 @@ public class PlayerController : MonoBehaviour
             cursor_t = 0;
         }
     }
-    IEnumerator OnLerpBackInertia()
-    {
-        float timer = 0;
-        while (timer <= 1)
-        {
-            timer += Time.fixedDeltaTime;
-            rBody.velocity = Vector3.Lerp(rBody.velocity, Vector3.zero, timer);
-        }
-        yield break;
-    }
+  
     void MoveCharacter()
     {
 
@@ -199,25 +216,24 @@ public class PlayerController : MonoBehaviour
     }
     void PushButton()
     {
-        if (!canDoAction)
+        if (canDoAction)
         {
-            //currentHoldPushBtnTIme = 0;
-            return;
+            if (Input.GetButton(PRESS_R + PlayerID))
+            {
+                currentHoldPushBtnTime = currentHoldPushBtnTime > maxHoldPushBtnTime ? 0 : currentHoldPushBtnTime += Time.fixedDeltaTime;
+            }
+            else if (Input.GetButtonUp(PRESS_R + PlayerID))
+            {
+                handAnimator.Play("Push");
+                if (WwiseManager.isWwiseEnabled)
+                    AkSoundEngine.PostEvent("MONK_WIND", gameObject);
+                StartCoroutine(TimerActionCooldown("Push"));
+            }
+            else
+                currentHoldPushBtnTime = 0;
         }
+        onCharge();
 
-        if (Input.GetButton(PRESS_R + PlayerID))
-        {
-            currentHoldPushBtnTIme += Time.fixedDeltaTime;
-        }
-        else if (Input.GetButtonUp(PRESS_R + PlayerID))
-        {
-            handAnimator.Play("Push");
-            if (WwiseManager.isWwiseEnabled)
-                AkSoundEngine.PostEvent("MONK_WIND", gameObject);
-            StartCoroutine(TimerActionCooldown("Push"));
-        }
-        //else
-        //currentHoldPushBtnTIme = 0;
 
     }
     void PullButton()
@@ -232,27 +248,28 @@ public class PlayerController : MonoBehaviour
             if (WwiseManager.isWwiseEnabled)
                 AkSoundEngine.PostEvent("MONK_WIND", gameObject);
         }
+        
     }
 
     public void onPush()
     {
         if (pulledVelocity != 0)
         {
-            OrbManager.onPush(Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up, pulledVelocity);
+            OrbController.onPush(Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up, pulledVelocity);
             pulledVelocity = 0;
         }
         else
-            OrbManager.onPush(Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up, this);
+            OrbController.onPush(Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up, this);
 
-        OrbManager.onChangeTeamPossession(currentTeam.TeamID);
+        OrbController.onChangeTeamPossession(currentTeam.TeamID);
 
 
-        if (OrbManager.CurrentVelocity > 500)
+        if (OrbController.CurrentVelocity > 500)
         {
             UIEffectManager.OnFreezeFrame(.15f, 3f);
 
         }
-        else if (OrbManager.CurrentVelocity > 300)
+        else if (OrbController.CurrentVelocity > 300)
         {
             UIEffectManager.OnFreezeFrame(.05f, 1f);
 
@@ -274,9 +291,9 @@ public class PlayerController : MonoBehaviour
     {
         if (WwiseManager.isWwiseEnabled)
             AkSoundEngine.PostEvent("MONK_CATCH", gameObject);
-        pulledVelocity = OrbManager.CurrentVelocity;
-        OrbManager.onPull(Vector3.zero, -OrbManager.CurrentVelocity);
-        OrbManager.onChangeTeamPossession(currentTeam.TeamID);
+        pulledVelocity = OrbController.CurrentVelocity;
+        OrbController.onPull(Vector3.zero, -OrbController.CurrentVelocity);
+        OrbController.onChangeTeamPossession(currentTeam.TeamID);
     }
     IEnumerator TimerActionCooldown(string action)
     {
