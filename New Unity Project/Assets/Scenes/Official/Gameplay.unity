@@ -314,10 +314,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHoldPushBtnTime: 0
   UsingController: 1
   PlayerID: 3
   buildingSpeed: 0
-  currentHoldPushBtnTIme: 0
   SpeedPlayer: 25
   handAnimator: {fileID: 2049575264}
   cursorTransform: {fileID: 882831462}
@@ -453,10 +453,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHoldPushBtnTime: 0
   UsingController: 1
   PlayerID: 4
   buildingSpeed: 0
-  currentHoldPushBtnTIme: 0
   SpeedPlayer: 25
   handAnimator: {fileID: 2012042758}
   cursorTransform: {fileID: 667673400}
@@ -3031,10 +3031,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHoldPushBtnTime: 0
   UsingController: 1
   PlayerID: 2
   buildingSpeed: 0
-  currentHoldPushBtnTIme: 0
   SpeedPlayer: 25
   handAnimator: {fileID: 1790731296}
   cursorTransform: {fileID: 331155418}
@@ -4449,10 +4449,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHoldPushBtnTime: 0
   UsingController: 1
   PlayerID: 1
   buildingSpeed: 0
-  currentHoldPushBtnTIme: 0
   SpeedPlayer: 25
   handAnimator: {fileID: 1967005220}
   cursorTransform: {fileID: 859500343}
@@ -14676,7 +14676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 3b3866f84b7729d4890dcecec5f9a363, type: 3}
-  intensity: 5
+  intensity: 3
 --- !u!1 &1704665389
 GameObject:
   m_ObjectHideFlags: 0

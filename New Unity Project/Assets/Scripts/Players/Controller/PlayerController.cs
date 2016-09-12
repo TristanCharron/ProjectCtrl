@@ -5,9 +5,8 @@ public class PlayerController : MonoBehaviour
     public const string PRESS_L = "L_Press_";
     public const string PRESS_R = "R_Press_";
 
-
+    public float currentHoldPushBtnTime = 0f;
     public const float maxHoldPushBtnTime = 1f;
-
     public float ChargingPower { get { return Mathf.Clamp01(currentHoldPushBtnTime / maxHoldPushBtnTime); } }
 
     Team currentTeam;
@@ -23,7 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     float buildingSpeed = 0;
 
-    public float currentHoldPushBtnTime = 0f;
+   
 
     [SerializeField]
     float SpeedPlayer = 10;
