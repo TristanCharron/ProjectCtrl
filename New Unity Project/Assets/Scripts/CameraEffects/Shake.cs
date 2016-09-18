@@ -2,13 +2,13 @@
 using System.Collections;
 
 public class Shake : MonoBehaviour {
-	
 
-	// How long the object should shake for.
-	public float shakeDuration = 0.5f;
-	
-	// Amplitude of the shake. A larger value shakes the camera harder.
-	public float Power = 1f;
+    // Amplitude of the shake. A larger value shakes the camera harder.
+    public const float Power = 0.75f;
+
+    // How long the object should shake for.
+    public float shakeDuration = 0.5f;
+
 	public float decreaseFactor = 0.8f;
 
 
@@ -16,11 +16,6 @@ public class Shake : MonoBehaviour {
 	Vector3 originalPos;
 
 
-	void Awake()
-	{
-
-	}
-	
 	void OnEnable()
 	{
 		originalPos = transform.localPosition;

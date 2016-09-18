@@ -3,28 +3,45 @@ using System.Collections;
 
 
 
-public class Bell : MonoBehaviour {
+public class Bell : MonoBehaviour
+{
 
     private int curNbBellHits = 0;
     private Team assignedTeam;
+    private bool isActive = true;
+    private static float bellLength = 2f;
 
 
-	void OnTriggerEnter(Collider other)
-	{
-		if (other.gameObject.CompareTag ("Orb"))
-		{
-            onBellHit();
+    void OnTriggerEnter(Collider other)
+    {
+        if (isActive)
+        {
+            if (other.gameObject.CompareTag("Orb"))
+            {
+                onBellHit();
 
-            if (shouldEnableTeamPower())
-                onEnableTeamPower(true);
-            else
-                UIEffectManager.OnFreezeFrame(.1f, 1);
+                if (shouldEnableTeamPower())
+                    onEnableTeamPower(true);
 
-            OrbController.onPush (OrbController.MomentumBell + OrbController.CurrentVelocity);
-		}
+                OrbController.onPush(OrbController.CurrentVelocity / 3);
+                onDisableBell();
 
-	}
+            }
+        }
 
+
+    }
+
+    void onDisableBell()
+    {
+        isActive = false;
+        Invoke("onEnableBell", bellLength);
+    }
+
+    void onEnableBell()
+    {
+        isActive = true;
+    }
 
 
     bool shouldEnableTeamPower()
@@ -34,7 +51,7 @@ public class Bell : MonoBehaviour {
 
     void onEnableTeamPower(bool state)
     {
-        switch(assignedTeam.powerID)
+        switch (assignedTeam.powerID)
         {
             case TeamController.powerID.stunt:
                 onEnableStuntPower(state);
@@ -43,20 +60,20 @@ public class Bell : MonoBehaviour {
                 onEnableStuntPower(state);
                 break;
         }
-      
+
         onResetBell();
     }
 
-    
+
 
     void onEnableStuntPower(bool state)
     {
-        if(state)
+        if (state)
         {
-            UIEffectManager.OnFreezeFrame(.5f, 5);
+            UIEffectManager.OnFreezeFrame(OrbController.velocityRatio / 3);
             Invoke("onDisableStuntPower", 2f);
         }
-           
+
 
         //assignedTeam.onStunt(state);
 
@@ -75,6 +92,8 @@ public class Bell : MonoBehaviour {
     void onResetBell()
     {
         curNbBellHits = 0;
+        isActive = true;
+
     }
 
     public void onBellHit()

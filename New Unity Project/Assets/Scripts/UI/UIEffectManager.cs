@@ -12,11 +12,14 @@ public class UIEffectManager : MonoBehaviour {
     public static Vector3 ShakeAmount { get { return shakeAmount; } }
     private static Vector3 shakeAmount;
 
+    private static Shake shakeComponent;
 
     // Use this for initialization
     void Awake () {
         instance = this;
-	}
+        shakeComponent = Camera.main.GetComponentInParent<Shake>();
+
+    }
 
     public static void OnResetProperties()
     {
@@ -26,9 +29,9 @@ public class UIEffectManager : MonoBehaviour {
     }
 
 
-    public static void OnFreezeFrame(float sec, float power)
+    public static void OnFreezeFrame(float sec)
     {
-        instance.StartCoroutine(instance.FreezeFrame(sec, power));
+        instance.StartCoroutine(instance.FreezeFrame(sec));
 
     }
 
@@ -38,7 +41,7 @@ public class UIEffectManager : MonoBehaviour {
 
     }
 
-    public IEnumerator FreezeFrame(float sec, float Power)
+    public IEnumerator FreezeFrame(float sec)
     {
         if (!isFreezeFraming)
         {
@@ -53,9 +56,7 @@ public class UIEffectManager : MonoBehaviour {
             isFreezeFraming = false;
         }
 
-        Camera.main.GetComponentInParent<Shake>().enabled = true;
-        Camera.main.GetComponentInParent<Shake>().Power = Power;
-
+        shakeComponent.enabled = true;
         yield break;
     }
 
@@ -83,9 +84,5 @@ public class UIEffectManager : MonoBehaviour {
         yield break;
     }
 
-    /*public static float onLerp()
-    {
-        return Mathf.PingPong(Time.time, duration) / duration;
-    }
-    */
+
 }

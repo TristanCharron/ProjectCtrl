@@ -265,22 +265,14 @@ public class PlayerController : MonoBehaviour
 
         if (OrbController.CurrentVelocity > 500)
         {
-            UIEffectManager.OnFreezeFrame(.15f, 3f);
+            UIEffectManager.OnFreezeFrame(OrbController.velocityRatio / 6);
 
         }
         else if (OrbController.CurrentVelocity > 300)
         {
-            UIEffectManager.OnFreezeFrame(.05f, 1f);
+            UIEffectManager.OnFreezeFrame(OrbController.velocityRatio / 6);
 
         }
-
-
-
-
-        //float freezeLength = 0 + ((ballManager.CurrentVelocity / ballManager.MaxVelocity) / 4);
-        //	UiManager.OnFreezeFrame (freezeLength );
-
-
 
         WindGust.GetComponent<BoxCollider>().enabled = false;
         if (WwiseManager.isWwiseEnabled)

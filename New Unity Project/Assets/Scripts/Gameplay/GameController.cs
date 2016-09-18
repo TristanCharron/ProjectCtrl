@@ -18,11 +18,13 @@ public class GameController : MonoBehaviour {
     public static void onSetGameStartedState(bool state)
     {
         gameStarted = state;
+
+        if (state)
+            onReset();
     }
 
     public static void onReset()
     {
-        gameStarted = false;
         TeamController.onReset();
     }
 
@@ -37,7 +39,6 @@ public class GameController : MonoBehaviour {
     void Awake () {
         Orb = _Orb;
         OrbSpawnPoints = _OrbSpawnPoints;
-        onReset();
     }
 
   

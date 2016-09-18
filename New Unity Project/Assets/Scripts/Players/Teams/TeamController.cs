@@ -44,7 +44,6 @@ public class TeamController : MonoBehaviour
     void Awake()
     {
         instance = this;
-        onReset();
     }
 
     public static void onReset()
