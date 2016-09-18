@@ -67,13 +67,13 @@ public class UiManager : MonoBehaviour
 
     IEnumerator makeIDAppear()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(4f);
         playerIDcontainer.SetActive(true);
 
         foreach (Text g in playerId)
         {
-            g.CrossFadeAlpha(1.0f, 2.0f, false);
-            g.CrossFadeAlpha(0.0f, 2.0f, false);
+            g.CrossFadeAlpha(1.0f, 1.0f, false);
+            g.CrossFadeAlpha(0.0f, 5.0f, false);
         }
 
         yield break;
