@@ -9506,7 +9506,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeDuration: 0.2
-  Power: 1
   decreaseFactor: 0.8
 --- !u!1 &1216636384
 GameObject:

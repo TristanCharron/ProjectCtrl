@@ -33,6 +33,14 @@ public class UiManager : MonoBehaviour
         WwiseManager.onPlayWWiseEvent("GAME_OPEN", gameObject);
     }
 
+    void Update()
+    { 
+        for(int i = 0; i < playerId.Count; i++)
+        {
+            playerId[i].transform.position = SpawnManager.Players[i].transform.position;
+            playerId[i].transform.Translate(new Vector3(0, -10f, 0));
+        }
+    }
    
 
 
@@ -70,10 +78,10 @@ public class UiManager : MonoBehaviour
         yield return new WaitForSeconds(4f);
         playerIDcontainer.SetActive(true);
 
-        foreach (Text g in playerId)
+        foreach (Text playerText in playerId)
         {
-            g.CrossFadeAlpha(1.0f, 1.0f, false);
-            g.CrossFadeAlpha(0.0f, 5.0f, false);
+            playerText.CrossFadeAlpha(1.0f, 1.0f, false);
+            playerText.CrossFadeAlpha(0.0f, 5.0f, false);
         }
 
         yield break;
