@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+
 public class Bell : MonoBehaviour {
 
     private int curNbBellHits = 0;
-    private int nbBellHits = 5;
     private Team assignedTeam;
 
 
@@ -28,15 +29,11 @@ public class Bell : MonoBehaviour {
 
     bool shouldEnableTeamPower()
     {
-        return curNbBellHits >= nbBellHits;
+        return curNbBellHits >= GameController.nbBellHits;
     }
 
     void onEnableTeamPower(bool state)
     {
-        if(state)
-        {
-            WindShader.onEnableWind();
-        }
         switch(assignedTeam.powerID)
         {
             case TeamController.powerID.stunt:

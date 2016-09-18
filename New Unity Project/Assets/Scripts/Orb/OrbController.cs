@@ -13,6 +13,8 @@ public class OrbController : MonoBehaviour
 
     private static float currentVelocity, destinationVelocity, LerpTimer; //Speed variables
 
+    public static float velocityRatio { get { return Mathf.Clamp01(currentVelocity / MaxVelocity); } }
+
     public static float MaxVelocity { get { return Instance._MaxVelocity; } }
 
     public static float MinVelocity { get { return Instance._MinVelocity; } }

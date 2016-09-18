@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour {
     public Transform[] _OrbSpawnPoints;
     private static Transform[] OrbSpawnPoints;
 
+    public const int nbBellHits = 1;
+
     public static void onSetGameStartedState(bool state)
     {
         gameStarted = state;
