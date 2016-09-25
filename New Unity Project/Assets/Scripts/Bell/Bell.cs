@@ -99,6 +99,8 @@ public class Bell : MonoBehaviour
     public void onBellHit()
     {
         curNbBellHits++;
+       // assignedTeam.onAddScore();
+
         WwiseManager.onPlayWWiseEvent("STAGE_BELL", gameObject);
         GetComponent<Animator>().Play("DONG", 0, -1);
     }

@@ -12,7 +12,7 @@ public class UiManager : MonoBehaviour
     public GameObject titleContainer, startContainer, readyContainer, GameOverContainer, BlueTeamWin, RedTeamWin;
 
 
-    public GameObject playerIDcontainer;
+    public GameObject playerIDcontainer, scoreTeamContainer;
 
     public CameraActionBoxFollower CameraBoxFollower;
 
@@ -50,6 +50,7 @@ public class UiManager : MonoBehaviour
     {
         UIEffectManager.OnResetProperties();
         instance.playerIDcontainer.SetActive(false);
+        instance.scoreTeamContainer.SetActive(false);
     }
 
 
@@ -80,6 +81,7 @@ public class UiManager : MonoBehaviour
     {
         yield return new WaitForSeconds(4f);
         playerIDcontainer.SetActive(true);
+        scoreTeamContainer.SetActive(true);
 
         foreach (Text playerText in playerId)
         {
