@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -11,6 +12,9 @@ public class Team
 
     private TeamController.powerID power;
     public TeamController.powerID powerID { get { return power; } }
+
+    private Text scoreTxt;
+    public Text ScoreTxt { get { return scoreTxt; } }
 
     int nbPlayers, nbPlayersActive;
     int currentScore, totalScore;
@@ -49,6 +53,11 @@ public class Team
         playerList = new List<PlayerController>();
     }
 
+    public void onAssignScoreTxt(Text txt)
+    {
+        scoreTxt = txt;
+    }
+
     public void onAssignBell(Bell bell)
     {
         teamBell = bell;
@@ -63,6 +72,7 @@ public class Team
     public void onAddScore(int pointsAmount)
     {
         currentScore += pointsAmount;
+        scoreTxt.text = currentScore.ToString();
     }
 
     public void onAddRoundScore(int pointsAmount)

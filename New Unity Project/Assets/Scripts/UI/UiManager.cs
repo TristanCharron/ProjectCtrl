@@ -20,6 +20,8 @@ public class UiManager : MonoBehaviour
 
     public List<Text> playerId = new List<Text>();
 
+    public static List<Text> scoreId = new List<Text>();
+
     public Transform Everything;
     public GameObject Sakuras;
 

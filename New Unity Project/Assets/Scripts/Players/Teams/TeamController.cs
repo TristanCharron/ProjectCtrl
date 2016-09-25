@@ -91,6 +91,11 @@ public class TeamController : MonoBehaviour
         assignedTeam.onAssignBell(currentBell);
     }
 
+    static void OnAssignScoreTxt(Team assignedTeam, int teamID)
+    {
+        assignedTeam.onAssignScoreTxt(UiManager.scoreId[teamID]);
+    }
+
 
 }
 

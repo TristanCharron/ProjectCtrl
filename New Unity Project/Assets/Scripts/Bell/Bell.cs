@@ -87,6 +87,7 @@ public class Bell : MonoBehaviour
     public void onAssignTeam(Team newTeam)
     {
         assignedTeam = newTeam;
+
     }
 
     void onResetBell()
@@ -99,7 +100,8 @@ public class Bell : MonoBehaviour
     public void onBellHit()
     {
         curNbBellHits++;
-       // assignedTeam.onAddScore();
+        assignedTeam.onAddScore((int)OrbController.CurrentVelocity);
+        
 
         WwiseManager.onPlayWWiseEvent("STAGE_BELL", gameObject);
         GetComponent<Animator>().Play("DONG", 0, -1);
