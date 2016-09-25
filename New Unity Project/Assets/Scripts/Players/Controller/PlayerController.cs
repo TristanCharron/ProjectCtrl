@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 
@@ -7,7 +8,7 @@ public class ButtonHolder
 
     public float currentHoldPushBtnTime = 0f;
     public const float maxHoldPushBtnTime = 1f;
-    public float ChargingPower { get { return Mathf.Clamp01(currentHoldPushBtnTime / maxHoldPushBtnTime); } }
+    public float holdingButtonRatio { get { return Mathf.Clamp01(currentHoldPushBtnTime / maxHoldPushBtnTime); } }
 
     public ButtonHolder()
     {
@@ -23,19 +24,21 @@ public class ButtonHolder
     {
         currentHoldPushBtnTime = 0;
     }
+
+ 
 }
 
 
 public class PlayerController : MonoBehaviour
 {
-    public const string PRESS_L = "L_Press_";
-    public const string PRESS_R = "R_Press_";
+    public const string PRESS_L = "L_Press_", PRESS_R = "R_Press_", PRESS_Y = "Y_Press_";
 
-    private ButtonHolder leftTriggerHold;
+    private ButtonHolder leftTriggerHold, rightTriggerHold;
+
     public ButtonHolder LeftTriggerHold { get { return leftTriggerHold; } }
-
-    ButtonHolder rightTriggerHold;
     public ButtonHolder RightTriggerHold { get { return rightTriggerHold; } }
+
+
 
     Team currentTeam;
 
@@ -101,6 +104,8 @@ public class PlayerController : MonoBehaviour
     Color chargedColor;
 
 
+    Text displayUI;
+    public Text DisplayUI { get { return displayUI; } }
 
 
 
@@ -135,6 +140,7 @@ public class PlayerController : MonoBehaviour
             MoveCharacter();
             PushButton();
             PullButton();
+            onDisplayUIButton();
             CursorRotation();
           
         }
@@ -144,7 +150,7 @@ public class PlayerController : MonoBehaviour
 
     public void onCharge()
     {
-        Color currentChargingColor = Color.Lerp(idleColor, chargedColor, leftTriggerHold.ChargingPower);
+        Color currentChargingColor = Color.Lerp(idleColor, chargedColor, leftTriggerHold.holdingButtonRatio);
         currentChargingColor.a = 1;
         sRenderer.color = currentChargingColor;
     }
@@ -306,6 +312,7 @@ public class PlayerController : MonoBehaviour
         if (WwiseManager.isWwiseEnabled)
             AkSoundEngine.PostEvent("MONK_PITCH", gameObject);
     }
+
     public void onPull()
     {
         if (WwiseManager.isWwiseEnabled)
@@ -313,6 +320,12 @@ public class PlayerController : MonoBehaviour
         pulledVelocity = OrbController.CurrentVelocity;
         OrbController.onPull(Vector3.zero, -OrbController.CurrentVelocity);
         OrbController.onChangeTeamPossession(currentTeam.TeamID);
+    }
+
+    void onDisplayUIButton()
+    {
+        float alpha = Input.GetButton(PRESS_Y + PlayerID) ? 1 : 0;
+        displayUI.CrossFadeAlpha(alpha,0.1f,false);
     }
 
 

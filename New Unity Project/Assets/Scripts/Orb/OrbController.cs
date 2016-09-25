@@ -117,7 +117,7 @@ public class OrbController : MonoBehaviour
 
         isPushed = true;
         float additionalVel = pushingPlayer.PulledVelocity != 0 ? pushingPlayer.PulledVelocity : 0;
-        destinationVelocity = currentVelocity + additionalVel + (MomentumVelocity * pushingPlayer.LeftTriggerHold.ChargingPower);
+        destinationVelocity = currentVelocity + additionalVel + (MomentumVelocity * pushingPlayer.LeftTriggerHold.holdingButtonRatio);
         destinationAngle = angle;
         Instance.onSetBallStage();
         pushingPlayer.onSetPulledVelocity(0);
