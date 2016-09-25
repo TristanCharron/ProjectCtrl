@@ -65,6 +65,7 @@ public class TeamController : MonoBehaviour
     static void onGenerateTeam(teamID id, powerID power, int nbPlayers, int teamNb)
     {
        Team newTeam = new Team(id, power, nbPlayers);
+
       
         for(int i = 0; i < nbPlayers;i++)
         {
@@ -93,55 +94,3 @@ public class TeamController : MonoBehaviour
 
 }
 
-[System.Serializable]
-public class Team
-{
-    public TeamController.teamID team;
-    public TeamController.teamID TeamID { get { return team; } }
-
-    public TeamController.powerID power;
-    public TeamController.powerID powerID { get { return power; } }
-
-    int nbPlayers, nbPlayersActive;
-
-    public List<PlayerController> playerList;
-    public List<PlayerController> PlayerList { get { return playerList; } }
-
-    public Bell teamBell;
-
-    private bool stunt;
-    public bool isStunt { get { return stunt; } }
-
-
-
-    public Team()
-    {
-        team = TeamController.teamID.Team1;
-        power = TeamController.powerID.stunt;
-        nbPlayers = 2;
-        nbPlayersActive = nbPlayers;
-        stunt = false;
-        playerList = new List<PlayerController>();
-    }
-
-    public Team(TeamController.teamID _team, TeamController.powerID _power, int _nbplayers )
-    {
-        team = _team;
-        power = _power;
-        nbPlayers = _nbplayers;
-        nbPlayersActive = _nbplayers;
-        stunt = false;
-        playerList = new List<PlayerController>();
-    }
-
-    public void onAssignBell(Bell bell)
-    {
-        teamBell = bell;
-    }
-
-    public void onStunt(bool state)
-    {
-        if(stunt != true)
-            stunt = state;
-    }
-}

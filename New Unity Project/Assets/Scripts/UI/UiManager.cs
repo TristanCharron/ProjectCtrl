@@ -59,12 +59,13 @@ public class UiManager : MonoBehaviour
         StartCoroutine(OnBeginGame());
     }
 
-    IEnumerator OnBeginGame()
+    public IEnumerator OnBeginGame()
     {
-        
-        readyContainer.SetActive(true);
+        onGameOverScreen(false);
+        onNewRoundScreen(true);
+        GameController.onSetGameStartedState(false);
         yield return new WaitForSeconds(3.2f);
-        readyContainer.SetActive(false);
+        onNewRoundScreen(false);
         GameController.onSetGameStartedState(true);
         yield break;
 
@@ -90,7 +91,6 @@ public class UiManager : MonoBehaviour
     public void onStartGame()
     {
         Sakuras.SetActive(true);
-
         WwiseManager.onPlayWWiseEvent("UI_SELECT", gameObject);
         WwiseManager.onPlayWWiseEvent("GAME_PLAY", gameObject);
         gameObject.GetComponent<Animator>().enabled = true;
@@ -101,6 +101,18 @@ public class UiManager : MonoBehaviour
     public static void onGameOverScreen(bool state)
     {
         instance.GameOverContainer.SetActive(state);
+
+        if (!state)
+        {
+            instance.RedTeamWin.SetActive(false);
+            instance.BlueTeamWin.SetActive(false);
+        }
+        
+    }
+
+    public static void onNewRoundScreen(bool state)
+    {
+        instance.readyContainer.SetActive(state);
     }
 
 

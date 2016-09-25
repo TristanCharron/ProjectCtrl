@@ -7,9 +7,9 @@ public class OrbController : MonoBehaviour
     public static OrbController Instance { get { return instance; } }
     static OrbController instance;
 
-    private static Vector3 velocityAngle; // angle pushing the ball
+    private static Vector3 destinationAngle; // angle pushing the ball
 
-    public static Vector3 VelocityAngle { get { return velocityAngle; } }
+    public static Vector3 DestinationAngle { get { return destinationAngle; } }
 
     private static float currentVelocity, destinationVelocity, LerpTimer; //Speed variables
 
@@ -116,11 +116,11 @@ public class OrbController : MonoBehaviour
     {
 
         isPushed = true;
-        Debug.Log(pushingPlayer.ChargingPower);
-        destinationVelocity = currentVelocity + (MomentumVelocity * pushingPlayer.ChargingPower);
-        velocityAngle = angle;
+        float additionalVel = pushingPlayer.PulledVelocity != 0 ? pushingPlayer.PulledVelocity : 0;
+        destinationVelocity = currentVelocity + additionalVel + (MomentumVelocity * pushingPlayer.LeftTriggerHold.ChargingPower);
+        destinationAngle = angle;
         Instance.onSetBallStage();
-
+        pushingPlayer.onSetPulledVelocity(0);
     }
 
 
@@ -136,7 +136,7 @@ public class OrbController : MonoBehaviour
     {
         isPushed = true;
         destinationVelocity = destVelocity;
-        velocityAngle = angle;
+        destinationAngle = angle;
         Instance.onSetBallStage();
     }
 
@@ -203,6 +203,10 @@ public class OrbController : MonoBehaviour
 
 
 
+    public void onChangeAngle(Vector3 Angle)
+    {
+        destinationAngle = Angle;
+    }
 
 
     private void onChangeVelocity()
@@ -210,7 +214,7 @@ public class OrbController : MonoBehaviour
         if (isPushed)
         {
             currentVelocity = Mathf.Lerp(currentVelocity, destinationVelocity, LerpTimer);
-            rBody.velocity = Vector3.Lerp(rBody.velocity, destinationVelocity * velocityAngle, LerpTimer);
+            rBody.velocity = Vector3.Lerp(rBody.velocity, destinationVelocity * destinationAngle, LerpTimer);
             LerpTimer += Time.fixedDeltaTime * 20;
             if (LerpTimer >= 1)
             {

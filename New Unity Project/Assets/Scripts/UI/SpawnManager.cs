@@ -55,15 +55,13 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     static void onReset()
     {
-        SceneManager.LoadScene(0);
+        instance.OnResetProperties();
+        instance.onEnablePlayers();
+        GameController.onStartNewRound();
+    
     }
 
     public static void onResetPosition()
@@ -87,9 +85,17 @@ public class SpawnManager : MonoBehaviour
     public static void onTeamWin()
     {
         if (listPlayerDead.Contains(1) && listPlayerDead.Contains(2))
+        {
             instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_RED", UiManager.Instance.RedTeamWin));
+            listPlayerDead.Clear();
+        }
+            
         else if (listPlayerDead.Contains(3) && listPlayerDead.Contains(4))
+        {
             instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_BLUE", UiManager.Instance.BlueTeamWin));
+            listPlayerDead.Clear();
+        }
+            
 
     }
 
@@ -98,18 +104,14 @@ public class SpawnManager : MonoBehaviour
         GameController.onSetGameStartedState(false);
         OrbController.shouldBallBeEnabled(false);
         UiManager.onGameOverScreen(true);
-
-
         WwiseManager.onPlayWWiseEvent("GAME_OVER", gameObject);
 
         yield return new WaitForSeconds(2f);
-
         UiManager.onGameOverScreen(false);
         teamUIContainer.SetActive(true);
         WwiseManager.onPlayWWiseEvent(wwiseTeamNameEvent, gameObject);
 
         yield return new WaitForSeconds(5f);
-
         onReset();
 
     }

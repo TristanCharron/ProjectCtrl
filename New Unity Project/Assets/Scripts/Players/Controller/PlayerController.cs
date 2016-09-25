@@ -1,22 +1,52 @@
 ﻿using UnityEngine;
 using System.Collections;
-public class PlayerController : MonoBehaviour
+
+
+public class ButtonHolder
 {
-    public const string PRESS_L = "L_Press_";
-    public const string PRESS_R = "R_Press_";
 
     public float currentHoldPushBtnTime = 0f;
     public const float maxHoldPushBtnTime = 1f;
     public float ChargingPower { get { return Mathf.Clamp01(currentHoldPushBtnTime / maxHoldPushBtnTime); } }
 
+    public ButtonHolder()
+    {
+        currentHoldPushBtnTime = 0;
+    }
+
+    public void OnUpdate()
+    {
+        currentHoldPushBtnTime = currentHoldPushBtnTime > maxHoldPushBtnTime ? 0 : currentHoldPushBtnTime += Time.fixedDeltaTime;
+    }
+
+    public void OnReset()
+    {
+        currentHoldPushBtnTime = 0;
+    }
+}
+
+
+public class PlayerController : MonoBehaviour
+{
+    public const string PRESS_L = "L_Press_";
+    public const string PRESS_R = "R_Press_";
+
+    private ButtonHolder leftTriggerHold;
+    public ButtonHolder LeftTriggerHold { get { return leftTriggerHold; } }
+
+    ButtonHolder rightTriggerHold;
+    public ButtonHolder RightTriggerHold { get { return rightTriggerHold; } }
+
     Team currentTeam;
 
     [SerializeField]
     bool UsingController;
+    
+    
     //Player ID - Team
-
     public int PlayerID;
-    /// 
+
+
     Vector3 velocity;
 
     [SerializeField]
@@ -44,7 +74,11 @@ public class PlayerController : MonoBehaviour
     bool isDead = false;
     [SerializeField]
     BoxCollider PushCollider;
-    float pulledVelocity = 0;
+
+
+    private float pulledVelocity = 0;
+    public float PulledVelocity { get { return pulledVelocity; } }
+    public void onSetPulledVelocity(float vel) { pulledVelocity = vel; }
 
     [SerializeField]
     BoxCollider PullCollider;
@@ -56,12 +90,19 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     SpawnManager accesSpawn;
 
+    bool isChangingOrbAngle = false;
+
+
     SpriteRenderer sRenderer;
 
     private Color idleColor;
 
     [SerializeField]
     Color chargedColor;
+
+
+
+
 
 
 
@@ -79,6 +120,8 @@ public class PlayerController : MonoBehaviour
         pulledVelocity = 0;
         buildingSpeed = 0;
         isDead = false;
+        leftTriggerHold = new ButtonHolder();
+        isChangingOrbAngle = false;
     }
     // Update is called once per frame
     void Update()
@@ -101,7 +144,7 @@ public class PlayerController : MonoBehaviour
 
     public void onCharge()
     {
-        Color currentChargingColor = Color.Lerp(idleColor, chargedColor, ChargingPower);
+        Color currentChargingColor = Color.Lerp(idleColor, chargedColor, leftTriggerHold.ChargingPower);
         currentChargingColor.a = 1;
         sRenderer.color = currentChargingColor;
     }
@@ -219,17 +262,16 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetButton(PRESS_R + PlayerID))
             {
-                currentHoldPushBtnTime = currentHoldPushBtnTime > maxHoldPushBtnTime ? 0 : currentHoldPushBtnTime += Time.fixedDeltaTime;
+                leftTriggerHold.OnUpdate();
             }
             else if (Input.GetButtonUp(PRESS_R + PlayerID))
             {
                 handAnimator.Play("Push");
                 if (WwiseManager.isWwiseEnabled)
                     AkSoundEngine.PostEvent("MONK_WIND", gameObject);
-                StartCoroutine(TimerActionCooldown("Push"));
+                StartCoroutine(onCoolDown("Push"));
             }
-            else
-                currentHoldPushBtnTime = 0;
+                
         }
         onCharge();
 
@@ -242,7 +284,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown(PRESS_L + PlayerID))
         {
             handAnimator.Play("Pull");
-            StartCoroutine(TimerActionCooldown("Pull"));
+            StartCoroutine(onCoolDown("Pull"));
 
             if (WwiseManager.isWwiseEnabled)
                 AkSoundEngine.PostEvent("MONK_WIND", gameObject);
@@ -252,27 +294,13 @@ public class PlayerController : MonoBehaviour
 
     public void onPush()
     {
-        if (pulledVelocity != 0)
-        {
-            OrbController.onPush(Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up, pulledVelocity);
-            pulledVelocity = 0;
-        }
-        else
-            OrbController.onPush(Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up, this);
-
-        OrbController.onChangeTeamPossession(currentTeam.TeamID);
+      
+       OrbController.onPush(Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up, this);
+       OrbController.onChangeTeamPossession(currentTeam.TeamID);
 
 
-        if (OrbController.CurrentVelocity > 500)
-        {
+        if (OrbController.CurrentVelocity > 300)
             UIEffectManager.OnFreezeFrame(OrbController.velocityRatio / 6);
-
-        }
-        else if (OrbController.CurrentVelocity > 300)
-        {
-            UIEffectManager.OnFreezeFrame(OrbController.velocityRatio / 6);
-
-        }
 
         WindGust.GetComponent<BoxCollider>().enabled = false;
         if (WwiseManager.isWwiseEnabled)
@@ -286,29 +314,30 @@ public class PlayerController : MonoBehaviour
         OrbController.onPull(Vector3.zero, -OrbController.CurrentVelocity);
         OrbController.onChangeTeamPossession(currentTeam.TeamID);
     }
-    IEnumerator TimerActionCooldown(string action)
+
+
+
+    void onChangeCoolDownState(string action, bool state)
+    {
+        switch (action)
+        {
+            case "Push":
+                WindGust.SetActive(state);
+                WindGust.GetComponent<BoxCollider>().enabled = state;
+                break;
+            case "Pull":
+                PullCollider.enabled = state;
+                break;
+        }
+    }
+
+    IEnumerator onCoolDown(string action)
     {
         canDoAction = false;
-        switch (action)
-        {
-            case "Push":
-                WindGust.SetActive(true);
-                WindGust.GetComponent<BoxCollider>().enabled = true;
-                break;
-            case "Pull":
-                PullCollider.enabled = true;
-                break;
-        }
+        onChangeCoolDownState(action,true);
         yield return new WaitForSeconds(.2f);
-        switch (action)
-        {
-            case "Push":
-                WindGust.GetComponent<BoxCollider>().enabled = false;
-                break;
-            case "Pull":
-                PullCollider.enabled = false;
-                break;
-        }
+        leftTriggerHold.OnReset();
+        onChangeCoolDownState(action, false);
         yield return new WaitForSeconds(.4f);
         WindGust.SetActive(false);
         canDoAction = true;
