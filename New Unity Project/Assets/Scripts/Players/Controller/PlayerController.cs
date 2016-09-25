@@ -113,14 +113,20 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        onResetComponents();
         OnResetProperties();
     }
 
-    void OnResetProperties()
+    void onResetComponents()
     {
         PlayerCollider = GetComponent<BoxCollider>();
         rBody = GetComponent<Rigidbody>();
         sRenderer = GetComponent<SpriteRenderer>();
+        displayUI = GetComponentInChildren<Text>();
+    }
+
+    void OnResetProperties()
+    {
         idleColor = sRenderer.color;
         pulledVelocity = 0;
         buildingSpeed = 0;

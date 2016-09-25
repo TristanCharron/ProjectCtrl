@@ -374,6 +374,22 @@ InputManager:
     axis: 0
     joyNum: 0
   - serializedVersion: 3
+    m_Name: Y_Press_1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: c
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: joystick 1 button 3
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 0
+  - serializedVersion: 3
     m_Name: R_Press_1
     descriptiveName: 
     descriptiveNegativeName: 
@@ -486,6 +502,22 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
+    m_Name: Y_Press_2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: x
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: joystick 2 button 3
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 2
+  - serializedVersion: 3
     m_Name: Horizontal_Move_3
     descriptiveName: 
     descriptiveNegativeName: 
@@ -582,6 +614,22 @@ InputManager:
     axis: 0
     joyNum: 3
   - serializedVersion: 3
+    m_Name: Y_Press_3
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: x
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: joystick 3 button 3
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 3
+  - serializedVersion: 3
     m_Name: Horizontal_Move_4
     descriptiveName: 
     descriptiveNegativeName: 
@@ -663,6 +711,22 @@ InputManager:
     joyNum: 4
   - serializedVersion: 3
     m_Name: R_Press_4
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: 
+    altNegativeButton: 
+    altPositiveButton: joystick 4 button 5
+    gravity: 1000
+    dead: 0.001
+    sensitivity: 1000
+    snap: 0
+    invert: 0
+    type: 0
+    axis: 0
+    joyNum: 4
+  - serializedVersion: 3
+    m_Name: Y_Press_4
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
