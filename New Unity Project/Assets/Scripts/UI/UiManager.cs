@@ -35,11 +35,13 @@ public class UiManager : MonoBehaviour
 
     void Update()
     { 
+        /*
         for(int i = 0; i < playerId.Count; i++)
         {
             playerId[i].transform.position = SpawnManager.Players[i].transform.position;
             playerId[i].transform.Translate(new Vector3(0, -10f, 0));
         }
+        */
     }
    
 
