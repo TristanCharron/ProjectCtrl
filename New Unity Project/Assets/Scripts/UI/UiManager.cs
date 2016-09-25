@@ -20,7 +20,11 @@ public class UiManager : MonoBehaviour
 
     public List<Text> playerId = new List<Text>();
 
+    [SerializeField]
     public static List<Text> scoreId = new List<Text>();
+
+
+    public List<Text> scoreIDInsp = new List<Text>();
 
     public Transform Everything;
     public GameObject Sakuras;
@@ -36,7 +40,8 @@ public class UiManager : MonoBehaviour
     }
 
     void Update()
-    { 
+    {
+        scoreIDInsp = scoreId;
         /*
         for(int i = 0; i < playerId.Count; i++)
         {
@@ -68,6 +73,7 @@ public class UiManager : MonoBehaviour
         onGameOverScreen(false);
         onNewRoundScreen(true);
         GameController.onSetGameStartedState(false);
+        scoreTeamContainer.SetActive(true);
         yield return new WaitForSeconds(3.2f);
         onNewRoundScreen(false);
         GameController.onSetGameStartedState(true);
@@ -80,6 +86,7 @@ public class UiManager : MonoBehaviour
     public void onStartGame()
     {
         Sakuras.SetActive(true);
+        
         WwiseManager.onPlayWWiseEvent("UI_SELECT", gameObject);
         WwiseManager.onPlayWWiseEvent("GAME_PLAY", gameObject);
         gameObject.GetComponent<Animator>().enabled = true;

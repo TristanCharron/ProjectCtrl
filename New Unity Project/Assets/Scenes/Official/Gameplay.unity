@@ -4209,7 +4209,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.82, y: -106.26}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &750590356
@@ -15043,7 +15043,6 @@ MonoBehaviour:
   GameOverContainer: {fileID: 1240492210}
   BlueTeamWin: {fileID: 2005981031}
   RedTeamWin: {fileID: 902399553}
-  playerIDcontainer: {fileID: 0}
   scoreTeamContainer: {fileID: 741425268}
   CameraBoxFollower: {fileID: 1683788608}
   FadeToWhite: {fileID: 528879099}
@@ -15052,6 +15051,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  scoreIDInsp:
+  - {fileID: 1271732845}
+  - {fileID: 509374899}
   Everything: {fileID: 960608504}
   Sakuras: {fileID: 197056113}
 --- !u!114 &1683788610
