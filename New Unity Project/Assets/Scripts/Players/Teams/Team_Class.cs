@@ -13,6 +13,7 @@ public class Team
     private TeamController.powerID power;
     public TeamController.powerID powerID { get { return power; } }
 
+    [SerializeField]
     private Text scoreTxt;
     public Text ScoreTxt { get { return scoreTxt; } }
 

@@ -72,6 +72,7 @@ public class TeamController : MonoBehaviour
             OnConfigurePlayer(nbPlayerCreated,newTeam);
         }
         OnAssignBell(newTeam, teamNb);
+        OnAssignScoreTxt(newTeam, teamNb);
         teamList.Add(newTeam);
 
     }

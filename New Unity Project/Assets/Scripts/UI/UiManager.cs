@@ -41,7 +41,7 @@ public class UiManager : MonoBehaviour
 
     void Update()
     {
-        scoreIDInsp = scoreId;
+        scoreId = scoreIDInsp;
         /*
         for(int i = 0; i < playerId.Count; i++)
         {
