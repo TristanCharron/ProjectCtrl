@@ -12,7 +12,7 @@ public class UiManager : MonoBehaviour
     public GameObject titleContainer, startContainer, readyContainer, GameOverContainer, BlueTeamWin, RedTeamWin;
 
 
-    public GameObject playerIDcontainer, scoreTeamContainer;
+    public GameObject scoreTeamContainer;
 
     public CameraActionBoxFollower CameraBoxFollower;
 
@@ -51,7 +51,6 @@ public class UiManager : MonoBehaviour
     public static void OnResetProperties()
     {
         UIEffectManager.OnResetProperties();
-        instance.playerIDcontainer.SetActive(false);
         instance.scoreTeamContainer.SetActive(false);
     }
 
@@ -77,22 +76,6 @@ public class UiManager : MonoBehaviour
     }
 
 
-   
-
-    IEnumerator makeIDAppear()
-    {
-        yield return new WaitForSeconds(4f);
-        playerIDcontainer.SetActive(true);
-        scoreTeamContainer.SetActive(true);
-
-        foreach (Text playerText in playerId)
-        {
-            playerText.CrossFadeAlpha(1.0f, 1.0f, false);
-            playerText.CrossFadeAlpha(0.0f, 5.0f, false);
-        }
-
-        yield break;
-    }
 
     public void onStartGame()
     {
@@ -101,7 +84,6 @@ public class UiManager : MonoBehaviour
         WwiseManager.onPlayWWiseEvent("GAME_PLAY", gameObject);
         gameObject.GetComponent<Animator>().enabled = true;
         FadeToWhite.enabled = true;
-        StartCoroutine(makeIDAppear());
     }
 
     public static void onGameOverScreen(bool state)
