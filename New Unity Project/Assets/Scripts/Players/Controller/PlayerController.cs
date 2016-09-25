@@ -93,7 +93,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     SpawnManager accesSpawn;
 
-    bool isChangingOrbAngle = false;
+    private bool changingOrbAngle = false;
+    public bool isChangingOrbAngle { get { return changingOrbAngle; } }
+
 
 
     SpriteRenderer sRenderer;
@@ -132,7 +134,7 @@ public class PlayerController : MonoBehaviour
         buildingSpeed = 0;
         isDead = false;
         leftTriggerHold = new ButtonHolder();
-        isChangingOrbAngle = false;
+        changingOrbAngle = false;
     }
     // Update is called once per frame
     void Update()
@@ -151,7 +153,18 @@ public class PlayerController : MonoBehaviour
           
         }
 
+        if(changingOrbAngle)
+        {
+            onChangeBallAngle();
+        }
 
+
+    }
+
+    void onChangeBallAngle()
+    {
+        Vector3 newAngle = Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up;
+        OrbController.onChangeAngle(newAngle);
     }
 
     public void onCharge()
@@ -282,9 +295,11 @@ public class PlayerController : MonoBehaviour
                 if (WwiseManager.isWwiseEnabled)
                     AkSoundEngine.PostEvent("MONK_WIND", gameObject);
                 StartCoroutine(onCoolDown("Push"));
+               
             }
                 
         }
+     
         onCharge();
 
 
@@ -353,10 +368,12 @@ public class PlayerController : MonoBehaviour
     IEnumerator onCoolDown(string action)
     {
         canDoAction = false;
+        changingOrbAngle = true;
         onChangeCoolDownState(action,true);
         yield return new WaitForSeconds(.2f);
         leftTriggerHold.OnReset();
         onChangeCoolDownState(action, false);
+        changingOrbAngle = false;
         yield return new WaitForSeconds(.4f);
         WindGust.SetActive(false);
         canDoAction = true;

@@ -202,8 +202,7 @@ public class OrbController : MonoBehaviour
     }
 
 
-
-    public void onChangeAngle(Vector3 Angle)
+    public static void onChangeAngle(Vector3 Angle)
     {
         destinationAngle = Angle;
     }
@@ -214,7 +213,6 @@ public class OrbController : MonoBehaviour
         if (isPushed)
         {
             currentVelocity = Mathf.Lerp(currentVelocity, destinationVelocity, LerpTimer);
-            rBody.velocity = Vector3.Lerp(rBody.velocity, destinationVelocity * destinationAngle, LerpTimer);
             LerpTimer += Time.fixedDeltaTime * 20;
             if (LerpTimer >= 1)
             {
@@ -235,6 +233,7 @@ public class OrbController : MonoBehaviour
             //rBody.velocity = rBody.velocity.normalized * currentVelocity;
 
         }
+        rBody.velocity = Vector3.Lerp(rBody.velocity, destinationVelocity * destinationAngle, LerpTimer);
 
 
 
