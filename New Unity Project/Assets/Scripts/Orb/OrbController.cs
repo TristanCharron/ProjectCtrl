@@ -105,10 +105,16 @@ public class OrbController : MonoBehaviour
     private void onSetProperties()
     {
         currentVelocity = MinVelocity;
-        destinationVelocity = currentVelocity;
-        rBody.velocity = rBody.velocity * MinVelocity;
+        destinationVelocity = 0;
+        Debug.Log(currentVelocity);
+        rBody.velocity = Vector3.zero;
         isPushed = false;
         LerpTimer = 0;
+    }
+
+    public static void onResetOrb()
+    {
+        instance.onSetProperties();
     }
 
 
@@ -236,13 +242,14 @@ public class OrbController : MonoBehaviour
         rBody.velocity = Vector3.Lerp(rBody.velocity, destinationVelocity * destinationAngle, LerpTimer);
 
 
-
-
-
-
-
-
-
-
     }
+
+     void OnMouseDown()
+    {
+    
+        possessedTeam = TeamController.teamID.Team1;
+        onPush(new Vector3(10, 0 , 24), 5);
+       
+    }
+
 }

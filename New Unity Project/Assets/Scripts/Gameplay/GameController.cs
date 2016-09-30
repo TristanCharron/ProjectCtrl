@@ -17,7 +17,12 @@ public class GameController : MonoBehaviour {
     private static int nbRoundsPlayed;
     public static int NbRoundsPlayed { get { return nbRoundsPlayed; } }
 
-  
+
+
+    private static GameController instance;
+    public static GameController Instance { get { return instance; } }
+
+
     public const int nbBellHits = 1;
 
     public static void onSetGameStartedState(bool state)
@@ -34,12 +39,19 @@ public class GameController : MonoBehaviour {
         nbRoundsPlayed++;
         onSpawnOrb();
         UiManager.Instance.StartCoroutine(UiManager.Instance.OnBeginGame());
+        OrbController.onResetOrb();
+        Debug.Log(nbRoundsPlayed);
+        if(isGameCompleted())
+        {
+            Debug.Log("Mr meme point ca");
+        }
     }
 
     public static void onReset()
     {
         TeamController.onReset();
         nbRoundsPlayed = 0;
+
     }
 
     public static bool isGameCompleted()
@@ -57,8 +69,10 @@ public class GameController : MonoBehaviour {
     void Awake () {
         Orb = _Orb;
         OrbSpawnPoints = _OrbSpawnPoints;
+        instance = this;
     }
 
-  
-	
+   
+
+
 }

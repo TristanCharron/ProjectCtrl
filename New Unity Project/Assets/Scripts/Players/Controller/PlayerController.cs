@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
         displayUI = GetComponentInChildren<Text>();
     }
 
-    void OnResetProperties()
+   public void OnResetProperties()
     {
         idleColor = sRenderer.color;
         pulledVelocity = 0;
@@ -135,6 +135,8 @@ public class PlayerController : MonoBehaviour
         isDead = false;
         leftTriggerHold = new ButtonHolder();
         changingOrbAngle = false;
+        velocity = Vector3.zero;
+        rBody.velocity = velocity;
     }
     // Update is called once per frame
     void Update()
@@ -226,6 +228,7 @@ public class PlayerController : MonoBehaviour
             cursor_t += Time.deltaTime * cursorSpeed;
             transform.GetChild(0).localEulerAngles = new Vector3(0, 0, Mathf.LerpAngle(startRotation.z, endRotation.z, cursor_t));
         }
+
         //Control rotation
         float inputX;
         float inputY;
@@ -260,6 +263,7 @@ public class PlayerController : MonoBehaviour
             inputX = Input.GetAxis("Horizontal");
             inputY = Input.GetAxis("Vertical");
         }
+
         if ((inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f))
         {
             buildingSpeed += 0.05f;
@@ -275,9 +279,10 @@ public class PlayerController : MonoBehaviour
         }
         else {
             buildingSpeed -= 0.1f;
-            if (buildingSpeed < 0)
-                buildingSpeed = 0;
+            buildingSpeed = Mathf.Clamp01(buildingSpeed);
+
         }
+
         transform.position += velocity * buildingSpeed;
 
     }

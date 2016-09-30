@@ -100,11 +100,22 @@ public class Bell : MonoBehaviour
 
     public void onBellHit()
     {
-        curNbBellHits++;
-        assignedTeam.onAddScore((int)OrbController.CurrentVelocity);
-        
+
+        if (isHitValid())
+        {
+            curNbBellHits++;
+            assignedTeam.onAddScore((int)OrbController.CurrentVelocity / 10);
+        }
 
         WwiseManager.onPlayWWiseEvent("STAGE_BELL", gameObject);
         GetComponent<Animator>().Play("DONG", 0, -1);
     }
+
+    private bool isHitValid()
+    {
+        if (assignedTeam != null)
+            return assignedTeam.TeamID != OrbController.PossessedTeam && OrbController.PossessedTeam != TeamController.teamID.Neutral;
+        else return false;
+    }
+
 }

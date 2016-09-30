@@ -73,7 +73,8 @@ public class Team
     public void onAddScore(int pointsAmount)
     {
         currentScore += pointsAmount;
-        scoreTxt.text = currentScore.ToString();
+        ScoreManager.onAddScore(scoreTxt, currentScore);
+       
     }
 
     public void onAddRoundScore(int pointsAmount)

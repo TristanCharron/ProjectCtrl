@@ -80,9 +80,11 @@ public class TeamController : MonoBehaviour
     static void OnConfigurePlayer(int playerID, Team assignedTeam)
     {
         PlayerController player = instance.PlayerRoot.transform.GetChild(playerID).GetComponent<PlayerController>();
+        player.OnResetProperties();
         player.onAssignTeam(assignedTeam);
         assignedTeam.PlayerList.Add(player);
         nbPlayerCreated++;
+
     }
 
     static void OnAssignBell(Team assignedTeam, int bellID)
