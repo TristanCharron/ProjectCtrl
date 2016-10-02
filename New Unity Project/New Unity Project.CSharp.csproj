@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\CameraEffects\Shake.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameController.cs" />
     <Compile Include="Assets\Scripts\Gameplay\ScoreController.cs" />
+    <Compile Include="Assets\Scripts\Inputs\InputController.cs" />
     <Compile Include="Assets\Scripts\Obstacles\BounceObstacle.cs" />
     <Compile Include="Assets\Scripts\Orb\OrbController.cs" />
     <Compile Include="Assets\Scripts\Players\Colliders\OnCheckPushState.cs" />

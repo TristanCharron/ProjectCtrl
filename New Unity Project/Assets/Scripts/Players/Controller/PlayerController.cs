@@ -31,7 +31,7 @@ public class ButtonHolder
 
 public class PlayerController : MonoBehaviour
 {
-    public const string PRESS_L = "L_Press_", PRESS_R = "R_Press_", PRESS_Y = "Y_Press_";
+  
 
     private ButtonHolder leftTriggerHold, rightTriggerHold;
 
@@ -290,11 +290,12 @@ public class PlayerController : MonoBehaviour
     {
         if (canDoAction)
         {
-            if (Input.GetButton(PRESS_R + PlayerID))
+            Debug.Log(Input.GetAxis(InputController.PRESS_R + PlayerID));
+            if (Input.GetAxis(InputController.PRESS_R + PlayerID) >= 0.5f)
             {
                 leftTriggerHold.OnUpdate();
             }
-            else if (Input.GetButtonUp(PRESS_R + PlayerID))
+            else if (Input.GetAxis(InputController.PRESS_R + PlayerID) <= -0.5f)
             {
                 handAnimator.Play("Push");
                 if (WwiseManager.isWwiseEnabled)
@@ -313,7 +314,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!canDoAction)
             return;
-        if (Input.GetButtonDown(PRESS_L + PlayerID))
+
+        if (Input.GetAxis(InputController.PRESS_L + PlayerID) > 0.8f)
         {
             handAnimator.Play("Pull");
             StartCoroutine(onCoolDown("Pull"));
@@ -350,7 +352,7 @@ public class PlayerController : MonoBehaviour
 
     void onDisplayUIButton()
     {
-        float alpha = Input.GetButton(PRESS_Y + PlayerID) ? 1 : 0;
+        float alpha = Input.GetButton(InputController.PRESS_Y + PlayerID) ? 1 : 0;
         displayUI.CrossFadeAlpha(alpha,0.1f,false);
     }
 

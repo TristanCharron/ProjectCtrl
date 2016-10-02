@@ -12835,6 +12835,7 @@ GameObject:
   - 114: {fileID: 1557245645}
   - 114: {fileID: 1557245644}
   - 114: {fileID: 1557245647}
+  - 114: {fileID: 1557245648}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -12893,6 +12894,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 958a4980d5ffc8a4db44abc46328794e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1557245648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1557245643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4935d78f066a55343be530dbf9cb3f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1602243298
