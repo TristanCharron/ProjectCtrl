@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{0C5B5BCF-D64A-4566-B585-F8E62AAEA617}" SchemaVersion="70">
+	<SoundcasterSessions>
+		<WorkUnit Name="Default Work Unit" ID="{0C5B5BCF-D64A-4566-B585-F8E62AAEA617}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundcasterSession Name="New Soundcaster Session" ID="{0C0C127B-5C99-45E6-976A-6D8D95DD01E5}">
+					<ModuleList>
+						<Module>
+							<ObjectRef Name="GAME_OPEN" ID="{AB61D847-BD07-4F3A-B051-2A279A98AF3B}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="0" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="GAME_PLAY" ID="{9A9A68C1-7FCD-4403-8069-14D01EB0B86C}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="STAGE_BELL" ID="{53BF3D8D-F7FF-4862-B803-F2008C496199}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="STAGE_FORCE_FIELD" ID="{A32A94EE-E7FF-4FB9-84BC-1906282CB3DC}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="0" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="UI_HOVER" ID="{9CB6303B-98DC-440F-95F7-B6169997ECDA}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="0" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="GAME_READY" ID="{0FCCFF13-D0CE-4D34-85C4-0B1C2E11012E}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="GAME_SET" ID="{A44EB7B5-F828-4589-BC6A-AFA993BE261C}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="1" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="GAME_GO" ID="{CEF49754-C2E1-457E-AA6F-54BA72348DB7}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="1" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="UI_SELECT" ID="{7985C468-BDFC-4DBB-AE47-6FB3EF68AF31}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="1" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="MONK_PITCH" ID="{2924AAA4-00B0-47FF-9A1E-7AE376E1AA16}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="MONK_WIND" ID="{998660AE-DDC6-47C1-9CC7-7EFDFC9CCFD0}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="2" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="MONK_DEAD" ID="{9E3342EC-423F-46F4-8FCD-A6844D2B8F0A}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="2" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="MONK_CATCH" ID="{3D130452-50BB-4907-B1E5-4AEE5D1691E9}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="2" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="GAME_OVER" ID="{3E71E5F9-CE52-4595-8A51-8AAAEDCC623A}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="3" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="GAME_END_BLUE" ID="{1D6A61AE-A6CB-4DFB-B701-88EF0F81E715}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="3" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="GAME_END_RED" ID="{B9E1E73D-B7E0-46DA-A06E-536B9FB5EE95}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="3" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="STAGE_FORCE_FIELD" ID="{A32A94EE-E7FF-4FB9-84BC-1906282CB3DC}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="3" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="BALL_STATE_DOWN" ID="{085F389E-FBEE-4CE0-941F-9B71F7F8085E}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="4" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="BALL_STATE_UP" ID="{2B83D311-551A-4487-8592-E1BF42392E2A}" WorkUnitID="{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}"/>
+							<Position X="4" Y="1"/>
+						</Module>
+					</ModuleList>
+					<RTPCValueList ShowAll="true"/>
+					<CurrentStateList ShowAll="true"/>
+					<CurrentSwitchList ShowAll="true">
+						<CurrentSwitchRef Name="main" ID="{5BC4934E-BA29-4150-9AAF-0D82E9727234}"/>
+					</CurrentSwitchList>
+				</SoundcasterSession>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundcasterSessions>
+</WwiseDocument>

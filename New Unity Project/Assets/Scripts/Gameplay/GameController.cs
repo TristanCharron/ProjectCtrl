@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class GameController : MonoBehaviour {
+public class GameController : MonoBehaviour
+{
 
     public const int nbRounds = 3;
 
@@ -14,7 +16,7 @@ public class GameController : MonoBehaviour {
     public Transform[] _OrbSpawnPoints;
     private static Transform[] OrbSpawnPoints;
 
-    private static int nbRoundsPlayed;
+    private static int nbRoundsPlayed = 0;
     public static int NbRoundsPlayed { get { return nbRoundsPlayed; } }
 
 
@@ -28,51 +30,56 @@ public class GameController : MonoBehaviour {
     public static void onSetGameStartedState(bool state)
     {
         gameStarted = state;
-
-        if (state)
-            onReset();
     }
 
-    public static void onStartNewRound()
+    public static void onNextRound()
+    {
+        if (isGameCompleted())
+            onGameOver();
+        else
+            onSetNextRound();
+    }
+
+    static void onComplete()
+    {
+        nbRoundsPlayed = 0;
+    }
+
+
+    static void onSetNextRound()
     {
         TeamController.onReset();
         nbRoundsPlayed++;
-        onSpawnOrb();
         UiManager.Instance.StartCoroutine(UiManager.Instance.OnBeginGame());
+        Orb.gameObject.SetActive(true);
         OrbController.onResetOrb();
-        Debug.Log(nbRoundsPlayed);
-        if(isGameCompleted())
-        {
-            Debug.Log("Mr meme point ca");
-        }
+        Orb.transform.position = OrbSpawnPoints[Random.Range(0, OrbSpawnPoints.Length)].position;
     }
 
-    public static void onReset()
+    static void onGameOver()
     {
-        TeamController.onReset();
-        nbRoundsPlayed = 0;
-
+        onComplete();
+        TeamController.OnComplete();
+        SceneManager.LoadScene(0);
     }
+
+
 
     public static bool isGameCompleted()
     {
         return nbRoundsPlayed >= nbRounds;
     }
 
-    public static void onSpawnOrb()
-    {
-        Orb.SetActive(true);
-        Orb.transform.position = OrbSpawnPoints[Random.Range(0, OrbSpawnPoints.Length)].position;
-    }
 
     // Use this for initialization
-    void Awake () {
+    void Awake()
+    {
         Orb = _Orb;
         OrbSpawnPoints = _OrbSpawnPoints;
         instance = this;
     }
 
-   
+
 
 
 }

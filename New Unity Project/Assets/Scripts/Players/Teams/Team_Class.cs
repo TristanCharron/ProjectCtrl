@@ -14,8 +14,10 @@ public class Team
     public TeamController.powerID powerID { get { return power; } }
 
     [SerializeField]
-    private Text scoreTxt;
-    public Text ScoreTxt { get { return scoreTxt; } }
+    private Text roundScoretxt,totalScoreTxt;
+    public Text RoundScoreTxt { get { return roundScoretxt; } }
+    public Text TotalScoreTxt { get { return totalScoreTxt; } }
+
 
     int nbPlayers, nbPlayersActive;
     int currentScore, totalScore;
@@ -29,9 +31,13 @@ public class Team
 
     public Bell teamBell;
 
-    private bool stunt;
+    private bool stunt,winning;
     public bool isStunt { get { return stunt; } }
+    public bool isWinning { get { return winning; } }
 
+    int index;
+    public int Index { get { return index; } }
+    
 
 
     public Team()
@@ -44,7 +50,7 @@ public class Team
         playerList = new List<PlayerController>();
     }
 
-    public Team(TeamController.teamID _team, TeamController.powerID _power, int _nbplayers)
+    public Team(TeamController.teamID _team, TeamController.powerID _power, int _nbplayers,int _index)
     {
         team = _team;
         power = _power;
@@ -52,16 +58,26 @@ public class Team
         nbPlayersActive = _nbplayers;
         stunt = false;
         playerList = new List<PlayerController>();
+        index = _index;
+        currentScore = 0;
+        totalScore = 0;
     }
 
-    public void onAssignScoreTxt(Text txt)
+ 
+    public void onAssignScoreTxt(Text roundtxt, Text totalTxt)
     {
-        scoreTxt = txt;
+        roundScoretxt = roundtxt;
+        totalScoreTxt = totalTxt;
     }
 
     public void onAssignBell(Bell bell)
     {
         teamBell = bell;
+    }
+
+    public void onSetWinningState(bool state)
+    {
+        winning = state;
     }
 
     public void onStunt(bool state)
@@ -70,16 +86,26 @@ public class Team
             stunt = state;
     }
 
-    public void onAddScore(int pointsAmount)
+    public void onAddHitScore(int pointsAmount)
     {
         currentScore += pointsAmount;
-        ScoreManager.onAddScore(scoreTxt, currentScore);
+        ScoreController.onAddScore(roundScoretxt, currentScore);
        
     }
 
     public void onAddRoundScore(int pointsAmount)
     {
-        totalScore += currentScore;
+        if(isWinning)
+            totalScore += currentScore;
+        
+        
         currentScore = 0;
+        ScoreController.onAddScore(roundScoretxt, 0);
+        ScoreController.onAddScore(totalScoreTxt, totalScore);
+    }
+
+    public void OnReset()
+    {
+        onAddRoundScore(CurrentScore);
     }
 }

@@ -51,6 +51,8 @@ public class OrbController : MonoBehaviour
 
     public static TeamController.teamID PossessedTeam { get { return possessedTeam; } }
 
+    public TeamController.teamID _PossessedTeam;
+
     private static bool isPushed;
 
     [SerializeField]
@@ -69,6 +71,11 @@ public class OrbController : MonoBehaviour
         onSetProperties();
         onChangeTeamPossession(TeamController.teamID.Neutral);
 
+    }
+
+    void Update()
+    {
+        _PossessedTeam = PossessedTeam;
     }
 
     public static void shouldBallBeEnabled(bool state)
@@ -106,15 +113,17 @@ public class OrbController : MonoBehaviour
     {
         currentVelocity = MinVelocity;
         destinationVelocity = 0;
-        Debug.Log(currentVelocity);
+
         rBody.velocity = Vector3.zero;
         isPushed = false;
         LerpTimer = 0;
+
     }
 
     public static void onResetOrb()
     {
         instance.onSetProperties();
+       
     }
 
 
@@ -246,7 +255,6 @@ public class OrbController : MonoBehaviour
 
      void OnMouseDown()
     {
-    
         possessedTeam = TeamController.teamID.Team1;
         onPush(new Vector3(10, 0 , 24), 5);
        

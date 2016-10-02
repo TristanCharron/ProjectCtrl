@@ -60,7 +60,7 @@ public class SpawnManager : MonoBehaviour
     {
         instance.OnResetProperties();
         instance.onEnablePlayers();
-        GameController.onStartNewRound();
+        GameController.onNextRound();
     
     }
 
@@ -86,29 +86,36 @@ public class SpawnManager : MonoBehaviour
     {
         if (listPlayerDead.Contains(1) && listPlayerDead.Contains(2))
         {
-            instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_RED", UiManager.Instance.RedTeamWin));
+            instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_RED", TeamController.TeamList[1]));
             listPlayerDead.Clear();
         }
             
         else if (listPlayerDead.Contains(3) && listPlayerDead.Contains(4))
         {
-            instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_BLUE", UiManager.Instance.BlueTeamWin));
+            instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_BLUE", TeamController.TeamList[0]));
             listPlayerDead.Clear();
         }
             
 
     }
 
-    public IEnumerator onTeamWinCoRoutine(string wwiseTeamNameEvent, GameObject teamUIContainer)
+    public IEnumerator onTeamWinCoRoutine(string wwiseTeamNameEvent, Team winningTeam)
     {
+        winningTeam.onSetWinningState(true);
+        TeamController.onReturnOtherTeam(winningTeam).onSetWinningState(false);
+
         GameController.onSetGameStartedState(false);
         OrbController.shouldBallBeEnabled(false);
+
         UiManager.onGameOverScreen(true);
         WwiseManager.onPlayWWiseEvent("GAME_OVER", gameObject);
 
         yield return new WaitForSeconds(2f);
+
         UiManager.onGameOverScreen(false);
-        teamUIContainer.SetActive(true);
+
+        UiManager.OnGetTeamContainer(winningTeam).SetActive(true);
+
         WwiseManager.onPlayWWiseEvent(wwiseTeamNameEvent, gameObject);
 
         yield return new WaitForSeconds(5f);

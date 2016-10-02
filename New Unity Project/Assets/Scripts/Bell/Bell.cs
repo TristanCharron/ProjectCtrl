@@ -75,9 +75,6 @@ public class Bell : MonoBehaviour
             Invoke("onDisableStuntPower", 2f);
         }
 
-
-        //assignedTeam.onStunt(state);
-
     }
 
     void onDisableStuntPower()
@@ -101,21 +98,34 @@ public class Bell : MonoBehaviour
     public void onBellHit()
     {
 
-        if (isHitValid())
-        {
-            curNbBellHits++;
-            assignedTeam.onAddScore((int)OrbController.CurrentVelocity / 10);
-        }
+        onCheckBellHit();
 
-        WwiseManager.onPlayWWiseEvent("STAGE_BELL", gameObject);
-        GetComponent<Animator>().Play("DONG", 0, -1);
     }
 
-    private bool isHitValid()
+    private void onCheckBellHit()
     {
-        if (assignedTeam != null)
-            return assignedTeam.TeamID != OrbController.PossessedTeam && OrbController.PossessedTeam != TeamController.teamID.Neutral;
-        else return false;
+        //No Team, invalid
+        if (OrbController.PossessedTeam == TeamController.teamID.Neutral || assignedTeam == null)
+            return;
+
+
+        onAddScore(TeamController.onReturnOtherTeam(assignedTeam));
+        onPlayBellSound();
+
+
+    }
+
+    private void onAddScore(Team team)
+    {
+
+        curNbBellHits++;
+        team.onAddHitScore((int)OrbController.CurrentVelocity / 10);
+    }
+
+    private void onPlayBellSound()
+    {
+        WwiseManager.onPlayWWiseEvent("STAGE_BELL", gameObject);
+        GetComponent<Animator>().Play("DONG", 0, -1);
     }
 
 }

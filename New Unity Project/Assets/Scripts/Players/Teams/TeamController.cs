@@ -13,6 +13,7 @@ public class TeamController : MonoBehaviour
 
     public List<Team> _teamList;
     static List<Team> teamList;
+    public static List<Team> TeamList { get { return teamList; } }
 
 
     public GameObject BellRoot;
@@ -38,46 +39,91 @@ public class TeamController : MonoBehaviour
         croustibat,
     }
 
-   
+    public static void OnComplete()
+    {
+        teamList.Clear();
+        teamList = null;
+        nbPlayerCreated = 0;
+    }
+
+    public static Team onReturnOtherTeam(Team currentTeam)
+    {
+       switch(currentTeam.Index)
+        {
+            case 1:
+                return teamList[1]; 
+            case 2:
+                return teamList[0];
+            default:
+                return currentTeam;
+        }
+    }
 
     // Use this for initialization
     void Awake()
     {
         instance = this;
+        instance._teamList = teamList;
     }
 
     public static void onReset()
     {
-        nbPlayerCreated = 0;
         onGenerateTeams();
-        instance._teamList = teamList;
     }
 
     static void onGenerateTeams()
     {
+        if (teamList == null)
+            onGenerateNewTeams();
+        else
+            onResetTeams();
+    }
+
+    
+
+    static void onGenerateNewTeams()
+    {
+        nbPlayerCreated = 0;
         teamList = new List<Team>();
         for (int i = 0; i < nbTeams; i++)
         {
-            onGenerateTeam((teamID)(i + 1), powerID.stunt, nbPlayers,i);
+            onGenerateTeam((teamID)(i + 1), powerID.stunt, nbPlayers, i+1);
+        }
+    }
+
+    static void onResetTeams()
+    {
+        for(int i = 0; i < teamList.Count; i++) {
+            onResetPlayers(teamList[i]);
+            teamList[i].OnReset();
+        }
+    }
+
+    static void onResetPlayers(Team team)
+    {
+        for (int i = 0; i < nbPlayers; i++)
+        {
+            team.PlayerList[i].OnResetProperties();
         }
     }
 
     static void onGenerateTeam(teamID id, powerID power, int nbPlayers, int teamNb)
     {
-       Team newTeam = new Team(id, power, nbPlayers);
+       Team newTeam = new Team(id, power, nbPlayers, teamNb);
 
       
         for(int i = 0; i < nbPlayers;i++)
         {
-            OnConfigurePlayer(nbPlayerCreated,newTeam);
+            OnGeneratePlayer(nbPlayerCreated,newTeam);
         }
-        OnAssignBell(newTeam, teamNb);
-        OnAssignScoreTxt(newTeam, teamNb);
+
+        OnAssignBell(newTeam, teamNb-1);
+        OnAssignScoreTxt(newTeam, teamNb-1);
         teamList.Add(newTeam);
 
     }
 
-    static void OnConfigurePlayer(int playerID, Team assignedTeam)
+    static void OnGeneratePlayer(int playerID, Team assignedTeam)
     {
         PlayerController player = instance.PlayerRoot.transform.GetChild(playerID).GetComponent<PlayerController>();
         player.OnResetProperties();
@@ -86,6 +132,9 @@ public class TeamController : MonoBehaviour
         nbPlayerCreated++;
 
     }
+
+ 
+
 
     static void OnAssignBell(Team assignedTeam, int bellID)
     {
@@ -96,7 +145,7 @@ public class TeamController : MonoBehaviour
 
     static void OnAssignScoreTxt(Team assignedTeam, int teamID)
     {
-        assignedTeam.onAssignScoreTxt(UiManager.scoreId[teamID]);
+        assignedTeam.onAssignScoreTxt(UiManager.Instance.roundScoreList[teamID], UiManager.Instance.totalScoreList[teamID]);
     }
 
 

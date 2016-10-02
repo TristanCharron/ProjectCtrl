@@ -20,11 +20,8 @@ public class UiManager : MonoBehaviour
 
     public List<Text> playerId = new List<Text>();
 
-    [SerializeField]
-    public static List<Text> scoreId = new List<Text>();
-
-
-    public List<Text> scoreIDInsp = new List<Text>();
+    public List<Text> roundScoreList = new List<Text>();
+    public List<Text> totalScoreList = new List<Text>();
 
     public Transform Everything;
     public GameObject Sakuras;
@@ -39,19 +36,19 @@ public class UiManager : MonoBehaviour
         WwiseManager.onPlayWWiseEvent("GAME_OPEN", gameObject);
     }
 
-    void Update()
-    {
-        scoreId = scoreIDInsp;
-        /*
-        for(int i = 0; i < playerId.Count; i++)
-        {
-            playerId[i].transform.position = SpawnManager.Players[i].transform.position;
-            playerId[i].transform.Translate(new Vector3(0, -10f, 0));
-        }
-        */
-    }
-   
 
+    public static GameObject OnGetTeamContainer(Team currentTeam)
+    {
+        switch (currentTeam.Index)
+        {
+            case 1:
+                return instance.BlueTeamWin;
+            case 2:
+                return instance.RedTeamWin;
+            default:
+                return instance.BlueTeamWin;
+        }
+    }
 
     public static void OnResetProperties()
     {
@@ -64,7 +61,7 @@ public class UiManager : MonoBehaviour
     {
         Sakuras.SetActive(false);
         CameraBoxFollower.enabled = true;
-        GameController.onSpawnOrb();
+        GameController.onNextRound();
         StartCoroutine(OnBeginGame());
     }
 

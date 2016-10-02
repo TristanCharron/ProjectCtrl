@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ValidationCache Version="1" SchemaVersion="70">
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Actor-Mixer Hierarchy\Default Work Unit.wwu" DateLow="4092481280" DateHigh="30538695"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Attenuations\Default Work Unit.wwu" DateLow="3527048704" DateHigh="30538376"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Control Surface Sessions\Default Work Unit.wwu" DateLow="3527048704" DateHigh="30538376"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Conversion Settings\Default Work Unit.wwu" DateLow="3527048704" DateHigh="30538376"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Conversion Settings\Factory Conversion Settings.wwu" DateLow="2780309760" DateHigh="30449190"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\drift.GuillaumeRaymond.wsettings" DateLow="592742912" DateHigh="30538703"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\drift.wproj" DateLow="3527048704" DateHigh="30538376"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Dynamic Dialogue\Default Work Unit.wwu" DateLow="3527048704" DateHigh="30538376"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Effects\Default Work Unit.wwu" DateLow="3527048704" DateHigh="30538376"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Effects\Factory Effects.wwu" DateLow="2780309760" DateHigh="30449190"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Events\Default Work Unit.wwu" DateLow="2292873728" DateHigh="30538707"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Game Parameters\Default Work Unit.wwu" DateLow="3527048704" DateHigh="30538376"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Interactive Music Hierarchy\Default Work Unit.wwu" DateLow="1307841024" DateHigh="30538706"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Master-Mixer Hierarchy\Default Work Unit.wwu" DateLow="3527048704" DateHigh="30538376"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Mixing Sessions\Default Work Unit.wwu" DateLow="3527048704" DateHigh="30538376"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Modulators\Default Work Unit.wwu" DateLow="3527048704" DateHigh="30538376"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Presets\Default Work Unit.wwu" DateLow="3527048704" DateHigh="30538376"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Queries\Default Work Unit.wwu" DateLow="3527048704" DateHigh="30538376"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Queries\Factory Queries.wwu" DateLow="2780309760" DateHigh="30449190"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\SoundBanks\Default Work Unit.wwu" DateLow="262808320" DateHigh="30538705"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Soundcaster Sessions\Default Work Unit.wwu" DateLow="1072873728" DateHigh="30538707"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\States\Default Work Unit.wwu" DateLow="3527048704" DateHigh="30538376"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Switches\Default Work Unit.wwu" DateLow="2506402048" DateHigh="30538662"/>
+	<ValidationCacheItem File="D:\160819_creativejam\wwise\drift\Triggers\Default Work Unit.wwu" DateLow="3527048704" DateHigh="30538376"/>
+</ValidationCache>

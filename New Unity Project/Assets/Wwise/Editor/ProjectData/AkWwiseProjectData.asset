@@ -291,10 +291,12 @@ MonoBehaviour:
       Guid: ec4b457647480b48939206e615aab209
   ExpandedItems:
   - /drift
+  - /drift/SoundBanks
+  - /drift/Switches
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1
-  basePath: Audio\GeneratedSoundBanks
+  basePath: 
   language: English(US)
   defaultPoolSize: 4096
   lowerPoolSize: 2048
