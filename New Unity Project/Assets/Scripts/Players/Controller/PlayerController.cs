@@ -295,7 +295,7 @@ public class PlayerController : MonoBehaviour
             {
                 leftTriggerHold.OnUpdate();
             }
-            else if (Input.GetAxis(InputController.PRESS_R + PlayerID) <= -0.5f)
+            else if (Input.GetAxis(InputController.PRESS_R + PlayerID) <= 0.25f && leftTriggerHold.holdingButtonRatio > 0)
             {
                 handAnimator.Play("Push");
                 if (WwiseManager.isWwiseEnabled)
@@ -314,8 +314,8 @@ public class PlayerController : MonoBehaviour
     {
         if (!canDoAction)
             return;
-
-        if (Input.GetAxis(InputController.PRESS_L + PlayerID) > 0.8f)
+        
+        if (Input.GetAxis(InputController.PRESS_L + PlayerID) > 0.5f)
         {
             handAnimator.Play("Pull");
             StartCoroutine(onCoolDown("Pull"));
