@@ -37,6 +37,7 @@ public class OrbController : MonoBehaviour
 
     // Public variable for game designers to tweek ball velocity.
     public float _MaxVelocity, _MinVelocity, _DecreaseVelocity, _MomentumVelocity, _MomentumBell;
+    static void onSetDestinationVelocity() { destinationVelocity = Mathf.Clamp(destinationVelocity, MinVelocity, MaxVelocity); }
 
     // Public variable for game designers to tweek ball color.
     public Color _NeutralColor, _Team1Color, _Team2Color;
@@ -133,6 +134,7 @@ public class OrbController : MonoBehaviour
         isPushed = true;
         float additionalVel = pushingPlayer.PulledVelocity != 0 ? pushingPlayer.PulledVelocity : 0;
         destinationVelocity = currentVelocity + additionalVel + (MomentumVelocity * pushingPlayer.LeftTriggerHold.holdingButtonRatio);
+        onSetDestinationVelocity();
         destinationAngle = angle;
         Instance.onSetBallStage();
         pushingPlayer.onSetPulledVelocity(0);
@@ -144,6 +146,7 @@ public class OrbController : MonoBehaviour
 
         isPushed = true;
         destinationVelocity = destVelocity;
+        onSetDestinationVelocity();
         Instance.onSetBallStage();
     }
 
@@ -151,6 +154,7 @@ public class OrbController : MonoBehaviour
     {
         isPushed = true;
         destinationVelocity = destVelocity;
+        onSetDestinationVelocity();
         destinationAngle = angle;
         Instance.onSetBallStage();
     }

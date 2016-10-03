@@ -1,27 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
-public class SpawnManager : MonoBehaviour
+using UnityEngine.UI;
+
+public class RoundController : MonoBehaviour
 {
 
-    public static SpawnManager Instance
+    public static RoundController Instance
     {
         get
         {
             return instance;
         }
     }
-    private static SpawnManager instance;
-    public GameObject monkReviveCharge;
+    private static RoundController instance;
     public Transform[] _SpawnPoints;
     private static Transform[] spawnPoints;
     //public GameObject player;
     public GameObject[] _Players;
+
+    public Text roundNbText;
+
     private static GameObject[] players;
     public static GameObject[] Players { get { return players; } }
+
     public static bool IsTeamDead { get { return isTeamDead; } }
     private static bool isTeamDead;
+
     private static List<int> listPlayerDead = new List<int>();
     public static List<int> ListPlayerDead { get { return ListPlayerDead; } }
 
@@ -55,6 +60,11 @@ public class SpawnManager : MonoBehaviour
 
     }
 
+    void Update()
+    {
+        roundNbText.text = "0" + GameController.NbRoundsPlayed.ToString();
+    }
+
 
     static void onReset()
     {
@@ -82,21 +92,19 @@ public class SpawnManager : MonoBehaviour
     }
 
 
-    public static void onTeamWin()
+    public static void OnCheckGameOver()
     {
         if (listPlayerDead.Contains(1) && listPlayerDead.Contains(2))
-        {
-            instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_RED", TeamController.TeamList[1]));
-            listPlayerDead.Clear();
-        }
-            
+            OnTeamVictory(TeamController.TeamList[1]);
         else if (listPlayerDead.Contains(3) && listPlayerDead.Contains(4))
-        {
-            instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_BLUE", TeamController.TeamList[0]));
-            listPlayerDead.Clear();
-        }
-            
+            OnTeamVictory(TeamController.TeamList[0]);
+    }
 
+    public static void OnTeamVictory(Team team)
+    {
+        string wwiseEvent = team.Index == 1 ? "GAME_END_BLUE" : "GAME_END_RED";
+        instance.StartCoroutine(instance.onTeamWinCoRoutine(wwiseEvent, team));
+        listPlayerDead.Clear();
     }
 
     public IEnumerator onTeamWinCoRoutine(string wwiseTeamNameEvent, Team winningTeam)
@@ -125,12 +133,12 @@ public class SpawnManager : MonoBehaviour
 
 
 
-    public void onPlayerDeath(int id)
+    public static void onPlayerDeath(int id)
     {
         WwiseManager.onPlayWWiseEvent("MONK_DEAD", players[id - 1].gameObject);
         listPlayerDead.Add(id);
         players[id - 1].gameObject.SetActive(false);
-        onTeamWin();
+        OnCheckGameOver();
 
 
     }

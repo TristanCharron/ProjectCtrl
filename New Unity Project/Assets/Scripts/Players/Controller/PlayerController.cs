@@ -90,8 +90,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject WindGust;
     Rigidbody rBody;
-    [SerializeField]
-    SpawnManager accesSpawn;
 
     private bool changingOrbAngle = false;
     public bool isChangingOrbAngle { get { return changingOrbAngle; } }
@@ -155,18 +153,20 @@ public class PlayerController : MonoBehaviour
           
         }
 
-        if(changingOrbAngle)
-        {
-            onChangeBallAngle();
-        }
+        onChangeBallAngle();
+      
 
 
     }
 
     void onChangeBallAngle()
     {
-        Vector3 newAngle = Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up;
-        OrbController.onChangeAngle(newAngle);
+        if (changingOrbAngle)
+        { 
+            Vector3 newAngle = Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up;
+            OrbController.onChangeAngle(newAngle);
+        }
+
     }
 
     public void onCharge()
@@ -209,7 +209,7 @@ public class PlayerController : MonoBehaviour
                 {
                     GameObject DeathAnimParticle = Instantiate(Resources.Load<GameObject>("DeathMonkParticle"), gameObject.transform.position, Quaternion.identity) as GameObject;
                     Destroy(DeathAnimParticle, 5);
-                    accesSpawn.onPlayerDeath(PlayerID);
+                    RoundController.onPlayerDeath(PlayerID);
 
                 }
             }
@@ -290,7 +290,6 @@ public class PlayerController : MonoBehaviour
     {
         if (canDoAction)
         {
-            Debug.Log(Input.GetAxis(InputController.PRESS_R + PlayerID));
             if (Input.GetAxis(InputController.PRESS_R + PlayerID) >= 0.5f)
             {
                 leftTriggerHold.OnUpdate();
@@ -375,14 +374,19 @@ public class PlayerController : MonoBehaviour
     IEnumerator onCoolDown(string action)
     {
         canDoAction = false;
-        changingOrbAngle = true;
         onChangeCoolDownState(action,true);
         yield return new WaitForSeconds(.2f);
         leftTriggerHold.OnReset();
         onChangeCoolDownState(action, false);
-        changingOrbAngle = false;
         yield return new WaitForSeconds(.4f);
         WindGust.SetActive(false);
         canDoAction = true;
+    }
+
+
+    void onChangingOrbAngleState(bool state)
+    {
+        changingOrbAngle = state;
+
     }
 }

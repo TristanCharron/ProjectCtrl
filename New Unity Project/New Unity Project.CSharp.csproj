@@ -69,10 +69,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ScoreUIFreeze.cs" />
     <Compile Include="Assets\Scripts\Bell\Bell.cs" />
     <Compile Include="Assets\Scripts\CameraEffects\Shake.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameController.cs" />
     <Compile Include="Assets\Scripts\Gameplay\ScoreController.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Timer\TimeController.cs" />
     <Compile Include="Assets\Scripts\Inputs\InputController.cs" />
     <Compile Include="Assets\Scripts\Obstacles\BounceObstacle.cs" />
     <Compile Include="Assets\Scripts\Orb\OrbController.cs" />
@@ -84,7 +86,7 @@
     <Compile Include="Assets\Scripts\Shaders\WindShader.cs" />
     <Compile Include="Assets\Scripts\UI\CallEventWwise.cs" />
     <Compile Include="Assets\Scripts\UI\CameraActionBoxFollower.cs" />
-    <Compile Include="Assets\Scripts\UI\SpawnManager.cs" />
+    <Compile Include="Assets\Scripts\UI\RoundController.cs" />
     <Compile Include="Assets\Scripts\UI\UIEffectManager.cs" />
     <Compile Include="Assets\Scripts\UI\UiManager.cs" />
     <Compile Include="Assets\Scripts\Wwise\WwiseManager.cs" />

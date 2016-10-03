@@ -49,6 +49,7 @@ public class GameController : MonoBehaviour
     static void onSetNextRound()
     {
         TeamController.onReset();
+        TimeController.OnReset();
         nbRoundsPlayed++;
         UiManager.Instance.StartCoroutine(UiManager.Instance.OnBeginGame());
         Orb.gameObject.SetActive(true);
