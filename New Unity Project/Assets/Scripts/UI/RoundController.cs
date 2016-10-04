@@ -111,22 +111,11 @@ public class RoundController : MonoBehaviour
     {
         winningTeam.onSetWinningState(true);
         TeamController.onReturnOtherTeam(winningTeam).onSetWinningState(false);
-
         GameController.onSetGameStartedState(false);
         OrbController.shouldBallBeEnabled(false);
-
-        UiManager.onGameOverScreen(true);
-        WwiseManager.onPlayWWiseEvent("GAME_OVER", gameObject);
-
-        yield return new WaitForSeconds(2f);
-
-        UiManager.onGameOverScreen(false);
-
         UiManager.OnGetTeamContainer(winningTeam).SetActive(true);
-
         WwiseManager.onPlayWWiseEvent(wwiseTeamNameEvent, gameObject);
-
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         onReset();
 
     }

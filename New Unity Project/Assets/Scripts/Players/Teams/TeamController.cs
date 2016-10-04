@@ -105,6 +105,8 @@ public class TeamController : MonoBehaviour
         {
             team.PlayerList[i].OnResetProperties();
         }
+
+        RoundController.onResetPosition();
     }
 
     static void onGenerateTeam(teamID id, powerID power, int nbPlayers, int teamNb)

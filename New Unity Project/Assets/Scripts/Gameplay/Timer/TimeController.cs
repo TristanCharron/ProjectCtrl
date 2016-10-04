@@ -46,8 +46,11 @@ public class TimeController : MonoBehaviour {
     {
         if(seconds > 59)
             instance.TimerUI.text = "01:00";
-        else
+        else if (seconds < 10)
+            instance.TimerUI.text = "00:0" + TimeRounded.ToString();
+        else 
             instance.TimerUI.text = "00:" + TimeRounded.ToString();
+
     }
 
     // Use this for initialization

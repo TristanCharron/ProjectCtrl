@@ -57,11 +57,33 @@ public class GameController : MonoBehaviour
         Orb.transform.position = OrbSpawnPoints[Random.Range(0, OrbSpawnPoints.Length)].position;
     }
 
-    static void onGameOver()
+
+    public IEnumerator onTeamWinCoRoutine(string wwiseTeamNameEvent, Team winningTeam)
     {
+        winningTeam.onSetWinningState(true);
+        TeamController.onReturnOtherTeam(winningTeam).onSetWinningState(false);
+        GameController.onSetGameStartedState(false);
+        OrbController.shouldBallBeEnabled(false);
+        UiManager.onGameOverScreen(true);
+        yield return new WaitForSeconds(2f);
+        UiManager.onGameOverScreen(false);
+        UiManager.OnGetTeamContainer(winningTeam).SetActive(true);
+        WwiseManager.onPlayWWiseEvent(wwiseTeamNameEvent, gameObject);
+        yield return new WaitForSeconds(5f);
         onComplete();
         TeamController.OnComplete();
         SceneManager.LoadScene(0);
+
+    }
+
+
+    static void onGameOver()
+    {
+        if (TeamController.TeamList[0].CurrentScore > TeamController.TeamList[1].CurrentScore)
+            instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_BLUE",TeamController.TeamList[0]));
+        else
+            instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_RED", TeamController.TeamList[1]));
+
     }
 
 
