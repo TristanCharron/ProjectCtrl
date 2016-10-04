@@ -119,7 +119,7 @@ public class Bell : MonoBehaviour
     {
 
         curNbBellHits++;
-        team.onAddHitScore((int)OrbController.CurrentVelocity / 10);
+        team.onAddHitScore((int)OrbController.CurrentVelocity / 3);
     }
 
     private void onPlayBellSound()

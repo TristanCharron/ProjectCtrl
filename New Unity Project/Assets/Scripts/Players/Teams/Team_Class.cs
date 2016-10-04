@@ -104,8 +104,5 @@ public class Team
         ScoreController.onAddScore(totalScoreTxt, totalScore);
     }
 
-    public void OnReset()
-    {
-        onAddRoundScore(CurrentScore);
-    }
+
 }

@@ -39,7 +39,7 @@ public class RoundController : MonoBehaviour
         onEnablePlayers();
     }
 
-    void OnResetProperties()
+    public void OnResetProperties()
     {
         listPlayerDead = new List<int>();
         isTeamDead = false;
@@ -48,7 +48,7 @@ public class RoundController : MonoBehaviour
 
     }
 
-    void onEnablePlayers()
+    public void onEnablePlayers()
     {
 
         for (int x = 0; x < _Players.Length; x++)
@@ -68,10 +68,7 @@ public class RoundController : MonoBehaviour
 
     static void onReset()
     {
-        instance.OnResetProperties();
-        instance.onEnablePlayers();
         GameController.onNextRound();
-    
     }
 
     public static void onResetPosition()
@@ -116,6 +113,7 @@ public class RoundController : MonoBehaviour
         UiManager.OnGetTeamContainer(winningTeam).SetActive(true);
         WwiseManager.onPlayWWiseEvent(wwiseTeamNameEvent, gameObject);
         yield return new WaitForSeconds(3f);
+        UiManager.OnGetTeamContainer(winningTeam).SetActive(false);
         onReset();
 
     }

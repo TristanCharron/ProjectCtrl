@@ -95,7 +95,6 @@ public class TeamController : MonoBehaviour
     {
         for(int i = 0; i < teamList.Count; i++) {
             onResetPlayers(teamList[i]);
-            teamList[i].OnReset();
         }
     }
 

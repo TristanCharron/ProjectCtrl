@@ -389,4 +389,17 @@ public class PlayerController : MonoBehaviour
         changingOrbAngle = state;
 
     }
+
+
+    void OnMouseDown()
+    {
+        if (!isDead)
+        {
+            GameObject DeathAnimParticle = Instantiate(Resources.Load<GameObject>("DeathMonkParticle"), gameObject.transform.position, Quaternion.identity) as GameObject;
+            Destroy(DeathAnimParticle, 5);
+            RoundController.onPlayerDeath(PlayerID);
+
+        }
+
+    }
 }

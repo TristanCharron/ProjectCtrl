@@ -35,4 +35,16 @@ public class ScoreController : MonoBehaviour {
             return ("0" + num.ToString());
     }
 
+    public static void onAddTeamScores()
+    {
+        if(GameController.NbRoundsPlayed > 0)
+        {
+            for (int i = 0; i < TeamController.TeamList.Count; i++)
+            {
+                TeamController.TeamList[i].onAddRoundScore(TeamController.TeamList[i].CurrentScore);
+            }
+        }
+      
+    }
+
 }
