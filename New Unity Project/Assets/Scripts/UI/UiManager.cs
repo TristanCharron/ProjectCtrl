@@ -16,8 +16,6 @@ public class UiManager : MonoBehaviour
 
     public CameraActionBoxFollower CameraBoxFollower;
 
-    public Animator FadeToWhite;
-
     public List<Text> playerId = new List<Text>();
 
     public List<Text> roundScoreList = new List<Text>();
@@ -83,11 +81,10 @@ public class UiManager : MonoBehaviour
     public void onStartGame()
     {
         Sakuras.SetActive(true);
-        
         WwiseManager.onPlayWWiseEvent("UI_SELECT", gameObject);
         WwiseManager.onPlayWWiseEvent("GAME_PLAY", gameObject);
-        gameObject.GetComponent<Animator>().enabled = true;
-        FadeToWhite.enabled = true;
+        UIEffectManager.OnFadeToWhite();
+        Camera.main.gameObject.GetComponent<Animator>().enabled = true;
     }
 
     public static void onGameOverScreen(bool state)

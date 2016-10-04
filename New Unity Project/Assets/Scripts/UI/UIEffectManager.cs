@@ -14,10 +14,14 @@ public class UIEffectManager : MonoBehaviour {
 
     private static Shake shakeComponent;
 
+    public GameObject FadeWhiteComponent;
+    private static Animator fadeWhiteAnimator;
+
     // Use this for initialization
     void Awake () {
         instance = this;
         shakeComponent = Camera.main.GetComponentInParent<Shake>();
+        fadeWhiteAnimator = FadeWhiteComponent.GetComponent<Animator>();
 
     }
 
@@ -83,6 +87,26 @@ public class UIEffectManager : MonoBehaviour {
         }
         yield break;
     }
+
+    public static void OnFadeToWhite()
+    {
+        instance.StartCoroutine(instance.OnFadeAnimToWhite());
+       
+    
+    }
+
+    public IEnumerator OnFadeAnimToWhite()
+    {
+        fadeWhiteAnimator.enabled = true;
+        FadeWhiteComponent.SetActive(true);
+        yield return new WaitForSeconds(3.9f);
+        fadeWhiteAnimator.Rebind();
+        FadeWhiteComponent.SetActive(false);
+        fadeWhiteAnimator.enabled = false;
+        yield break;
+    }
+
+  
 
 
 }

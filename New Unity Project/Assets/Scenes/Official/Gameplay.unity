@@ -3120,7 +3120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectDistance: {x: 5, y: -5}
   m_UseGraphicAlpha: 1
 --- !u!4 &439505731 stripped
 Transform:
@@ -3413,7 +3413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectDistance: {x: 5, y: -5}
   m_UseGraphicAlpha: 1
 --- !u!1 &519517632
 GameObject:
@@ -3502,7 +3502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectDistance: {x: 5, y: -5}
   m_UseGraphicAlpha: 1
 --- !u!1 &528283168
 GameObject:
@@ -4890,16 +4890,16 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 794853424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1974584357}
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18.9, y: 127.6}
-  m_SizeDelta: {x: 202.96, y: 33.4}
+  m_AnchoredPosition: {x: -18.9, y: 114.8}
+  m_SizeDelta: {x: 652, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &794853426
 MonoBehaviour:
@@ -4913,7 +4913,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.778}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5245,7 +5245,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -250, y: 470}
+  m_AnchoredPosition: {x: -250, y: 452.3}
   m_SizeDelta: {x: 64.8, y: 73.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &872777506
@@ -5561,7 +5561,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -69.00008, y: 385.5}
+  m_AnchoredPosition: {x: -69.00008, y: 367.8}
   m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &919730902
@@ -5741,7 +5741,6 @@ GameObject:
   - 224: {fileID: 971755732}
   - 222: {fileID: 971755734}
   - 114: {fileID: 971755733}
-  - 114: {fileID: 971755735}
   m_Layer: 5
   m_Name: BlueTeamHeader
   m_TagString: Untagged
@@ -5806,20 +5805,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 971755731}
---- !u!114 &971755735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 971755731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 0.4, y: -0.4}
-  m_UseGraphicAlpha: 1
 --- !u!1001 &974907483
 Prefab:
   m_ObjectHideFlags: 0
@@ -10492,7 +10477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
+  m_EffectDistance: {x: 5, y: -5}
   m_UseGraphicAlpha: 1
 --- !u!1 &1282456762
 GameObject:
@@ -13073,16 +13058,16 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1541013472}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
   m_Children: []
   m_Father: {fileID: 1974584357}
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -18.899994, y: 74.8}
-  m_SizeDelta: {x: 121.8, y: 33.4}
+  m_AnchoredPosition: {x: -18.899994, y: 78.3}
+  m_SizeDelta: {x: 652, y: 54}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1541013474
 MonoBehaviour:
@@ -13096,7 +13081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.778}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -15368,7 +15353,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1670359193}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -15376,7 +15361,7 @@ RectTransform:
   m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -69.00006, y: 488}
+  m_AnchoredPosition: {x: -69.00006, y: 470.3}
   m_SizeDelta: {x: 80, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1670359195
@@ -15718,7 +15703,6 @@ MonoBehaviour:
   RedTeamWin: {fileID: 902399553}
   scoreTeamContainer: {fileID: 741425268}
   CameraBoxFollower: {fileID: 1683788608}
-  FadeToWhite: {fileID: 528879099}
   playerId:
   - {fileID: 0}
   - {fileID: 0}
@@ -15780,6 +15764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f967a4d354f50114392242154b4faf47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FadeWhiteComponent: {fileID: 528879097}
 --- !u!114 &1683788613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15792,7 +15777,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shader: {fileID: 4800000, guid: 3b3866f84b7729d4890dcecec5f9a363, type: 3}
-  intensity: 2
+  intensity: 0.25
 --- !u!1 &1701429757
 GameObject:
   m_ObjectHideFlags: 0
@@ -15818,7 +15803,7 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1701429757}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -15826,7 +15811,7 @@ RectTransform:
   m_RootOrder: 6
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -69.00009, y: 448}
+  m_AnchoredPosition: {x: -69.00009, y: 430.3}
   m_SizeDelta: {x: 100, y: 129}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1701429759
@@ -15961,7 +15946,6 @@ GameObject:
   - 224: {fileID: 1718167604}
   - 222: {fileID: 1718167606}
   - 114: {fileID: 1718167605}
-  - 114: {fileID: 1718167607}
   m_Layer: 5
   m_Name: RedTeamHeader
   m_TagString: Untagged
@@ -16026,20 +16010,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1718167603}
---- !u!114 &1718167607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1718167603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 0.4, y: -0.4}
-  m_UseGraphicAlpha: 1
 --- !u!1 &1722788362
 GameObject:
   m_ObjectHideFlags: 0
@@ -21050,7 +21020,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: 470}
+  m_AnchoredPosition: {x: 125, y: 452.3}
   m_SizeDelta: {x: 64.8, y: 73.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2075153083

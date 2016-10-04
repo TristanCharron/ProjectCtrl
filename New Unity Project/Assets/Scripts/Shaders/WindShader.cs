@@ -14,11 +14,15 @@ public class WindShader : ImageEffectBase
     //Shader parameters transfered to Shader
     [Range(0.1f, 20f)]
     public float intensity = 100f;
-    private float disabledIntensity = 0.5f, currentIntensity;
+    static float _intensity;
+    private static float disabledIntensity, currentIntensity, destinationVelocity;
 
     void Awake()
     {
-        currentIntensity = 0.1f;
+        _intensity = intensity;
+        currentIntensity = intensity;
+        disabledIntensity = 0;
+        destinationVelocity = currentIntensity;
         instance = this;
     }
 
@@ -28,9 +32,14 @@ public class WindShader : ImageEffectBase
     // Called by camera to apply image effect
     void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
-        currentIntensity = GameController.isGameStarted ? Mathf.Lerp(currentIntensity, intensity * OrbController.velocityRatio, currentIntensity/intensity) : disabledIntensity;
-        material.SetFloat("_Intensity", currentIntensity);
+        material.SetFloat("_Intensity", intensity);
         Graphics.Blit(source, destination, material);
     }
+
+    public static void onWindWave()
+    {
+        destinationVelocity = _intensity;
+    }
+
 }
 

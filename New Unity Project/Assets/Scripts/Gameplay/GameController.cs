@@ -77,6 +77,11 @@ public class GameController : MonoBehaviour
         WwiseManager.onPlayWWiseEvent(wwiseTeamNameEvent, gameObject);
 
         yield return new WaitForSeconds(5f);
+        UiManager.OnGetTeamContainer(winningTeam).SetActive(false);
+
+        UIEffectManager.OnFadeToWhite();
+
+        yield return new WaitForSeconds(2f);
 
         onComplete();
         TeamController.OnComplete();
