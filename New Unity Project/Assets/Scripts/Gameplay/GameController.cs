@@ -54,7 +54,7 @@ public class GameController : MonoBehaviour
         TeamController.onReset();
         TimeController.OnReset();
         nbRoundsPlayed++;
-        UiManager.Instance.StartCoroutine(UiManager.Instance.OnBeginGame());
+        RoundUIController.Instance.StartCoroutine(RoundUIController.Instance.OnBeginGame());
         Orb.gameObject.SetActive(true);
         OrbController.onResetOrb();
         Orb.transform.position = OrbSpawnPoints[Random.Range(0, OrbSpawnPoints.Length)].position;
@@ -67,17 +67,17 @@ public class GameController : MonoBehaviour
     {
         onSetGameStartedState(false);
         OrbController.shouldBallBeEnabled(false);
-        UiManager.onGameOverScreen(true);
+        RoundUIController.onGameOverScreen(true);
 
         yield return new WaitForSeconds(2f);
 
-        UiManager.onGameOverScreen(false);
-        UiManager.OnGetTeamContainer(winningTeam).SetActive(true);
+        RoundUIController.onGameOverScreen(false);
+        RoundUIController.OnGetTeamContainer(winningTeam).SetActive(true);
 
         WwiseManager.onPlayWWiseEvent(wwiseTeamNameEvent, gameObject);
 
         yield return new WaitForSeconds(5f);
-        UiManager.OnGetTeamContainer(winningTeam).SetActive(false);
+        RoundUIController.OnGetTeamContainer(winningTeam).SetActive(false);
 
         UIEffectManager.OnFadeToWhite();
 
@@ -91,7 +91,7 @@ public class GameController : MonoBehaviour
     }
 
 
-    static void onGameOver()
+    public static void onGameOver()
     {
         if (TeamController.TeamList[0].TotalScore > TeamController.TeamList[1].TotalScore)
             instance.StartCoroutine(instance.onTeamWinCoRoutine("GAME_END_BLUE", TeamController.TeamList[0]));

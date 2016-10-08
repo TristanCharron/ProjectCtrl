@@ -150,14 +150,24 @@ public class PlayerController : MonoBehaviour
             PullButton();
             onDisplayUIButton();
             CursorRotation();
-          
+            onPressPauseButton();
+
+
         }
 
-        onChangeBallAngle();
+        //onChangeBallAngle();
       
 
 
     }
+
+
+    void onPressPauseButton()
+    {
+        if (Input.GetButtonDown(InputController.PRESS_START + PlayerID))
+            PauseController.OnPause();
+    }
+
 
     void onChangeBallAngle()
     {

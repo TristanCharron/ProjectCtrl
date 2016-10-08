@@ -3,26 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class UiManager : MonoBehaviour
+public class RoundUIController : MonoBehaviour
 {
 
-    public static UiManager Instance { get { return instance; } }
-    private static UiManager instance;
+    public static RoundUIController Instance { get { return instance; } }
+    private static RoundUIController instance;
 
-    public GameObject titleContainer, startContainer, readyContainer, GameOverContainer, BlueTeamWin, RedTeamWin;
-
+    public GameObject readyContainer, GameOverContainer, BlueTeamWin, RedTeamWin;
 
     public GameObject scoreTeamContainer;
 
     public CameraActionBoxFollower CameraBoxFollower;
 
     public List<Text> playerId = new List<Text>();
-
     public List<Text> roundScoreList = new List<Text>();
     public List<Text> totalScoreList = new List<Text>();
 
-    public Transform Everything;
-    public GameObject Sakuras;
+    public GameObject SakuraParticles;
 
 
     // Use this for initialization
@@ -57,7 +54,7 @@ public class UiManager : MonoBehaviour
 
     public void EndCinematic()
     {
-        Sakuras.SetActive(false);
+        SakuraParticles.SetActive(false);
         CameraBoxFollower.enabled = true;
         GameController.onNextRound();
         StartCoroutine(OnBeginGame());
@@ -74,17 +71,6 @@ public class UiManager : MonoBehaviour
         GameController.onSetGameStartedState(true);
         yield break;
 
-    }
-
-
-
-    public void onStartGame()
-    {
-        Sakuras.SetActive(true);
-        WwiseManager.onPlayWWiseEvent("UI_SELECT", gameObject);
-        WwiseManager.onPlayWWiseEvent("GAME_PLAY", gameObject);
-        UIEffectManager.OnFadeToWhite();
-        Camera.main.gameObject.GetComponent<Animator>().enabled = true;
     }
 
     public static void onGameOverScreen(bool state)

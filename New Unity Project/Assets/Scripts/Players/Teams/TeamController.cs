@@ -146,7 +146,7 @@ public class TeamController : MonoBehaviour
 
     static void OnAssignScoreTxt(Team assignedTeam, int teamID)
     {
-        assignedTeam.onAssignScoreTxt(UiManager.Instance.roundScoreList[teamID], UiManager.Instance.totalScoreList[teamID]);
+        assignedTeam.onAssignScoreTxt(RoundUIController.Instance.roundScoreList[teamID], RoundUIController.Instance.totalScoreList[teamID]);
     }
 
 

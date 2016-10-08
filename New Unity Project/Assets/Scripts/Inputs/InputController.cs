@@ -12,7 +12,11 @@ public class InputController : MonoBehaviour
     public const string 
         PRESS_L = "L_Press_", 
         PRESS_R = "R_Press_", 
-        PRESS_Y = "Y_Press_";
+        PRESS_Y = "Y_Press_",
+        PRESS_A = "A_Press_",
+        PRESS_START = "Start_Press_",
+        VERTICAL_MOVE = "Vertical_Move_",
+        HORIZONTAL_MOVE = "Horizontal_Move_";
 
     public enum controllerType { NONE = 0, PLAYSTATION3 = 1, XBOXONE = 2, };
 

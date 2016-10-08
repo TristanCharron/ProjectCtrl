@@ -78,12 +78,12 @@ public class RoundController : MonoBehaviour
             players[x].transform.position = spawnPoints[x].transform.position;
         }
 
-        UiManager.onGameOverScreen(false);
+        RoundUIController.onGameOverScreen(false);
 
         if (IsTeamDead)
         {
             isTeamDead = false;
-            UiManager.onGameOverScreen(false);
+            RoundUIController.onGameOverScreen(false);
         }
 
     }
@@ -110,10 +110,10 @@ public class RoundController : MonoBehaviour
         TeamController.onReturnOtherTeam(winningTeam).onSetWinningState(false);
         GameController.onSetGameStartedState(false);
         OrbController.shouldBallBeEnabled(false);
-        UiManager.OnGetTeamContainer(winningTeam).SetActive(true);
+        RoundUIController.OnGetTeamContainer(winningTeam).SetActive(true);
         WwiseManager.onPlayWWiseEvent(wwiseTeamNameEvent, gameObject);
         yield return new WaitForSeconds(3f);
-        UiManager.OnGetTeamContainer(winningTeam).SetActive(false);
+        RoundUIController.OnGetTeamContainer(winningTeam).SetActive(false);
         onReset();
 
     }

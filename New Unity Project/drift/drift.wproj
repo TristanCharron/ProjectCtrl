@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="Project" SchemaVersion="70">
 	<ProjectInfo>
-		<Project Name="gamename" ID="{A9C1C620-3158-4667-80A6-182099581363}">
+		<Project Name="drift" ID="{A9C1C620-3158-4667-80A6-182099581363}">
 			<Platforms>
 				<Platform Name="Windows" ReferencePlatform="Windows" ID="{6D3E2DE1-D7AB-4BF9-B762-473F3FCC5109}"/>
 			</Platforms>
@@ -9297,6 +9297,9 @@
 				</PhysicalFolder>
 				<PhysicalFolder Path="SoundBanks">
 					<WorkUnit Name="SoundBanks" ID="{C98E673F-A24C-48A8-960F-10565FFE70A0}" PersistMode="Standalone"/>
+				</PhysicalFolder>
+				<PhysicalFolder Path="SoundBanks\English(US)">
+					<WorkUnit Name="English(US)" ID="{DAF438B3-633D-43D1-877B-EC5021C7E864}" PersistMode="Standalone"/>
 				</PhysicalFolder>
 				<PhysicalFolder Path="Soundcaster Sessions">
 					<WorkUnit Name="Soundcaster Sessions" ID="{4C96B38B-3DB4-40C7-91C9-665510E38993}" PersistMode="Standalone"/>
