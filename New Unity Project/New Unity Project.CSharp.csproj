@@ -69,11 +69,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Bell\Bell.cs" />
     <Compile Include="Assets\Scripts\CameraEffects\Shake.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Bell\Bell.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameController.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Penalty\PenaltyController.cs" />
     <Compile Include="Assets\Scripts\Gameplay\RoundController.cs" />
     <Compile Include="Assets\Scripts\Gameplay\ScoreController.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\TeamBarrier.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Timer\TimeController.cs" />
     <Compile Include="Assets\Scripts\Inputs\InputController.cs" />
     <Compile Include="Assets\Scripts\Obstacles\BounceObstacle.cs" />

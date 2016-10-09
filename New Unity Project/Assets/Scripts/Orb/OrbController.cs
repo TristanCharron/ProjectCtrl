@@ -128,6 +128,18 @@ public class OrbController : MonoBehaviour
     }
 
 
+    public static void onPush(Vector3 angle, TeamController.teamID teamID)
+    {
+
+        isPushed = true;
+        destinationVelocity = MaxVelocity / 3;
+        onSetDestinationVelocity();
+        destinationAngle = angle;
+        Instance.onSetBallStage();
+        onChangeTeamPossession(teamID);
+    }
+
+
     public static void onPush(Vector3 angle, PlayerController pushingPlayer)
     {
 

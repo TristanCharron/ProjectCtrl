@@ -85,7 +85,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     BoxCollider PullCollider;
-    [SerializeField]
     bool canDoAction = true;
     [SerializeField]
     GameObject WindGust;
@@ -131,6 +130,7 @@ public class PlayerController : MonoBehaviour
         pulledVelocity = 0;
         buildingSpeed = 0;
         isDead = false;
+        canDoAction = true;
         leftTriggerHold = new ButtonHolder();
         changingOrbAngle = false;
         velocity = Vector3.zero;

@@ -95,7 +95,7 @@ public class MenuController : MonoBehaviour
     {
         for (int i = 0; i < instance.mainMenuTxtList.Length; i++)
         {
-            Color destColor = i == selectionIndex ? highlightMenuColor : Color.white;
+            Color destColor = i == selectionIndex ?  Color.white : highlightMenuColor;
             instance.mainMenuTxtList[i].CrossFadeColor(destColor, 0.3f, true, true);
 
         }

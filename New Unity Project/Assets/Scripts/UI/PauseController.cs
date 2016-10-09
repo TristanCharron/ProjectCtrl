@@ -101,7 +101,7 @@ public class PauseController : MonoBehaviour
     {
         for (int i = 0; i < instance.pauseMenuTxtList.Length; i++)
         {
-            Color destColor = i == selectionIndex ? highlightMenuColor : Color.white;
+            Color destColor = i == selectionIndex ? Color.white : highlightMenuColor;
             instance.pauseMenuTxtList[i].CrossFadeColor(destColor, 0.3f, true, true);
 
         }

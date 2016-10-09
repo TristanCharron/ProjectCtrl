@@ -53,6 +53,7 @@ public class GameController : MonoBehaviour
     {
         TeamController.onReset();
         TimeController.OnReset();
+        PenaltyController.OnReset();
         nbRoundsPlayed++;
         RoundUIController.Instance.StartCoroutine(RoundUIController.Instance.OnBeginGame());
         Orb.gameObject.SetActive(true);
@@ -119,6 +120,7 @@ public class GameController : MonoBehaviour
         Orb = _Orb;
         OrbSpawnPoints = _OrbSpawnPoints;
         instance = this;
+        gameStarted = false;
     }
 
 
