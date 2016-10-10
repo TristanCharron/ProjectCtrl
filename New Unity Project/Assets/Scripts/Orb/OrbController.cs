@@ -54,7 +54,7 @@ public class OrbController : MonoBehaviour
 
     public TeamController.teamID _PossessedTeam;
 
-    private static bool isPushed;
+    private static bool isPushed,isPushable = true;
 
     [SerializeField]
     public ParticleSystem pSystem;
@@ -114,10 +114,10 @@ public class OrbController : MonoBehaviour
     {
         currentVelocity = MinVelocity;
         destinationVelocity = 0;
-
+        isPushable = true;
         rBody.velocity = Vector3.zero;
         isPushed = false;
-        LerpTimer = 0;
+        LerpTimer = 0f;
 
     }
 
@@ -131,44 +131,53 @@ public class OrbController : MonoBehaviour
     public static void onPush(Vector3 angle, TeamController.teamID teamID)
     {
 
-        isPushed = true;
-        destinationVelocity = MaxVelocity / 3;
-        onSetDestinationVelocity();
-        destinationAngle = angle;
-        Instance.onSetBallStage();
-        onChangeTeamPossession(teamID);
+            isPushed = true;
+            destinationVelocity = MaxVelocity / 3;
+            onSetDestinationVelocity();
+            destinationAngle = angle;
+            Instance.onSetBallStage();
+            onChangeTeamPossession(teamID);
+        
+      
     }
 
 
     public static void onPush(Vector3 angle, PlayerController pushingPlayer)
     {
-
-        isPushed = true;
-        float additionalVel = pushingPlayer.PulledVelocity != 0 ? pushingPlayer.PulledVelocity : 0;
-        destinationVelocity = currentVelocity + additionalVel + (MomentumVelocity * pushingPlayer.LeftTriggerHold.holdingButtonRatio);
-        onSetDestinationVelocity();
-        destinationAngle = angle;
-        Instance.onSetBallStage();
-        pushingPlayer.onSetPulledVelocity(0);
+        if (isPushable)
+        {
+            isPushed = true;
+            float additionalVel = pushingPlayer.PulledVelocity != 0 ? pushingPlayer.PulledVelocity : 0;
+            destinationVelocity = currentVelocity + additionalVel + (MomentumVelocity * pushingPlayer.LeftTriggerHold.holdingButtonRatio);
+            onSetDestinationVelocity();
+            destinationAngle = angle;
+            Instance.onSetBallStage();
+            pushingPlayer.onSetPulledVelocity(0);
+        }
     }
 
 
     public static void onPush(float destVelocity)
     {
-
-        isPushed = true;
-        destinationVelocity = destVelocity;
-        onSetDestinationVelocity();
-        Instance.onSetBallStage();
+        if (isPushable)
+        {
+            isPushed = true;
+            destinationVelocity = destVelocity;
+            onSetDestinationVelocity();
+            Instance.onSetBallStage();
+        }
     }
 
     public static void onPush(Vector3 angle, float destVelocity)
     {
-        isPushed = true;
-        destinationVelocity = destVelocity;
-        onSetDestinationVelocity();
-        destinationAngle = angle;
-        Instance.onSetBallStage();
+        if (isPushable)
+        {
+            isPushed = true;
+            destinationVelocity = destVelocity;
+            onSetDestinationVelocity();
+            destinationAngle = angle;
+            Instance.onSetBallStage();
+        }
     }
 
 
@@ -243,8 +252,7 @@ public class OrbController : MonoBehaviour
     {
         if (isPushed)
         {
-            currentVelocity = Mathf.Lerp(currentVelocity, destinationVelocity, LerpTimer);
-            LerpTimer += Time.fixedDeltaTime * 20;
+            LerpTimer += Time.deltaTime * 3;
             if (LerpTimer >= 1)
             {
                 LerpTimer = 0;
@@ -264,16 +272,20 @@ public class OrbController : MonoBehaviour
             //rBody.velocity = rBody.velocity.normalized * currentVelocity;
 
         }
-        rBody.velocity = Vector3.Lerp(rBody.velocity, destinationVelocity * destinationAngle, LerpTimer);
+        currentVelocity = Mathf.Lerp(currentVelocity, destinationVelocity, Mathfx.Sinerp(0, 1, LerpTimer));
+        rBody.velocity = Vector3.Lerp(rBody.velocity, destinationVelocity * destinationAngle, Mathfx.Sinerp(0, 1, LerpTimer));
 
 
     }
 
-     void OnMouseDown()
+    public static void OnDisableOrb()
     {
-        possessedTeam = TeamController.teamID.Team1;
-        onPush(new Vector3(10, 0 , 24), 5);
-       
+        isPushable = false;
+    }
+
+    public static void OnEnableOrb()
+    {
+        isPushable = true;
     }
 
 }

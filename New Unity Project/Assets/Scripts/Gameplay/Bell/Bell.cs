@@ -24,7 +24,7 @@ public class Bell : MonoBehaviour
                 if (shouldEnableTeamPower())
                     onEnableTeamPower(true);
 
-                OrbController.onPush(OrbController.CurrentVelocity - 25);
+                OrbController.onPush(transform.right,OrbController.MaxVelocity / 3);
                 onDisableBell();
 
             }

@@ -33,14 +33,26 @@ public class TeamBarrier : MonoBehaviour
     {
         if (GameController.isGameStarted)
             if (other.gameObject == OrbController.Instance.gameObject && !inTeamZone)
+            {
+                OrbController.OnEnableOrb();
                 OnEnableBarrier();
+            }
+
+
     }
 
     void OnTriggerExit(Collider other)
     {
         if (GameController.isGameStarted)
+        {
             if (other.gameObject == OrbController.Instance.gameObject && inTeamZone)
+            {
                 OnDisableBarrier();
+                OrbController.OnDisableOrb();
+            }
+
+        }
+
     }
 
     void OnTriggerStay(Collider other)
@@ -52,7 +64,7 @@ public class TeamBarrier : MonoBehaviour
 
     void OnEnableBarrier()
     {
-        PenaltyController.OnEnableTimer(penaltyUI,this);
+        PenaltyController.OnEnableTimer(penaltyUI, this);
         inTeamZone = true;
         penaltyUI.CrossFadeAlpha(1, 0.5f, false);
     }

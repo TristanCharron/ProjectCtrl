@@ -78,11 +78,13 @@
     <Compile Include="Assets\Scripts\Gameplay\TeamBarrier.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Timer\TimeController.cs" />
     <Compile Include="Assets\Scripts\Inputs\InputController.cs" />
+    <Compile Include="Assets\Scripts\Math\MathFX.cs" />
     <Compile Include="Assets\Scripts\Obstacles\BounceObstacle.cs" />
     <Compile Include="Assets\Scripts\Orb\OrbController.cs" />
     <Compile Include="Assets\Scripts\Players\Colliders\OnCheckPushState.cs" />
     <Compile Include="Assets\Scripts\Players\Colliders\onCheckPullState.cs" />
     <Compile Include="Assets\Scripts\Players\Controller\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Players\PlayerClasses\Player.cs" />
     <Compile Include="Assets\Scripts\Players\Teams\TeamController.cs" />
     <Compile Include="Assets\Scripts\Players\Teams\Team_Class.cs" />
     <Compile Include="Assets\Scripts\Shaders\WindShader.cs" />
