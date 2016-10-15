@@ -5,9 +5,17 @@
 [Oo]bj/
 [Bb]uild
 /[Ll]ibrary/
+
 sysinfo.txt
 *.stackdump
- 
+
+# =============== #
+# Wwise 	  #
+# =============== #
+drift_sound/
+
+
+
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
