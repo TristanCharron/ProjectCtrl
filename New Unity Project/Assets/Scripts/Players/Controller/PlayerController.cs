@@ -251,8 +251,7 @@ void PushButton()
         else if (Input.GetAxis(InputController.PRESS_R + PlayerID) <= 0.25f && leftTriggerHold.holdingButtonRatio > 0)
         {
             handAnimator.Play("Push");
-            if (WwiseManager.isWwiseEnabled)
-                AkSoundEngine.PostEvent("MONK_WIND", gameObject);
+            WwiseManager.onPlayWWiseEvent("MONK_WIND", gameObject);
             StartCoroutine(onCoolDown("Push"));
 
         }
@@ -272,9 +271,7 @@ void PullButton()
     {
         handAnimator.Play("Pull");
         StartCoroutine(onCoolDown("Pull"));
-
-        if (WwiseManager.isWwiseEnabled)
-            AkSoundEngine.PostEvent("MONK_WIND", gameObject);
+        WwiseManager.onPlayWWiseEvent("MONK_WIND", gameObject);
     }
 
 }
@@ -290,14 +287,12 @@ public void onPush()
         UIEffectManager.OnFreezeFrame(OrbController.velocityRatio / 6);
 
     WindGust.GetComponent<BoxCollider>().enabled = false;
-    if (WwiseManager.isWwiseEnabled)
-        AkSoundEngine.PostEvent("MONK_PITCH", gameObject);
+    WwiseManager.onPlayWWiseEvent("MONK_PITCH", gameObject);
 }
 
 public void onPull()
 {
-    if (WwiseManager.isWwiseEnabled)
-        AkSoundEngine.PostEvent("MONK_CATCH", gameObject);
+    WwiseManager.onPlayWWiseEvent("MONK_CATCH", gameObject);
     pulledVelocity = OrbController.CurrentVelocity;
     OrbController.onPull(Vector3.zero, -OrbController.CurrentVelocity);
     OrbController.onChangeTeamPossession(currentTeam.TeamID);

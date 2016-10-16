@@ -2,7 +2,6 @@
 using System.Collections;
 
 public class WwiseManager : MonoBehaviour {
-    private static bool wwiseEnabled;
     public static bool isWwiseEnabled;
     public bool _isWwiseEnabled;
     public GameObject WwiseGlobalObject;
@@ -17,11 +16,13 @@ public class WwiseManager : MonoBehaviour {
 
     void onSetWwiseByState()
     {
+        
         Camera.main.gameObject.GetComponent<AkAudioListener>().enabled = isWwiseEnabled;
         if(!isWwiseEnabled)
         {
             Destroy(WwiseGlobalObject);
         }
+        
     }
 
 	

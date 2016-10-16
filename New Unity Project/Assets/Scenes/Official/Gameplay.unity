@@ -118,7 +118,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 116931514}
-  - {fileID: 491956022}
   - {fileID: 1130122256}
   - {fileID: 1504804073}
   - {fileID: 1755737639}
@@ -667,6 +666,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11eb1030145ced04ea42a60a82c6c2aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &137085255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 137085258}
+  - 114: {fileID: 137085257}
+  - 114: {fileID: 137085256}
+  - 114: {fileID: 137085259}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &137085256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 137085255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d94223cd2175a249b960bb8a3e612e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basePath: Audio\GeneratedSoundBanks
+  language: English(US)
+  defaultPoolSize: 4096
+  lowerPoolSize: 2048
+  streamingPoolSize: 1024
+  preparePoolSize: 0
+  memoryCutoffThreshold: 0.95
+  engineLogging: 1
+--- !u!114 &137085257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 137085255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6adead71b807d364bb536d13f9695706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &137085258
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 137085255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 18
+--- !u!114 &137085259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 137085255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daba9c3651c398a45bd2629d0b847540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 568e1b64de206444bd432f61dbd5b9f0
+  bankName: Drifts_Wwise_SoundBank
+  loadAsynchronous: 0
+  unloadTriggerList: 958ca0ea
 --- !u!1001 &165241168
 Prefab:
   m_ObjectHideFlags: 0
@@ -3391,84 +3468,6 @@ MonoBehaviour:
 Transform:
   m_PrefabParentObject: {fileID: 400008, guid: f9294e336f9fe9d4f8548f53c4334093, type: 3}
   m_PrefabInternal: {fileID: 2112843341}
---- !u!1 &491956019
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 491956022}
-  - 114: {fileID: 491956021}
-  - 114: {fileID: 491956020}
-  - 114: {fileID: 491956023}
-  m_Layer: 0
-  m_Name: WwiseGlobal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &491956020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 491956019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c2d78a7872ca684e993fb36252e5f98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  basePath: 
-  language: English(US)
-  defaultPoolSize: 4096
-  lowerPoolSize: 2048
-  streamingPoolSize: 1024
-  preparePoolSize: 0
-  memoryCutoffThreshold: 0.95
-  engineLogging: 1
---- !u!114 &491956021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 491956019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79582595cc387e04987a90f05ce5946b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &491956022
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 491956019}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -143.14006, y: -20.6096, z: -314.56274}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 1860945}
-  m_RootOrder: 1
---- !u!114 &491956023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 491956019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9993dacb99b10b43a3f0a3c73bfcfa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: f7e1664c
-  useOtherObject: 0
-  valueGuid: ec4b457647480b48939206e615aab209
-  bankName: DriftNoMusic
-  loadAsynchronous: 0
-  unloadTriggerList: 
 --- !u!1 &505086230
 GameObject:
   m_ObjectHideFlags: 0
@@ -4939,7 +4938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isWwiseEnabled: 1
-  WwiseGlobalObject: {fileID: 491956019}
+  WwiseGlobalObject: {fileID: 0}
 --- !u!4 &757753819
 Transform:
   m_ObjectHideFlags: 0
@@ -10591,7 +10590,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 64.100006, y: 13.76, z: 5.2450004}
   m_Children: []
   m_Father: {fileID: 1860945}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &1145829369
 GameObject:
   m_ObjectHideFlags: 0
@@ -13596,7 +13595,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 65.100006, y: -49.155003, z: 5.8650002}
   m_Children: []
   m_Father: {fileID: 1860945}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &1519957946
 GameObject:
   m_ObjectHideFlags: 0
@@ -16311,12 +16310,12 @@ GameObject:
   - 95: {fileID: 1683788605}
   - 114: {fileID: 1683788606}
   - 114: {fileID: 1683788608}
-  - 114: {fileID: 1683788600}
   - 114: {fileID: 1683788609}
   - 114: {fileID: 1683788610}
   - 114: {fileID: 1683788611}
   - 114: {fileID: 1683788607}
   - 114: {fileID: 1683788612}
+  - 114: {fileID: 1683788613}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -16324,18 +16323,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1683788600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1683788599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5dfb59998ed8b843a927be5ce62c7b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listenerId: 0
 --- !u!124 &1683788601
 Behaviour:
   m_ObjectHideFlags: 0
@@ -16543,6 +16530,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FadeWhiteComponent: {fileID: 528879097}
+--- !u!114 &1683788613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1683788599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d549ec2bd9e1b94b88cd456031a3eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenerId: 0
 --- !u!1 &1701429757
 GameObject:
   m_ObjectHideFlags: 0
@@ -18663,7 +18662,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1860945}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1790731294
 GameObject:
   m_ObjectHideFlags: 0
