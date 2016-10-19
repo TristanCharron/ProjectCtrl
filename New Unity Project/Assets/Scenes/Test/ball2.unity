@@ -118,7 +118,6 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 116931514}
-  - {fileID: 491956022}
   - {fileID: 1130122256}
   - {fileID: 1504804073}
   - {fileID: 1755737639}
@@ -314,10 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsingController: 1
   PlayerID: 3
-  buildingSpeed: 0
-  SpeedPlayer: 25
   handAnimator: {fileID: 2049575264}
   cursorTransform: {fileID: 882831462}
   LookAtTransform: {fileID: 1735601621}
@@ -325,9 +321,8 @@ MonoBehaviour:
   isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 534357828}
-  canDoAction: 1
   WindGust: {fileID: 698443958}
-  accesSpawn: {fileID: 248026818}
+  chargedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &35232885
 Animator:
   serializedVersion: 3
@@ -451,10 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsingController: 1
   PlayerID: 4
-  buildingSpeed: 0
-  SpeedPlayer: 25
   handAnimator: {fileID: 2012042758}
   cursorTransform: {fileID: 667673400}
   LookAtTransform: {fileID: 363160779}
@@ -462,9 +454,8 @@ MonoBehaviour:
   isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 1145829370}
-  canDoAction: 1
   WindGust: {fileID: 1078657687}
-  accesSpawn: {fileID: 248026818}
+  chargedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &115000726
 Animator:
   serializedVersion: 3
@@ -772,11 +763,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39f1f04ca3039d54cabfaabdda2d39ca, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &197056113 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1000014121231756, guid: 39f1f04ca3039d54cabfaabdda2d39ca,
-    type: 2}
-  m_PrefabInternal: {fileID: 185648881}
 --- !u!4 &197056116 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000011115325206, guid: 39f1f04ca3039d54cabfaabdda2d39ca,
@@ -875,14 +861,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ecb0325ddd02b42a58b0e47f0cf794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverContainer: {fileID: 0}
-  monkReviveCharge: {fileID: 0}
-  SpawnPoints: []
+  _SpawnPoints: []
   _Players:
   - {fileID: 793283479}
   - {fileID: 407643782}
   - {fileID: 35232882}
   - {fileID: 115000723}
+  roundNbText: {fileID: 0}
 --- !u!4 &248026819
 Transform:
   m_ObjectHideFlags: 0
@@ -1094,7 +1079,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 341646970}
-  serializedVersion: 2
+  serializedVersion: 4
   lengthInSec: 5
   startDelay:
     scalar: 0
@@ -1132,12 +1117,13 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
-  randomSeed: 1111302376
   looping: 1
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 0
+  autoRandomSeed: 0
   scalingMode: 1
+  randomSeed: 1111302376
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -2996,10 +2982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsingController: 1
   PlayerID: 2
-  buildingSpeed: 0
-  SpeedPlayer: 25
   handAnimator: {fileID: 1790731296}
   cursorTransform: {fileID: 331155418}
   LookAtTransform: {fileID: 1910013910}
@@ -3007,9 +2990,8 @@ MonoBehaviour:
   isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 839302185}
-  canDoAction: 1
   WindGust: {fileID: 165241169}
-  accesSpawn: {fileID: 248026818}
+  chargedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &407643785
 Animator:
   serializedVersion: 3
@@ -3091,84 +3073,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400008, guid: f9294e336f9fe9d4f8548f53c4334093, type: 3}
   m_PrefabInternal: {fileID: 2112843341}
---- !u!1 &491956019
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 491956022}
-  - 114: {fileID: 491956021}
-  - 114: {fileID: 491956020}
-  - 114: {fileID: 491956023}
-  m_Layer: 0
-  m_Name: WwiseGlobal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &491956020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 491956019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c2d78a7872ca684e993fb36252e5f98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  basePath: Audio\GeneratedSoundBanks
-  language: English(US)
-  defaultPoolSize: 4096
-  lowerPoolSize: 2048
-  streamingPoolSize: 1024
-  preparePoolSize: 0
-  memoryCutoffThreshold: 0.95
-  engineLogging: 1
---- !u!114 &491956021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 491956019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79582595cc387e04987a90f05ce5946b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &491956022
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 491956019}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -143.14006, y: -20.6096, z: -314.56274}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 1860945}
-  m_RootOrder: 1
---- !u!114 &491956023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 491956019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9993dacb99b10b43a3f0a3c73bfcfa5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  triggerList: f7e1664c
-  useOtherObject: 0
-  valueGuid: ec4b457647480b48939206e615aab209
-  bankName: DriftNoMusic
-  loadAsynchronous: 0
-  unloadTriggerList: 
 --- !u!1 &507586337
 GameObject:
   m_ObjectHideFlags: 0
@@ -4090,6 +3994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isWwiseEnabled: 0
+  WwiseGlobalObject: {fileID: 0}
 --- !u!4 &757753819
 Transform:
   m_ObjectHideFlags: 0
@@ -4379,10 +4284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UsingController: 1
   PlayerID: 1
-  buildingSpeed: 0
-  SpeedPlayer: 25
   handAnimator: {fileID: 1967005220}
   cursorTransform: {fileID: 859500343}
   LookAtTransform: {fileID: 507586338}
@@ -4390,9 +4292,8 @@ MonoBehaviour:
   isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 1455670972}
-  canDoAction: 1
   WindGust: {fileID: 265155809}
-  accesSpawn: {fileID: 248026818}
+  chargedColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!95 &793283481
 Animator:
   serializedVersion: 3
@@ -5151,7 +5052,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1009003528}
-  serializedVersion: 2
+  serializedVersion: 4
   lengthInSec: 5
   startDelay:
     scalar: 0
@@ -5189,12 +5090,13 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
-  randomSeed: 1111302376
   looping: 1
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 0
+  autoRandomSeed: 0
   scalingMode: 1
+  randomSeed: 1111302376
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -7281,7 +7183,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1096464107}
-  serializedVersion: 2
+  serializedVersion: 4
   lengthInSec: 5
   startDelay:
     scalar: 0
@@ -7319,12 +7221,13 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
-  randomSeed: 1111302376
   looping: 1
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 0
+  autoRandomSeed: 0
   scalingMode: 1
+  randomSeed: 1111302376
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -9129,7 +9032,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 64.100006, y: 13.76, z: 5.2450004}
   m_Children: []
   m_Father: {fileID: 1860945}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &1145829369
 GameObject:
   m_ObjectHideFlags: 0
@@ -9378,7 +9281,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shakeDuration: 0.2
-  Power: 1
   decreaseFactor: 0.8
 --- !u!1 &1216636384
 GameObject:
@@ -9419,8 +9321,9 @@ MonoBehaviour:
   _NeutralColor: {r: 0, g: 0, b: 0, a: 0}
   _Team1Color: {r: 1, g: 0, b: 0, a: 0}
   _Team2Color: {r: 0, g: 0.21379304, b: 1, a: 0}
+  _PossessedTeam: 0
   pSystem: {fileID: 1664275171}
-  StageBall: {fileID: 544248182}
+  mainOrb: {fileID: 0}
 --- !u!95 &1216636386
 Animator:
   serializedVersion: 3
@@ -9896,7 +9799,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1387220411}
-  serializedVersion: 2
+  serializedVersion: 4
   lengthInSec: 5
   startDelay:
     scalar: 0
@@ -9934,12 +9837,13 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
-  randomSeed: 1111302376
   looping: 1
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 0
+  autoRandomSeed: 0
   scalingMode: 1
+  randomSeed: 1111302376
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -11998,7 +11902,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 65.100006, y: -49.155003, z: 5.8650002}
   m_Children: []
   m_Father: {fileID: 1860945}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &1519957946
 GameObject:
   m_ObjectHideFlags: 0
@@ -12089,6 +11993,66 @@ CanvasRenderer:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 1b8da82aa3b1c2e4f996be95640478d8, type: 3}
   m_PrefabInternal: {fileID: 974907483}
+--- !u!1 &1532507401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1532507404}
+  - 114: {fileID: 1532507403}
+  - 114: {fileID: 1532507402}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1532507402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1532507401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d94223cd2175a249b960bb8a3e612e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  basePath: Audio\GeneratedSoundBanks
+  language: English(US)
+  defaultPoolSize: 4096
+  lowerPoolSize: 2048
+  streamingPoolSize: 1024
+  preparePoolSize: 0
+  memoryCutoffThreshold: 0.95
+  engineLogging: 1
+--- !u!114 &1532507403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1532507401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6adead71b807d364bb536d13f9695706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1532507404
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1532507401}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
 --- !u!1 &1602243298
 GameObject:
   m_ObjectHideFlags: 0
@@ -12291,7 +12255,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1664275168}
-  serializedVersion: 2
+  serializedVersion: 4
   lengthInSec: 5
   startDelay:
     scalar: 0
@@ -12329,12 +12293,13 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
-  randomSeed: 1111302376
   looping: 1
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 0
+  autoRandomSeed: 0
   scalingMode: 1
+  randomSeed: 1111302376
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -14247,11 +14212,11 @@ GameObject:
   - 95: {fileID: 1683788605}
   - 114: {fileID: 1683788606}
   - 114: {fileID: 1683788608}
-  - 114: {fileID: 1683788600}
   - 114: {fileID: 1683788609}
   - 114: {fileID: 1683788610}
   - 114: {fileID: 1683788611}
   - 114: {fileID: 1683788607}
+  - 114: {fileID: 1683788612}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -14259,18 +14224,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1683788600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1683788599}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5dfb59998ed8b843a927be5ce62c7b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listenerId: 0
 --- !u!124 &1683788601
 Behaviour:
   m_ObjectHideFlags: 0
@@ -14399,6 +14352,7 @@ MonoBehaviour:
   boundingBoxPadding: 2
   minimumOrthographicSize: 80
   zoomSpeed: 2
+  CameraAjust: {x: 0, y: 0, z: 0}
 --- !u!114 &1683788609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14410,22 +14364,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0ad3ec5534af441923e47526f5d356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  titleContainer: {fileID: 1254032617}
-  startContainer: {fileID: 0}
   readyContainer: {fileID: 1028794081}
   GameOverContainer: {fileID: 1240492210}
   BlueTeamWin: {fileID: 2005981031}
   RedTeamWin: {fileID: 902399553}
-  playerIDcontainer: {fileID: 1849764979}
+  scoreTeamContainer: {fileID: 0}
   CameraBoxFollower: {fileID: 1683788608}
-  FadeToWhite: {fileID: 528879099}
   playerId: []
-  mainOrb: {fileID: 1216636384}
-  mainOrbSpawnPoints:
-  - {fileID: 1299775437}
-  - {fileID: 1480405112}
-  Everything: {fileID: 960608504}
-  Sakuras: {fileID: 197056113}
+  roundScoreList: []
+  totalScoreList: []
+  SakuraParticles: {fileID: 0}
 --- !u!114 &1683788610
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14463,6 +14411,18 @@ MonoBehaviour:
   edgesOnly: 0.121
   edgesOnlyBgColor: {r: 0.9264706, g: 0, b: 0.78590244, a: 1}
   edgeDetectShader: {fileID: 4800000, guid: 0d1644bdf064147baa97f235fc5b4903, type: 3}
+--- !u!114 &1683788612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1683788599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d549ec2bd9e1b94b88cd456031a3eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listenerId: 0
 --- !u!1 &1704665389
 GameObject:
   m_ObjectHideFlags: 0
@@ -14612,7 +14572,7 @@ ParticleSystem:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1722788362}
-  serializedVersion: 2
+  serializedVersion: 4
   lengthInSec: 5
   startDelay:
     scalar: 0
@@ -14650,12 +14610,13 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
-  randomSeed: 1111302376
   looping: 1
   prewarm: 0
   playOnAwake: 1
   moveWithTransform: 0
+  autoRandomSeed: 0
   scalingMode: 1
+  randomSeed: 1111302376
   InitialModule:
     serializedVersion: 2
     enabled: 1
@@ -16419,7 +16380,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1860945}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!1 &1790731294
 GameObject:
   m_ObjectHideFlags: 0
@@ -17437,8 +17398,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e37a281fa8a8948b926bf4e186f953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teamList: []
+  _teamList: []
   BellRoot: {fileID: 338883324}
+  PlayerRoot: {fileID: 0}
 --- !u!1 &2049575262
 GameObject:
   m_ObjectHideFlags: 0
@@ -17571,7 +17533,7 @@ ParticleSystem:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2074247197}
-  serializedVersion: 2
+  serializedVersion: 4
   lengthInSec: 5
   startDelay:
     scalar: 0
@@ -17609,12 +17571,13 @@ ParticleSystem:
       m_RotationOrder: 4
     minMaxState: 0
   speed: 1
-  randomSeed: 1111302376
   looping: 1
   prewarm: 1
   playOnAwake: 1
   moveWithTransform: 0
+  autoRandomSeed: 0
   scalingMode: 1
+  randomSeed: 1111302376
   InitialModule:
     serializedVersion: 2
     enabled: 1

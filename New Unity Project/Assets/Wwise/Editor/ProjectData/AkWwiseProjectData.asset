@@ -277,18 +277,9 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{A2D49259-6C18-4DCE-BC74-35CB9CF9887A}'
-    m_lastTimePsrt1: 1791260810
-    m_lastTimePart2: -1999375015
+    m_lastTimePsrt1: -1412633828
+    m_lastTimePart2: -1999374407
     List:
-    - Name: DriftNoMusic
-      Path: Default Work Unit\DriftNoMusic
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: DriftNoMusic
-        ObjectType: 7
-      ID: 2024809976
-      Guid: ec4b457647480b48939206e615aab209
     - Name: Drifts_Wwise_SoundBank
       Path: Default Work Unit\Drifts_Wwise_SoundBank
       PathAndIcons:

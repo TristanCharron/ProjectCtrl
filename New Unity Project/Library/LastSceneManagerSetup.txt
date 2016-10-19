@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Official/Gameplay.unity
+- path: Assets/Scenes/Test/ball2.unity
   isLoaded: 1
   isActive: 1
