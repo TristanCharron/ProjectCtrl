@@ -12003,6 +12003,7 @@ GameObject:
   - 4: {fileID: 1532507404}
   - 114: {fileID: 1532507403}
   - 114: {fileID: 1532507402}
+  - 114: {fileID: 1532507405}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -12053,6 +12054,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
+--- !u!114 &1532507405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1532507401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daba9c3651c398a45bd2629d0b847540, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  valueGuid: 568e1b64de206444bd432f61dbd5b9f0
+  bankName: Drifts_Wwise_SoundBank
+  loadAsynchronous: 0
+  unloadTriggerList: 958ca0ea
 --- !u!1 &1602243298
 GameObject:
   m_ObjectHideFlags: 0
