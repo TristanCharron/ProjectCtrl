@@ -187,7 +187,6 @@ public class OrbController : MonoBehaviour
     {
         int previousOrbID = OrbStateID;
 
-        WwiseManager.onPlayWWiseEvent("BALL_IMPACT", gameObject);
 
         if (CurrentVelocity > 100)
         {
