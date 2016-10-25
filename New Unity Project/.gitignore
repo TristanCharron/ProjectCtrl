@@ -13,7 +13,7 @@ sysinfo.txt
 # Wwise 	  #
 # =============== #
 drift_sound/
-
+!Assets/Wwise/Deployment/Plugins/
 
 
 # ===================================== #
