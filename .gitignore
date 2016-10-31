@@ -33,6 +33,7 @@ drift_sound/
 *.unityproj
 *.booproj
 *.svd
+*.tmp
  
 # ============ #
 # OS generated #
@@ -50,3 +51,4 @@ ehthumbs.db
 *.pidb.meta
 *.apk
 *.unitypackage
+sysinfo.txt
