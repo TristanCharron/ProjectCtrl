@@ -5,7 +5,7 @@
 [Oo]bj/
 [Bb]uild
 [Bb]uilds/
-/[Ll]ibrary/
+[Ll]ibrary/
 
 sysinfo.txt
 *.stackdump
@@ -13,7 +13,9 @@ sysinfo.txt
 # =============== #
 # Wwise 	  #
 # =============== #
-/drift_sound/
+drift_sound/
+!*.dll
+!*.pdb
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -30,6 +32,7 @@ sysinfo.txt
 *.unityproj
 *.booproj
 *.svd
+
  
 # ============ #
 # OS generated #
@@ -45,6 +48,5 @@ ehthumbs.db
 
 # Unity
 *.pidb.meta
-sysinfo.txt
 *.apk
 *.unitypackage
