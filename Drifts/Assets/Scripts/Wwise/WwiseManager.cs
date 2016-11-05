@@ -9,6 +9,7 @@ public class WwiseManager : MonoBehaviour {
 	// Use this for initialization
 	void Awake () {
         isWwiseEnabled = _isWwiseEnabled;
+        WwiseGlobalObject = GameObject.Find("WwiseGlobal");
         onSetWwiseByState();
      
         

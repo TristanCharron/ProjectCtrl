@@ -88,17 +88,18 @@ public class UIEffectManager : MonoBehaviour {
         yield break;
     }
 
-    public static void OnFadeToWhite()
+    public static void OnFadeToWhite(bool fadeIn)
     {
-        instance.StartCoroutine(instance.OnFadeAnimToWhite());
+        instance.StartCoroutine(instance.OnFadeWhite(fadeIn));
        
     
     }
 
-    public IEnumerator OnFadeAnimToWhite()
+    public IEnumerator OnFadeWhite(bool fadeIn)
     {
-        fadeWhiteAnimator.enabled = true;
         FadeWhiteComponent.SetActive(true);
+        fadeWhiteAnimator.enabled = true;
+        fadeWhiteAnimator.Play(Animator.StringToHash(fadeIn ? "fadeInWhite" : "fadeOutWhite"));
         yield return new WaitForSeconds(3.9f);
         fadeWhiteAnimator.Rebind();
         FadeWhiteComponent.SetActive(false);

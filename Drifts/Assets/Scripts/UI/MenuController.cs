@@ -110,10 +110,8 @@ public class MenuController : MonoBehaviour
     public void onStartGame()
     {
         isInMainMenu = false;
-        //RoundUIController.Instance.SakuraParticles.SetActive(true);
         WwiseManager.onPlayWWiseEvent("UI_SELECT", Camera.main.gameObject);
-        //WwiseManager.onPlayWWiseEvent("GAME_PLAY", Camera.main.gameObject);
-        UIEffectManager.OnFadeToWhite();
+        UIEffectManager.OnFadeToWhite(true);
         Camera.main.gameObject.GetComponent<Animator>().enabled = true;
     }
 
