@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Main Camera
+  m_Name: TransitionIn
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -27,7 +27,7 @@ AnimatorState:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: animCamera
+  m_Name: TransitionIn
   m_Speed: 2
   m_CycleOffset: 0
   m_Transitions: []
@@ -39,7 +39,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 953b61c0cb31d6f419366f5722e90d03, type: 2}
+  m_Motion: {fileID: 7400000, guid: 32e2be818b8e22a4b88d41e900669648, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

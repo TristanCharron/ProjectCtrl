@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: fadeToWhite
+  m_Name: fadeOutWhite
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -95,24 +95,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0
-        inSlope: 0.30150753
-        outSlope: 0.30150753
-        tangentMode: 10
-      - time: 3.3166666
         value: 1
-        inSlope: 0.15075377
-        outSlope: 0.15075377
+        inSlope: -0.25531915
+        outSlope: -0.25531915
         tangentMode: 10
-      - time: 5.483333
-        value: 1
-        inSlope: -0.24590158
-        outSlope: -0.24590158
-        tangentMode: 10
-      - time: 7.516667
+      - time: 3.9166667
         value: 0
-        inSlope: -0.49180317
-        outSlope: -0.49180317
+        inSlope: -0.25531915
+        outSlope: -0.25531915
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -171,7 +161,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 7.516667
+    m_StopTime: 3.9166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -266,24 +256,14 @@ AnimationClip:
       serializedVersion: 2
       m_Curve:
       - time: 0
-        value: 0
-        inSlope: 0.30150753
-        outSlope: 0.30150753
-        tangentMode: 10
-      - time: 3.3166666
         value: 1
-        inSlope: 0.15075377
-        outSlope: 0.15075377
+        inSlope: -0.25531915
+        outSlope: -0.25531915
         tangentMode: 10
-      - time: 5.483333
-        value: 1
-        inSlope: -0.24590158
-        outSlope: -0.24590158
-        tangentMode: 10
-      - time: 7.516667
+      - time: 3.9166667
         value: 0
-        inSlope: -0.49180317
-        outSlope: -0.49180317
+        inSlope: -0.25531915
+        outSlope: -0.25531915
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2

@@ -25,10 +25,17 @@ public class RoundUIController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         instance = this;
         OnResetProperties();
-        WwiseManager.onPlayWWiseEvent("GAME_OPEN", gameObject);
+        FadeInGame();
+        
+    }
+
+    void FadeInGame()
+    {
+        Animator CamAnim = GetComponent<Animator>();
+        CamAnim.enabled = true;
+        UIEffectManager.OnFadeToWhite(false);
     }
 
 
@@ -48,16 +55,17 @@ public class RoundUIController : MonoBehaviour
     public static void OnResetProperties()
     {
         UIEffectManager.OnResetProperties();
-        instance.scoreTeamContainer.SetActive(false);
     }
 
 
     public void EndCinematic()
     {
-        SakuraParticles.SetActive(false);
+       
+        SakuraParticles.SetActive(true);
         CameraBoxFollower.enabled = true;
         GameController.onNextRound();
         StartCoroutine(OnBeginGame());
+        WwiseManager.onPlayWWiseEvent("GAME_PLAY", Camera.main.gameObject);
     }
 
     public IEnumerator OnBeginGame()

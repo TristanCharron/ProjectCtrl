@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class MenuController : MonoBehaviour
@@ -32,17 +33,21 @@ public class MenuController : MonoBehaviour
        
 
     }
+
     void Start()
     {
         onSetMenuOptionsColor();
+        WwiseManager.onPlayWWiseEvent("GAME_OPEN", gameObject);
     }
+
+    
 
     // Update is called once per frame
     void Update()
     {
         if (!isChangingMenu && isInMainMenu)
         {
-            for (int i = 0; i < RoundController.Players.Length; i++)
+            for (int i = 0; i < mainMenuTxtList.Length; i++)
             {
                 if (Input.GetAxis(InputController.VERTICAL_MOVE + (i + 1)) > 0.9f)
                     OnChangeOption(selectionIndex - 1);
@@ -105,11 +110,14 @@ public class MenuController : MonoBehaviour
     public void onStartGame()
     {
         isInMainMenu = false;
-        RoundUIController.Instance.SakuraParticles.SetActive(true);
         WwiseManager.onPlayWWiseEvent("UI_SELECT", Camera.main.gameObject);
-        WwiseManager.onPlayWWiseEvent("GAME_PLAY", Camera.main.gameObject);
-        UIEffectManager.OnFadeToWhite();
+        UIEffectManager.OnFadeToWhite(true);
         Camera.main.gameObject.GetComponent<Animator>().enabled = true;
+    }
+
+    public void onEndFadeToWhite()
+    {
+        SceneManager.LoadScene(1);
     }
 
 
