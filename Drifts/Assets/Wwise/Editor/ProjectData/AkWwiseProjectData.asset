@@ -16,8 +16,8 @@ MonoBehaviour:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}'
-    m_lastTimePsrt1: -1383346176
-    m_lastTimePart2: -1999386118
+    m_lastTimePsrt1: -2118978322
+    m_lastTimePart2: -1999371591
     List:
     - Name: BALL_STATE_DOWN
       Path: Default Work Unit\BALL\BALL_STATE_DOWN
@@ -187,6 +187,30 @@ MonoBehaviour:
       ID: -1668000095
       Guid: ae608699c6ddc1479cc77efdfc9ccfd0
       maxAttenuation: 0
+    - Name: ROUND_END_BLUE
+      Path: Default Work Unit\END\ROUND_END_BLUE
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: END
+        ObjectType: 4
+      - ElementName: ROUND_END_BLUE
+        ObjectType: 3
+      ID: 820911528
+      Guid: edb61c9d04854f48b1d9cbc2596de4b8
+      maxAttenuation: 0
+    - Name: ROUND_END_RED
+      Path: Default Work Unit\END\ROUND_END_RED
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: END
+        ObjectType: 4
+      - ElementName: ROUND_END_RED
+        ObjectType: 3
+      ID: -1831102671
+      Guid: 5d8680184de34d4a9cef4b3a6fec7e97
+      maxAttenuation: 0
     - Name: STAGE_BELL
       Path: Default Work Unit\STAGE\STAGE_BELL
       PathAndIcons:
@@ -291,6 +315,8 @@ MonoBehaviour:
       Guid: 568e1b64de206444bd432f61dbd5b9f0
   ExpandedItems:
   - /drift_sound
+  - /drift_sound/SoundBanks
+  - /drift_sound/SoundBanks/Default Work Unit
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1

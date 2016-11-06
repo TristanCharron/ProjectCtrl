@@ -1237,7 +1237,7 @@ MonoBehaviour:
   valueGuid: 568e1b64de206444bd432f61dbd5b9f0
   bankName: Drifts_Wwise_SoundBank
   loadAsynchronous: 0
-  unloadTriggerList: 958ca0ea
+  unloadTriggerList: 
 --- !u!1 &1187609238
 GameObject:
   m_ObjectHideFlags: 0
