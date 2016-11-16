@@ -3,35 +3,33 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+public class LobbyController : MonoBehaviour {
 
-public class MenuController : MonoBehaviour
-{
     static Color highlightMenuColor;
     public Text[] mainMenuTxtList;
-    static bool isChangingMenu = false, isInMainMenu = true, isInLobbyMenu = false;
+    static bool isChangingMenu = false, isInLobbyMenu = false;
     static int selectionIndex = 0;
 
 
-    public static MenuController Instance
+    public static LobbyController Instance
     {
         get
         {
             return instance;
         }
     }
-    private static MenuController instance;
+    private static LobbyController instance;
 
     // Use this for initialization
     void Awake()
     {
         instance = this;
-        selectionIndex = 0;
-        isInMainMenu = true;
+        selectionIndex = 0;       
         isChangingMenu = false;
         isInLobbyMenu = false;
         highlightMenuColor = new Color(0.8f, 0.8f, 0.8f, 0.5f);
         Cursor.visible = false;
-       
+
 
     }
 
@@ -41,12 +39,12 @@ public class MenuController : MonoBehaviour
         WwiseManager.onPlayWWiseEvent("GAME_OPEN", gameObject);
     }
 
-    
+
 
     // Update is called once per frame
     void Update()
     {
-        if (!isChangingMenu && isInMainMenu)
+        if (!isChangingMenu && isInLobbyMenu)
         {
             for (int i = 0; i < mainMenuTxtList.Length; i++)
             {
@@ -103,13 +101,13 @@ public class MenuController : MonoBehaviour
         isChangingMenu = false;
     }
 
-   
+
 
     static void onSetMenuOptionsColor()
     {
         for (int i = 0; i < instance.mainMenuTxtList.Length; i++)
         {
-            Color destColor = i == selectionIndex ?  Color.white : highlightMenuColor;
+            Color destColor = i == selectionIndex ? Color.white : highlightMenuColor;
             instance.mainMenuTxtList[i].CrossFadeColor(destColor, 0.3f, true, true);
 
         }
@@ -118,22 +116,17 @@ public class MenuController : MonoBehaviour
 
     public void onStartGame()
     {
-        if(isInMainMenu)
+        if (isInLobbyMenu)
         {
-            isInMainMenu = false;
-            
+            isInLobbyMenu = false;
+
             WwiseManager.onPlayWWiseEvent("UI_SELECT", Camera.main.gameObject);
             UIEffectManager.OnFadeToWhite(true);
             Camera.main.gameObject.GetComponent<Animator>().enabled = true;
-        }
-        else if(isInLobbyMenu)
-        {
-            isInLobbyMenu = false;
-            WwiseManager.onPlayWWiseEvent("UI_SELECT", Camera.main.gameObject);
-          
-            Camera.main.gameObject.GetComponent<Animator>().enabled = true;
+            Camera.main.gameObject.GetComponent<Animator>().Play(Animator.StringToHash("fadeOutLobby"));
         }
         
+
     }
 
     public void onEndFadeToWhite()
@@ -145,11 +138,12 @@ public class MenuController : MonoBehaviour
 
     public void onEndSelectionType()
     {
-      
+
         SceneManager.LoadScene(1);
     }
 
-
-
-
+    public void StopAnimator()
+    {
+        Camera.main.gameObject.GetComponent<Animator>().Stop();
+    }
 }

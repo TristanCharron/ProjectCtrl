@@ -9,3 +9,5 @@ EditorBuildSettings:
     path: Assets/Scenes/Official/Intro.unity
   - enabled: 1
     path: Assets/Scenes/Official/Gameplay.unity
+  - enabled: 1
+    path: Assets/Scenes/Official/Lobby.unity

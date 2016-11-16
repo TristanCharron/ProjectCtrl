@@ -97,6 +97,8 @@ public class UIEffectManager : MonoBehaviour {
 
     public IEnumerator OnFadeWhite(bool fadeIn)
     {
+
+       
         FadeWhiteComponent.SetActive(true);
         fadeWhiteAnimator.enabled = true;
         fadeWhiteAnimator.Play(Animator.StringToHash(fadeIn ? "fadeInWhite" : "fadeOutWhite"));
