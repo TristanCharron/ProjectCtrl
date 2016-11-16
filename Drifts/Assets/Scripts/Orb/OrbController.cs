@@ -34,6 +34,7 @@ public class OrbController : MonoBehaviour
     private static int orbStateID = 0;
     public static int OrbStateID { get { return orbStateID; } }
 
+    public static Transform[] OrbSpawnPoints { get { return GameController.Instance._OrbSpawnPoints; } }
 
     // Public variable for game designers to tweek ball velocity.
     public float _MaxVelocity, _MinVelocity, _DecreaseVelocity, _MomentumVelocity, _MomentumBell;
@@ -68,16 +69,12 @@ public class OrbController : MonoBehaviour
     // Use this for initialization
     void Awake()
     {
+        instance = this;
         onSetComponents();
-        onSetProperties();
         onChangeTeamPossession(TeamController.teamID.Neutral);
-
+        GameController.SetNextRound += onReset;
     }
 
-    void Update()
-    {
-        _PossessedTeam = PossessedTeam;
-    }
 
     public static void shouldBallBeEnabled(bool state)
     {
@@ -121,10 +118,11 @@ public class OrbController : MonoBehaviour
 
     }
 
-    public static void onResetOrb()
+    public static void onReset()
     {
+        instance.gameObject.SetActive(true);
         instance.onSetProperties();
-       
+        instance.gameObject.transform.position = OrbSpawnPoints[Random.Range(0, OrbSpawnPoints.Length)].position;
     }
 
 
