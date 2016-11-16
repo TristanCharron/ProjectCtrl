@@ -3,18 +3,12 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class LobbyController : MonoBehaviour
-{
+public class LobbyController : MonoBehaviour {
 
     static Color highlightMenuColor;
     public Text[] mainMenuTxtList;
-    public GameObject selectablesObject, typesObject, optionsObject, playersObject;
     static bool isChangingMenu = false, isInLobbyMenu = false;
     static int selectionIndex = 0;
-    static int currentSelectionIndex = 0;
-    static int nmbPlayers = 4;
-
-
 
 
     public static LobbyController Instance
@@ -30,14 +24,14 @@ public class LobbyController : MonoBehaviour
     void Awake()
     {
         instance = this;
-        selectionIndex = 0;
+        selectionIndex = 0;       
         isChangingMenu = false;
         isInLobbyMenu = false;
         highlightMenuColor = new Color(0.8f, 0.8f, 0.8f, 0.5f);
         Cursor.visible = false;
-      
-    }
 
+
+    }
 
     void Start()
     {
@@ -52,7 +46,7 @@ public class LobbyController : MonoBehaviour
     {
         if (!isChangingMenu && isInLobbyMenu)
         {
-            for (int i = 0; i < nmbPlayers; i++)
+            for (int i = 0; i < mainMenuTxtList.Length; i++)
             {
                 if (Input.GetAxis(InputController.VERTICAL_MOVE + (i + 1)) > 0.9f)
                     OnChangeOption(selectionIndex - 1);
@@ -72,73 +66,26 @@ public class LobbyController : MonoBehaviour
 
     static void onPressMenuOption(int currentIndex)
     {
-
-
-        switch (selectionIndex)
-        {
-            case 0:
-                SwitchToSelectMode();
-                break;
-            case 1:
-                SwitchToPlayerJoin();
-                break;
-            case 2:
-                SwitchToPlayerSelect();
-                break;
-            case 3:
-                SwitchToPlayerSelect();
-                break;
-
-
-
-        }
-
-    }
-
-    static void SwitchToPlayerJoin()
-    {
-        selectionIndex = 4;
-        instance.selectablesObject.SetActive(false);
-        instance.optionsObject.SetActive(true);
-        LobbyPlayer.ChangeLobbyState(false);
-    }
-
-    static void SwitchToSelectMode()
-    {
-        selectionIndex = 2;
-        currentSelectionIndex = 1;
-        instance.selectablesObject.SetActive(false);
-        instance.typesObject.SetActive(true);
-        LobbyPlayer.ChangeLobbyState(false);
-    }
-
-    static void SwitchToPlayerSelect()
-    {
-        selectionIndex = 4;
-        instance.selectablesObject.SetActive(false);
-        instance.optionsObject.SetActive(false);
-        instance.playersObject.SetActive(true);
-        LobbyPlayer.ChangeLobbyState(true);
+        if (selectionIndex == 0)
+            instance.onStartGame();
+        if (selectionIndex == 1)
+            Application.Quit();
     }
 
     static void onPressLobbyOption(int currentIndex)
     {
         if (selectionIndex == 0)
-            onStartGame();
+            instance.onStartGame();
         if (selectionIndex == 1)
             SceneManager.LoadScene(0);
     }
 
     static void OnChangeOption(int newIndex)
     {
-        if (newIndex >= instance.mainMenuTxtList.Length - 4 && currentSelectionIndex == 0)
+        if (newIndex >= instance.mainMenuTxtList.Length)
             selectionIndex = 0;
-        else if ((newIndex >= instance.mainMenuTxtList.Length - 2 && currentSelectionIndex == 1))
-            selectionIndex = 2;
-        else if (newIndex < 0 && currentSelectionIndex == 0)
+        else if (newIndex < 0)
             selectionIndex = instance.mainMenuTxtList.Length - 1;
-        else if (newIndex < 0 && currentSelectionIndex == 1)
-            selectionIndex = instance.mainMenuTxtList.Length - 3;
         else
             selectionIndex = newIndex;
 
@@ -167,7 +114,7 @@ public class LobbyController : MonoBehaviour
 
     }
 
-    public static void onStartGame()
+    public void onStartGame()
     {
         if (isInLobbyMenu)
         {
@@ -176,16 +123,15 @@ public class LobbyController : MonoBehaviour
             WwiseManager.onPlayWWiseEvent("UI_SELECT", Camera.main.gameObject);
             UIEffectManager.OnFadeToWhite(true);
             Camera.main.gameObject.GetComponent<Animator>().enabled = true;
-            Camera.main.gameObject.GetComponent<Animator>().Rebind();
             Camera.main.gameObject.GetComponent<Animator>().Play(Animator.StringToHash("fadeOutLobby"));
         }
-
+        
 
     }
 
     public void onEndFadeToWhite()
     {
-
+        SceneManager.LoadScene(2);
         isInLobbyMenu = true;
         selectionIndex = 0;
     }
