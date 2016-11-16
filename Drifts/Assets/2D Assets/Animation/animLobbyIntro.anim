@@ -227,8 +227,8 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 3
-    functionName: onEndFadeToWhite
+  - time: 2.9833333
+    functionName: StopAnimator
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
