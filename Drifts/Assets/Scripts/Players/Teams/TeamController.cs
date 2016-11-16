@@ -64,6 +64,7 @@ public class TeamController : MonoBehaviour
     {
         instance = this;
         instance._teamList = teamList;
+        GameController.SetNextRound += onReset;
     }
 
     public static void onReset()

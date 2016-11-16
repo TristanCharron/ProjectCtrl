@@ -21,9 +21,6 @@ public class Bell : MonoBehaviour
             {
                 onBellHit();
 
-                if (shouldEnableTeamPower())
-                    onEnableTeamPower(true);
-
                 OrbController.onPush(transform.right,OrbController.MaxVelocity / 3);
                 onDisableBell();
 
@@ -44,11 +41,6 @@ public class Bell : MonoBehaviour
         isActive = true;
     }
 
-
-    bool shouldEnableTeamPower()
-    {
-        return curNbBellHits >= GameController.nbBellHits;
-    }
 
     void onEnableTeamPower(bool state)
     {

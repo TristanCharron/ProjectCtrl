@@ -57,6 +57,7 @@ public class PenaltyController : MonoBehaviour
     void Awake()
     {
         instance = this;
+        GameController.SetNextRound += OnReset;
     }
 
     public static void OnReset()
