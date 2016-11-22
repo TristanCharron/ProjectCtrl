@@ -280,6 +280,7 @@ GameObject:
   - 95: {fileID: 35232885}
   - 114: {fileID: 35232884}
   - 54: {fileID: 35232883}
+  - 114: {fileID: 35232889}
   m_Layer: 0
   m_Name: Player3
   m_TagString: Untagged
@@ -313,12 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerID: 3
   handAnimator: {fileID: 2049575264}
-  cursorTransform: {fileID: 882831462}
-  LookAtTransform: {fileID: 1735601621}
-  cursorSpeed: 10
-  isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 534357828}
   WindGust: {fileID: 698443958}
@@ -401,6 +397,19 @@ Transform:
   - {fileID: 1282456763}
   m_Father: {fileID: 2024365702}
   m_RootOrder: 2
+--- !u!114 &35232889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 35232882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4c4f7a100070848b5bc8ea7b8ea9f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTransform: {fileID: 882831462}
+  LookAtTransform: {fileID: 1735601621}
 --- !u!1 &38729604
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,6 +483,7 @@ GameObject:
   - 95: {fileID: 115000726}
   - 114: {fileID: 115000725}
   - 54: {fileID: 115000724}
+  - 114: {fileID: 115000730}
   m_Layer: 0
   m_Name: Player4
   m_TagString: Untagged
@@ -507,12 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerID: 4
   handAnimator: {fileID: 2012042758}
-  cursorTransform: {fileID: 667673400}
-  LookAtTransform: {fileID: 363160779}
-  cursorSpeed: 10
-  isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 1145829370}
   WindGust: {fileID: 1078657687}
@@ -595,6 +600,19 @@ Transform:
   - {fileID: 505086231}
   m_Father: {fileID: 2024365702}
   m_RootOrder: 3
+--- !u!114 &115000730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 115000723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4c4f7a100070848b5bc8ea7b8ea9f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTransform: {fileID: 667673400}
+  LookAtTransform: {fileID: 363160779}
 --- !u!1 &116931511
 GameObject:
   m_ObjectHideFlags: 0
@@ -3236,6 +3254,7 @@ GameObject:
   - 95: {fileID: 407643785}
   - 114: {fileID: 407643784}
   - 54: {fileID: 407643783}
+  - 114: {fileID: 407643789}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Untagged
@@ -3269,12 +3288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerID: 2
   handAnimator: {fileID: 1790731296}
-  cursorTransform: {fileID: 331155418}
-  LookAtTransform: {fileID: 1910013910}
-  cursorSpeed: 10
-  isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 839302185}
   WindGust: {fileID: 165241169}
@@ -3357,6 +3371,19 @@ Transform:
   - {fileID: 1604237269}
   m_Father: {fileID: 2024365702}
   m_RootOrder: 1
+--- !u!114 &407643789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 407643782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4c4f7a100070848b5bc8ea7b8ea9f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTransform: {fileID: 331155418}
+  LookAtTransform: {fileID: 1910013910}
 --- !u!1 &430952967
 GameObject:
   m_ObjectHideFlags: 0
@@ -5132,6 +5159,7 @@ GameObject:
   - 95: {fileID: 793283481}
   - 114: {fileID: 793283480}
   - 54: {fileID: 793283485}
+  - 114: {fileID: 793283486}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -5150,12 +5178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerID: 1
   handAnimator: {fileID: 1967005220}
-  cursorTransform: {fileID: 859500343}
-  LookAtTransform: {fileID: 507586338}
-  cursorSpeed: 10
-  isDead: 0
   PushCollider: {fileID: 0}
   PullCollider: {fileID: 1455670972}
   WindGust: {fileID: 265155809}
@@ -5253,6 +5276,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &793283486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 793283479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b4c4f7a100070848b5bc8ea7b8ea9f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTransform: {fileID: 859500343}
+  LookAtTransform: {fileID: 507586338}
 --- !u!1 &794853424
 GameObject:
   m_ObjectHideFlags: 0

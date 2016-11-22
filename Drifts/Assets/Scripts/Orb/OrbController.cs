@@ -140,17 +140,17 @@ public class OrbController : MonoBehaviour
     }
 
 
-    public static void onPush(Vector3 angle, PlayerController pushingPlayer)
+    public static void onPush(Vector3 angle, Player player)
     {
         if (isPushable)
         {
             isPushed = true;
-            float additionalVel = pushingPlayer.PulledVelocity != 0 ? pushingPlayer.PulledVelocity : 0;
-            destinationVelocity = currentVelocity + additionalVel + (MomentumVelocity * pushingPlayer.LeftTriggerHold.holdingButtonRatio);
+            float additionalVel = player.PulledVelocity != 0 ? player.PulledVelocity : 0;
+            destinationVelocity = currentVelocity + additionalVel + (MomentumVelocity * player.Owner.LeftTriggerHold.holdingButtonRatio);
             onSetDestinationVelocity();
             destinationAngle = angle;
             Instance.onSetBallStage();
-            pushingPlayer.onSetPulledVelocity(0);
+            player.onSetPulledVelocity(0);
         }
     }
 
