@@ -7,6 +7,7 @@ public class LobbyPlayer : MonoBehaviour
 
     public static int nbPlayersConnected = 0;
     public static bool isCurrentlyInLobby = false;
+    public static bool arePlayersReady { get { return nbPlayersConnected > 0; } }
     bool isFading;
     bool hasJoined;
     public int index;
@@ -18,6 +19,7 @@ public class LobbyPlayer : MonoBehaviour
         isFading = false;
         nbPlayersConnected = 0;
         UI = GetComponent<Image>();
+        LobbyController.OnReadyToBeginGame(false);
     }
 
     public static void ChangeLobbyState(bool state)
@@ -31,6 +33,8 @@ public class LobbyPlayer : MonoBehaviour
         {
             if (Input.GetButtonDown(InputController.PRESS_A + (index + 1)))
                 JoinLobby();
+            if (Input.GetButtonDown(InputController.PRESS_START + (index + 1)))
+                EndLobby();
 
         }
 
@@ -47,20 +51,18 @@ public class LobbyPlayer : MonoBehaviour
 
     }
 
-    void ShouldBeginGame()
+    void EndLobby()
     {
-        if(nbPlayersConnected > 0)
-        {
+        if (arePlayersReady)
             LobbyController.onStartGame();
-        }
     }
+
+
 
     void EndFade()
     {
         isFading = false;
-
-        if (hasJoined)
-            ShouldBeginGame();
+        LobbyController.OnReadyToBeginGame(arePlayersReady);
     }
 
     void Awake()
