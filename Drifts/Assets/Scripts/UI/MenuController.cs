@@ -59,6 +59,9 @@ public class MenuController : MonoBehaviour
             }
         }
 
+		if (Input.GetMouseButton (0))
+			SceneManager.LoadScene (1);
+
     }
 
     public void onAbleToChangeMenuOption()

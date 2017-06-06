@@ -140,7 +140,7 @@ public class OrbController : MonoBehaviour
     }
 
 
-    public static void onPush(Vector3 angle, Player player)
+	public static void onPush(Vector3 angle, PlayerScript player)
     {
         if (isPushable)
         {

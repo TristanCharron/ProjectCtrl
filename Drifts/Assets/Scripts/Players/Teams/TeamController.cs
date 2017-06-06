@@ -128,7 +128,7 @@ public class TeamController : MonoBehaviour
     static void OnGeneratePlayer(int playerID, Team assignedTeam)
     {
         PlayerController pController = instance.PlayerRoot.transform.GetChild(playerID).GetComponent<PlayerController>();
-        pController.player = new Player(playerID + 1, assignedTeam, pController);
+        pController.player = new PlayerScript(playerID + 1, assignedTeam, pController);
         pController.OnResetProperties();
         pController.onAssignTeam(assignedTeam);
         assignedTeam.PlayerList.Add(pController);

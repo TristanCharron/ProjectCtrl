@@ -63,6 +63,7 @@ public class LobbyController : MonoBehaviour
             }
         }
 
+
     }
 
     public void onAbleToChangeMenuOption()
@@ -203,6 +204,6 @@ public class LobbyController : MonoBehaviour
 
     public void StopAnimator()
     {
-        Camera.main.gameObject.GetComponent<Animator>().Stop();
+        Camera.main.gameObject.GetComponent<Animator>().enabled = false;
     }
 }

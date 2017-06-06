@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using Rewired;
 
 public class PlayerController : MonoBehaviour
 {
-
+	protected Player playerRewire;
 
     ButtonHolder leftTriggerHold, rightTriggerHold;
     public ButtonHolder LeftTriggerHold { get { return leftTriggerHold; } }
@@ -12,7 +13,7 @@ public class PlayerController : MonoBehaviour
     
 	Team currentTeam;
     PlayerCursor cursor;
-    public Player player;
+	public PlayerScript player;
 
     BoxCollider PlayerCollider;
 
@@ -51,6 +52,7 @@ public class PlayerController : MonoBehaviour
     {
         onResetComponents();
         OnResetProperties();
+		playerRewire = ReInput.players.GetPlayer(player.ID);
     }
 
     void onResetComponents()
@@ -153,10 +155,12 @@ void PushButton()
 {
     if (canDoAction)
     {
-        if (Input.GetAxis(InputController.PRESS_R + player.ID) >= 0.5f)
-            leftTriggerHold.OnUpdate();
-        else if (Input.GetAxis(InputController.PRESS_R + player.ID) <= 0.25f && leftTriggerHold.holdingButtonRatio > 0)
-        {
+       // if (Input.GetAxis(InputController.PRESS_R + player.ID) >= 0.5f)
+		if (playerRewire.GetAxis("Push") >= 0.5f)
+			leftTriggerHold.OnUpdate();
+       // else if (Input.GetAxis(InputController.PRESS_R + player.ID) <= 0.25f && leftTriggerHold.holdingButtonRatio > 0)
+		else if (playerRewire.GetAxis("Push") <= 0.25f && leftTriggerHold.holdingButtonRatio > 0)
+		{
             handAnimator.Play("Push");
             WwiseManager.onPlayWWiseEvent("MONK_WIND", gameObject);
             StartCoroutine(onCoolDown("Push"));
@@ -174,8 +178,9 @@ void PullButton()
     if (!canDoAction)
         return;
 
-    if (Input.GetAxis(InputController.PRESS_L + player.ID) > 0.5f)
-    {
+    //if (Input.GetAxis(InputController.PRESS_L + player.ID) > 0.5f)
+	if (playerRewire.GetAxis("Pull") > 0.5f)
+	{
         handAnimator.Play("Pull");
         StartCoroutine(onCoolDown("Pull"));
         WwiseManager.onPlayWWiseEvent("MONK_WIND", gameObject);
@@ -207,8 +212,9 @@ public void onPull()
 
 void onDisplayUIButton()
 {
-    float alpha = Input.GetButton(InputController.PRESS_Y + player.ID) ? 1 : 0;
-    displayUI.CrossFadeAlpha(alpha, 0.1f, false);
+   // float alpha = Input.GetButton(InputController.PRESS_Y + player.ID) ? 1 : 0;
+	float alpha = playerRewire.GetButton("ShowUI") ? 1 : 0;
+	displayUI.CrossFadeAlpha(alpha, 0.1f, false);
 }
 
 
