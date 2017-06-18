@@ -27,10 +27,7 @@ public class WwiseManager : MonoBehaviour {
     }
 
 	
-	
-	void Update () {
-	
-	}
+
 
     public static void onPlayWWiseEvent(string nameEvent, GameObject gObject)
     {

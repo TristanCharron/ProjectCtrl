@@ -21,7 +21,7 @@ public class Bell : MonoBehaviour
             {
                 onBellHit();
 
-                OrbController.onPush(transform.right,OrbController.CurrentVelocity * 1.25f);
+                OrbController.onPush(transform.right,OrbController.CurrentVelocity * 1.1f);
                 onDisableBell();
 
             }

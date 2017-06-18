@@ -60,6 +60,9 @@ public class OrbController : MonoBehaviour
     [SerializeField]
     public ParticleSystem pSystem;
 
+    [SerializeField]
+    public ParticleSystem pSystemBall;
+
 
     public GameObject mainOrb;
 
@@ -98,7 +101,7 @@ public class OrbController : MonoBehaviour
         else if (newTeam == TeamController.teamID.Team2)
             col = Team2Color;
 
-        col = new Color(col.r, col.g, col.b, 1);
+
 
         
             instance.StartCoroutine(instance.LerpBallColorCoRoutine(col));
@@ -107,14 +110,8 @@ public class OrbController : MonoBehaviour
 
     public IEnumerator LerpBallColorCoRoutine(Color dest)
     {
-        Color origin = instance.pSystem.GetComponent<ParticleSystemRenderer>().material.GetColor("_EmisColor");
-        float alpha = 0;
-        while (alpha <= 1)
-        {
-            alpha += Time.fixedDeltaTime;
-            instance.pSystem.GetComponent<ParticleSystemRenderer>().material.SetColor("_EmisColor", Color.Lerp(origin,dest,alpha));
-            yield return new WaitForFixedUpdate();
-        }
+        instance.pSystem.GetComponent<ParticleSystemRenderer>().material.SetColor("_EmisColor", dest);
+        instance.pSystemBall.GetComponent<ParticleSystemRenderer>().material.SetColor("_TintColor", dest);
         yield break;
     }
 
@@ -235,7 +232,7 @@ public class OrbController : MonoBehaviour
 
 
 
-        if (previousOrbID != OrbStateID)
+        if (previousOrbID != OrbStateID && GameController.isGameStarted)
         {
             if (previousOrbID < OrbStateID)
                 WwiseManager.onPlayWWiseEvent("BALL_STATE_UP", gameObject);
