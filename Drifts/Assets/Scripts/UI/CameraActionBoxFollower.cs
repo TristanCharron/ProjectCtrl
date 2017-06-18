@@ -23,8 +23,8 @@ public class CameraActionBoxFollower : MonoBehaviour {
 
 
         Rect boundingBox = CalculateTargetsBoundingBox();
-        transform.localPosition = CalculateCameraPosition(boundingBox);
         currentCamera.orthographicSize = CalculateOrthographicSize(boundingBox);
+        Vector3.MoveTowards(transform.localPosition, CalculateCameraPosition(boundingBox), Time.deltaTime * 15);
  
     }
 

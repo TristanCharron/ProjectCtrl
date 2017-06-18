@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Rewired;
 
 public class PauseController : MonoBehaviour
 {
@@ -32,15 +33,18 @@ public class PauseController : MonoBehaviour
     {
         if (!isChangingMenu && isPauseEnabled)
         {
-            for (int i = 0; i < RoundController.Players.Length; i++)
+            for (int i = 0; i < 4; i++)
             {
-                if (Input.GetAxis(InputController.VERTICAL_MOVE + (i + 1)) > 0.9f)
-                    OnChangeOption(selectionIndex - 1);
-                else if ((Input.GetAxis(InputController.VERTICAL_MOVE + (i + 1)) < -0.9f))
-                    OnChangeOption(selectionIndex + 1);
-                else if ((Input.GetButtonDown(InputController.PRESS_A + (i + 1))))
+                if (ReInput.players.GetPlayer(i).GetButtonDown("ConfirmUI"))
                     onPressMenuOption(selectionIndex);
+
+                if (ReInput.players.GetPlayer(i).GetAxis("Move Vertical") > 0.9f)
+                    OnChangeOption(selectionIndex == 0 ? 1 : 0);
+                else if (ReInput.players.GetPlayer(i).GetAxis("Move Vertical") < -0.9f)
+                    OnChangeOption(selectionIndex == 0 ? 1 : 0);
             }
+
+            
         }
 
     }

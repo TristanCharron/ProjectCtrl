@@ -83,17 +83,39 @@ public class OrbController : MonoBehaviour
 
     public static void onChangeTeamPossession(TeamController.teamID newTeam)
     {
+
+        if (!instance.isActiveAndEnabled)
+            return;
+
         possessedTeam = newTeam;
+        Color col = Color.clear;
+        instance.StopCoroutine(instance.LerpBallColorCoRoutine(col));
 
         if (newTeam == TeamController.teamID.Neutral)
-            Instance.pSystem.startColor = NeutralColor;
+            col = NeutralColor;
         else if (newTeam == TeamController.teamID.Team1)
-            Instance.pSystem.startColor = Team1Color;
+            col = Team1Color;
         else if (newTeam == TeamController.teamID.Team2)
-            Instance.pSystem.startColor = Team2Color;
+            col = Team2Color;
 
-        Instance.pSystem.GetComponent<ParticleSystemRenderer>().material.SetColor("_EmisColor", Instance.pSystem.startColor);
+        col = new Color(col.r, col.g, col.b, 1);
 
+        
+            instance.StartCoroutine(instance.LerpBallColorCoRoutine(col));
+
+    }
+
+    public IEnumerator LerpBallColorCoRoutine(Color dest)
+    {
+        Color origin = instance.pSystem.GetComponent<ParticleSystemRenderer>().material.GetColor("_EmisColor");
+        float alpha = 0;
+        while (alpha <= 1)
+        {
+            alpha += Time.fixedDeltaTime;
+            instance.pSystem.GetComponent<ParticleSystemRenderer>().material.SetColor("_EmisColor", Color.Lerp(origin,dest,alpha));
+            yield return new WaitForFixedUpdate();
+        }
+        yield break;
     }
 
 
@@ -110,7 +132,7 @@ public class OrbController : MonoBehaviour
     private void onSetProperties()
     {
         currentVelocity = MinVelocity;
-        destinationVelocity = 0;
+        destinationVelocity = MaxVelocity / 4;
         isPushable = true;
         rBody.velocity = Vector3.zero;
         isPushed = false;
@@ -130,7 +152,7 @@ public class OrbController : MonoBehaviour
     {
 
             isPushed = true;
-            destinationVelocity = MaxVelocity / 3;
+            destinationVelocity = MaxVelocity / 5;
             onSetDestinationVelocity();
             destinationAngle = angle;
             Instance.onSetBallStage();
@@ -144,9 +166,10 @@ public class OrbController : MonoBehaviour
     {
         if (isPushable)
         {
+            
             isPushed = true;
             float additionalVel = player.PulledVelocity != 0 ? player.PulledVelocity : 0;
-            destinationVelocity = currentVelocity + additionalVel + (MomentumVelocity * player.Owner.LeftTriggerHold.holdingButtonRatio);
+            destinationVelocity = currentVelocity + additionalVel + (MomentumVelocity * player.Owner.RightTriggerHold.holdingButtonRatio);
             onSetDestinationVelocity();
             destinationAngle = angle;
             Instance.onSetBallStage();
@@ -235,7 +258,16 @@ public class OrbController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        onChangeVelocity();
+        if (!GameController.isGameStarted)
+        {
+            rBody.velocity = Vector3.zero;
+            return;
+        }
+        else
+        {
+            onChangeVelocity();
+        }
+      
     }
 
 
@@ -278,11 +310,13 @@ public class OrbController : MonoBehaviour
     public static void OnDisableOrb()
     {
         isPushable = false;
+        instance.StopAllCoroutines();
     }
 
     public static void OnEnableOrb()
     {
         isPushable = true;
+       
     }
 
 }

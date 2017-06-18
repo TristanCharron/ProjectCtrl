@@ -10,6 +10,7 @@ public class RoundUIController : MonoBehaviour
     private static RoundUIController instance;
 
     public GameObject readyContainer, GameOverContainer, BlueTeamWin, RedTeamWin;
+    public Animator readyAnimator;
 
     public GameObject scoreTeamContainer;
 
@@ -56,6 +57,7 @@ public class RoundUIController : MonoBehaviour
     {
         SakuraParticles.SetActive(true);
         CameraBoxFollower.enabled = true;
+
         GameController.onNextRound();
     }
 
@@ -86,7 +88,14 @@ public class RoundUIController : MonoBehaviour
 
     public static void onNewRoundScreen(bool state)
     {
+        if (state)
+        {
+            instance.readyAnimator.Play("readyAnim", -1, 0f);
+        }
+        
+
         instance.readyContainer.SetActive(state);
+
     }
 
     public static void OnReset()

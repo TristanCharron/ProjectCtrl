@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Rewired;
 
-public class PlayerScript : PlayerController {
+
+public class PlayerScript  {
 
     protected float power, maxSpeed,currentSpeed, pulledVelocity,acceleration,deceleration;
     protected bool isDead;
@@ -31,18 +33,21 @@ public class PlayerScript : PlayerController {
         id = _id;
         currentTeam = _currentTeam;
         power = 1;
-        maxSpeed = 50;
+        maxSpeed = 130;
         owner = _owner;
-        acceleration = 1f;
-        deceleration = 3f;
+        acceleration = 8f;
+        deceleration = 8f;
         OnReset();
     }
+
+  
 
     public void OnReset()
     {
         pulledVelocity = 0;
         currentSpeed = 0;
         isDead = false;
+      
     }
 
     public void OnChangeSpeed(float newSpeed)
@@ -53,18 +58,21 @@ public class PlayerScript : PlayerController {
 
     public void OnMove()
     {
-    	 //   float inputX = Input.GetAxis("Horizontal_Move_" + id);
-    	 //   float inputY = Input.GetAxis("Vertical_Move_" + id);
+        if (id - 1 >= ReInput.players.AllPlayers.Count)
+            return;
 
-		float inputX = playerRewire.GetAxis("Move Horizontal");
-		float inputY = playerRewire.GetAxis("Move Vertical");
+
+		float inputX = ReInput.players.GetPlayer(id-1).GetAxis("Move Horizontal");
+		float inputY = ReInput.players.GetPlayer(id-1).GetAxis("Move Vertical");
 
 		
-		bool isUsingInput = (inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f);
+		bool isUsingInput = (inputX > 0.2f || inputY > 0.2f) || (inputX < -0.2f || inputY < -0.2f);
         owner.rBody.velocity = Vector3.zero;
+
         float newSpeed = isUsingInput ? currentSpeed + acceleration : currentSpeed - deceleration;
         OnChangeSpeed(newSpeed);
-        Vector3 offset = new Vector3(inputX * RatioSpeed * Time.deltaTime, 0, inputY * RatioSpeed * Time.deltaTime);
+
+        Vector3 offset = new Vector3(inputX * 50 * Time.deltaTime, 0, inputY * 50 * Time.deltaTime);
         owner.transform.position = Vector3.Lerp(owner.transform.position, owner.transform.position + offset, RatioSpeed);
     }
 

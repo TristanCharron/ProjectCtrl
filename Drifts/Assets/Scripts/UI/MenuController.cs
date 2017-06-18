@@ -2,13 +2,14 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Rewired;
 
 
 public class MenuController : MonoBehaviour
 {
     static Color highlightMenuColor;
     public Text[] mainMenuTxtList;
-    static bool isChangingMenu = false, isInMainMenu = true, isInLobbyMenu = false;
+    static bool isChangingMenu = false, isInMainMenu = true;
     static int selectionIndex = 0;
 
 
@@ -28,7 +29,6 @@ public class MenuController : MonoBehaviour
         selectionIndex = 0;
         isInMainMenu = true;
         isChangingMenu = false;
-        isInLobbyMenu = false;
         highlightMenuColor = new Color(0.8f, 0.8f, 0.8f, 0.5f);
         Cursor.visible = false;
        
@@ -48,26 +48,24 @@ public class MenuController : MonoBehaviour
     {
         if (!isChangingMenu && isInMainMenu)
         {
-            for (int i = 0; i < mainMenuTxtList.Length; i++)
+            for(int i = 0; i < 4; i++)
             {
-                if (Input.GetAxis(InputController.VERTICAL_MOVE + (i + 1)) > 0.9f)
-                    OnChangeOption(selectionIndex - 1);
-                else if ((Input.GetAxis(InputController.VERTICAL_MOVE + (i + 1)) < -0.9f))
-                    OnChangeOption(selectionIndex + 1);
-                else if ((Input.GetButtonDown(InputController.PRESS_A + (i + 1))))
+                if (ReInput.players.GetPlayer(i).GetButtonDown("ConfirmUI"))
                     onPressMenuOption(selectionIndex);
+
+                if (ReInput.players.GetPlayer(i).GetAxis("Move Vertical") > 0.9f)
+                    OnChangeOption(selectionIndex == 0 ? 1 : 0);
+                else if (ReInput.players.GetPlayer(i).GetAxis("Move Vertical") < -0.9f)
+                    OnChangeOption(selectionIndex == 0 ? 1 : 0);
             }
+
+
         }
 
-		if (Input.GetMouseButton (0))
-			SceneManager.LoadScene (1);
+			
 
     }
 
-    public void onAbleToChangeMenuOption()
-    {
-        isChangingMenu = false;
-    }
 
     static void onPressMenuOption(int currentIndex)
     {
@@ -77,23 +75,11 @@ public class MenuController : MonoBehaviour
             Application.Quit();
     }
 
-    static void onPressLobbyOption(int currentIndex)
-    {
-        if (selectionIndex == 0)
-            instance.onStartGame();
-        if (selectionIndex == 1)
-            SceneManager.LoadScene(0);
-    }
-
+    
     static void OnChangeOption(int newIndex)
     {
-        if (newIndex >= instance.mainMenuTxtList.Length)
-            selectionIndex = 0;
-        else if (newIndex < 0)
-            selectionIndex = instance.mainMenuTxtList.Length - 1;
-        else
-            selectionIndex = newIndex;
-
+       
+        selectionIndex = newIndex;
         isChangingMenu = true;
         instance.StartCoroutine(instance.onCooldownPauseButton());
         onSetMenuOptionsColor();
@@ -124,31 +110,17 @@ public class MenuController : MonoBehaviour
         if(isInMainMenu)
         {
             isInMainMenu = false;
-            
             WwiseManager.onPlayWWiseEvent("UI_SELECT", Camera.main.gameObject);
             UIEffectManager.OnFadeToWhite(true);
             Camera.main.gameObject.GetComponent<Animator>().enabled = true;
         }
-        else if(isInLobbyMenu)
-        {
-            isInLobbyMenu = false;
-            WwiseManager.onPlayWWiseEvent("UI_SELECT", Camera.main.gameObject);
-          
-            Camera.main.gameObject.GetComponent<Animator>().enabled = true;
-        }
+      
         
     }
 
-    public void onEndFadeToWhite()
-    {
-        SceneManager.LoadScene(2);
-        isInLobbyMenu = true;
-        selectionIndex = 0;
-    }
 
     public void onEndSelectionType()
     {
-      
         SceneManager.LoadScene(1);
     }
 
