@@ -67,9 +67,6 @@ public class OrbController : MonoBehaviour
     public GameObject mainOrb;
 
 
-
-
-    // Use this for initialization
     void Awake()
     {
         instance = this;
@@ -100,12 +97,8 @@ public class OrbController : MonoBehaviour
             col = Team1Color;
         else if (newTeam == TeamController.teamID.Team2)
             col = Team2Color;
-
-
-
-        
-            instance.StartCoroutine(instance.LerpBallColorCoRoutine(col));
-
+		
+        instance.StartCoroutine(instance.LerpBallColorCoRoutine(col));
     }
 
     public IEnumerator LerpBallColorCoRoutine(Color dest)
@@ -114,11 +107,6 @@ public class OrbController : MonoBehaviour
         instance.pSystemBall.GetComponent<ParticleSystemRenderer>().material.SetColor("_TintColor", dest);
         yield break;
     }
-
-
-
-
-
 
     private void onSetComponents()
     {
@@ -147,15 +135,12 @@ public class OrbController : MonoBehaviour
 
     public static void onPush(Vector3 angle, TeamController.teamID teamID)
     {
-
             isPushed = true;
             destinationVelocity = MaxVelocity / 5;
             onSetDestinationVelocity();
             destinationAngle = angle;
             Instance.onSetBallStage();
             onChangeTeamPossession(teamID);
-        
-      
     }
 
 
@@ -163,7 +148,6 @@ public class OrbController : MonoBehaviour
     {
         if (isPushable)
         {
-            
             isPushed = true;
             float additionalVel = player.PulledVelocity != 0 ? player.PulledVelocity : 0;
             destinationVelocity = currentVelocity + additionalVel + (MomentumVelocity * player.Owner.RightTriggerHold.holdingButtonRatio);
@@ -227,11 +211,7 @@ public class OrbController : MonoBehaviour
             orbStateID = 0;
             mainOrb.SetActive(false);
         }
-
-
-
-
-
+		
         if (previousOrbID != OrbStateID && GameController.isGameStarted)
         {
             if (previousOrbID < OrbStateID)
@@ -239,7 +219,6 @@ public class OrbController : MonoBehaviour
             else
                 WwiseManager.onPlayWWiseEvent("BALL_STATE_DOWN", gameObject);
         }
-
     }
 
 

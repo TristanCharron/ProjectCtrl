@@ -11,7 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552e84eadd5acb14b909291ea033b233, type: 3}
   m_Name: AkWwiseProjectData
   m_EditorClassIdentifier: 
-  CurrentPluginConfig: Profile
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
@@ -315,8 +314,6 @@ MonoBehaviour:
       Guid: 568e1b64de206444bd432f61dbd5b9f0
   ExpandedItems:
   - /drift_sound
-  - /drift_sound/SoundBanks
-  - /drift_sound/SoundBanks/Default Work Unit
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1

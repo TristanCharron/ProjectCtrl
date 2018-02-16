@@ -10,11 +10,10 @@ public class OnCheckPushState : MonoBehaviour {
         playerController = GetComponentInParent<PlayerController>();
     }
 
-
     void OnTriggerEnter(Collider other)
     {
 		if (other.gameObject.CompareTag ("Orb"))
-            playerController.onPush ();
+            playerController.OnPush ();
     }
 
 }

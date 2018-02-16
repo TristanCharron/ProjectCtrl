@@ -5,8 +5,6 @@ using Rewired;
 
 public class PlayerController : MonoBehaviour
 {
-
-
     ButtonHolder rightTriggerHold;
     public ButtonHolder RightTriggerHold { get { return rightTriggerHold; } }
 
@@ -14,48 +12,40 @@ public class PlayerController : MonoBehaviour
     PlayerCursor cursor;
     public PlayerScript player;
 
-    BoxCollider PlayerCollider;
+	[Header("Component")]
+    [SerializeField] Animator handAnimator;
+    [SerializeField] BoxCollider PushCollider;
+	[SerializeField] BoxCollider PullCollider;
+	[SerializeField] GameObject WindGust;
 
-    [SerializeField]
-    Animator handAnimator;
+	public Rigidbody rBody;
 
-    [SerializeField]
-    BoxCollider PushCollider;
+	SpriteRenderer sRenderer;
+	BoxCollider PlayerCollider;
 
-
-
-    [SerializeField]
-    BoxCollider PullCollider;
-    bool canDoAction = true;
-    [SerializeField]
-    GameObject WindGust;
-    public Rigidbody rBody;
-
-
-    SpriteRenderer sRenderer;
-
+	[Header("Param")]
     private Color idleColor;
-
-    [SerializeField]
-    Color chargedColor;
+	[SerializeField] Color chargedColor;
 
 
+	[Header("Text")]
     Text displayUI;
     public Text DisplayUI { get { return displayUI; } }
 
 
-
+	#region private
+	bool canDoAction = true;
+	
+	#endregion
 
 
     void Awake()
     {
-        onResetComponents();
+        OnResetComponents();
         OnResetProperties();
-
-
     }
 
-    void onResetComponents()
+    void OnResetComponents()
     {
         PlayerCollider = GetComponent<BoxCollider>();
         rBody = GetComponent<Rigidbody>();
@@ -76,39 +66,30 @@ public class PlayerController : MonoBehaviour
             player.OnReset();
 
     }
-    // Update is called once per frame
-    void Update()
+
+	void Update()
     {
         if (!GameController.isGameStarted)
         {
             rBody.velocity = Vector3.zero;
             return;
         }
-            
-
-
         if (!currentTeam.isStunt && !player.IsDead)
         {
             player.OnMove();
             PushButton();
             PullButton();
-            onDisplayUIButton();
+            OnDisplayUIButton();
             cursor.OnRotate();
             onPressPauseButton();
-
-
         }
-
     }
-
 
     void onPressPauseButton()
     {
         if (ReInput.players.GetPlayer(player.ID - 1).GetButtonDown("Pause"))
         PauseController.OnPause();
     }
-
-
 
     public void onCharge()
     {
@@ -143,17 +124,10 @@ public class PlayerController : MonoBehaviour
 
                 }
             }
-            else
-                OrbController.onPush(cursor.LookingAtAngle * -transform.up, OrbController.CurrentVelocity / 1.5f);
-
-
-
+          //  else
+               // OrbController.onPush(cursor.LookingAtAngle * -transform.up, OrbController.CurrentVelocity / 1.5f);
         }
     }
-
-
-
-
 
     void PushButton()
     {
@@ -169,41 +143,33 @@ public class PlayerController : MonoBehaviour
             {
                 handAnimator.Play("Push");
                 WwiseManager.onPlayWWiseEvent("MONK_WIND", gameObject);
-                StartCoroutine(onCoolDown("Push"));
-
-            }
-
+                StartCoroutine(OnCoolDown("Push"));
+			}
         }
-
         onCharge();
-
-
     }
+
     void PullButton()
     {
-
         if (!canDoAction)
             return;
 
         if (player.ID >= ReInput.players.AllPlayers.Count)
             return;
 
-        //if (Input.GetAxis(InputController.PRESS_L + player.ID) > 0.5f)
         if (ReInput.players.GetPlayer(player.ID -1).GetAxis("Stop") > 0.5f)
         {
             handAnimator.Play("Pull");
-            StartCoroutine(onCoolDown("Pull"));
+            StartCoroutine(OnCoolDown("Pull"));
             WwiseManager.onPlayWWiseEvent("MONK_WIND", gameObject);
         }
 
     }
 
-    public void onPush()
+    public void OnPush()
     {
-
         OrbController.onPush(cursor.LookingAtAngle * -transform.up, player);
         OrbController.onChangeTeamPossession(currentTeam.TeamID);
-
 
         if (OrbController.CurrentVelocity > 300)
             UIEffectManager.OnFreezeFrame(OrbController.velocityRatio / 6);
@@ -212,7 +178,7 @@ public class PlayerController : MonoBehaviour
         WwiseManager.onPlayWWiseEvent("MONK_PITCH", gameObject);
     }
 
-    public void onPull()
+    public void OnPull()
     {
         WwiseManager.onPlayWWiseEvent("MONK_CATCH", gameObject);
         player.onSetPulledVelocity(OrbController.CurrentVelocity);
@@ -220,22 +186,18 @@ public class PlayerController : MonoBehaviour
         OrbController.onChangeTeamPossession(currentTeam.TeamID);
     }
 
-    void onDisplayUIButton()
+    void OnDisplayUIButton()
     {
         if (player.ID-1 >= ReInput.players.AllPlayers.Count)
         {
             displayUI.CrossFadeAlpha(0, 0.1f, false);
             return;
         }
-
-        // float alpha = Input.GetButton(InputController.PRESS_Y + player.ID) ? 1 : 0;
-        float alpha = ReInput.players.GetPlayer(player.ID -1).GetButton("ShowUI") ? 1 : 0;
+	    float alpha = ReInput.players.GetPlayer(player.ID -1).GetButton("ShowUI") ? 1 : 0;
         displayUI.CrossFadeAlpha(alpha, 0.1f, false);
     }
 
-
-
-    void onChangeCoolDownState(string action, bool state)
+    void OnChangeCoolDownState(string action, bool state)
     {
         switch (action)
         {
@@ -249,20 +211,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator onCoolDown(string action)
+    IEnumerator OnCoolDown(string action)
     {
         canDoAction = false;
-        onChangeCoolDownState(action, true);
+        OnChangeCoolDownState(action, true);
         rightTriggerHold.OnReset();
         yield return new WaitForSeconds(.2f);
-        onChangeCoolDownState(action, false);
+        OnChangeCoolDownState(action, false);
         yield return new WaitForSeconds(.4f);
         WindGust.SetActive(false);
         canDoAction = true;
     }
-
-
-
-
-
 }
