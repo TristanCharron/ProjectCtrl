@@ -168,8 +168,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnPush()
     {
-        OrbController.onPush(cursor.LookingAtAngle * -transform.up, player);
-        OrbController.onChangeTeamPossession(currentTeam.TeamID);
+        OrbController.Push(cursor.LookingAtAngle * -transform.up, player);
+        OrbController.ChangeTeamPossession(currentTeam.TeamID);
 
         if (OrbController.CurrentVelocity > 300)
             UIEffectManager.OnFreezeFrame(OrbController.velocityRatio / 6);
@@ -182,8 +182,8 @@ public class PlayerController : MonoBehaviour
     {
         WwiseManager.onPlayWWiseEvent("MONK_CATCH", gameObject);
         player.onSetPulledVelocity(OrbController.CurrentVelocity);
-        OrbController.onPull(Vector3.zero, -OrbController.CurrentVelocity);
-        OrbController.onChangeTeamPossession(currentTeam.TeamID);
+        OrbController.Pull(Vector3.zero, -OrbController.CurrentVelocity);
+        OrbController.ChangeTeamPossession(currentTeam.TeamID);
     }
 
     void OnDisplayUIButton()

@@ -2,10 +2,10 @@
 using System.Collections;
 using Rewired;
 
-
+[System.Serializable]
 public class PlayerScript  {
 
-    protected float power, maxSpeed,currentSpeed, pulledVelocity,acceleration,deceleration;
+    [SerializeField] protected float power, maxSpeed,currentSpeed, pulledVelocity,acceleration,deceleration;
     protected bool isDead;
     protected int id;
     protected Team currentTeam;
@@ -14,10 +14,10 @@ public class PlayerScript  {
 
     public float Power { get { return power; } }
     public float MaxSpeed { get { return maxSpeed; } }
-    public float CurrentSpeed { get { return currentSpeed; } }
+	public float CurrentSpeed { get { return currentSpeed; }}
     public float RatioSpeed { get { return currentSpeed/ maxSpeed; } }
-    public float Acceleration { get { return acceleration; } }
-    public float Deceleration { get { return deceleration; } }
+	public float Acceleration { get { return acceleration; } }
+	public float Deceleration { get { return deceleration; } }
     public int ID { get { return id; } }
     public Team CurrentTeam { get { return currentTeam; } }
     public float PulledVelocity { get { return pulledVelocity; } }

@@ -43,9 +43,6 @@ public class GameController : MonoBehaviour
         nbRoundsPlayed = 0;
     }
 
-
-
-
     static void onSetNextRound()
     {
         nbRoundsPlayed++;
@@ -56,7 +53,7 @@ public class GameController : MonoBehaviour
     public IEnumerator onTeamWinCoRoutine(string wwiseTeamNameEvent, Team winningTeam)
     {
         onSetGameStartedState(false);
-        OrbController.shouldBallBeEnabled(false);
+        OrbController.ShouldBallBeEnabled(false);
         RoundUIController.onGameOverScreen(true);
 
         yield return new WaitForSeconds(2f);
@@ -77,7 +74,6 @@ public class GameController : MonoBehaviour
         TeamController.OnComplete();
 
         SceneManager.LoadScene(0);
-
     }
 
 
@@ -90,8 +86,6 @@ public class GameController : MonoBehaviour
 
     }
 
-
-
     public static bool isGameCompleted()
     {
         return nbRoundsPlayed > nbRounds;
@@ -103,16 +97,9 @@ public class GameController : MonoBehaviour
     }
 
 
-    // Use this for initialization
     void Awake()
     {
         instance = this;
         gameStarted = false;
-       
     }
-
-
-
-
-
 }

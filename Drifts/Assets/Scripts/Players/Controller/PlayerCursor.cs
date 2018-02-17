@@ -37,7 +37,7 @@ public class PlayerCursor : MonoBehaviour
         float inputX = ReInput.players.GetPlayer(Owner.player.ID - 1).GetAxis("Rotate Horizontal");
         float inputY = ReInput.players.GetPlayer(Owner.player.ID - 1).GetAxis("Rotate Vertical");
 
-        if ((inputX > 0.25f || inputY > 0.25f) || (inputX < -0.25f || inputY < -0.25f))
+        if (Mathf.Abs(inputX) > 0.15f || Mathf.Abs(inputY) > 0.15f)
         {
             startRotation = transform.GetChild(0).localEulerAngles;
             endRotation = new Vector3(0, 0, Mathf.Atan2(inputX, inputY) * 180 / Mathf.PI);

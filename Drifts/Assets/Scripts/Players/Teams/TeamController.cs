@@ -142,7 +142,7 @@ public class TeamController : MonoBehaviour
     static void OnAssignBell(Team assignedTeam, int bellID)
     {
         Bell currentBell = instance.BellRoot.transform.GetChild(instance.BellRoot.transform.childCount - (bellID + 1)).GetComponent<Bell>();
-        currentBell.onAssignTeam(assignedTeam);
+        currentBell.AssignTeam(assignedTeam);
         assignedTeam.onAssignBell(currentBell);
     }
 

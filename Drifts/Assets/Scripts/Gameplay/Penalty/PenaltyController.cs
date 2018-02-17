@@ -84,8 +84,8 @@ public class PenaltyController : MonoBehaviour
 
     static void OnApplyPenalty()
     {
-        OrbController.onPush(penaltyAngle, TeamController.teamID.Neutral);
-        OrbController.OnDisableOrb();
+        OrbController.Push(penaltyAngle, TeamController.teamID.Neutral);
+        OrbController.DisableOrb();
         currentBarrier.onHidePenaltyText();
         OnDisableTimer();
 

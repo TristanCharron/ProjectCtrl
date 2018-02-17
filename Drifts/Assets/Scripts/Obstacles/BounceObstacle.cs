@@ -3,14 +3,16 @@ using System.Collections;
 
 public class BounceObstacle : MonoBehaviour {
 
-	void OnCollisionEnter(Collision collision)
+	void OnCollisionEnter(Collision col)
 	{
 		
-		if(collision.gameObject.CompareTag("Orb"))
+		if(col.gameObject.CompareTag("Orb"))
 		{
 			WwiseManager.onPlayWWiseEvent("STAGE_FORCE_FIELD", gameObject);
-            onSpawnRipple(collision.transform.position);
+            onSpawnRipple(col.transform.position);
 
+			//Vector3 newDir = OrbController.DestinationAngle;
+			//OrbController.Push(newDir,OrbController.CurrentVelocity);
 		}
 
 	}

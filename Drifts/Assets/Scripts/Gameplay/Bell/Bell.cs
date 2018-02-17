@@ -19,47 +19,44 @@ public class Bell : MonoBehaviour
         {
             if (other.gameObject.CompareTag("Orb"))
             {
-                onBellHit();
+				CheckBellHit();
 
-                OrbController.onPush(transform.right,OrbController.CurrentVelocity * 1.1f);
-                onDisableBell();
-
+                OrbController.Push(transform.right,OrbController.CurrentVelocity * 1.1f);
+                DisableBell();
             }
         }
-
-
     }
 
-    void onDisableBell()
+    void DisableBell()
     {
         isActive = false;
-        Invoke("onEnableBell", bellLength);
+        Invoke("OnEnableBell", bellLength);
     }
 
-    void onEnableBell()
+    void OnEnableBell()
     {
         isActive = true;
     }
 
 
-    void onEnableTeamPower(bool state)
+    void EnableTeamPower(bool state)
     {
         switch (assignedTeam.powerID)
         {
             case TeamController.powerID.stunt:
-                onEnableStuntPower(state);
+                OnEnableStuntPower(state);
                 break;
             default:
-                onEnableStuntPower(state);
+                OnEnableStuntPower(state);
                 break;
         }
 
-        onResetBell();
+        ResetBell();
     }
 
 
 
-    void onEnableStuntPower(bool state)
+	void OnEnableStuntPower(bool state)
     {
         if (state)
         {
@@ -69,52 +66,42 @@ public class Bell : MonoBehaviour
 
     }
 
-    void onDisableStuntPower()
+    void DisableStuntPower()
     {
-        onEnableStuntPower(false);
+        OnEnableStuntPower(false);
     }
 
-    public void onAssignTeam(Team newTeam)
+    public void AssignTeam(Team newTeam)
     {
         assignedTeam = newTeam;
-
     }
 
-    void onResetBell()
+    void ResetBell()
     {
         curNbBellHits = 0;
         isActive = true;
 
     }
 
-    public void onBellHit()
-    {
-
-        onCheckBellHit();
-
-    }
-
-    private void onCheckBellHit()
+    private void CheckBellHit()
     {
         //No Team, invalid
         if (OrbController.PossessedTeam == TeamController.teamID.Neutral || assignedTeam == null)
             return;
 
 
-        onAddScore(TeamController.onReturnOtherTeam(assignedTeam));
-        onPlayBellSound();
-
-
+        AddScore(TeamController.onReturnOtherTeam(assignedTeam));
+        PlayBellSound();
     }
 
-    private void onAddScore(Team team)
+    private void AddScore(Team team)
     {
 
         curNbBellHits++;
         team.onAddHitScore((int)OrbController.CurrentVelocity / 3);
     }
 
-    private void onPlayBellSound()
+    private void PlayBellSound()
     {
         WwiseManager.onPlayWWiseEvent("STAGE_BELL", gameObject);
         GetComponent<Animator>().Play("DONG", 0, -1);
