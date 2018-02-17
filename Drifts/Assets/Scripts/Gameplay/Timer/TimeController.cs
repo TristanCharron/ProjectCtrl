@@ -2,7 +2,8 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class TimeController : MonoBehaviour {
+public class TimeController : MonoBehaviour
+{
 
     public static TimeController Instance
     {
@@ -22,19 +23,28 @@ public class TimeController : MonoBehaviour {
     public static float Timer { get { return timer; } }
     public static int TimeRounded { get { return (int)Timer; } }
 
+    void Start()
+    {
+        GameController.SetNextRound += OnReset;
+    }
+
     void Update()
     {
-        if(GameController.isGameStarted)
-        {
-            timer -= Time.deltaTime;
-            onSetText(TimeRounded);
-            if (timer < 0)
-            {
-                onComplete();
-            }
-        }
-        
+        if (GameController.isGameStarted)
+            OnUpdateTime();
+
+
     }
+
+    void OnUpdateTime()
+    {
+        timer -= Time.deltaTime;
+        onSetText(TimeRounded);
+        if (timer < 0)
+            onComplete();
+    }
+
+ 
 
     public static void OnReset()
     {
@@ -44,21 +54,22 @@ public class TimeController : MonoBehaviour {
 
     static void onSetText(int seconds)
     {
-        if(seconds > 59)
+        if (seconds > 59)
             instance.TimerUI.text = "01:00";
         else if (seconds < 10)
             instance.TimerUI.text = "00:0" + TimeRounded.ToString();
-        else 
+        else
             instance.TimerUI.text = "00:" + TimeRounded.ToString();
 
     }
 
     // Use this for initialization
-    void Awake () {
+    void Awake()
+    {
         instance = this;
         timer = roundLength;
         onSetText((int)timer);
-        
+
 
     }
 
@@ -69,5 +80,5 @@ public class TimeController : MonoBehaviour {
         else
             RoundController.OnTeamVictory(TeamController.TeamList[0]);
     }
-	
+
 }

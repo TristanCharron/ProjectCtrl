@@ -13,116 +13,95 @@ public class Bell : MonoBehaviour
     private static float bellLength = 2f;
 
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
         if (isActive)
         {
             if (other.gameObject.CompareTag("Orb"))
             {
-                onBellHit();
+				CheckBellHit();
 
-                if (shouldEnableTeamPower())
-                    onEnableTeamPower(true);
-
-                OrbController.onPush(transform.right,OrbController.MaxVelocity / 3);
-                onDisableBell();
-
+				//OrbController.Instance.Push(transform.right,OrbController.Instance.CurrentVelocity * 1.1f);
+                DisableBell();
             }
         }
-
-
     }
 
-    void onDisableBell()
+    void DisableBell()
     {
         isActive = false;
-        Invoke("onEnableBell", bellLength);
+        Invoke("OnEnableBell", bellLength);
     }
 
-    void onEnableBell()
+    void OnEnableBell()
     {
         isActive = true;
     }
 
 
-    bool shouldEnableTeamPower()
-    {
-        return curNbBellHits >= GameController.nbBellHits;
-    }
-
-    void onEnableTeamPower(bool state)
+    void EnableTeamPower(bool state)
     {
         switch (assignedTeam.powerID)
         {
             case TeamController.powerID.stunt:
-                onEnableStuntPower(state);
+                OnEnableStuntPower(state);
                 break;
             default:
-                onEnableStuntPower(state);
+                OnEnableStuntPower(state);
                 break;
         }
 
-        onResetBell();
+        ResetBell();
     }
 
 
 
-    void onEnableStuntPower(bool state)
+	void OnEnableStuntPower(bool state)
     {
         if (state)
         {
-            UIEffectManager.OnFreezeFrame(OrbController.velocityRatio / 3);
+			UIEffectManager.OnFreezeFrame(OrbController.Instance.velocityRatio / 3);
             Invoke("onDisableStuntPower", 2f);
         }
 
     }
 
-    void onDisableStuntPower()
+    void DisableStuntPower()
     {
-        onEnableStuntPower(false);
+        OnEnableStuntPower(false);
     }
 
-    public void onAssignTeam(Team newTeam)
+    public void AssignTeam(Team newTeam)
     {
         assignedTeam = newTeam;
-
     }
 
-    void onResetBell()
+    void ResetBell()
     {
         curNbBellHits = 0;
         isActive = true;
 
     }
 
-    public void onBellHit()
-    {
-
-        onCheckBellHit();
-
-    }
-
-    private void onCheckBellHit()
+    private void CheckBellHit()
     {
         //No Team, invalid
-        if (OrbController.PossessedTeam == TeamController.teamID.Neutral || assignedTeam == null)
+		if (OrbController.Instance.PossessedTeam == TeamController.teamID.Neutral || assignedTeam == null)
             return;
 
 
-        onAddScore(TeamController.onReturnOtherTeam(assignedTeam));
-        onPlayBellSound();
-
-
+        AddScore(TeamController.onReturnOtherTeam(assignedTeam));
+        PlayBellSound();
     }
 
-    private void onAddScore(Team team)
+    private void AddScore(Team team)
     {
 
         curNbBellHits++;
-        team.onAddHitScore((int)OrbController.CurrentVelocity / 3);
+		team.onAddHitScore((int)OrbController.Instance.CurrentVelocity / 3);
     }
 
-    private void onPlayBellSound()
+    private void PlayBellSound()
     {
         WwiseManager.onPlayWWiseEvent("STAGE_BELL", gameObject);
         GetComponent<Animator>().Play("DONG", 0, -1);

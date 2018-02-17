@@ -64,6 +64,7 @@ public class TeamController : MonoBehaviour
     {
         instance = this;
         instance._teamList = teamList;
+        GameController.SetNextRound += onReset;
     }
 
     public static void onReset()
@@ -126,10 +127,11 @@ public class TeamController : MonoBehaviour
 
     static void OnGeneratePlayer(int playerID, Team assignedTeam)
     {
-        PlayerController player = instance.PlayerRoot.transform.GetChild(playerID).GetComponent<PlayerController>();
-        player.OnResetProperties();
-        player.onAssignTeam(assignedTeam);
-        assignedTeam.PlayerList.Add(player);
+        PlayerController pController = instance.PlayerRoot.transform.GetChild(playerID).GetComponent<PlayerController>();
+        pController.player = new PlayerScript(playerID + 1, assignedTeam, pController);
+        pController.OnResetProperties();
+        pController.onAssignTeam(assignedTeam);
+        assignedTeam.PlayerList.Add(pController);
         nbPlayerCreated++;
 
     }
@@ -140,7 +142,7 @@ public class TeamController : MonoBehaviour
     static void OnAssignBell(Team assignedTeam, int bellID)
     {
         Bell currentBell = instance.BellRoot.transform.GetChild(instance.BellRoot.transform.childCount - (bellID + 1)).GetComponent<Bell>();
-        currentBell.onAssignTeam(assignedTeam);
+        currentBell.AssignTeam(assignedTeam);
         assignedTeam.onAssignBell(currentBell);
     }
 

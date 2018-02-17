@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Rewired;
 
 
 public class MenuController : MonoBehaviour
@@ -47,23 +48,24 @@ public class MenuController : MonoBehaviour
     {
         if (!isChangingMenu && isInMainMenu)
         {
-            for (int i = 0; i < mainMenuTxtList.Length; i++)
+            for(int i = 0; i < 4; i++)
             {
-                if (Input.GetAxis(InputController.VERTICAL_MOVE + (i + 1)) > 0.9f)
-                    OnChangeOption(selectionIndex - 1);
-                else if ((Input.GetAxis(InputController.VERTICAL_MOVE + (i + 1)) < -0.9f))
-                    OnChangeOption(selectionIndex + 1);
-                else if ((Input.GetButtonDown(InputController.PRESS_A + (i + 1))))
+                if (ReInput.players.GetPlayer(i).GetButtonDown("ConfirmUI"))
                     onPressMenuOption(selectionIndex);
+
+                if (ReInput.players.GetPlayer(i).GetAxis("Move Vertical") > 0.9f)
+                    OnChangeOption(selectionIndex == 0 ? 1 : 0);
+                else if (ReInput.players.GetPlayer(i).GetAxis("Move Vertical") < -0.9f)
+                    OnChangeOption(selectionIndex == 0 ? 1 : 0);
             }
+
+
         }
 
+			
+
     }
 
-    public void onAbleToChangeMenuOption()
-    {
-        isChangingMenu = false;
-    }
 
     static void onPressMenuOption(int currentIndex)
     {
@@ -73,15 +75,11 @@ public class MenuController : MonoBehaviour
             Application.Quit();
     }
 
+    
     static void OnChangeOption(int newIndex)
     {
-        if (newIndex >= instance.mainMenuTxtList.Length)
-            selectionIndex = 0;
-        else if (newIndex < 0)
-            selectionIndex = instance.mainMenuTxtList.Length - 1;
-        else
-            selectionIndex = newIndex;
-
+       
+        selectionIndex = newIndex;
         isChangingMenu = true;
         instance.StartCoroutine(instance.onCooldownPauseButton());
         onSetMenuOptionsColor();
@@ -109,13 +107,19 @@ public class MenuController : MonoBehaviour
 
     public void onStartGame()
     {
-        isInMainMenu = false;
-        WwiseManager.onPlayWWiseEvent("UI_SELECT", Camera.main.gameObject);
-        UIEffectManager.OnFadeToWhite(true);
-        Camera.main.gameObject.GetComponent<Animator>().enabled = true;
+        if(isInMainMenu)
+        {
+            isInMainMenu = false;
+            WwiseManager.onPlayWWiseEvent("UI_SELECT", Camera.main.gameObject);
+            UIEffectManager.OnFadeToWhite(true);
+            Camera.main.gameObject.GetComponent<Animator>().enabled = true;
+        }
+      
+        
     }
 
-    public void onEndFadeToWhite()
+
+    public void onEndSelectionType()
     {
         SceneManager.LoadScene(1);
     }

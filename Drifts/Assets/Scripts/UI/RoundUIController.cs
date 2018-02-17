@@ -10,6 +10,7 @@ public class RoundUIController : MonoBehaviour
     private static RoundUIController instance;
 
     public GameObject readyContainer, GameOverContainer, BlueTeamWin, RedTeamWin;
+    public Animator readyAnimator;
 
     public GameObject scoreTeamContainer;
 
@@ -26,7 +27,7 @@ public class RoundUIController : MonoBehaviour
     void Start()
     {
         instance = this;
-        OnResetProperties();
+        GameController.SetNextRound += OnReset;
         FadeInGame();
         
     }
@@ -52,23 +53,15 @@ public class RoundUIController : MonoBehaviour
         }
     }
 
-    public static void OnResetProperties()
-    {
-        UIEffectManager.OnResetProperties();
-    }
-
-
     public void EndCinematic()
     {
-       
         SakuraParticles.SetActive(true);
         CameraBoxFollower.enabled = true;
+
         GameController.onNextRound();
-        StartCoroutine(OnBeginGame());
-        WwiseManager.onPlayWWiseEvent("GAME_PLAY", Camera.main.gameObject);
     }
 
-    public IEnumerator OnBeginGame()
+    public IEnumerator OnTransitionUItoNextRound()
     {
         onGameOverScreen(false);
         onNewRoundScreen(true);
@@ -95,7 +88,19 @@ public class RoundUIController : MonoBehaviour
 
     public static void onNewRoundScreen(bool state)
     {
+        if (state)
+        {
+            instance.readyAnimator.Play("readyAnim", -1, 0f);
+        }
+        
+
         instance.readyContainer.SetActive(state);
+
+    }
+
+    public static void OnReset()
+    {
+        instance.StartCoroutine(instance.OnTransitionUItoNextRound());
     }
 
 

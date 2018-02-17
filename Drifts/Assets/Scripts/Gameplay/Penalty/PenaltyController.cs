@@ -44,7 +44,7 @@ public class PenaltyController : MonoBehaviour
 
     public static Text currentPenaltyTxt;
 
-    public const float penaltyLength = 4f;
+    public const float penaltyLength = 10f;
 
     private static float penaltyTimer = penaltyLength;
     public static float PenaltyTimer { get { return penaltyTimer; } }
@@ -57,6 +57,7 @@ public class PenaltyController : MonoBehaviour
     void Awake()
     {
         instance = this;
+        GameController.SetNextRound += OnReset;
     }
 
     public static void OnReset()
@@ -83,8 +84,8 @@ public class PenaltyController : MonoBehaviour
 
     static void OnApplyPenalty()
     {
-        OrbController.onPush(penaltyAngle, TeamController.teamID.Neutral);
-        OrbController.OnDisableOrb();
+		OrbController.Instance.Push(penaltyAngle, TeamController.teamID.Neutral);
+		OrbController.Instance.DisableOrb();
         currentBarrier.onHidePenaltyText();
         OnDisableTimer();
 

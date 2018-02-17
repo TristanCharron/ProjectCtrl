@@ -20,11 +20,9 @@ public class CameraActionBoxFollower : MonoBehaviour {
 
     void LateUpdate()
     {
-
-
         Rect boundingBox = CalculateTargetsBoundingBox();
-        transform.localPosition = CalculateCameraPosition(boundingBox);
         currentCamera.orthographicSize = CalculateOrthographicSize(boundingBox);
+		transform.position = Vector3.Lerp(transform.position, CalculateCameraPosition(boundingBox), Time.deltaTime * 15);
  
     }
 
@@ -62,7 +60,7 @@ public class CameraActionBoxFollower : MonoBehaviour {
         Vector3 boundingBoxCenter = boundingBox.center;
 
         
-		return new Vector3(boundingBoxCenter.x, /*camera.transform.position.y*/ boundingBoxCenter.y - 105, boundingBoxCenter.z) + CameraAjust;
+		return new Vector3(boundingBoxCenter.x, boundingBoxCenter.y, boundingBoxCenter.z) + CameraAjust;
         
     }
 

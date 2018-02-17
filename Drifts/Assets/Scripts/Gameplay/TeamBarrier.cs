@@ -34,7 +34,7 @@ public class TeamBarrier : MonoBehaviour
         if (GameController.isGameStarted)
             if (other.gameObject == OrbController.Instance.gameObject && !inTeamZone)
             {
-                OrbController.OnEnableOrb();
+				OrbController.Instance.EnableOrb();
                 OnEnableBarrier();
             }
 
@@ -48,7 +48,7 @@ public class TeamBarrier : MonoBehaviour
             if (other.gameObject == OrbController.Instance.gameObject && inTeamZone)
             {
                 OnDisableBarrier();
-                OrbController.OnDisableOrb();
+				OrbController.Instance.DisableOrb();
             }
 
         }

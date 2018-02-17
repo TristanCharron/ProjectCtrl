@@ -1,177 +1,99 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-
-
-public class ButtonHolder
-{
-
-    public float currentHoldPushBtnTime = 0f;
-    public const float maxHoldPushBtnTime = 1f;
-    public float holdingButtonRatio { get { return Mathf.Clamp01(currentHoldPushBtnTime / maxHoldPushBtnTime); } }
-
-    public ButtonHolder()
-    {
-        currentHoldPushBtnTime = 0;
-    }
-
-    public void OnUpdate()
-    {
-        if (GameController.isGameStarted)
-            currentHoldPushBtnTime = currentHoldPushBtnTime > maxHoldPushBtnTime ? 0 : currentHoldPushBtnTime += Time.fixedDeltaTime;
-        else
-            currentHoldPushBtnTime = 0;
-    }
-
-    public void OnReset()
-    {
-        currentHoldPushBtnTime = 0;
-    }
-
-
-}
-
+using Rewired;
 
 public class PlayerController : MonoBehaviour
 {
-
-
-    private ButtonHolder leftTriggerHold, rightTriggerHold;
-
-    public ButtonHolder LeftTriggerHold { get { return leftTriggerHold; } }
+    ButtonHolder rightTriggerHold;
     public ButtonHolder RightTriggerHold { get { return rightTriggerHold; } }
 
-    private Quaternion LookingAtAngle { get { return Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position); } }
-
-
     Team currentTeam;
+    PlayerCursor cursor;
+    public PlayerScript player;
 
-    //Player ID - Team
-    public int PlayerID;
+	[Header("Component")]
+    [SerializeField] Animator handAnimator;
+    [SerializeField] BoxCollider PushCollider;
+	[SerializeField] BoxCollider PullCollider;
+	[SerializeField] GameObject WindGust;
 
-    float SpeedPlayer = 55;
+	public Rigidbody rBody;
 
+	SpriteRenderer sRenderer;
+	BoxCollider PlayerCollider;
 
-    BoxCollider PlayerCollider;
-    [SerializeField]
-    Animator handAnimator;
-    //cursor
-    [SerializeField]
-    Transform cursorTransform;
-    [SerializeField]
-    Transform LookAtTransform;
-    Vector3 startRotation;
-    Vector3 endRotation;
-    float cursor_t;
-    [SerializeField]
-    float cursorSpeed = 10;
-
-    float acceleration = 0;
-
-    [SerializeField]
-    bool isDead = false;
-    [SerializeField]
-    BoxCollider PushCollider;
-
-
-    private float pulledVelocity = 0;
-    public float PulledVelocity { get { return pulledVelocity; } }
-    public void onSetPulledVelocity(float vel) { pulledVelocity = vel; }
-
-    [SerializeField]
-    BoxCollider PullCollider;
-    bool canDoAction = true;
-    [SerializeField]
-    GameObject WindGust;
-    Rigidbody rBody;
-
-    private bool changingOrbAngle = false;
-    public bool isChangingOrbAngle { get { return changingOrbAngle; } }
-
-
-
-    SpriteRenderer sRenderer;
-
+	[Header("Param")]
     private Color idleColor;
-
-    [SerializeField]
-    Color chargedColor;
+	[SerializeField] Color chargedColor;
 
 
+	[Header("Text")]
     Text displayUI;
     public Text DisplayUI { get { return displayUI; } }
 
 
-
+	#region private
+	bool canDoAction = true;
+	
+	#endregion
 
 
     void Awake()
     {
-        onResetComponents();
+        OnResetComponents();
         OnResetProperties();
     }
 
-    void onResetComponents()
+    void OnResetComponents()
     {
         PlayerCollider = GetComponent<BoxCollider>();
         rBody = GetComponent<Rigidbody>();
+        cursor = GetComponent<PlayerCursor>();
         sRenderer = GetComponent<SpriteRenderer>();
         displayUI = GetComponentInChildren<Text>();
         idleColor = sRenderer.color;
+
     }
 
     public void OnResetProperties()
     {
         sRenderer.color = idleColor;
-        pulledVelocity = 0;
-        isDead = false;
         canDoAction = true;
-        leftTriggerHold = new ButtonHolder();
-        changingOrbAngle = false;
+        rightTriggerHold = new ButtonHolder();
         rBody.velocity = Vector3.zero;
+        if (player != null)
+            player.OnReset();
+
     }
-    // Update is called once per frame
-    void Update()
+
+	void Update()
     {
         if (!GameController.isGameStarted)
-            return;
-
-
-        if (!currentTeam.isStunt && !isDead)
         {
-            MoveCharacter();
+            rBody.velocity = Vector3.zero;
+            return;
+        }
+        if (!currentTeam.isStunt && !player.IsDead)
+        {
+            player.OnMove();
             PushButton();
             PullButton();
-            onDisplayUIButton();
-            CursorRotation();
+            OnDisplayUIButton();
+            cursor.OnRotate();
             onPressPauseButton();
-
-
         }
-
     }
-
 
     void onPressPauseButton()
     {
-        if (Input.GetButtonDown(InputController.PRESS_START + PlayerID))
-            PauseController.OnPause();
-    }
-
-
-    void onChangeBallAngle()
-    {
-        if (changingOrbAngle)
-        {
-            Vector3 newAngle = Quaternion.LookRotation(LookAtTransform.position - cursorTransform.transform.position) * -transform.up;
-            OrbController.onChangeAngle(newAngle);
-        }
-
+        if (ReInput.players.GetPlayer(player.ID - 1).GetButtonDown("Pause"))
+        PauseController.OnPause();
     }
 
     public void onCharge()
     {
-        Color currentChargingColor = Color.Lerp(idleColor, chargedColor, leftTriggerHold.holdingButtonRatio);
+        Color currentChargingColor = Color.Lerp(idleColor, chargedColor, rightTriggerHold.holdingButtonRatio);
         currentChargingColor.a = 1;
         sRenderer.color = currentChargingColor;
     }
@@ -183,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
     bool isHitValid()
     {
-        return currentTeam.TeamID != OrbController.PossessedTeam && OrbController.PossessedTeam != TeamController.teamID.Neutral;
+		return currentTeam.TeamID != OrbController.Instance.PossessedTeam && OrbController.Instance.PossessedTeam != TeamController.teamID.Neutral;
     }
 
 
@@ -194,161 +116,111 @@ public class PlayerController : MonoBehaviour
 
             if (isHitValid())
             {
-                if (!isDead)
+                if (!player.IsDead)
                 {
                     GameObject DeathAnimParticle = Instantiate(Resources.Load<GameObject>("DeathMonkParticle"), gameObject.transform.position, Quaternion.identity) as GameObject;
                     Destroy(DeathAnimParticle, 5);
-                    RoundController.onPlayerDeath(PlayerID);
+                    RoundController.onPlayerDeath(player.ID);
 
                 }
             }
-            else
-                OrbController.onPush(LookingAtAngle * -transform.up, OrbController.CurrentVelocity / 2.5f);
-
-
-
+          //  else
+               // OrbController.onPush(cursor.LookingAtAngle * -transform.up, OrbController.CurrentVelocity / 1.5f);
         }
     }
 
-
-    void CursorRotation()
+    void PushButton()
     {
-        //lerp
-        if (cursor_t < 1)
-        {
-            cursor_t += Time.deltaTime * cursorSpeed;
-            transform.GetChild(0).localEulerAngles = new Vector3(0, 0, Mathf.LerpAngle(startRotation.z, endRotation.z, cursor_t));
-        }
+        if (player.ID >= ReInput.players.AllPlayers.Count)
+            return;
 
-        float inputX = Input.GetAxis("Horizontal_Rotation_" + PlayerID);
-        float inputY = Input.GetAxis("Vertical_Rotation_" + PlayerID);
-
-        if ((inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f))
+        if (canDoAction)
         {
-            startRotation = transform.GetChild(0).localEulerAngles;
-            endRotation = new Vector3(0, 0, Mathf.Atan2(inputX, inputY) * 180 / Mathf.PI);
-            cursor_t = 0;
+            if (ReInput.players.GetPlayer(player.ID -1 ).GetAxis("Push") >= 0.5f)
+                rightTriggerHold.OnUpdate();
+       
+            else if (ReInput.players.GetPlayer(player.ID -1 ).GetAxisTimeInactive("Push") > 0.01f && rightTriggerHold.holdingButtonRatio > 0)
+            {
+                handAnimator.Play("Push");
+                WwiseManager.onPlayWWiseEvent("MONK_WIND", gameObject);
+                StartCoroutine(OnCoolDown("Push"));
+			}
         }
+        onCharge();
     }
 
-    void MoveCharacter()
+    void PullButton()
     {
-        float inputX = Input.GetAxis("Horizontal_Move_" + PlayerID);
-        float inputY = Input.GetAxis("Vertical_Move_" + PlayerID);
-        rBody.velocity = Vector3.zero;
-        bool isUsingInput = (inputX > 0.5f || inputY > 0.5f) || (inputX < -0.5f || inputY < -0.5f);
-        acceleration = isUsingInput ? acceleration += (Time.deltaTime * 3) : acceleration -= (Time.deltaTime * 30);
-        acceleration = Mathf.Clamp01(acceleration);
-        Vector3 offset = new Vector3(inputX * SpeedPlayer * Time.deltaTime, 0, inputY * SpeedPlayer * Time.deltaTime);
-        transform.position = Vector3.Lerp(transform.position, transform.position + offset, acceleration);
-    }
-void PushButton()
-{
-    if (canDoAction)
-    {
-        if (Input.GetAxis(InputController.PRESS_R + PlayerID) >= 0.5f)
-            leftTriggerHold.OnUpdate();
-        else if (Input.GetAxis(InputController.PRESS_R + PlayerID) <= 0.25f && leftTriggerHold.holdingButtonRatio > 0)
+        if (!canDoAction)
+            return;
+
+        if (player.ID >= ReInput.players.AllPlayers.Count)
+            return;
+
+        if (ReInput.players.GetPlayer(player.ID -1).GetAxis("Stop") > 0.5f)
         {
-            handAnimator.Play("Push");
+            handAnimator.Play("Pull");
+            StartCoroutine(OnCoolDown("Pull"));
             WwiseManager.onPlayWWiseEvent("MONK_WIND", gameObject);
-            StartCoroutine(onCoolDown("Push"));
-
         }
 
     }
 
-    onCharge();
-
-
-}
-void PullButton()
-{
-    if (!canDoAction)
-        return;
-
-    if (Input.GetAxis(InputController.PRESS_L + PlayerID) > 0.5f)
+    public void OnPush()
     {
-        handAnimator.Play("Pull");
-        StartCoroutine(onCoolDown("Pull"));
-        WwiseManager.onPlayWWiseEvent("MONK_WIND", gameObject);
+		Debug.Log("on push");
+		OrbController.Instance.Push(cursor.LookingAtAngle * -transform.up, player);
+		OrbController.Instance.ChangeTeamPossession(currentTeam.TeamID);
+
+		if (OrbController.Instance.CurrentVelocity > 300)
+			UIEffectManager.OnFreezeFrame(OrbController.Instance.velocityRatio / 6);
+
+        WindGust.GetComponent<BoxCollider>().enabled = false;
+        WwiseManager.onPlayWWiseEvent("MONK_PITCH", gameObject);
     }
 
-}
-
-public void onPush()
-{
-
-    OrbController.onPush(LookingAtAngle * -transform.up, this);
-    OrbController.onChangeTeamPossession(currentTeam.TeamID);
-
-
-    if (OrbController.CurrentVelocity > 300)
-        UIEffectManager.OnFreezeFrame(OrbController.velocityRatio / 6);
-
-    WindGust.GetComponent<BoxCollider>().enabled = false;
-    WwiseManager.onPlayWWiseEvent("MONK_PITCH", gameObject);
-}
-
-public void onPull()
-{
-    WwiseManager.onPlayWWiseEvent("MONK_CATCH", gameObject);
-    pulledVelocity = OrbController.CurrentVelocity;
-    OrbController.onPull(Vector3.zero, -OrbController.CurrentVelocity);
-    OrbController.onChangeTeamPossession(currentTeam.TeamID);
-}
-
-void onDisplayUIButton()
-{
-    float alpha = Input.GetButton(InputController.PRESS_Y + PlayerID) ? 1 : 0;
-    displayUI.CrossFadeAlpha(alpha, 0.1f, false);
-}
-
-
-
-void onChangeCoolDownState(string action, bool state)
-{
-    switch (action)
+    public void OnPull()
     {
-        case "Push":
-            WindGust.SetActive(state);
-            WindGust.GetComponent<BoxCollider>().enabled = state;
-            break;
-        case "Pull":
-            PullCollider.enabled = state;
-            break;
-    }
-}
-
-IEnumerator onCoolDown(string action)
-{
-    canDoAction = false;
-    onChangeCoolDownState(action, true);
-    yield return new WaitForSeconds(.2f);
-    leftTriggerHold.OnReset();
-    onChangeCoolDownState(action, false);
-    yield return new WaitForSeconds(.4f);
-    WindGust.SetActive(false);
-    canDoAction = true;
-}
-
-
-void onChangingOrbAngleState(bool state)
-{
-    changingOrbAngle = state;
-
-}
-
-
-void OnMouseDown()
-{
-    if (!isDead)
-    {
-        GameObject DeathAnimParticle = Instantiate(Resources.Load<GameObject>("DeathMonkParticle"), gameObject.transform.position, Quaternion.identity) as GameObject;
-        Destroy(DeathAnimParticle, 5);
-        RoundController.onPlayerDeath(PlayerID);
-
+        WwiseManager.onPlayWWiseEvent("MONK_CATCH", gameObject);
+		player.onSetPulledVelocity(OrbController.Instance.CurrentVelocity);
+		OrbController.Instance.Pull(Vector3.zero, -OrbController.Instance.CurrentVelocity);
+		OrbController.Instance.ChangeTeamPossession(currentTeam.TeamID);
     }
 
-}
+    void OnDisplayUIButton()
+    {
+        if (player.ID-1 >= ReInput.players.AllPlayers.Count)
+        {
+            displayUI.CrossFadeAlpha(0, 0.1f, false);
+            return;
+        }
+	    float alpha = ReInput.players.GetPlayer(player.ID -1).GetButton("ShowUI") ? 1 : 0;
+        displayUI.CrossFadeAlpha(alpha, 0.1f, false);
+    }
+
+    void OnChangeCoolDownState(string action, bool state)
+    {
+        switch (action)
+        {
+            case "Push":
+                WindGust.SetActive(state);
+                WindGust.GetComponent<BoxCollider>().enabled = state;
+                break;
+            case "Pull":
+                PullCollider.enabled = state;
+                break;
+        }
+    }
+
+    IEnumerator OnCoolDown(string action)
+    {
+        canDoAction = false;
+        OnChangeCoolDownState(action, true);
+        rightTriggerHold.OnReset();
+        yield return new WaitForSeconds(.2f);
+        OnChangeCoolDownState(action, false);
+        yield return new WaitForSeconds(.4f);
+        WindGust.SetActive(false);
+        canDoAction = true;
+    }
 }

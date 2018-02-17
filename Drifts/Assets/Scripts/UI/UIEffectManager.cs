@@ -22,7 +22,7 @@ public class UIEffectManager : MonoBehaviour {
         instance = this;
         shakeComponent = Camera.main.GetComponentInParent<Shake>();
         fadeWhiteAnimator = FadeWhiteComponent.GetComponent<Animator>();
-
+        OnResetProperties();
     }
 
     public static void OnResetProperties()
@@ -97,6 +97,8 @@ public class UIEffectManager : MonoBehaviour {
 
     public IEnumerator OnFadeWhite(bool fadeIn)
     {
+
+       
         FadeWhiteComponent.SetActive(true);
         fadeWhiteAnimator.enabled = true;
         fadeWhiteAnimator.Play(Animator.StringToHash(fadeIn ? "fadeInWhite" : "fadeOutWhite"));

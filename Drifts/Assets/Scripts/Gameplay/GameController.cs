@@ -4,28 +4,23 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-
     public const int nbRounds = 3;
 
     public static bool isGameStarted { get { return gameStarted; } }
     static bool gameStarted = false;
 
-    public GameObject _Orb;
-    private static GameObject Orb;
-
     public Transform[] _OrbSpawnPoints;
-    private static Transform[] OrbSpawnPoints;
 
     private static int nbRoundsPlayed = 0;
     public static int NbRoundsPlayed { get { return nbRoundsPlayed; } }
-
-
 
     private static GameController instance;
     public static GameController Instance { get { return instance; } }
 
 
-    public const int nbBellHits = 1;
+    public delegate void GameDelegate();
+    public static event GameDelegate SetNextRound;
+
 
     public static void onSetGameStartedState(bool state)
     {
@@ -34,8 +29,8 @@ public class GameController : MonoBehaviour
 
     public static void onNextRound()
     {
-        WwiseManager.onPlayWWiseEvent("GAME_PLAY", Camera.main.gameObject);
-        ScoreController.onAddTeamScores();
+		WwiseManager.onPlayWWiseEvent("GAME_PLAY", Camera.main.gameObject);
+		ScoreController.onAddTeamScores();
 
         if (isLastRound())
             onGameOver();
@@ -48,26 +43,17 @@ public class GameController : MonoBehaviour
         nbRoundsPlayed = 0;
     }
 
-
     static void onSetNextRound()
     {
-        TeamController.onReset();
-        TimeController.OnReset();
-        PenaltyController.OnReset();
         nbRoundsPlayed++;
-        RoundUIController.Instance.StartCoroutine(RoundUIController.Instance.OnBeginGame());
-        Orb.gameObject.SetActive(true);
-        OrbController.onResetOrb();
-        Orb.transform.position = OrbSpawnPoints[Random.Range(0, OrbSpawnPoints.Length)].position;
-        RoundController.Instance.OnResetProperties();
-        RoundController.Instance.onEnablePlayers();
+        SetNextRound();
     }
 
 
     public IEnumerator onTeamWinCoRoutine(string wwiseTeamNameEvent, Team winningTeam)
     {
         onSetGameStartedState(false);
-        OrbController.shouldBallBeEnabled(false);
+		OrbController.Instance.ShouldBallBeEnabled(false);
         RoundUIController.onGameOverScreen(true);
 
         yield return new WaitForSeconds(2f);
@@ -88,7 +74,6 @@ public class GameController : MonoBehaviour
         TeamController.OnComplete();
 
         SceneManager.LoadScene(0);
-
     }
 
 
@@ -101,8 +86,6 @@ public class GameController : MonoBehaviour
 
     }
 
-
-
     public static bool isGameCompleted()
     {
         return nbRoundsPlayed > nbRounds;
@@ -114,16 +97,9 @@ public class GameController : MonoBehaviour
     }
 
 
-    // Use this for initialization
     void Awake()
     {
-        Orb = _Orb;
-        OrbSpawnPoints = _OrbSpawnPoints;
         instance = this;
         gameStarted = false;
     }
-
-
-
-
 }

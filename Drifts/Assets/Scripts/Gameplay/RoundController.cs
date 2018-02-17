@@ -66,8 +66,10 @@ public class RoundController : MonoBehaviour
     }
 
 
-    static void onReset()
+    static void OnBeginNextRoundEvent()
     {
+        instance.OnResetProperties();
+        instance.onEnablePlayers();
         GameController.onNextRound();
     }
 
@@ -109,12 +111,12 @@ public class RoundController : MonoBehaviour
         winningTeam.onSetWinningState(true);
         TeamController.onReturnOtherTeam(winningTeam).onSetWinningState(false);
         GameController.onSetGameStartedState(false);
-        OrbController.shouldBallBeEnabled(false);
+		OrbController.Instance.ShouldBallBeEnabled(false);
         RoundUIController.OnGetTeamContainer(winningTeam).SetActive(true);
         WwiseManager.onPlayWWiseEvent(wwiseTeamNameEvent, gameObject);
         yield return new WaitForSeconds(3f);
         RoundUIController.OnGetTeamContainer(winningTeam).SetActive(false);
-        onReset();
+        OnBeginNextRoundEvent();
 
     }
 
