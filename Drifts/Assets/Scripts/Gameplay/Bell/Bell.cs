@@ -21,7 +21,7 @@ public class Bell : MonoBehaviour
             {
 				CheckBellHit();
 
-                OrbController.Push(transform.right,OrbController.CurrentVelocity * 1.1f);
+				OrbController.Instance.Push(transform.right,OrbController.Instance.CurrentVelocity * 1.1f);
                 DisableBell();
             }
         }
@@ -60,7 +60,7 @@ public class Bell : MonoBehaviour
     {
         if (state)
         {
-            UIEffectManager.OnFreezeFrame(OrbController.velocityRatio / 3);
+			UIEffectManager.OnFreezeFrame(OrbController.Instance.velocityRatio / 3);
             Invoke("onDisableStuntPower", 2f);
         }
 
@@ -86,7 +86,7 @@ public class Bell : MonoBehaviour
     private void CheckBellHit()
     {
         //No Team, invalid
-        if (OrbController.PossessedTeam == TeamController.teamID.Neutral || assignedTeam == null)
+		if (OrbController.Instance.PossessedTeam == TeamController.teamID.Neutral || assignedTeam == null)
             return;
 
 
@@ -98,7 +98,7 @@ public class Bell : MonoBehaviour
     {
 
         curNbBellHits++;
-        team.onAddHitScore((int)OrbController.CurrentVelocity / 3);
+		team.onAddHitScore((int)OrbController.Instance.CurrentVelocity / 3);
     }
 
     private void PlayBellSound()

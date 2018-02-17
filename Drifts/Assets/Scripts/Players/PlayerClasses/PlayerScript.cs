@@ -33,9 +33,9 @@ public class PlayerScript  {
         id = _id;
         currentTeam = _currentTeam;
         power = 1;
-        maxSpeed = 130;
+        maxSpeed = 200;
         owner = _owner;
-        acceleration = 8f;
+        acceleration = 15f;
         deceleration = 8f;
         OnReset();
     }

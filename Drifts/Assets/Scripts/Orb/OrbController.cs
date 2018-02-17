@@ -7,38 +7,37 @@ public class OrbController : MonoBehaviour
     public static OrbController Instance { get { return instance; } }
     static OrbController instance;
 
-    private static Vector3 destinationAngle; // angle pushing the ball
+	private static Vector3 destinationAngle; // angle pushing the ball
+	public static Vector3 DestinationAngle { get { return destinationAngle; } }	
 
-    public static Vector3 DestinationAngle { get { return destinationAngle; } }
+	[SerializeField] private float currentVelocity, destinationVelocity, LerpTimer; //Speed variables
 
-    private static float currentVelocity, destinationVelocity, LerpTimer; //Speed variables
+	public float velocityRatio { get { return Mathf.Clamp01(instance.currentVelocity / MaxVelocity); } }
 
-    public static float velocityRatio { get { return Mathf.Clamp01(currentVelocity / MaxVelocity); } }
+	public float MaxVelocity { get { return Instance._MaxVelocity; } }
 
-    public static float MaxVelocity { get { return Instance._MaxVelocity; } }
+	public float MinVelocity { get { return Instance._MinVelocity; } }
 
-    public static float MinVelocity { get { return Instance._MinVelocity; } }
+	public float MomentumVelocity { get { return Instance._MomentumVelocity; } }
 
-    public static float MomentumVelocity { get { return Instance._MomentumVelocity; } }
+	public float CurrentVelocity { get { return Mathf.Clamp(currentVelocity, MinVelocity, MaxVelocity); } } //Clamp & Return speed
 
-    public static float CurrentVelocity { get { return Mathf.Clamp(currentVelocity, MinVelocity, MaxVelocity); } } //Clamp & Return speed
+	public float DecreaseVelocity { get { return Instance._DecreaseVelocity; } }
 
-    public static float DecreaseVelocity { get { return Instance._DecreaseVelocity; } }
+    public float MomentumBell { get { return Instance._MomentumBell; } }
 
-    public static float MomentumBell { get { return Instance._MomentumBell; } }
+    public Color NeutralColor { get { return Instance._NeutralColor; } }
+    public Color Team1Color { get { return Instance._Team1Color; } }
+    public Color Team2Color { get { return Instance._Team2Color; } }
 
-    public static Color NeutralColor { get { return Instance._NeutralColor; } }
-    public static Color Team1Color { get { return Instance._Team1Color; } }
-    public static Color Team2Color { get { return Instance._Team2Color; } }
+    private int orbStateID = 0;
+    public int OrbStateID { get { return orbStateID; } }
 
-    private static int orbStateID = 0;
-    public static int OrbStateID { get { return orbStateID; } }
-
-    public static Transform[] OrbSpawnPoints { get { return GameController.Instance._OrbSpawnPoints; } }
+    public Transform[] OrbSpawnPoints { get { return GameController.Instance._OrbSpawnPoints; } }
 
     // Public variable for game designers to tweek ball velocity.
     public float _MaxVelocity, _MinVelocity, _DecreaseVelocity, _MomentumVelocity, _MomentumBell;
-    static void onSetDestinationVelocity()
+    void onSetDestinationVelocity()
 	{
 		destinationVelocity = Mathf.Clamp(destinationVelocity, MinVelocity, MaxVelocity);
 	}
@@ -46,19 +45,19 @@ public class OrbController : MonoBehaviour
     // Public variable for game designers to tweek ball color.
     public Color _NeutralColor, _Team1Color, _Team2Color;
 
-    public static ParticleSystem ParticleSystemRender { get { return Instance.pSystem; } }
+    public ParticleSystem ParticleSystemRender { get { return Instance.pSystem; } }
 
     private Rigidbody rBody;
 
     public Rigidbody RigidBody { get { return rBody; } }
 
-    private static TeamController.teamID possessedTeam = 0;
+    private TeamController.teamID possessedTeam = 0;
 
-    public static TeamController.teamID PossessedTeam { get { return possessedTeam; } }
+    public TeamController.teamID PossessedTeam { get { return possessedTeam; } }
 
     public TeamController.teamID _PossessedTeam;
 
-    private static bool isPushed,isPushable = true;
+    private bool isPushed,isPushable = true;
 
     [SerializeField]
     public ParticleSystem pSystem;
@@ -110,12 +109,12 @@ public class OrbController : MonoBehaviour
 		}
 	}
 
-    public static void ShouldBallBeEnabled(bool state)
+    public void ShouldBallBeEnabled(bool state)
     {
         instance.gameObject.SetActive(state);
     }
 
-    public static void ChangeTeamPossession(TeamController.teamID newTeam)
+    public void ChangeTeamPossession(TeamController.teamID newTeam)
     {
 
         if (!instance.isActiveAndEnabled)
@@ -160,7 +159,7 @@ public class OrbController : MonoBehaviour
 
     }
 
-    public static void Reset()
+    public void Reset()
     {
         instance.gameObject.SetActive(true);
         instance.SetProperties();
@@ -168,7 +167,7 @@ public class OrbController : MonoBehaviour
     }
 
 	//Pour penality? Maybe refactor en 1 Push()
-    public static void Push(Vector3 angle, TeamController.teamID teamID)
+    public void Push(Vector3 angle, TeamController.teamID teamID)
     {
             isPushed = true;
             destinationVelocity = MaxVelocity / 5;
@@ -176,46 +175,55 @@ public class OrbController : MonoBehaviour
             destinationAngle = angle;
             Instance.onSetBallStage();
             ChangeTeamPossession(teamID);
+
+		instance.rBody.velocity = angle.normalized * destinationVelocity;
+
     }
 
 
-	public static void Push(Vector3 angle, PlayerScript player)
+	public void Push(Vector3 angle, PlayerScript player)
     {
         if (isPushable)
         {
             isPushed = true;
             float additionalVel = player.PulledVelocity != 0 ? player.PulledVelocity : 0;
-            destinationVelocity = currentVelocity + additionalVel + (MomentumVelocity * player.Owner.RightTriggerHold.holdingButtonRatio);
+            destinationVelocity = currentVelocity * 1.1f + additionalVel + (MomentumVelocity * player.Owner.RightTriggerHold.holdingButtonRatio);
             onSetDestinationVelocity();
             destinationAngle = angle;
             Instance.onSetBallStage();
             player.onSetPulledVelocity(0);
 
-			instance.rBody.velocity = angle.normalized * currentVelocity;
+			instance.rBody.velocity = angle.normalized * destinationVelocity;
         }
     }
 
 
-    public static void Push(float destVelocity)
+    public void Push(float destVelocity)
     {
         if (isPushable)
         {
             isPushed = true;
-            destinationVelocity = destVelocity;
+			destinationVelocity = destVelocity  * 1.1f;
             onSetDestinationVelocity();
             Instance.onSetBallStage();
+
+			//instance.rBody.velocity = urrentVelocity;
+
         }
     }
 
-    public static void Push(Vector3 angle, float destVelocity)
+    public void Push(Vector3 angle, float destVelocity)
     {
         if (isPushable)
         {
             isPushed = true;
-            destinationVelocity = destVelocity;
+			destinationVelocity = destVelocity  * 1.1f;
             onSetDestinationVelocity();
             destinationAngle = angle;
             Instance.onSetBallStage();
+
+			instance.rBody.velocity = angle.normalized * destinationVelocity;
+
         }
     }
 
@@ -255,7 +263,7 @@ public class OrbController : MonoBehaviour
     }
 
 
-    public static void Pull(Vector3 angle, float velocityApplied)
+    public void Pull(Vector3 angle, float velocityApplied)
     {
         isPushed = true;
         destinationVelocity = currentVelocity + velocityApplied;
@@ -280,7 +288,7 @@ public class OrbController : MonoBehaviour
     }
 
 
-    public static void ChangeAngle(Vector3 Angle)
+    public void ChangeAngle(Vector3 Angle)
     {
         destinationAngle = Angle;
     }
@@ -308,13 +316,13 @@ public class OrbController : MonoBehaviour
    //     rBody.velocity = Vector3.Lerp(rBody.velocity, destinationVelocity * destinationAngle, Mathfx.Sinerp(0, 1, LerpTimer));
     }
 
-    public static void DisableOrb()
+    public void DisableOrb()
     {
         isPushable = false;
         instance.StopAllCoroutines();
     }
 
-    public static void EnableOrb()
+    public void EnableOrb()
     {
         isPushable = true;
     }

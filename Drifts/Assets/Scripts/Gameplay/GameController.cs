@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour
     public IEnumerator onTeamWinCoRoutine(string wwiseTeamNameEvent, Team winningTeam)
     {
         onSetGameStartedState(false);
-        OrbController.ShouldBallBeEnabled(false);
+		OrbController.Instance.ShouldBallBeEnabled(false);
         RoundUIController.onGameOverScreen(true);
 
         yield return new WaitForSeconds(2f);

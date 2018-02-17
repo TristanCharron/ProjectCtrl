@@ -7737,7 +7737,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &919730901
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15433,6 +15433,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be69eb959d54e3446996d5846a9e0a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentVelocity: 0
+  destinationVelocity: 0
+  LerpTimer: 0
   _MaxVelocity: 1000
   _MinVelocity: 180
   _DecreaseVelocity: 0.8
@@ -19937,7 +19940,6 @@ GameObject:
   - component: {fileID: 1557245645}
   - component: {fileID: 1557245644}
   - component: {fileID: 1557245648}
-  - component: {fileID: 1557245649}
   - component: {fileID: 1557245650}
   - component: {fileID: 1557245647}
   - component: {fileID: 1557245651}
@@ -20012,18 +20014,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4935d78f066a55343be530dbf9cb3f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1557245649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1557245643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 480711b0525bd76449ff7aeccb8d8cbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TimerUI: {fileID: 919730903}
 --- !u!114 &1557245650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24038,7 +24028,7 @@ MonoBehaviour:
   boundingBoxPadding: 20
   minimumOrthographicSize: 80
   zoomSpeed: 20
-  CameraAjust: {x: 6.2, y: 261, z: 291.5}
+  CameraAjust: {x: 6.2, y: 161, z: 291.5}
 --- !u!114 &1683788609
 MonoBehaviour:
   m_ObjectHideFlags: 0

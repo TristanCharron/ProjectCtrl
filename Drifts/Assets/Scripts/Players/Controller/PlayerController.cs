@@ -105,7 +105,7 @@ public class PlayerController : MonoBehaviour
 
     bool isHitValid()
     {
-        return currentTeam.TeamID != OrbController.PossessedTeam && OrbController.PossessedTeam != TeamController.teamID.Neutral;
+		return currentTeam.TeamID != OrbController.Instance.PossessedTeam && OrbController.Instance.PossessedTeam != TeamController.teamID.Neutral;
     }
 
 
@@ -168,11 +168,11 @@ public class PlayerController : MonoBehaviour
 
     public void OnPush()
     {
-        OrbController.Push(cursor.LookingAtAngle * -transform.up, player);
-        OrbController.ChangeTeamPossession(currentTeam.TeamID);
+		OrbController.Instance.Push(cursor.LookingAtAngle * -transform.up, player);
+		OrbController.Instance.ChangeTeamPossession(currentTeam.TeamID);
 
-        if (OrbController.CurrentVelocity > 300)
-            UIEffectManager.OnFreezeFrame(OrbController.velocityRatio / 6);
+		if (OrbController.Instance.CurrentVelocity > 300)
+			UIEffectManager.OnFreezeFrame(OrbController.Instance.velocityRatio / 6);
 
         WindGust.GetComponent<BoxCollider>().enabled = false;
         WwiseManager.onPlayWWiseEvent("MONK_PITCH", gameObject);
@@ -181,9 +181,9 @@ public class PlayerController : MonoBehaviour
     public void OnPull()
     {
         WwiseManager.onPlayWWiseEvent("MONK_CATCH", gameObject);
-        player.onSetPulledVelocity(OrbController.CurrentVelocity);
-        OrbController.Pull(Vector3.zero, -OrbController.CurrentVelocity);
-        OrbController.ChangeTeamPossession(currentTeam.TeamID);
+		player.onSetPulledVelocity(OrbController.Instance.CurrentVelocity);
+		OrbController.Instance.Pull(Vector3.zero, -OrbController.Instance.CurrentVelocity);
+		OrbController.Instance.ChangeTeamPossession(currentTeam.TeamID);
     }
 
     void OnDisplayUIButton()
