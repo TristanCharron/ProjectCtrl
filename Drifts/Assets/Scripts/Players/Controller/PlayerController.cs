@@ -168,6 +168,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnPush()
     {
+		Debug.Log("on push");
 		OrbController.Instance.Push(cursor.LookingAtAngle * -transform.up, player);
 		OrbController.Instance.ChangeTeamPossession(currentTeam.TeamID);
 

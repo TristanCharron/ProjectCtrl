@@ -13,7 +13,7 @@ public class Bell : MonoBehaviour
     private static float bellLength = 2f;
 
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
         if (isActive)
         {
@@ -21,7 +21,7 @@ public class Bell : MonoBehaviour
             {
 				CheckBellHit();
 
-				OrbController.Instance.Push(transform.right,OrbController.Instance.CurrentVelocity * 1.1f);
+				//OrbController.Instance.Push(transform.right,OrbController.Instance.CurrentVelocity * 1.1f);
                 DisableBell();
             }
         }

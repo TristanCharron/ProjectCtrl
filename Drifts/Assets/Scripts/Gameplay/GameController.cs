@@ -29,8 +29,8 @@ public class GameController : MonoBehaviour
 
     public static void onNextRound()
     {
-        WwiseManager.onPlayWWiseEvent("GAME_PLAY", Camera.main.gameObject);
-        ScoreController.onAddTeamScores();
+		WwiseManager.onPlayWWiseEvent("GAME_PLAY", Camera.main.gameObject);
+		ScoreController.onAddTeamScores();
 
         if (isLastRound())
             onGameOver();

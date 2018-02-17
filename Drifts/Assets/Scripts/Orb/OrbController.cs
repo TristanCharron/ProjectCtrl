@@ -7,8 +7,8 @@ public class OrbController : MonoBehaviour
     public static OrbController Instance { get { return instance; } }
     static OrbController instance;
 
-	private static Vector3 destinationAngle; // angle pushing the ball
-	public static Vector3 DestinationAngle { get { return destinationAngle; } }	
+	private Vector3 destinationAngle; // angle pushing the ball
+	public Vector3 DestinationAngle { get { return destinationAngle; } }	
 
 	[SerializeField] private float currentVelocity, destinationVelocity, LerpTimer; //Speed variables
 
@@ -20,7 +20,7 @@ public class OrbController : MonoBehaviour
 
 	public float MomentumVelocity { get { return Instance._MomentumVelocity; } }
 
-	public float CurrentVelocity { get { return Mathf.Clamp(currentVelocity, MinVelocity, MaxVelocity); } } //Clamp & Return speed
+	public float CurrentVelocity { get { return rBody.velocity.magnitude; } }
 
 	public float DecreaseVelocity { get { return Instance._DecreaseVelocity; } }
 
@@ -169,12 +169,13 @@ public class OrbController : MonoBehaviour
 	//Pour penality? Maybe refactor en 1 Push()
     public void Push(Vector3 angle, TeamController.teamID teamID)
     {
-            isPushed = true;
-            destinationVelocity = MaxVelocity / 5;
-            onSetDestinationVelocity();
-            destinationAngle = angle;
-            Instance.onSetBallStage();
-            ChangeTeamPossession(teamID);
+        isPushed = true;
+        destinationVelocity = MaxVelocity / 5;
+        onSetDestinationVelocity();
+        destinationAngle = angle;
+        Instance.onSetBallStage();
+        ChangeTeamPossession(teamID);
+		Debug.Log("pushed player angle");
 
 		instance.rBody.velocity = angle.normalized * destinationVelocity;
 
@@ -183,18 +184,16 @@ public class OrbController : MonoBehaviour
 
 	public void Push(Vector3 angle, PlayerScript player)
     {
-        if (isPushable)
-        {
-            isPushed = true;
-            float additionalVel = player.PulledVelocity != 0 ? player.PulledVelocity : 0;
-            destinationVelocity = currentVelocity * 1.1f + additionalVel + (MomentumVelocity * player.Owner.RightTriggerHold.holdingButtonRatio);
-            onSetDestinationVelocity();
-            destinationAngle = angle;
-            Instance.onSetBallStage();
-            player.onSetPulledVelocity(0);
+        isPushed = true;
+        float additionalVel = player.PulledVelocity != 0 ? player.PulledVelocity : 0;
+        destinationVelocity = currentVelocity * 1.1f + additionalVel + (MomentumVelocity * player.Owner.RightTriggerHold.holdingButtonRatio);
+        onSetDestinationVelocity();
+        destinationAngle = angle;
+        Instance.onSetBallStage();
+        player.onSetPulledVelocity(0);
+		Debug.Log("pushed player v3");
 
-			instance.rBody.velocity = angle.normalized * destinationVelocity;
-        }
+		instance.rBody.velocity = angle.normalized * destinationVelocity;
     }
 
 
@@ -206,7 +205,7 @@ public class OrbController : MonoBehaviour
 			destinationVelocity = destVelocity  * 1.1f;
             onSetDestinationVelocity();
             Instance.onSetBallStage();
-
+			Debug.Log("pushed velocity");
 			//instance.rBody.velocity = urrentVelocity;
 
         }

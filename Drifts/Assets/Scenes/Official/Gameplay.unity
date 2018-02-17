@@ -334,11 +334,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player:
     power: 0
-    maxSpeed: 0
-    currentSpeed: 0
     pulledVelocity: 0
     acceleration: 0
-    deceleration: 0
   handAnimator: {fileID: 2049575264}
   PushCollider: {fileID: 698443960}
   PullCollider: {fileID: 534357828}
@@ -554,11 +551,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player:
     power: 0
-    maxSpeed: 0
-    currentSpeed: 0
     pulledVelocity: 0
     acceleration: 0
-    deceleration: 0
   handAnimator: {fileID: 2012042758}
   PushCollider: {fileID: 1078657689}
   PullCollider: {fileID: 1145829370}
@@ -4980,11 +4974,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player:
     power: 0
-    maxSpeed: 0
-    currentSpeed: 0
     pulledVelocity: 0
     acceleration: 0
-    deceleration: 0
   handAnimator: {fileID: 1790731296}
   PushCollider: {fileID: 165241171}
   PullCollider: {fileID: 839302185}
@@ -6052,8 +6043,8 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 598411520}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 64bbc64763de35e4d8a40ba5e7161b62, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: -1.5, y: 2.18, z: 3.0532877}
@@ -6069,6 +6060,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195812996a88eae428e3d9aa8834ade4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &598411524
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 598411520}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!4 &634623780 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400010, guid: 42a8ac221d0007a40b0d0318df71907e, type: 3}
@@ -6932,11 +6938,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player:
     power: 0
-    maxSpeed: 0
-    currentSpeed: 0
     pulledVelocity: 0
     acceleration: 0
-    deceleration: 0
   handAnimator: {fileID: 1967005220}
   PushCollider: {fileID: 265155811}
   PullCollider: {fileID: 1455670972}
@@ -7386,8 +7389,8 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 862945148}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_Material: {fileID: 13400000, guid: 64bbc64763de35e4d8a40ba5e7161b62, type: 2}
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: -1.5, y: 2.18, z: 3.0532877}
@@ -7403,6 +7406,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195812996a88eae428e3d9aa8834ade4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &862945152
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 862945148}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &872777504
 GameObject:
   m_ObjectHideFlags: 0
