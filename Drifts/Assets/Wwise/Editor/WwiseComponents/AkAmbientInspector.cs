@@ -233,7 +233,7 @@ public class AkAmbientInspector : AkEventInspector
 			
 			// Get the needed data before the handle
 			int controlIDBeforeHandle = GUIUtility.GetControlID(someHashCode, FocusType.Passive);
-			bool isEventUsedBeforeHandle = (Event.current.type == EventType.used);
+			bool isEventUsedBeforeHandle = (Event.current.type == EventType.Used);
 			
 			Handles.color = Color.green;
 			Handles.DrawCapFunction capFunc = Handles.SphereCap;
@@ -246,7 +246,7 @@ public class AkAmbientInspector : AkEventInspector
 			
 			// Get the needed data after the handle
 			int controlIDAfterHandle = GUIUtility.GetControlID(someHashCode, FocusType.Passive);
-			bool isEventUsedByHandle = !isEventUsedBeforeHandle && (Event.current.type == EventType.used);
+			bool isEventUsedByHandle = !isEventUsedBeforeHandle && (Event.current.type == EventType.Used);
 			
 			if
 				((controlIDBeforeHandle < GUIUtility.hotControl &&
