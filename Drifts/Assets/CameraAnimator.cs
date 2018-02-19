@@ -15,11 +15,6 @@ public class CameraAnimator : MonoBehaviour {
         instance.StartCoroutine(instance.OnCameraAnim(true));
     }
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 
     public IEnumerator OnCameraAnim(bool isMoving)
     {

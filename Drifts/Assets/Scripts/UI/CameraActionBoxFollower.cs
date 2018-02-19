@@ -7,7 +7,7 @@ public class CameraActionBoxFollower : MonoBehaviour {
     Transform[] targets;
 
     [SerializeField]
-    float boundingBoxPadding = 2f, minimumOrthographicSize = 8f, zoomSpeed = 20f;
+	float boundingBoxPadding = 2f, minimumOrthographicSize = 8f, zoomSpeed = 20f, speed = 2;
 
     public Vector3 CameraAjust;
 
@@ -21,9 +21,8 @@ public class CameraActionBoxFollower : MonoBehaviour {
     void LateUpdate()
     {
         Rect boundingBox = CalculateTargetsBoundingBox();
-        currentCamera.orthographicSize = CalculateOrthographicSize(boundingBox);
-		transform.position = Vector3.Lerp(transform.position, CalculateCameraPosition(boundingBox), Time.deltaTime * 15);
- 
+        //currentCamera.orthographicSize = CalculateOrthographicSize(boundingBox);
+		transform.position = Vector3.Lerp(transform.position, CalculateCameraPosition(boundingBox), Time.deltaTime * speed);
     }
 
     /// <summary>
