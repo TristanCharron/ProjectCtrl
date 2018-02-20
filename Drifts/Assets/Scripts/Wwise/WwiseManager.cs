@@ -1,37 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WwiseManager : MonoBehaviour {
-    public static bool isWwiseEnabled;
-    public bool _isWwiseEnabled;
-    public GameObject WwiseGlobalObject;
+public class WwiseManager : MonoBehaviour
+{
+    [SerializeField]
+    private bool IsWwiseEnabled;
 
-	// Use this for initialization
-	void Awake () {
-        isWwiseEnabled = _isWwiseEnabled;
-        WwiseGlobalObject = GameObject.Find("WwiseGlobal");
-        onSetWwiseByState();
-     
-        
+    public static WwiseManager Instance { private set; get; }
+
+    // Use this for initialization
+    void Awake()
+    {
+        Instance = this;
+        SetWwiseFromState();
     }
 
-    void onSetWwiseByState()
+    void SetWwiseFromState()
     {
-        
-        Camera.main.gameObject.GetComponent<AkAudioListener>().enabled = isWwiseEnabled;
-        if(!isWwiseEnabled)
-        {
-            Destroy(WwiseGlobalObject);
-        }
-        
+        Camera.main.gameObject.GetComponent<AkAudioListener>().enabled = IsWwiseEnabled;
+
+        if (!IsWwiseEnabled)
+            Destroy(gameObject);
     }
 
-	
 
 
-    public static void onPlayWWiseEvent(string nameEvent, GameObject gObject)
+
+    public static void PostEvent(string nameEvent, GameObject gObject)
     {
-        if (isWwiseEnabled)
-            AkSoundEngine.PostEvent(nameEvent, gObject);
+        AkSoundEngine.PostEvent(nameEvent, gObject);
     }
 }

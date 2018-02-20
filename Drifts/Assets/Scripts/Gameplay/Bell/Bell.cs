@@ -97,7 +97,7 @@ public class Bell : MonoBehaviour
 
 
         AddScore(TeamController.onReturnOtherTeam(assignedTeam));
-		WwiseManager.onPlayWWiseEvent("STAGE_BELL", gameObject);
+		WwiseManager.PostEvent("STAGE_BELL", gameObject);
 		GetComponent<Animator>().Play("DONG", 0, -1);
 
 		float ratio = OrbController.Instance.velocityRatio;

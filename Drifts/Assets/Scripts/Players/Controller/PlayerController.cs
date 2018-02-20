@@ -142,7 +142,7 @@ public class PlayerController : MonoBehaviour
             else if (ReInput.players.GetPlayer(player.ID -1 ).GetAxisTimeInactive("Push") > 0.01f && rightTriggerHold.holdingButtonRatio > 0)
             {
                 handAnimator.Play("Push");
-                WwiseManager.onPlayWWiseEvent("MONK_WIND", gameObject);
+                WwiseManager.PostEvent("MONK_WIND", gameObject);
                 StartCoroutine(OnCoolDown("Push"));
 			}
         }
@@ -161,7 +161,7 @@ public class PlayerController : MonoBehaviour
         {
             handAnimator.Play("Pull");
             StartCoroutine(OnCoolDown("Pull"));
-            WwiseManager.onPlayWWiseEvent("MONK_WIND", gameObject);
+            WwiseManager.PostEvent("MONK_WIND", gameObject);
         }
 
     }
@@ -176,12 +176,12 @@ public class PlayerController : MonoBehaviour
 			UIEffectManager.OnFreezeFrame(OrbController.Instance.velocityRatio / 6);
 
         WindGust.GetComponent<BoxCollider>().enabled = false;
-        WwiseManager.onPlayWWiseEvent("MONK_PITCH", gameObject);
+        WwiseManager.PostEvent("MONK_PITCH", gameObject);
     }
 
     public void OnPull()
     {
-        WwiseManager.onPlayWWiseEvent("MONK_CATCH", gameObject);
+        WwiseManager.PostEvent("MONK_CATCH", gameObject);
 		player.onSetPulledVelocity(OrbController.Instance.CurrentVelocity);
 		OrbController.Instance.Pull(Vector3.zero, -OrbController.Instance.CurrentVelocity);
 		OrbController.Instance.ChangeTeamPossession(currentTeam.TeamID);

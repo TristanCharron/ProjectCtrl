@@ -42,7 +42,7 @@ public class LobbyController : MonoBehaviour
     void Start()
     {
         onSetMenuOptionsColor();
-        WwiseManager.onPlayWWiseEvent("GAME_OPEN", gameObject);
+        WwiseManager.PostEvent("GAME_OPEN", gameObject);
     }
 
 
@@ -174,7 +174,7 @@ public class LobbyController : MonoBehaviour
         {
             isInLobbyMenu = false;
 
-            WwiseManager.onPlayWWiseEvent("UI_SELECT", Camera.main.gameObject);
+            WwiseManager.PostEvent("UI_SELECT", Camera.main.gameObject);
             UIEffectManager.OnFadeToWhite(true);
             Camera.main.gameObject.GetComponent<Animator>().enabled = true;
             Camera.main.gameObject.GetComponent<Animator>().Rebind();

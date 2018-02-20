@@ -113,7 +113,7 @@ public class RoundController : MonoBehaviour
         GameController.onSetGameStartedState(false);
 		OrbController.Instance.ShouldBallBeEnabled(false);
         RoundUIController.OnGetTeamContainer(winningTeam).SetActive(true);
-        WwiseManager.onPlayWWiseEvent(wwiseTeamNameEvent, gameObject);
+        WwiseManager.PostEvent(wwiseTeamNameEvent, gameObject);
         yield return new WaitForSeconds(3f);
         RoundUIController.OnGetTeamContainer(winningTeam).SetActive(false);
         OnBeginNextRoundEvent();
@@ -124,7 +124,7 @@ public class RoundController : MonoBehaviour
 
     public static void onPlayerDeath(int id)
     {
-        WwiseManager.onPlayWWiseEvent("MONK_DEAD", players[id - 1].gameObject);
+        WwiseManager.PostEvent("MONK_DEAD", players[id - 1].gameObject);
         listPlayerDead.Add(id);
         players[id - 1].gameObject.SetActive(false);
         OnCheckGameOver();

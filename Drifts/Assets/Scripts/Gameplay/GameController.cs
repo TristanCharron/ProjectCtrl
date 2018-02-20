@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
 
     public static void onNextRound()
     {
-		WwiseManager.onPlayWWiseEvent("GAME_PLAY", Camera.main.gameObject);
+		WwiseManager.PostEvent("GAME_PLAY", Camera.main.gameObject);
 		ScoreController.onAddTeamScores();
 
         if (isLastRound())
@@ -61,7 +61,7 @@ public class GameController : MonoBehaviour
         RoundUIController.onGameOverScreen(false);
         RoundUIController.OnGetTeamContainer(winningTeam).SetActive(true);
 
-        WwiseManager.onPlayWWiseEvent(wwiseTeamNameEvent, gameObject);
+        WwiseManager.PostEvent(wwiseTeamNameEvent, gameObject);
 
         yield return new WaitForSeconds(5f);
         RoundUIController.OnGetTeamContainer(winningTeam).SetActive(false);

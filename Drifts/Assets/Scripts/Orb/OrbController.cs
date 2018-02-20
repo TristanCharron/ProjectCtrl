@@ -255,9 +255,9 @@ public class OrbController : MonoBehaviour
         if (previousOrbID != OrbStateID && GameController.isGameStarted)
         {
             if (previousOrbID < OrbStateID)
-                WwiseManager.onPlayWWiseEvent("BALL_STATE_UP", gameObject);
+                WwiseManager.PostEvent("BALL_STATE_UP", gameObject);
             else
-                WwiseManager.onPlayWWiseEvent("BALL_STATE_DOWN", gameObject);
+                WwiseManager.PostEvent("BALL_STATE_DOWN", gameObject);
         }
     }
 

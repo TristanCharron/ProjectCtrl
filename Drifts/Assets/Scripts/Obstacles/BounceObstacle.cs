@@ -8,7 +8,7 @@ public class BounceObstacle : MonoBehaviour {
 		
 		if(col.gameObject.CompareTag("Orb"))
 		{
-			WwiseManager.onPlayWWiseEvent("STAGE_FORCE_FIELD", gameObject);
+			WwiseManager.PostEvent("STAGE_FORCE_FIELD", gameObject);
             onSpawnRipple(col.transform.position);
 
 			//Vector3 newDir = OrbController.DestinationAngle;
