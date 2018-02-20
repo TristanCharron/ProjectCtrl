@@ -66,7 +66,7 @@ public class GameController : MonoBehaviour
         yield return new WaitForSeconds(5f);
         RoundUIController.OnGetTeamContainer(winningTeam).SetActive(false);
 
-        UIEffectManager.FadeToWhite(true);
+        UIEffectManager.Instance.FadeToWhite(true);
 
         yield return new WaitForSeconds(2f);
 

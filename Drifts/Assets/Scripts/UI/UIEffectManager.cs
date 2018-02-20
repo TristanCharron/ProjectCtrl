@@ -3,14 +3,14 @@ using System.Collections;
 
 public class UIEffectManager : MonoBehaviour {
 
-    private static UIEffectManager instance;
-    public static UIEffectManager Instance { get { return instance; } }
+    public static UIEffectManager Instance { get; private set; }
 
-    public bool IsFreezeFraming { get { return isFreezeFraming; } }
-    private bool isFreezeFraming = false, isScreenShake = false;
+    [SerializeField]
+    private bool isFreezeFraming = false, 
+    isScreenShake = false;
 
-    public  Vector3 ShakeAmount { get { return shakeAmount; } }
-    private  Vector3 shakeAmount;
+    [SerializeField]
+    private Vector3 shakeAmount;
 
     private Shake shakeComponent;
 
@@ -19,7 +19,7 @@ public class UIEffectManager : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
-        instance = this;
+        Instance = this;
         shakeComponent = Camera.main.GetComponentInParent<Shake>();
         fadeWhiteAnimator = FadeWhiteComponent.GetComponent<Animator>();
         OnResetProperties();
@@ -35,13 +35,13 @@ public class UIEffectManager : MonoBehaviour {
 
     public void OnFreezeFrame(float sec)
     {
-        StartCoroutine(instance.FreezeFrame(sec));
+        StartCoroutine(Instance.FreezeFrame(sec));
 
     }
 
     public void OnScreenShake(float sec)
     {
-        StartCoroutine(instance.ScreenShake(sec));
+        StartCoroutine(Instance.ScreenShake(sec));
 
     }
 

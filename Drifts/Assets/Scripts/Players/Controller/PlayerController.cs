@@ -173,7 +173,7 @@ public class PlayerController : MonoBehaviour
 		OrbController.Instance.ChangeTeamPossession(currentTeam.TeamID);
 
 		if (OrbController.Instance.CurrentVelocity > 300)
-			UIEffectManager.OnFreezeFrame(OrbController.Instance.velocityRatio / 6);
+			UIEffectManager.Instance.FreezeFrame(OrbController.Instance.velocityRatio / 6);
 
         WindGust.GetComponent<BoxCollider>().enabled = false;
         WwiseManager.PostEvent("MONK_PITCH", gameObject);

@@ -36,7 +36,7 @@ public class RoundUIController : MonoBehaviour
     {
         Animator CamAnim = GetComponent<Animator>();
         CamAnim.enabled = true;
-        UIEffectManager.FadeToWhite(false);
+        UIEffectManager.Instance.FadeToWhite(false);
     }
 
 

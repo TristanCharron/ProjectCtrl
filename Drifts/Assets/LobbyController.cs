@@ -175,7 +175,7 @@ public class LobbyController : MonoBehaviour
             isInLobbyMenu = false;
 
             WwiseManager.PostEvent("UI_SELECT", Camera.main.gameObject);
-            UIEffectManager.OnFadeToWhite(true);
+            UIEffectManager.Instance.FadeToWhite(true);
             Camera.main.gameObject.GetComponent<Animator>().enabled = true;
             Camera.main.gameObject.GetComponent<Animator>().Rebind();
             Camera.main.gameObject.GetComponent<Animator>().Play(Animator.StringToHash("fadeOutLobby"));

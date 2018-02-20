@@ -66,7 +66,7 @@ public class Bell : MonoBehaviour
     {
         if (state)
         {
-			UIEffectManager.OnFreezeFrame(OrbController.Instance.velocityRatio / 3);
+			UIEffectManager.Instance.FreezeFrame(OrbController.Instance.velocityRatio / 3);
             Invoke("onDisableStuntPower", 2f);
         }
 
@@ -102,8 +102,8 @@ public class Bell : MonoBehaviour
 
 		float ratio = OrbController.Instance.velocityRatio;
 		ShockwaveManager.GetInstance().CastShockwave(sizeShockWave*ratio,transform.position,speedShockWave*ratio,colorShockWave,intensityShockWave);
-		UIEffectManager.OnScreenShake(screenShake * ratio);
-		UIEffectManager.OnFreezeFrame(freezeFrame * ratio);
+		UIEffectManager.Instance.ScreenShake(screenShake * ratio);
+		UIEffectManager.Instance.FreezeFrame(freezeFrame * ratio);
 	}
 
     private void AddScore(Team team)
