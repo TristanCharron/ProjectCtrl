@@ -37,7 +37,7 @@ public class PlayerCursor : MonoBehaviour
         float inputX = ReInput.players.GetPlayer(Owner.player.ID - 1).GetAxis("Rotate Horizontal");
         float inputY = ReInput.players.GetPlayer(Owner.player.ID - 1).GetAxis("Rotate Vertical");
 
-		Vector3 inputs = new Vector3(inputX,0,inputY);
+		Vector3 inputs = new Vector3(inputX,inputY);
 		inputs.Normalize();
 
 		//pas assez précis maybe look rotation

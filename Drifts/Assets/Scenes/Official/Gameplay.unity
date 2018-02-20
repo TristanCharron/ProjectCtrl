@@ -23909,6 +23909,7 @@ GameObject:
   - component: {fileID: 1683788607}
   - component: {fileID: 1683788612}
   - component: {fileID: 1683788613}
+  - component: {fileID: 1683788600}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -23916,6 +23917,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1683788600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1683788599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d55987126709824582e7e359576f4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EffectMaterial: {fileID: 2100000, guid: 36ca1dd298b7e7a43975f34fcf6d80fe, type: 2}
+  debugSpeed: 5
+  debugPos: {x: 0, y: 0}
+  debugSize: 0
+  debugColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!124 &1683788601
 Behaviour:
   m_ObjectHideFlags: 0
@@ -24046,6 +24063,7 @@ MonoBehaviour:
   boundingBoxPadding: 20
   minimumOrthographicSize: 80
   zoomSpeed: 20
+  speed: 2
   CameraAjust: {x: 6.2, y: 161, z: 291.5}
 --- !u!114 &1683788609
 MonoBehaviour:

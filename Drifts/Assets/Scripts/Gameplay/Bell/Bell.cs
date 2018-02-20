@@ -12,6 +12,12 @@ public class Bell : MonoBehaviour
     private bool isActive = true;
     private static float bellLength = 2f;
 
+	[SerializeField] float sizeShockWave = 1;
+	[SerializeField] float speedShockWave = .5f;
+	[SerializeField] Color colorShockWave;
+	[SerializeField] float intensityShockWave = .9f;
+	[SerializeField] float freezeFrame = .15f;
+	[SerializeField] float screenShake = 15;
 
     void OnCollisionEnter(Collision other)
     {
@@ -91,20 +97,18 @@ public class Bell : MonoBehaviour
 
 
         AddScore(TeamController.onReturnOtherTeam(assignedTeam));
-        PlayBellSound();
-    }
+		WwiseManager.onPlayWWiseEvent("STAGE_BELL", gameObject);
+		GetComponent<Animator>().Play("DONG", 0, -1);
+
+		float ratio = OrbController.Instance.velocityRatio;
+		ShockwaveManager.GetInstance().CastShockwave(sizeShockWave*ratio,transform.position,speedShockWave*ratio,colorShockWave,intensityShockWave);
+		UIEffectManager.OnScreenShake(screenShake * ratio);
+		UIEffectManager.OnFreezeFrame(freezeFrame * ratio);
+	}
 
     private void AddScore(Team team)
     {
-
         curNbBellHits++;
 		team.onAddHitScore((int)OrbController.Instance.CurrentVelocity / 3);
     }
-
-    private void PlayBellSound()
-    {
-        WwiseManager.onPlayWWiseEvent("STAGE_BELL", gameObject);
-        GetComponent<Animator>().Play("DONG", 0, -1);
-    }
-
 }
