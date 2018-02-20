@@ -36,12 +36,12 @@ public class PauseController : MonoBehaviour
             for (int i = 0; i < 4; i++)
             {
                 if (ReInput.players.GetPlayer(i).GetButtonDown("ConfirmUI"))
-                    onPressMenuOption(selectionIndex);
+                    PressMenuOption(selectionIndex);
 
                 if (ReInput.players.GetPlayer(i).GetAxis("Move Vertical") > 0.9f)
-                    OnChangeOption(selectionIndex == 0 ? 1 : 0);
+                    ChangeOption(selectionIndex == 0 ? 1 : 0);
                 else if (ReInput.players.GetPlayer(i).GetAxis("Move Vertical") < -0.9f)
-                    OnChangeOption(selectionIndex == 0 ? 1 : 0);
+                    ChangeOption(selectionIndex == 0 ? 1 : 0);
             }
 
             
@@ -49,14 +49,14 @@ public class PauseController : MonoBehaviour
 
     }
 
-    public void onAbleToChangeMenuOption()
+    public void OnAbleToChangeMenuOption()
     {
         isChangingMenu = false;
     }
 
-    static void onPressMenuOption(int currentIndex)
+    void PressMenuOption(int currentIndex)
     {
-        OnPause();
+        Pause();
         if (selectionIndex == 1)
             GameController.onGameOver();
 
@@ -64,7 +64,7 @@ public class PauseController : MonoBehaviour
 
     }
 
-    static void OnChangeOption(int newIndex)
+    void ChangeOption(int newIndex)
     {
         if (newIndex >= instance.pauseMenuTxtList.Length)
             selectionIndex = 0;
@@ -74,18 +74,18 @@ public class PauseController : MonoBehaviour
             selectionIndex = newIndex;
 
         isChangingMenu = true;
-        instance.StartCoroutine(instance.onCooldownPauseButton());
-        onSetMenuOptionsColor();
+        instance.StartCoroutine(instance.OnCooldownPauseButton());
+        SetMenuOptionsColor();
     }
 
-    public IEnumerator onCooldownPauseButton()
+    public IEnumerator OnCooldownPauseButton()
     {
         isChangingMenu = true;
         yield return new WaitForSecondsRealtime(0.3f);
         isChangingMenu = false;
     }
 
-    public static void OnPause()
+    public void Pause()
     {
         isPauseEnabled = !isPauseEnabled;
         Time.timeScale = isPauseEnabled ? 0 : 1;
@@ -95,13 +95,13 @@ public class PauseController : MonoBehaviour
         if (isPauseEnabled)
         {
             selectionIndex = 0;
-            onSetMenuOptionsColor();
+            SetMenuOptionsColor();
         }
            
 
     }
 
-    static void onSetMenuOptionsColor()
+    void SetMenuOptionsColor()
     {
         for (int i = 0; i < instance.pauseMenuTxtList.Length; i++)
         {

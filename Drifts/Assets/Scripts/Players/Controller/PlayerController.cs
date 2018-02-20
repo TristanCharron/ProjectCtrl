@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
     void onPressPauseButton()
     {
         if (ReInput.players.GetPlayer(player.ID - 1).GetButtonDown("Pause"))
-        PauseController.OnPause();
+        PauseController.Instance.Pause();
     }
 
     public void onCharge()
