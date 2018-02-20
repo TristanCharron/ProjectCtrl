@@ -111,7 +111,7 @@ public class MenuController : MonoBehaviour
         {
             isInMainMenu = false;
             WwiseManager.onPlayWWiseEvent("UI_SELECT", Camera.main.gameObject);
-            UIEffectManager.OnFadeToWhite(true);
+            UIEffectManager.FadeToWhite(true);
             Camera.main.gameObject.GetComponent<Animator>().enabled = true;
         }
       

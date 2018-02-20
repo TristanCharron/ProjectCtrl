@@ -6,16 +6,16 @@ public class UIEffectManager : MonoBehaviour {
     private static UIEffectManager instance;
     public static UIEffectManager Instance { get { return instance; } }
 
-    public static bool IsFreezeFraming { get { return isFreezeFraming; } }
-    private static bool isFreezeFraming = false, isScreenShake = false;
+    public bool IsFreezeFraming { get { return isFreezeFraming; } }
+    private bool isFreezeFraming = false, isScreenShake = false;
 
-    public static Vector3 ShakeAmount { get { return shakeAmount; } }
-    private static Vector3 shakeAmount;
+    public  Vector3 ShakeAmount { get { return shakeAmount; } }
+    private  Vector3 shakeAmount;
 
-    private static Shake shakeComponent;
+    private Shake shakeComponent;
 
-    public GameObject FadeWhiteComponent;
-    private static Animator fadeWhiteAnimator;
+    [SerializeField] GameObject FadeWhiteComponent;
+    private Animator fadeWhiteAnimator;
 
     // Use this for initialization
     void Awake () {
@@ -25,7 +25,7 @@ public class UIEffectManager : MonoBehaviour {
         OnResetProperties();
     }
 
-    public static void OnResetProperties()
+    public  void OnResetProperties()
     {
         isFreezeFraming = false;
         isScreenShake = false;
@@ -33,15 +33,15 @@ public class UIEffectManager : MonoBehaviour {
     }
 
 
-    public static void OnFreezeFrame(float sec)
+    public void OnFreezeFrame(float sec)
     {
-        instance.StartCoroutine(instance.FreezeFrame(sec));
+        StartCoroutine(instance.FreezeFrame(sec));
 
     }
 
-    public static void OnScreenShake(float sec)
+    public void OnScreenShake(float sec)
     {
-        instance.StartCoroutine(instance.ScreenShake(sec));
+        StartCoroutine(instance.ScreenShake(sec));
 
     }
 
@@ -88,14 +88,14 @@ public class UIEffectManager : MonoBehaviour {
         yield break;
     }
 
-    public static void OnFadeToWhite(bool fadeIn)
+    public void FadeToWhite(bool fadeIn)
     {
-        instance.StartCoroutine(instance.OnFadeWhite(fadeIn));
+        StartCoroutine(FadeWhite(fadeIn));
        
     
     }
 
-    public IEnumerator OnFadeWhite(bool fadeIn)
+    public IEnumerator FadeWhite(bool fadeIn)
     {
 
        
