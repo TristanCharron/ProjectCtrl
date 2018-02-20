@@ -6060,6 +6060,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195812996a88eae428e3d9aa8834ade4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizeShockWave: 5
+  speedShockWave: 0.5
+  colorShockWave: {r: 0, g: 0, b: 0, a: 0.116}
+  intensityShockWave: 0.6
+  freezeFrame: 0.15
+  screenShake: 15
 --- !u!54 &598411524
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7406,6 +7412,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 195812996a88eae428e3d9aa8834ade4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sizeShockWave: 5
+  speedShockWave: 0.5
+  colorShockWave: {r: 0, g: 0, b: 0, a: 0.116}
+  intensityShockWave: 0.6
+  freezeFrame: 0.15
+  screenShake: 15
 --- !u!54 &862945152
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -23929,10 +23941,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EffectMaterial: {fileID: 2100000, guid: 36ca1dd298b7e7a43975f34fcf6d80fe, type: 2}
-  debugSpeed: 5
-  debugPos: {x: 0, y: 0}
-  debugSize: 0
-  debugColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!124 &1683788601
 Behaviour:
   m_ObjectHideFlags: 0

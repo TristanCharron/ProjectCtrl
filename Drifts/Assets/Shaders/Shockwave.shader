@@ -14,6 +14,8 @@ Shader"ShaderMan/Shockwave"{
 		_ExtraParam3("_ExtraParam3", float) = .1
 
 		_Intensity("_Intensity", Range(0,1)) = .5
+		_LifeTime("_LifeTime", Range(0,10)) = .5
+		_ScreenYRatio("_ScreenYRatio", Range(0,1)) = .5
 	}
 	
 	SubShader
@@ -48,6 +50,8 @@ Shader"ShaderMan/Shockwave"{
 			float _ExtraParam3;
 
 			float _Intensity;
+			float _LifeTime;
+			float _ScreenYRatio;
 			
 			struct v2f
 			{
@@ -72,18 +76,19 @@ Shader"ShaderMan/Shockwave"{
 			    fixed3 waveParams = fixed3(_ExtraParam1, _ExtraParam2, _ExtraParam3);
 
 			    // Find coordinate, flexible to different resolutions
-			    //fixed maxSize = max(1, 1);
 			    fixed2 uv = i.uv;
 			    fixed2 shockuv = i.uv;
-			    //shockuv *= _Size;
 			   
 			     // Find center, flexible to different resolutions
-			    // fixed2 center = 1 / maxSize / 2.;
 				fixed2 center = _Pos;
-			    
-			    // Distance to the center
-			    fixed dist = distance(shockuv.xy, center);
-
+				
+				fixed2 dir = uv - center;
+				fixed2 uvRatio = shockuv.xy;
+				uvRatio.y -= dir.y * _ScreenYRatio;
+				
+			    fixed dist = distance(uvRatio, center);
+ 				
+				
 			    // Original color
 			    fixed4 c = tex2D(_MainTex, uv);
 
@@ -96,8 +101,8 @@ Shader"ShaderMan/Shockwave"{
 			        fixed diffTime = (diff  * diffPow);
 
 			        // The direction of the distortion
-			        fixed2 dir = normalize(uv - center);
-
+			        dir = normalize(dir) * _LifeTime;
+					
 			        // Perform the distortion and reduce the effect over time
 			        uv += ((dir * diffTime) / (time * dist * _EnergyBurst));
 

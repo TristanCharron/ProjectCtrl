@@ -13,6 +13,7 @@ public class ShockwaveManager : MonoBehaviour
 	void Awake()
 	{
 		instance = this;
+		EffectMaterial.SetFloat("_Lerp", 0);
 	}
 	#endregion
 
@@ -39,11 +40,13 @@ public class ShockwaveManager : MonoBehaviour
 	{
 		float t = 0;
 		screenPos = new Vector2(screenPos.x / Screen.width, screenPos.y / Screen.height);
-
+		float screenYRatio = (float)Screen.height / (float)Screen.width;
 		EffectMaterial.SetColor("_Color", color);
 		EffectMaterial.SetFloat("_Size", size);
 		EffectMaterial.SetVector("_Pos", screenPos);
 		EffectMaterial.SetFloat("_Intensity", intensity);
+		EffectMaterial.SetFloat("_ScreenYRatio", screenYRatio);
+		Debug.Log(screenYRatio + " screen ratio");
 
 		while(t < 1)
 		{
