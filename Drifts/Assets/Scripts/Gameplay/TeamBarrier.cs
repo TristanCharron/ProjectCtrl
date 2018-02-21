@@ -5,8 +5,8 @@ using System.Collections;
 public class TeamBarrier : MonoBehaviour
 {
     public int teamID;
-    private bool inTeamZone = false;
-    public bool isInTeamZone { get { return inTeamZone; } }
+
+    public bool InTeamZone { private set; get; } 
 
     public Text penaltyUI;
 
@@ -24,6 +24,7 @@ public class TeamBarrier : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        InTeamZone = false;
         OnDisableBarrier();
     }
 
@@ -31,8 +32,8 @@ public class TeamBarrier : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (GameController.isGameStarted)
-            if (other.gameObject == OrbController.Instance.gameObject && !inTeamZone)
+        if (GameController.IsGameStarted)
+            if (other.gameObject == OrbController.Instance.gameObject && !InTeamZone)
             {
 				OrbController.Instance.EnableOrb();
                 OnEnableBarrier();
@@ -43,9 +44,9 @@ public class TeamBarrier : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (GameController.isGameStarted)
+        if (GameController.IsGameStarted)
         {
-            if (other.gameObject == OrbController.Instance.gameObject && inTeamZone)
+            if (other.gameObject == OrbController.Instance.gameObject && InTeamZone)
             {
                 OnDisableBarrier();
 				OrbController.Instance.DisableOrb();
@@ -57,20 +58,20 @@ public class TeamBarrier : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (GameController.isGameStarted)
-            if (other.gameObject == OrbController.Instance.gameObject && !inTeamZone)
+        if (GameController.IsGameStarted)
+            if (other.gameObject == OrbController.Instance.gameObject && !InTeamZone)
                 OnEnableBarrier();
     }
 
     void OnEnableBarrier()
     {
-        PenaltyController.OnEnableTimer(penaltyUI, this);
-        inTeamZone = true;
+        PenaltyController.EnableTimer(penaltyUI, this);
+        InTeamZone = true;
         penaltyUI.CrossFadeAlpha(1, 0.5f, false);
     }
     public void OnDisableBarrier()
     {
-        inTeamZone = false;
+        InTeamZone = false;
         onHidePenaltyText();
     }
 

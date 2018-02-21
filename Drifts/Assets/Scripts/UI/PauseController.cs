@@ -58,7 +58,7 @@ public class PauseController : MonoBehaviour
     {
         Pause();
         if (selectionIndex == 1)
-            GameController.onGameOver();
+            GameController.EndGame();
 
        
 

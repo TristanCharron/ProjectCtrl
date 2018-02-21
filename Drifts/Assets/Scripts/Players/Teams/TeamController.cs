@@ -5,150 +5,118 @@ using System.Collections.Generic;
 
 public class TeamController : MonoBehaviour
 {
-    public const int nbPlayers = 2, nbTeams = 2;
-    public static int nbPlayerCreated = 0;
+    public static TeamController Instance { private set; get; }
 
-    private static TeamController instance;
-    public static TeamController Instance { get { return instance; } }
+    public static List<Team> TeamList { private set; get; }
 
-    public List<Team> _teamList;
-    static List<Team> teamList;
-    public static List<Team> TeamList { get { return teamList; } }
+    private static int NbPlayersCreated;
 
 
     public GameObject BellRoot;
     public GameObject PlayerRoot;
 
 
-    public enum teamID
+    public enum TeamID
     {
-        Neutral,
-        Team1,
-        Team2
+        Team1 = 0,
+        Team2 = 1,
+        Neutral = 2,
+       
     };
 
-    public enum bellID
-    {
 
-    };
-
-    public enum powerID
+    // Use this for initialization
+    void Awake()
     {
-        stunt,
-        superpower,
-        croustibat,
+        Instance = this;
+        RoundUIController.StartCinematicEvent += GenerateNewTeams; 
+        GameController.SetNextRoundEvent += ResetCurrentTeams;
+        GameController.EndGameEvent += () => TeamList.Clear();
     }
 
-    public static void OnComplete()
-    {
-        teamList.Clear();
-        teamList = null;
-        nbPlayerCreated = 0;
-    }
 
-    public static Team onReturnOtherTeam(Team currentTeam)
+    public static Team GetOtherTeam(Team currentTeam)
     {
-       switch(currentTeam.Index)
+        switch (currentTeam.Index)
         {
             case 1:
-                return teamList[1]; 
+                return TeamList[1];
             case 2:
-                return teamList[0];
+                return TeamList[0];
             default:
                 return currentTeam;
         }
     }
 
-    // Use this for initialization
-    void Awake()
+
+    private static void ResetCurrentTeams()
     {
-        instance = this;
-        instance._teamList = teamList;
-        GameController.SetNextRound += onReset;
+        for (int i = 0; i < TeamList.Count; i++)
+        {
+            for (int j = 0; j < TeamList[i].PlayerList.Count; j++)
+            {
+                TeamList[i].PlayerList[j].ResetProperties();
+                TeamList[i].Reset();
+            }
+        }
     }
 
-    public static void onReset()
-    {
-        onGenerateTeams();
-    }
 
-    static void onGenerateTeams()
+
+    static void GenerateNewTeams()
     {
-        if (teamList == null)
-            onGenerateNewTeams();
-        else
-            onResetTeams();
-    }
+      
+        TeamList = new List<Team>();
+        NbPlayersCreated = 0;
+
+        for (int i = 0; i < GameController.CurrentGameMode.NbTeams; i++)
+        {
+            TeamList.Add(GenerateTeam((TeamID)(i), GameController.CurrentGameMode.NbPlayers, i)); 
+        }
 
     
-
-    static void onGenerateNewTeams()
-    {
-        nbPlayerCreated = 0;
-        teamList = new List<Team>();
-        for (int i = 0; i < nbTeams; i++)
-        {
-            onGenerateTeam((teamID)(i + 1), powerID.stunt, nbPlayers, i+1);
-        }
     }
 
-    static void onResetTeams()
-    {
-        for(int i = 0; i < teamList.Count; i++) {
-            onResetPlayers(teamList[i]);
-        }
-    }
 
-    static void onResetPlayers(Team team)
+    static Team GenerateTeam(TeamID id, int nbPlayers, int teamNb)
     {
+        Team newTeam = new Team(id, nbPlayers, teamNb);
+
         for (int i = 0; i < nbPlayers; i++)
         {
-            team.PlayerList[i].OnResetProperties();
+            newTeam.PlayerList.Add(GeneratePlayer(i, id));
         }
 
-        RoundController.onResetPosition();
-    }
+        AssignBell(newTeam);
+        AssignScoreTxt(newTeam);
+        newTeam.Reset();
+     
+        return newTeam;
 
-    static void onGenerateTeam(teamID id, powerID power, int nbPlayers, int teamNb)
-    {
-       Team newTeam = new Team(id, power, nbPlayers, teamNb);
-
-      
-        for(int i = 0; i < nbPlayers;i++)
-        {
-            OnGeneratePlayer(nbPlayerCreated,newTeam);
-        }
-
-        OnAssignBell(newTeam, teamNb-1);
-        OnAssignScoreTxt(newTeam, teamNb-1);
-        teamList.Add(newTeam);
 
     }
 
-    static void OnGeneratePlayer(int playerID, Team assignedTeam)
+    static PlayerController GeneratePlayer(int playerID, TeamID assignedTeamID)
     {
-        PlayerController pController = instance.PlayerRoot.transform.GetChild(playerID).GetComponent<PlayerController>();
-        pController.player = new PlayerScript(playerID + 1, assignedTeam, pController);
-        pController.OnResetProperties();
-        pController.onAssignTeam(assignedTeam);
-        assignedTeam.PlayerList.Add(pController);
-        nbPlayerCreated++;
-
+        PlayerController pController = Instance.PlayerRoot.transform.GetChild(NbPlayersCreated).GetComponent<PlayerController>();
+        pController.Player = new PlayerScript(NbPlayersCreated, assignedTeamID, pController);
+        pController.ResetProperties();
+        NbPlayersCreated++;
+        return pController;
     }
 
- 
 
-
-    static void OnAssignBell(Team assignedTeam, int bellID)
+    static void AssignBell(Team assignedTeam)
     {
-        Bell currentBell = instance.BellRoot.transform.GetChild(instance.BellRoot.transform.childCount - (bellID + 1)).GetComponent<Bell>();
+        Bell currentBell = Instance.BellRoot.transform.GetChild((int)assignedTeam.TeamID).GetComponent<Bell>();
         currentBell.AssignTeam(assignedTeam);
-        assignedTeam.onAssignBell(currentBell);
+        assignedTeam.AssignBell(currentBell);
     }
 
-    static void OnAssignScoreTxt(Team assignedTeam, int teamID)
+    static void AssignScoreTxt(Team assignedTeam)
     {
-        assignedTeam.onAssignScoreTxt(RoundUIController.Instance.roundScoreList[teamID], RoundUIController.Instance.totalScoreList[teamID]);
+        int teamId = (int)assignedTeam.TeamID;
+        assignedTeam.AssignScoreText(RoundUIController.Instance.roundScoreList[teamId], RoundUIController.Instance.totalScoreList[teamId]);
     }
 
 

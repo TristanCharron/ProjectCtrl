@@ -5,12 +5,14 @@ using Rewired;
 
 public class PlayerController : MonoBehaviour
 {
-    ButtonHolder rightTriggerHold;
-    public ButtonHolder RightTriggerHold { get { return rightTriggerHold; } }
 
-    Team currentTeam;
-    PlayerCursor cursor;
-    public PlayerScript player;
+    public ButtonHolder RightTriggerHold { private set; get; }
+
+    public TeamController.TeamID CurrentTeamID { get { return Player.TeamID; } }
+
+    PlayerCursor Cursor;
+
+    public PlayerScript Player;
 
 	[Header("Component")]
     [SerializeField] Animator handAnimator;
@@ -29,8 +31,7 @@ public class PlayerController : MonoBehaviour
 
 
 	[Header("Text")]
-    Text displayUI;
-    public Text DisplayUI { get { return displayUI; } }
+    public Text DisplayUI;
 
 
 	#region private
@@ -41,71 +42,71 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        OnResetComponents();
-        OnResetProperties();
+        ResetComponents();
+        ResetProperties();
     }
 
-    void OnResetComponents()
+    void ResetComponents()
     {
         PlayerCollider = GetComponent<BoxCollider>();
         rBody = GetComponent<Rigidbody>();
-        cursor = GetComponent<PlayerCursor>();
+        Cursor = GetComponent<PlayerCursor>();
         sRenderer = GetComponent<SpriteRenderer>();
-        displayUI = GetComponentInChildren<Text>();
+        DisplayUI = GetComponentInChildren<Text>();
         idleColor = sRenderer.color;
 
     }
 
-    public void OnResetProperties()
+    public void ResetProperties()
     {
         sRenderer.color = idleColor;
         canDoAction = true;
-        rightTriggerHold = new ButtonHolder();
+        RightTriggerHold = new ButtonHolder();
         rBody.velocity = Vector3.zero;
-        if (player != null)
-            player.OnReset();
+        rBody.mass = 10;
+        rBody.drag = 5f;
+        if (Player != null)
+            Player.ResetCharacter();
 
     }
 
+
+
 	void Update()
     {
-        if (!GameController.isGameStarted)
+        if (!GameController.IsGameStarted)
         {
             rBody.velocity = Vector3.zero;
             return;
         }
-        if (!currentTeam.isStunt && !player.IsDead)
+        if (!Player.IsDead)
         {
-            player.OnMove();
+            Player.Move();
             PushButton();
             PullButton();
-            OnDisplayUIButton();
-            cursor.OnRotate();
-            onPressPauseButton();
+            DisplayUIButton();
+            Cursor.OnRotate();
+            PressPauseButton();
         }
     }
 
-    void onPressPauseButton()
+    void PressPauseButton()
     {
-        if (ReInput.players.GetPlayer(player.ID - 1).GetButtonDown("Pause"))
+        if (ReInput.players.GetPlayer(Player.ID).GetButtonDown("Pause"))
         PauseController.Instance.Pause();
     }
 
-    public void onCharge()
+    public void Charge()
     {
-        Color currentChargingColor = Color.Lerp(idleColor, chargedColor, rightTriggerHold.holdingButtonRatio);
+        Color currentChargingColor = Color.Lerp(idleColor, chargedColor, RightTriggerHold.holdingButtonRatio);
         currentChargingColor.a = 1;
         sRenderer.color = currentChargingColor;
     }
 
-    public void onAssignTeam(Team assignedTeam)
-    {
-        currentTeam = assignedTeam;
-    }
-
     bool isHitValid()
     {
-		return currentTeam.TeamID != OrbController.Instance.PossessedTeam && OrbController.Instance.PossessedTeam != TeamController.teamID.Neutral;
+		return CurrentTeamID != OrbController.Instance.PossessedTeam && 
+            OrbController.Instance.PossessedTeam != TeamController.TeamID.Neutral;
     }
 
 
@@ -116,37 +117,35 @@ public class PlayerController : MonoBehaviour
 
             if (isHitValid())
             {
-                if (!player.IsDead)
+                if (!Player.IsDead)
                 {
                     GameObject DeathAnimParticle = Instantiate(Resources.Load<GameObject>("DeathMonkParticle"), gameObject.transform.position, Quaternion.identity) as GameObject;
                     Destroy(DeathAnimParticle, 5);
-                    RoundController.onPlayerDeath(player.ID);
+                    GameController.KillPlayer(this);
 
                 }
             }
-          //  else
-               // OrbController.onPush(cursor.LookingAtAngle * -transform.up, OrbController.CurrentVelocity / 1.5f);
         }
     }
 
     void PushButton()
     {
-        if (player.ID >= ReInput.players.AllPlayers.Count)
+        if (Player.ID >= ReInput.players.AllPlayers.Count)
             return;
 
         if (canDoAction)
         {
-            if (ReInput.players.GetPlayer(player.ID -1 ).GetAxis("Push") >= 0.5f)
-                rightTriggerHold.OnUpdate();
+            if (ReInput.players.GetPlayer(Player.ID).GetAxis("Push") >= 0.5f)
+                RightTriggerHold.OnUpdate();
        
-            else if (ReInput.players.GetPlayer(player.ID -1 ).GetAxisTimeInactive("Push") > 0.01f && rightTriggerHold.holdingButtonRatio > 0)
+            else if (ReInput.players.GetPlayer(Player.ID).GetAxisTimeInactive("Push") > 0.01f && RightTriggerHold.holdingButtonRatio > 0)
             {
                 handAnimator.Play("Push");
                 WwiseManager.PostEvent("MONK_WIND", gameObject);
-                StartCoroutine(OnCoolDown("Push"));
+                StartCoroutine(CoolDown("Push"));
 			}
         }
-        onCharge();
+        Charge();
     }
 
     void PullButton()
@@ -154,13 +153,13 @@ public class PlayerController : MonoBehaviour
         if (!canDoAction)
             return;
 
-        if (player.ID >= ReInput.players.AllPlayers.Count)
+        if (Player.ID >= ReInput.players.AllPlayers.Count)
             return;
 
-        if (ReInput.players.GetPlayer(player.ID -1).GetAxis("Stop") > 0.5f)
+        if (ReInput.players.GetPlayer(Player.ID).GetAxis("Stop") > 0.5f)
         {
             handAnimator.Play("Pull");
-            StartCoroutine(OnCoolDown("Pull"));
+            StartCoroutine(CoolDown("Pull"));
             WwiseManager.PostEvent("MONK_WIND", gameObject);
         }
 
@@ -169,11 +168,11 @@ public class PlayerController : MonoBehaviour
     public void OnPush()
     {
 		Debug.Log("on push");
-		OrbController.Instance.Push(cursor.LookingAtAngle * -transform.up, player);
-		OrbController.Instance.ChangeTeamPossession(currentTeam.TeamID);
+		OrbController.Instance.Push(Cursor.LookingAtAngle * -transform.up, Player);
+		OrbController.Instance.ChangeTeamPossession(CurrentTeamID);
 
 		if (OrbController.Instance.CurrentVelocity > 300)
-			UIEffectManager.Instance.FreezeFrame(OrbController.Instance.velocityRatio / 6);
+			UIEffectManager.Instance.FreezeFrame(OrbController.Instance.VelocityRatio / 6);
 
         WindGust.GetComponent<BoxCollider>().enabled = false;
         WwiseManager.PostEvent("MONK_PITCH", gameObject);
@@ -182,23 +181,23 @@ public class PlayerController : MonoBehaviour
     public void OnPull()
     {
         WwiseManager.PostEvent("MONK_CATCH", gameObject);
-		player.onSetPulledVelocity(OrbController.Instance.CurrentVelocity);
+		Player.SetPulledVelocity(OrbController.Instance.CurrentVelocity);
 		OrbController.Instance.Pull(Vector3.zero, -OrbController.Instance.CurrentVelocity);
-		OrbController.Instance.ChangeTeamPossession(currentTeam.TeamID);
+		OrbController.Instance.ChangeTeamPossession(CurrentTeamID);
     }
 
-    void OnDisplayUIButton()
+    void DisplayUIButton()
     {
-        if (player.ID-1 >= ReInput.players.AllPlayers.Count)
+        if (Player.ID >= ReInput.players.AllPlayers.Count)
         {
-            displayUI.CrossFadeAlpha(0, 0.1f, false);
+            DisplayUI.CrossFadeAlpha(0, 0.1f, false);
             return;
         }
-	    float alpha = ReInput.players.GetPlayer(player.ID -1).GetButton("ShowUI") ? 1 : 0;
-        displayUI.CrossFadeAlpha(alpha, 0.1f, false);
+	    float alpha = ReInput.players.GetPlayer(Player.ID).GetButton("ShowUI") ? 1 : 0;
+        DisplayUI.CrossFadeAlpha(alpha, 0.1f, false);
     }
 
-    void OnChangeCoolDownState(string action, bool state)
+    void ChangeCoolDownState(string action, bool state)
     {
         switch (action)
         {
@@ -212,13 +211,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    IEnumerator OnCoolDown(string action)
+    IEnumerator CoolDown(string action)
     {
         canDoAction = false;
-        OnChangeCoolDownState(action, true);
-        rightTriggerHold.OnReset();
+        ChangeCoolDownState(action, true);
+        RightTriggerHold.OnReset();
         yield return new WaitForSeconds(.2f);
-        OnChangeCoolDownState(action, false);
+        ChangeCoolDownState(action, false);
         yield return new WaitForSeconds(.4f);
         WindGust.SetActive(false);
         canDoAction = true;

@@ -332,16 +332,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player:
-    power: 0
-    pulledVelocity: 0
-    acceleration: 0
   handAnimator: {fileID: 2049575264}
   PushCollider: {fileID: 698443960}
   PullCollider: {fileID: 534357828}
   WindGust: {fileID: 698443958}
-  rBody: {fileID: 0}
+  rBody: {fileID: 35232883}
   chargedColor: {r: 0.8308824, g: 0.46414807, b: 0, a: 1}
+  DisplayUI: {fileID: 913644470}
 --- !u!95 &35232885
 Animator:
   serializedVersion: 3
@@ -549,16 +546,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player:
-    power: 0
-    pulledVelocity: 0
-    acceleration: 0
   handAnimator: {fileID: 2012042758}
   PushCollider: {fileID: 1078657689}
   PullCollider: {fileID: 1145829370}
   WindGust: {fileID: 1078657687}
-  rBody: {fileID: 0}
+  rBody: {fileID: 115000724}
   chargedColor: {r: 0.8308824, g: 0.46414807, b: 0, a: 1}
+  DisplayUI: {fileID: 1868325995}
 --- !u!95 &115000726
 Animator:
   serializedVersion: 3
@@ -4972,16 +4966,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player:
-    power: 0
-    pulledVelocity: 0
-    acceleration: 0
   handAnimator: {fileID: 1790731296}
   PushCollider: {fileID: 165241171}
   PullCollider: {fileID: 839302185}
   WindGust: {fileID: 165241169}
-  rBody: {fileID: 0}
+  rBody: {fileID: 407643783}
   chargedColor: {r: 0.8308824, g: 0.46414807, b: 0, a: 1}
+  DisplayUI: {fileID: 1658893872}
 --- !u!95 &407643785
 Animator:
   serializedVersion: 3
@@ -6618,8 +6609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b54d9ad198641a498197b6ad3c3673c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isWwiseEnabled: 1
-  WwiseGlobalObject: {fileID: 0}
+  IsWwiseEnabled: 0
 --- !u!4 &757753819
 Transform:
   m_ObjectHideFlags: 0
@@ -6942,16 +6932,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0328bdc8fa756441a7283368262fd9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player:
-    power: 0
-    pulledVelocity: 0
-    acceleration: 0
   handAnimator: {fileID: 1967005220}
   PushCollider: {fileID: 265155811}
   PullCollider: {fileID: 1455670972}
   WindGust: {fileID: 265155809}
-  rBody: {fileID: 0}
+  rBody: {fileID: 793283485}
   chargedColor: {r: 0.8308824, g: 0.46414807, b: 0, a: 1}
+  DisplayUI: {fileID: 1432651270}
 --- !u!95 &793283481
 Animator:
   serializedVersion: 3
@@ -15463,9 +15450,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be69eb959d54e3446996d5846a9e0a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentVelocity: 0
-  destinationVelocity: 0
-  LerpTimer: 0
   _MaxVelocity: 1000
   _MinVelocity: 180
   _DecreaseVelocity: 0.8
@@ -15474,7 +15458,6 @@ MonoBehaviour:
   _NeutralColor: {r: 1, g: 1, b: 1, a: 0.19607843}
   _Team1Color: {r: 0.26666668, g: 0.26666668, b: 1, a: 0.19607843}
   _Team2Color: {r: 1, g: 0.26666668, b: 0.26666668, a: 0.19607843}
-  _PossessedTeam: 0
   pSystem: {fileID: 1664275171}
   pSystemBall: {fileID: 1387220414}
   mainOrb: {fileID: 544248182}
@@ -23386,7 +23369,6 @@ GameObject:
   - component: {fileID: 1557245645}
   - component: {fileID: 1557245644}
   - component: {fileID: 1557245648}
-  - component: {fileID: 1557245650}
   - component: {fileID: 1557245647}
   - component: {fileID: 1557245651}
   - component: {fileID: 1557245653}
@@ -23408,6 +23390,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3df528880fa9e264893eca82f17f4412, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpawnPoints:
+  - {fileID: 1106427115}
+  - {fileID: 288470255}
+  - {fileID: 2085763865}
+  - {fileID: 828097732}
+  Players:
+  - {fileID: 793283480}
+  - {fileID: 407643784}
+  - {fileID: 35232884}
+  - {fileID: 115000725}
   _OrbSpawnPoints:
   - {fileID: 1480405112}
   - {fileID: 1299775437}
@@ -23422,7 +23414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9e37a281fa8a8948b926bf4e186f953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _teamList: []
   BellRoot: {fileID: 338883324}
   PlayerRoot: {fileID: 2024365701}
 --- !u!4 &1557245646
@@ -23460,28 +23451,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4935d78f066a55343be530dbf9cb3f7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1557245650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1557245643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17ecb0325ddd02b42a58b0e47f0cf794, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _SpawnPoints:
-  - {fileID: 1106427115}
-  - {fileID: 288470255}
-  - {fileID: 2085763865}
-  - {fileID: 828097732}
-  _Players:
-  - {fileID: 793283479}
-  - {fileID: 407643782}
-  - {fileID: 35232882}
-  - {fileID: 115000723}
-  roundNbText: {fileID: 1701429760}
 --- !u!114 &1557245651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27518,6 +27487,7 @@ MonoBehaviour:
   totalScoreList:
   - {fileID: 2075153083}
   - {fileID: 872777506}
+  NbRoundText: {fileID: 1701429760}
   SakuraParticles: {fileID: 197056113}
 --- !u!114 &1683788610
 MonoBehaviour:
@@ -27567,6 +27537,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f967a4d354f50114392242154b4faf47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFreezeFraming: 0
+  isScreenShake: 0
+  shakeAmount: {x: 0, y: 0, z: 0}
   FadeWhiteComponent: {fileID: 528879097}
 --- !u!114 &1683788613
 MonoBehaviour:

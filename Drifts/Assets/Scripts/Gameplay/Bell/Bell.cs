@@ -26,8 +26,6 @@ public class Bell : MonoBehaviour
             if (other.gameObject.CompareTag("Orb"))
             {
 				CheckBellHit();
-
-				//OrbController.Instance.Push(transform.right,OrbController.Instance.CurrentVelocity * 1.1f);
                 DisableBell();
             }
         }
@@ -36,46 +34,14 @@ public class Bell : MonoBehaviour
     void DisableBell()
     {
         isActive = false;
-        Invoke("OnEnableBell", bellLength);
+        Invoke("EnableBell", bellLength);
     }
 
-    void OnEnableBell()
+    void EnableBell()
     {
         isActive = true;
     }
 
-
-    void EnableTeamPower(bool state)
-    {
-        switch (assignedTeam.powerID)
-        {
-            case TeamController.powerID.stunt:
-                OnEnableStuntPower(state);
-                break;
-            default:
-                OnEnableStuntPower(state);
-                break;
-        }
-
-        ResetBell();
-    }
-
-
-
-	void OnEnableStuntPower(bool state)
-    {
-        if (state)
-        {
-			UIEffectManager.Instance.FreezeFrame(OrbController.Instance.velocityRatio / 3);
-            Invoke("onDisableStuntPower", 2f);
-        }
-
-    }
-
-    void DisableStuntPower()
-    {
-        OnEnableStuntPower(false);
-    }
 
     public void AssignTeam(Team newTeam)
     {
@@ -92,15 +58,15 @@ public class Bell : MonoBehaviour
     private void CheckBellHit()
     {
         //No Team, invalid
-		if (OrbController.Instance.PossessedTeam == TeamController.teamID.Neutral || assignedTeam == null)
+		if (OrbController.Instance.PossessedTeam == TeamController.TeamID.Neutral || assignedTeam == null)
             return;
 
 
-        AddScore(TeamController.onReturnOtherTeam(assignedTeam));
+        AddScore(TeamController.GetOtherTeam(assignedTeam));
 		WwiseManager.PostEvent("STAGE_BELL", gameObject);
 		GetComponent<Animator>().Play("DONG", 0, -1);
 
-		float ratio = OrbController.Instance.velocityRatio;
+		float ratio = OrbController.Instance.VelocityRatio;
 		ShockwaveManager.GetInstance().CastShockwave(sizeShockWave*ratio,transform.position,speedShockWave*ratio,colorShockWave,intensityShockWave);
 		UIEffectManager.Instance.ScreenShake(screenShake * ratio);
 		UIEffectManager.Instance.FreezeFrame(freezeFrame * ratio);
@@ -109,6 +75,6 @@ public class Bell : MonoBehaviour
     private void AddScore(Team team)
     {
         curNbBellHits++;
-		team.onAddHitScore((int)OrbController.Instance.CurrentVelocity / 3);
+		team.AddHitScore((int)OrbController.Instance.CurrentVelocity / 3);
     }
 }

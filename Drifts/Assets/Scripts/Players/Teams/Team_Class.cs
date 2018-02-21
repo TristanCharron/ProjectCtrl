@@ -7,101 +7,83 @@ using System.Collections.Generic;
 [System.Serializable]
 public class Team
 {
-    private TeamController.teamID team;
-    public TeamController.teamID TeamID { get { return team; } }
+    public TeamController.TeamID TeamID { private set; get; }
 
-    private TeamController.powerID power;
-    public TeamController.powerID powerID { get { return power; } }
 
     [SerializeField]
-    private Text roundScoretxt,totalScoreTxt;
-    public Text RoundScoreTxt { get { return roundScoretxt; } }
-    public Text TotalScoreTxt { get { return totalScoreTxt; } }
+    public Text RoundScoretxt,TotalScoreTxt;
 
 
-    int nbPlayers, nbPlayersActive;
-    int currentScore, totalScore;
-    public int CurrentScore { get { return currentScore; } }
-    public int TotalScore { get { return totalScore; } }
-    public int NbPlayersActive { get { return nbPlayersActive; } }
+    public int CurrentScore { private set; get; }
+    public int TotalScore { private set; get; }
+    public int NbPlayersActive { private set; get; }
 
 
-    public List<PlayerController> playerList;
-    public List<PlayerController> PlayerList { get { return playerList; } }
+    public List<PlayerController> PlayerList { private set; get; }
 
-    public Bell teamBell;
+    public List<PlayerController> PlayerListDead { protected set; get; }
 
-    private bool stunt,winning;
-    public bool isStunt { get { return stunt; } }
-    public bool isWinning { get { return winning; } }
+    public Bell TeamBell;
 
-    int index;
-    public int Index { get { return index; } }
-    
+    public int Index { private set; get; }
+
+
+
 
 
     public Team()
     {
-        team = TeamController.teamID.Team1;
-        power = TeamController.powerID.stunt;
-        nbPlayers = 2;
-        nbPlayersActive = nbPlayers;
-        stunt = false;
-        playerList = new List<PlayerController>();
+        TeamID = TeamController.TeamID.Team1;
+        NbPlayersActive = GameController.CurrentGameMode.NbPlayers;
+        PlayerList = new List<PlayerController>();
     }
 
-    public Team(TeamController.teamID _team, TeamController.powerID _power, int _nbplayers,int _index)
+    public Team(TeamController.TeamID _team, int _nbplayers,int _index)
     {
-        team = _team;
-        power = _power;
-        nbPlayers = _nbplayers;
-        nbPlayersActive = _nbplayers;
-        stunt = false;
-        playerList = new List<PlayerController>();
-        index = _index;
-        currentScore = 0;
-        totalScore = 0;
+        TeamID = _team;
+        NbPlayersActive = _nbplayers;
+        PlayerList = new List<PlayerController>();
+        Index = _index;
+        CurrentScore = 0;
+        TotalScore = 0;
+    }
+
+    public void Reset()
+    {
+        PlayerListDead = new List<PlayerController>();
     }
 
  
-    public void onAssignScoreTxt(Text roundtxt, Text totalTxt)
+    public void AssignScoreText(Text roundtxt, Text totalTxt)
     {
-        roundScoretxt = roundtxt;
-        totalScoreTxt = totalTxt;
+        RoundScoretxt = roundtxt;
+        TotalScoreTxt = totalTxt;
     }
 
-    public void onAssignBell(Bell bell)
+    public void AssignBell(Bell bell)
     {
-        teamBell = bell;
+        TeamBell = bell;
     }
 
-    public void onSetWinningState(bool state)
+    public void AddHitScore(int pointsAmount)
     {
-        winning = state;
-    }
-
-    public void onStunt(bool state)
-    {
-        if (stunt != true)
-            stunt = state;
-    }
-
-    public void onAddHitScore(int pointsAmount)
-    {
-        currentScore += pointsAmount;
-        ScoreController.onAddScore(roundScoretxt, currentScore);
+        CurrentScore += pointsAmount;
+        ScoreController.AddScore(RoundScoretxt, CurrentScore);
        
     }
 
-    public void onAddRoundScore(int pointsAmount)
+    public void AddRoundScore(int pointsAmount)
     {
-        if(isWinning)
-            totalScore += currentScore;
-        
-        
-        currentScore = 0;
-        ScoreController.onAddScore(roundScoretxt, 0);
-        ScoreController.onAddScore(totalScoreTxt, totalScore);
+        TotalScore += CurrentScore;
+        CurrentScore = 0;
+        ScoreController.AddScore(RoundScoretxt, 0);
+        ScoreController.AddScore(TotalScoreTxt, TotalScore);
+    }
+
+    public void KillPlayer(PlayerController player, out bool isTeamDead)
+    {
+        PlayerListDead.Add(player);
+        isTeamDead = PlayerListDead.Count >= GameController.CurrentGameMode.NbPlayers;
     }
 
 

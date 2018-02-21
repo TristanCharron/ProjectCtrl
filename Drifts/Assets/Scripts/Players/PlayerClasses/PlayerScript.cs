@@ -5,64 +5,62 @@ using Rewired;
 [System.Serializable]
 public class PlayerScript  {
 
-	[SerializeField] protected float power, pulledVelocity, acceleration;
-    protected bool isDead;
-    protected int id;
-    protected Team currentTeam;
-    protected PlayerController owner;
-    protected Color chargedColor;
+    public float Power { protected set; get; }
 
-	public float Mass { get { return owner.rBody.mass; } }
-	public float Acceleration { get { return acceleration; } }
-	public float Drag { get { return owner.rBody.drag; } }
+    public float PulledVelocity { protected set; get; }
 
-	public float Power { get { return power; } }
-	public float PulledVelocity { get { return pulledVelocity; } }
+    public float Acceleration { protected set; get; }
 
-    public int ID { get { return id; } }
-    public Team CurrentTeam { get { return currentTeam; } }
-    public PlayerController Owner { get { return owner; } }
-    public void onSetPulledVelocity(float vel) { pulledVelocity = vel; }
-    public bool IsDead { get { return isDead; } }
-    public Color ChargedColor { get { return chargedColor; } }
+    public bool IsDead { protected set; get; }
 
-    public PlayerScript(int _id, Team _currentTeam, PlayerController _owner)
+    public int ID { protected set; get; }
+
+    public TeamController.TeamID TeamID { protected set; get; }
+
+    public PlayerController Owner { protected set; get; }
+
+    public Color ChargedColor { protected set; get; }
+
+	public float Mass { get { return Owner.rBody.mass; } }
+
+	public float Drag { get { return Owner.rBody.drag; } }
+
+
+    public void SetPulledVelocity(float vel) { PulledVelocity = vel; }
+
+
+
+    public PlayerScript(int _id, TeamController.TeamID _currentTeamid, PlayerController _owner)
     {
-        id = _id;
-        currentTeam = _currentTeam;
-        owner = _owner;
-
-		power = 1;
-        acceleration = 50f;
-		owner.rBody.mass = 10;
-		owner.rBody.drag = 5f;
-
-        OnReset();
+        ID = _id;
+        TeamID = _currentTeamid;
+        Owner = _owner;
+        IsDead = false;
+        ResetCharacter();
     }
 
   
 
-    public void OnReset()
+    public void ResetCharacter()
     {
-        pulledVelocity = 0;
-        isDead = false;
+        PulledVelocity = 0;
+        Power = 1;
+        Acceleration = 50f;
     }
 
-    public void OnMove()
+    public void Move()
     {
-		int rId = id-1;
-
-		if (rId >= ReInput.players.AllPlayers.Count)
+		if (ID >= ReInput.players.AllPlayers.Count)
             return;
 	
 		Vector3 velocity = new Vector3(
-			ReInput.players.GetPlayer(rId).GetAxis("Move Horizontal"),
+			ReInput.players.GetPlayer(ID).GetAxis("Move Horizontal"),
 			0,
-			ReInput.players.GetPlayer(rId).GetAxis("Move Vertical")
+			ReInput.players.GetPlayer(ID).GetAxis("Move Vertical")
 		);
 	
 		velocity.Normalize();
-		owner.rBody.AddForce(velocity * acceleration * 100, ForceMode.Force);
+		Owner.rBody.AddForce(velocity * Acceleration * 100, ForceMode.Force);
     }
 
 }
@@ -70,13 +68,12 @@ public class PlayerScript  {
 public class Sumo : PlayerScript
 {
 
-    public Sumo(int _id, Team _currentTeam, PlayerController _owner) : base(_id,_currentTeam,_owner)
+    public Sumo(int _id, TeamController.TeamID _currentTeamid, PlayerController _owner) : base(_id, _currentTeamid, _owner)
     {
-        power = 3;
-
-		acceleration = 25f;
-		owner.rBody.mass = 20;
-		owner.rBody.drag = 5f;
+        Power = 3;
+		Acceleration = 25f;
+		Owner.rBody.mass = 20;
+		Owner.rBody.drag = 5f;
     }
 
 }

@@ -4,16 +4,9 @@ using UnityEngine.UI;
 
 public class PenaltyController : MonoBehaviour
 {
-    private static PenaltyController instance;
-    public static PenaltyController Instance
-    {
-        get
-        {
-            return instance;
-        }
-    }
+    public static PenaltyController Instance { private set; get; }
 
-    private static Vector3 penaltyAngle
+    public static Vector3 PenaltyAngle
     {
 
         get
@@ -44,26 +37,26 @@ public class PenaltyController : MonoBehaviour
 
     public static Text currentPenaltyTxt;
 
-    public const float penaltyLength = 10f;
+    public const float penaltyLength = 5f;
 
-    private static float penaltyTimer = penaltyLength;
-    public static float PenaltyTimer { get { return penaltyTimer; } }
+    public static float Timer { private set; get; }
 
-    private static bool isEnabled = false;
-    public static bool IsEnabled { get { return isEnabled; } }
+    public static bool IsEnabled { private set; get; }
 
 
     // Use this for initialization
     void Awake()
     {
-        instance = this;
-        GameController.SetNextRound += OnReset;
+        Instance = this;
+        GameController.SetNextRoundEvent += ResetTimer;
+        ResetTimer();
     }
 
-    public static void OnReset()
+    public static void ResetTimer()
     {
-        OnDisableTimer();
-        foreach(TeamBarrier barrier in FindObjectsOfType<TeamBarrier>())
+        DisableTimer();
+
+        foreach (TeamBarrier barrier in FindObjectsOfType<TeamBarrier>())
         {
             barrier.OnDisableBarrier();
         }
@@ -72,29 +65,20 @@ public class PenaltyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isEnabled)
-        {
-            penaltyTimer -= Time.deltaTime;
-            currentPenaltyTxt.text = "0" + penaltyTimer.ToString("N0");
-            if (isPenaltyOver())
-                OnApplyPenalty();
-        }
+        Timer -= Time.deltaTime;
 
+        currentPenaltyTxt.text = Timer.ToString("00");
+
+        if (IsPenaltyOver())
+            SetPenalty();
     }
 
-    static void OnApplyPenalty()
-    {
-		OrbController.Instance.Push(penaltyAngle, TeamController.teamID.Neutral);
-		OrbController.Instance.DisableOrb();
-        currentBarrier.onHidePenaltyText();
-        OnDisableTimer();
 
-    }
-
-    static void OnDisableTimer()
+    static void DisableTimer()
     {
-        isEnabled = false;
-        penaltyTimer = penaltyLength;
+        IsEnabled = false;
+        Timer = penaltyLength;
+        Instance.enabled = false;
 
         if (currentBarrier != null)
         {
@@ -104,18 +88,30 @@ public class PenaltyController : MonoBehaviour
 
     }
 
-    bool isPenaltyOver()
-    {
-        return penaltyTimer <= 0 && isEnabled;
-    }
 
-    public static void OnEnableTimer(Text txt, TeamBarrier barrier)
+    public static void EnableTimer(Text txt, TeamBarrier barrier)
     {
-        penaltyTimer = penaltyLength;
+        Instance.enabled = true;
+        Timer = penaltyLength;
         currentPenaltyTxt = txt;
         currentBarrier = barrier;
-        isEnabled = true;
     }
+
+    bool IsPenaltyOver()
+    {
+        return Timer <= 0;
+    }
+
+
+    static void SetPenalty()
+    {
+        OrbController.Instance.Push(PenaltyAngle, TeamController.TeamID.Neutral);
+        OrbController.Instance.DisableOrb();
+        currentBarrier.onHidePenaltyText();
+        DisableTimer();
+
+    }
+
 
 
 

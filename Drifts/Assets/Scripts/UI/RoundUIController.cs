@@ -16,18 +16,29 @@ public class RoundUIController : MonoBehaviour
 
     public CameraActionBoxFollower CameraBoxFollower;
 
+    [SerializeField]
     public List<Text> playerId = new List<Text>();
+    [SerializeField]
     public List<Text> roundScoreList = new List<Text>();
+    [SerializeField]
     public List<Text> totalScoreList = new List<Text>();
+    [SerializeField]
+    private Text NbRoundText;
+
 
     public GameObject SakuraParticles;
+
+
+    public delegate void RoundDelegate();
+
+    public static event RoundDelegate StartCinematicEvent, EndCinematicEvent;
 
 
     // Use this for initialization
     void Start()
     {
         instance = this;
-        GameController.SetNextRound += OnReset;
+        GameController.SetNextRoundEvent += ResetUI;
         FadeInGame();
         
     }
@@ -40,7 +51,7 @@ public class RoundUIController : MonoBehaviour
     }
 
 
-    public static GameObject OnGetTeamContainer(Team currentTeam)
+    public static GameObject GetTeamContainer(Team currentTeam)
     {
         switch (currentTeam.Index)
         {
@@ -53,28 +64,43 @@ public class RoundUIController : MonoBehaviour
         }
     }
 
+    public void StartCinematic()
+    {
+        StartCinematicEvent();
+        StartCinematicEvent = null;
+    }
+
     public void EndCinematic()
     {
         SakuraParticles.SetActive(true);
         CameraBoxFollower.enabled = true;
 
-        GameController.onNextRound();
+        if(EndCinematicEvent != null)
+        EndCinematicEvent();
+
+        EndCinematicEvent = null;
+
+        GameController.StartGame();
     }
 
-    public IEnumerator OnTransitionUItoNextRound()
+    public IEnumerator SetUIForNextRound()
     {
-        onGameOverScreen(false);
-        onNewRoundScreen(true);
-        GameController.onSetGameStartedState(false);
+        SetGameOverScreen(false);
+        SetNewRoundScreen(true);
+        GameController.ChangeGameStartedState(false);
         scoreTeamContainer.SetActive(true);
         yield return new WaitForSeconds(3.2f);
-        onNewRoundScreen(false);
-        GameController.onSetGameStartedState(true);
+        SetNewRoundScreen(false);
+
+        GameController.ChangeGameStartedState(true);
+
+       
+        
         yield break;
 
     }
 
-    public static void onGameOverScreen(bool state)
+    public static void SetGameOverScreen(bool state)
     {
         instance.GameOverContainer.SetActive(state);
 
@@ -86,7 +112,7 @@ public class RoundUIController : MonoBehaviour
         
     }
 
-    public static void onNewRoundScreen(bool state)
+    public static void SetNewRoundScreen(bool state)
     {
         if (state)
         {
@@ -98,9 +124,10 @@ public class RoundUIController : MonoBehaviour
 
     }
 
-    public static void OnReset()
+    public static void ResetUI()
     {
-        instance.StartCoroutine(instance.OnTransitionUItoNextRound());
+        instance.StartCoroutine(instance.SetUIForNextRound());
+        instance.NbRoundText.text = GameController.NbRoundsPlayed.ToString("00");
     }
 
 

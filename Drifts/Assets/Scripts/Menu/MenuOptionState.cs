@@ -25,6 +25,8 @@ public abstract class MenuOptionState : MonoBehaviour
     public Color EnabledColor { get { return Color.white; } }
     public Color DisabledColor { get { return EnabledColor * 0.8f; } }
 
+    public const float TransitionTime = 0.1f;
+
     private void Awake()
     {
         TextMeshProComponent = GetComponent<TextMeshPro>();
@@ -35,7 +37,7 @@ public abstract class MenuOptionState : MonoBehaviour
     public virtual IEnumerator EnterState()
     {
         SetFocus(true);
-        yield return new WaitForSecondsRealtime(0.3f);
+        yield return new WaitForSecondsRealtime(TransitionTime);
     }
 
     public virtual IEnumerator ExitState()
@@ -46,7 +48,6 @@ public abstract class MenuOptionState : MonoBehaviour
 
     protected virtual void SetFocus(bool isFocus)
     {
-        //TextMeshProComponent.CrossFadeColor(isFocus ? EnabledColor : DisabledColor , 0.3f, true, true);
         TextMeshProComponent.color = isFocus ? EnabledColor : DisabledColor;
     }
 

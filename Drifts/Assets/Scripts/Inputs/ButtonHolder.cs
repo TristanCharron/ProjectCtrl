@@ -15,7 +15,7 @@ using System.Collections;
 
 		public void OnUpdate()
 		{
-			if (GameController.isGameStarted)
+			if (GameController.IsGameStarted)
 				currentHoldPushBtnTime = currentHoldPushBtnTime > maxHoldPushBtnTime ? maxHoldPushBtnTime : currentHoldPushBtnTime += Time.fixedDeltaTime;
 			else
 				currentHoldPushBtnTime = 0;

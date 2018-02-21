@@ -34,8 +34,8 @@ public class PlayerCursor : MonoBehaviour
 			cursorTransform.localEulerAngles = new Vector3(0, 0, Mathf.LerpAngle(startRotation.z, endRotation.z, cursor_t));
         }
 
-        float inputX = ReInput.players.GetPlayer(Owner.player.ID - 1).GetAxis("Rotate Horizontal");
-        float inputY = ReInput.players.GetPlayer(Owner.player.ID - 1).GetAxis("Rotate Vertical");
+        float inputX = ReInput.players.GetPlayer(Owner.Player.ID).GetAxis("Rotate Horizontal");
+        float inputY = ReInput.players.GetPlayer(Owner.Player.ID).GetAxis("Rotate Vertical");
 
 		Vector3 inputs = new Vector3(inputX,inputY);
 		inputs.Normalize();
