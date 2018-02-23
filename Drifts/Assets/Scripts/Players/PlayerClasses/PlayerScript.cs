@@ -6,28 +6,14 @@ using Rewired;
 public class PlayerScript  {
 
     public float Power { protected set; get; }
-
-    public float PulledVelocity { protected set; get; }
-
     public float Acceleration { protected set; get; }
-
     public bool IsDead { protected set; get; }
-
     public int ID { protected set; get; }
-
     public TeamController.TeamID TeamID { protected set; get; }
-
     public PlayerController Owner { protected set; get; }
-
     public Color ChargedColor { protected set; get; }
-
 	public float Mass { get { return Owner.rBody.mass; } }
-
 	public float Drag { get { return Owner.rBody.drag; } }
-
-
-    public void SetPulledVelocity(float vel) { PulledVelocity = vel; }
-
 
 
     public PlayerScript(int _id, TeamController.TeamID _currentTeamid, PlayerController _owner)
@@ -39,12 +25,9 @@ public class PlayerScript  {
         ResetCharacter();
     }
 
-  
-
     public void ResetCharacter()
     {
-        PulledVelocity = 0;
-        Power = 1;
+        Power = 25;
         Acceleration = 50f;
     }
 
@@ -62,7 +45,6 @@ public class PlayerScript  {
 		velocity.Normalize();
 		Owner.rBody.AddForce(velocity * Acceleration * 100, ForceMode.Force);
     }
-
 }
 
 public class Sumo : PlayerScript
@@ -70,7 +52,7 @@ public class Sumo : PlayerScript
 
     public Sumo(int _id, TeamController.TeamID _currentTeamid, PlayerController _owner) : base(_id, _currentTeamid, _owner)
     {
-        Power = 3;
+        Power = 45;
 		Acceleration = 25f;
 		Owner.rBody.mass = 20;
 		Owner.rBody.drag = 5f;

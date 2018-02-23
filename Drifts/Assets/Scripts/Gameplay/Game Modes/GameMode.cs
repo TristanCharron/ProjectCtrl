@@ -97,7 +97,7 @@ public abstract class GameMode : MonoBehaviour
     protected virtual IEnumerator EndRoundCoRoutine(string wwiseTeamNameEvent, Team winningTeam)
     {
         GameController.ChangeGameStartedState(false);
-        OrbController.Instance.ShouldBallBeEnabled(false);
+        OrbController.Instance.gameObject.SetActive(false);
         RoundUIController.GetTeamContainer(winningTeam).SetActive(true);
         WwiseManager.PostEvent(wwiseTeamNameEvent, gameObject);
         yield return new WaitForSeconds(3f);

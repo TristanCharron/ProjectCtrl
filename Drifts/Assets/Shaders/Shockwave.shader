@@ -72,7 +72,6 @@ Shader"ShaderMan/Shockwave"{
 				fixed time = _Lerp;
 			   
 			     // Wave design params
-			    //fixed3 waveParams = fixed3(10.0, 0.8, 0.1 );
 			    fixed3 waveParams = fixed3(_ExtraParam1, _ExtraParam2, _ExtraParam3);
 
 			    // Find coordinate, flexible to different resolutions

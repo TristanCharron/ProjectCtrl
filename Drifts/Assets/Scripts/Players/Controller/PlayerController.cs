@@ -54,7 +54,6 @@ public class PlayerController : MonoBehaviour
         sRenderer = GetComponent<SpriteRenderer>();
         DisplayUI = GetComponentInChildren<Text>();
         idleColor = sRenderer.color;
-
     }
 
     public void ResetProperties()
@@ -67,7 +66,6 @@ public class PlayerController : MonoBehaviour
         rBody.drag = 5f;
         if (Player != null)
             Player.ResetCharacter();
-
     }
 
 
@@ -168,7 +166,8 @@ public class PlayerController : MonoBehaviour
     public void OnPush()
     {
 		Debug.Log("on push");
-		OrbController.Instance.Push(Cursor.LookingAtAngle * -transform.up, Player);
+		float currentPower = Player.Power * (1 + RightTriggerHold.holdingButtonRatio);
+		OrbController.Instance.Push(Cursor.LookingAtAngle * -transform.up, Player.Power, CurrentTeamID);
 		OrbController.Instance.ChangeTeamPossession(CurrentTeamID);
 
 		if (OrbController.Instance.CurrentVelocity > 300)
@@ -181,9 +180,9 @@ public class PlayerController : MonoBehaviour
     public void OnPull()
     {
         WwiseManager.PostEvent("MONK_CATCH", gameObject);
-		Player.SetPulledVelocity(OrbController.Instance.CurrentVelocity);
-		OrbController.Instance.Pull(Vector3.zero, -OrbController.Instance.CurrentVelocity);
-		OrbController.Instance.ChangeTeamPossession(CurrentTeamID);
+		//Player.SetPulledVelocity(OrbController.Instance.CurrentVelocity);
+		OrbController.Instance.Pull(CurrentTeamID);
+		//OrbController.Instance.ChangeTeamPossession(CurrentTeamID);
     }
 
     void DisplayUIButton()

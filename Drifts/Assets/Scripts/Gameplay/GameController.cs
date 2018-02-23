@@ -114,7 +114,7 @@ public class GameController : MonoBehaviour
     public IEnumerator EndGameCoRoutine(string wwiseTeamNameEvent, Team winningTeam)
     {
         ChangeGameStartedState(false);
-        OrbController.Instance.ShouldBallBeEnabled(false);
+        OrbController.Instance.gameObject.SetActive(false);
         RoundUIController.SetGameOverScreen(true);
 
         yield return new WaitForSeconds(2f);

@@ -6,7 +6,7 @@ public class PenaltyController : MonoBehaviour
 {
     public static PenaltyController Instance { private set; get; }
 
-    public static Vector3 PenaltyAngle
+    public Vector3 PenaltyAngle
     {
 
         get
@@ -32,16 +32,17 @@ public class PenaltyController : MonoBehaviour
         }
     }
 
-    private static TeamBarrier currentBarrier;
+    private TeamBarrier currentBarrier;
 
 
-    public static Text currentPenaltyTxt;
+    public Text currentPenaltyTxt;
 
-    public const float penaltyLength = 5f;
+    public const float penaltyLength = 10f;
+	[SerializeField] float velocityPenality = 25;
 
-    public static float Timer { private set; get; }
+    public float Timer { private set; get; }
 
-    public static bool IsEnabled { private set; get; }
+    public bool IsEnabled { private set; get; }
 
 
     // Use this for initialization
@@ -52,7 +53,7 @@ public class PenaltyController : MonoBehaviour
         ResetTimer();
     }
 
-    public static void ResetTimer()
+    public void ResetTimer()
     {
         DisableTimer();
 
@@ -74,7 +75,7 @@ public class PenaltyController : MonoBehaviour
     }
 
 
-    static void DisableTimer()
+    void DisableTimer()
     {
         IsEnabled = false;
         Timer = penaltyLength;
@@ -84,12 +85,10 @@ public class PenaltyController : MonoBehaviour
         {
             currentBarrier.onHidePenaltyText();
         }
-
-
     }
 
 
-    public static void EnableTimer(Text txt, TeamBarrier barrier)
+    public void EnableTimer(Text txt, TeamBarrier barrier)
     {
         Instance.enabled = true;
         Timer = penaltyLength;
@@ -102,18 +101,13 @@ public class PenaltyController : MonoBehaviour
         return Timer <= 0;
     }
 
-
-    static void SetPenalty()
+    void SetPenalty()
     {
-        OrbController.Instance.Push(PenaltyAngle, TeamController.TeamID.Neutral);
+		OrbController.Instance.StopVelocity();
+		OrbController.Instance.Push(PenaltyAngle, velocityPenality, TeamController.TeamID.Neutral);
         OrbController.Instance.DisableOrb();
         currentBarrier.onHidePenaltyText();
         DisableTimer();
 
     }
-
-
-
-
-
 }

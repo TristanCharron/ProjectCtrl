@@ -65,7 +65,7 @@ public class TeamBarrier : MonoBehaviour
 
     void OnEnableBarrier()
     {
-        PenaltyController.EnableTimer(penaltyUI, this);
+        PenaltyController.Instance.EnableTimer(penaltyUI, this);
         InTeamZone = true;
         penaltyUI.CrossFadeAlpha(1, 0.5f, false);
     }
