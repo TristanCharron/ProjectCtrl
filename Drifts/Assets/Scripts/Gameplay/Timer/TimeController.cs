@@ -31,7 +31,7 @@ public class TimeController : MonoBehaviour
 
     void Update()
     {
-        if (GameController.IsGameStarted)
+        if (GameController.Instance.IsGameStarted)
             UpdateTime();
 
 

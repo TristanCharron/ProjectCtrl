@@ -80,19 +80,19 @@ public class RoundUIController : MonoBehaviour
 
         EndCinematicEvent = null;
 
-        GameController.StartGame();
+        GameController.Instance.StartGame();
     }
 
     public IEnumerator SetUIForNextRound()
     {
         SetGameOverScreen(false);
         SetNewRoundScreen(true);
-        GameController.ChangeGameStartedState(false);
+        GameController.Instance.ChangeGameStartedState(false);
         scoreTeamContainer.SetActive(true);
         yield return new WaitForSeconds(3.2f);
         SetNewRoundScreen(false);
 
-        GameController.ChangeGameStartedState(true);
+        GameController.Instance.ChangeGameStartedState(true);
 
        
         
@@ -127,7 +127,7 @@ public class RoundUIController : MonoBehaviour
     public static void ResetUI()
     {
         instance.StartCoroutine(instance.SetUIForNextRound());
-        instance.NbRoundText.text = GameController.NbRoundsPlayed.ToString("00");
+        instance.NbRoundText.text = GameController.Instance.NbRoundsPlayed.ToString("00");
     }
 
 
