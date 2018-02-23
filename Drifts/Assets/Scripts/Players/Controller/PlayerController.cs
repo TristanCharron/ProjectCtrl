@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] BoxCollider PushCollider;
 	[SerializeField] BoxCollider PullCollider;
 	[SerializeField] GameObject WindGust;
-
+    [SerializeField] ParticleSystem chargeParticles, catchParticles;
 	public Rigidbody rBody;
 
 	SpriteRenderer sRenderer;
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
     {
-        if (!GameController.IsGameStarted)
+        if (!GameController.Instance.IsGameStarted)
         {
             rBody.velocity = Vector3.zero;
             return;
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
                 {
                     GameObject DeathAnimParticle = Instantiate(Resources.Load<GameObject>("DeathMonkParticle"), gameObject.transform.position, Quaternion.identity) as GameObject;
                     Destroy(DeathAnimParticle, 5);
-                    GameController.KillPlayer(this);
+                    GameController.Instance.KillPlayer(this);
 
                 }
             }

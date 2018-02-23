@@ -16,9 +16,8 @@ public class GameController : MonoBehaviour
 
     public static GameController Instance { private set; get; }
 
-    public static bool IsGameStarted { private set; get; }
-
-    public static int NbRoundsPlayed { private set; get; }
+    public  bool IsGameStarted { private set; get; }
+    public  int NbRoundsPlayed { private set; get; }
 
 
     public delegate void GameDelegate();
@@ -64,19 +63,19 @@ public class GameController : MonoBehaviour
     }
 
 
-    public static void KillPlayer(PlayerController deadPlayer)
+    public void KillPlayer(PlayerController deadPlayer)
     {
         CurrentGameMode.KillPlayer(deadPlayer);
     }
 
 
 
-    public static void ChangeGameStartedState(bool state)
+    public void ChangeGameStartedState(bool state)
     {
         IsGameStarted = state;
     }
 
-    public static void NextRound()
+    public void NextRound()
     {
         WwiseManager.PostEvent("GAME_PLAY", Camera.main.gameObject);
 
@@ -91,7 +90,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public static void StartGame()
+    public void StartGame()
     {
         if(StartGameEvent != null)
             StartGameEvent();
@@ -99,14 +98,14 @@ public class GameController : MonoBehaviour
         NextRound();
     }
 
-    public static void EndGame()
+    public void EndGame()
     {
     
 
-        if (TeamController.TeamList[0].TotalScore > TeamController.TeamList[1].TotalScore)
-            Instance.StartCoroutine(Instance.EndGameCoRoutine("GAME_END_BLUE", TeamController.TeamList[0]));
+        if (TeamController.Instance.TeamList[0].TotalScore > TeamController.Instance.TeamList[1].TotalScore)
+            Instance.StartCoroutine(Instance.EndGameCoRoutine("GAME_END_BLUE", TeamController.Instance.TeamList[0]));
         else
-            Instance.StartCoroutine(Instance.EndGameCoRoutine("GAME_END_RED", TeamController.TeamList[1]));
+            Instance.StartCoroutine(Instance.EndGameCoRoutine("GAME_END_RED", TeamController.Instance.TeamList[1]));
 
     }
 
@@ -139,18 +138,18 @@ public class GameController : MonoBehaviour
 
 
 
-    public static bool IsGameCompleted()
+    public bool IsGameCompleted()
     {
         return NbRoundsPlayed > CurrentGameMode.NbRounds;
     }
 
-    public static bool IsLastRound()
+    public bool IsLastRound()
     {
         return NbRoundsPlayed == CurrentGameMode.NbRounds;
     }
 
 
-    private static void OnEndGameEvent()
+    private void OnEndGameEvent()
     {
         EndGameEvent();
         StartGameEvent = null;

@@ -46,7 +46,7 @@ public abstract class GameMode : MonoBehaviour
     protected virtual void BeginNextRound()
     {
         EnablePlayers();
-        GameController.NextRound();
+        GameController.Instance.NextRound();
     }
 
 
@@ -76,13 +76,13 @@ public abstract class GameMode : MonoBehaviour
 
         bool isTeamDead = false;
 
-        TeamController.TeamList[(int)deadPlayer.CurrentTeamID].KillPlayer(deadPlayer, out isTeamDead);
+        TeamController.Instance.TeamList[(int)deadPlayer.CurrentTeamID].KillPlayer(deadPlayer, out isTeamDead);
 
         deadPlayer.gameObject.SetActive(false);
 
         if (isTeamDead)
         {
-            Team winningTeam = TeamController.GetOtherTeam(TeamController.TeamList[(int)deadPlayer.CurrentTeamID]);
+            Team winningTeam = TeamController.Instance.GetOtherTeam(TeamController.Instance.TeamList[(int)deadPlayer.CurrentTeamID]);
             EndRound(winningTeam);
         }
     }
@@ -96,7 +96,7 @@ public abstract class GameMode : MonoBehaviour
 
     protected virtual IEnumerator EndRoundCoRoutine(string wwiseTeamNameEvent, Team winningTeam)
     {
-        GameController.ChangeGameStartedState(false);
+        GameController.Instance.ChangeGameStartedState(false);
         OrbController.Instance.gameObject.SetActive(false);
         RoundUIController.GetTeamContainer(winningTeam).SetActive(true);
         WwiseManager.PostEvent(wwiseTeamNameEvent, gameObject);

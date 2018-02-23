@@ -32,7 +32,7 @@ public class TeamBarrier : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (GameController.IsGameStarted)
+        if (GameController.Instance.IsGameStarted)
             if (other.gameObject == OrbController.Instance.gameObject && !InTeamZone)
             {
 				OrbController.Instance.EnableOrb();
@@ -44,7 +44,7 @@ public class TeamBarrier : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (GameController.IsGameStarted)
+        if (GameController.Instance.IsGameStarted)
         {
             if (other.gameObject == OrbController.Instance.gameObject && InTeamZone)
             {
@@ -58,7 +58,7 @@ public class TeamBarrier : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (GameController.IsGameStarted)
+        if (GameController.Instance.IsGameStarted)
             if (other.gameObject == OrbController.Instance.gameObject && !InTeamZone)
                 OnEnableBarrier();
     }

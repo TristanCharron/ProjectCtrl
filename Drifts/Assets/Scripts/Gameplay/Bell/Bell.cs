@@ -60,7 +60,7 @@ public class Bell : MonoBehaviour
             return;
 
 
-        AddScore(TeamController.GetOtherTeam(assignedTeam));
+        AddScore(TeamController.Instance.GetOtherTeam(assignedTeam));
 		WwiseManager.PostEvent("STAGE_BELL", gameObject);
 		GetComponent<Animator>().Play("DONG", 0, -1);
 

@@ -7,9 +7,9 @@ public class TeamController : MonoBehaviour
 {
     public static TeamController Instance { private set; get; }
 
-    public static List<Team> TeamList { private set; get; }
+    public  List<Team> TeamList { private set; get; }
 
-    private static int NbPlayersCreated;
+    private int NbPlayersCreated;
 
 
     public GameObject BellRoot;
@@ -35,7 +35,7 @@ public class TeamController : MonoBehaviour
     }
 
 
-    public static Team GetOtherTeam(Team currentTeam)
+    public Team GetOtherTeam(Team currentTeam)
     {
         switch (currentTeam.Index)
         {
@@ -49,7 +49,7 @@ public class TeamController : MonoBehaviour
     }
 
 
-    private static void ResetCurrentTeams()
+    private void ResetCurrentTeams()
     {
         for (int i = 0; i < TeamList.Count; i++)
         {
@@ -63,7 +63,7 @@ public class TeamController : MonoBehaviour
 
 
 
-    static void GenerateNewTeams()
+    void GenerateNewTeams()
     {
       
         TeamList = new List<Team>();
@@ -78,7 +78,7 @@ public class TeamController : MonoBehaviour
     }
 
 
-    static Team GenerateTeam(TeamID id, int nbPlayers, int teamNb)
+     Team GenerateTeam(TeamID id, int nbPlayers, int teamNb)
     {
         Team newTeam = new Team(id, nbPlayers, teamNb);
 
@@ -96,7 +96,7 @@ public class TeamController : MonoBehaviour
 
     }
 
-    static PlayerController GeneratePlayer(int playerID, TeamID assignedTeamID)
+    PlayerController GeneratePlayer(int playerID, TeamID assignedTeamID)
     {
         PlayerController pController = Instance.PlayerRoot.transform.GetChild(NbPlayersCreated).GetComponent<PlayerController>();
         pController.Player = new PlayerScript(NbPlayersCreated, assignedTeamID, pController);
@@ -106,14 +106,14 @@ public class TeamController : MonoBehaviour
     }
 
 
-    static void AssignBell(Team assignedTeam)
+    void AssignBell(Team assignedTeam)
     {
         Bell currentBell = Instance.BellRoot.transform.GetChild((int)assignedTeam.TeamID).GetComponent<Bell>();
         currentBell.AssignTeam(assignedTeam);
         assignedTeam.AssignBell(currentBell);
     }
 
-    static void AssignScoreTxt(Team assignedTeam)
+    void AssignScoreTxt(Team assignedTeam)
     {
         int teamId = (int)assignedTeam.TeamID;
         assignedTeam.AssignScoreText(RoundUIController.Instance.roundScoreList[teamId], RoundUIController.Instance.totalScoreList[teamId]);

@@ -182,7 +182,7 @@ public class OrbController : MonoBehaviour
             mainOrb.SetActive(false);
         }
 		
-        if (previousOrbID != OrbStateID && GameController.IsGameStarted)
+        if (previousOrbID != OrbStateID && GameController.Instance.IsGameStarted)
         {
             if (previousOrbID < OrbStateID)
                 WwiseManager.PostEvent("BALL_STATE_UP", gameObject);

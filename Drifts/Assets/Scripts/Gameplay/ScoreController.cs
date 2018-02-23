@@ -40,11 +40,11 @@ public class ScoreController : MonoBehaviour {
 
     public static void AddTeamScores()
     {
-        if(GameController.NbRoundsPlayed > 0)
+        if(GameController.Instance.NbRoundsPlayed > 0)
         {
-            for (int i = 0; i < TeamController.TeamList.Count; i++)
+            for (int i = 0; i < TeamController.Instance.TeamList.Count; i++)
             {
-                TeamController.TeamList[i].AddRoundScore(TeamController.TeamList[i].CurrentScore);
+                TeamController.Instance.TeamList[i].AddRoundScore(TeamController.Instance.TeamList[i].CurrentScore);
             }
         }
       
