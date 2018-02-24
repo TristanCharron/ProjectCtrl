@@ -54,10 +54,18 @@
 			fixed4 fracture2 = tex2D (_FracTex2, IN.uv_FracTex2);
 			// * abs(_SinTime.w * _FracSpeed)
 			//o.Albedo = c.rgb + (_FracRatio * fracture.rgb);
-			half sinAnim = abs(sin(_Time.w * _FracSpeed));
-			half sinAnim2 = abs(cos(_Time.w * _FracSpeed));
+			half sinAnim = abs(cos(_Time.w * _FracSpeed));
+			half sinAnim2 = abs(sin(_Time.w * _FracSpeed));
 
-			o.Albedo = ((fracture*sinAnim+fracture2*sinAnim2) * (_FracRatio) < .3) ? (_FracColor2 * sinAnim2) + (_FracColor * sinAnim) + c: c;
+			//o.Albedo = ((fracture*sinAnim+fracture2*sinAnim2) * (_FracRatio) < .3) ? (_FracColor2 * sinAnim2) + (_FracColor * sinAnim) + c: c;
+			fixed4 col1 = ((1-fracture) * (_FracRatio) > .4) ?  (_FracColor * sinAnim) : c;
+			fixed4 col2 = ((1-fracture2) * (_FracRatio) > .4) ? (_FracColor2 * sinAnim2) : c;
+
+			//o.Albedo = (fracture < .1 | fracture2 < .1) ? (_FracColor2 * sinAnim2) + (_FracColor * sinAnim) + c: c;
+			//o.Albedo =  (col1+col2+c) / 3;
+			o.Albedo =  min(col1,(col2+c) / 2);
+
+			
 			//o.Albedo = (_FracRatio * (_FracColor * sinAnim)) + ((1-_FracRatio) * c);
 			
 			// Metallic and smoothness come from slider variables

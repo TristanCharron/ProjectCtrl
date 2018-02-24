@@ -1,0 +1,33 @@
+
+Particles
+-Appliquer les particules push pull etc au joueur
+-Respawn particule
+
+
+Gamemode
+-Les games modes marchent, mieux refactor le code (maybe not for now)
+
+
+
+Winning
+-Jcrois que la voix et bleu et rouge sont inverser a la fin des rounds
+
+
+Bell
+-Faire une/deux belle texture de Craque
+-L'anim arrête sec c'est deg
+-On la shatter?? (Mesh dla bell avec plein de partie de mesh quon explose en slow mo)
+
+Character
+-Faire que le charge est dla couleur du joueur?
+
+Camera
+-La camera flick defois
+
+Sound/Music
+-La musique de combat suck
+-Son de bell explose
+-Son revive
+
+Collider
+-Mieux tighter les colliders

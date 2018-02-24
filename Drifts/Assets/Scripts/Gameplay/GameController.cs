@@ -39,10 +39,12 @@ public class GameController : MonoBehaviour
     }
 
 
-
+	/// <summary>
+	/// Faudrait passer du menu a ici avec la bonne valeur, maybe un static?
+	/// </summary>
     void SetGameModeByID()
     {
-        GameModeID id = GameModeID.DEATHMATCH;
+        GameModeID id = GameModeID.BELLMATCH;
 
         switch (id)
         {
@@ -50,10 +52,12 @@ public class GameController : MonoBehaviour
                 CurrentGameMode = gameObject.AddComponent<GameModeDeathMatch>();
                 CurrentGameMode.Initialize(SpawnPoints, Players);
                 break;
-            case GameModeID.SCOREMATCH:
-                break;
-            default:
-                break;
+            case GameModeID.BELLMATCH:
+				CurrentGameMode = gameObject.AddComponent<GameModeBell>();
+				CurrentGameMode.Initialize(SpawnPoints, Players);
+			break;
+		default:
+			break;
         }
     }
 
@@ -75,9 +79,15 @@ public class GameController : MonoBehaviour
         IsGameStarted = state;
     }
 
+	/// <summary>
+	/// A refactor pour le placer dans les GameMode
+	/// </summary>
     public void NextRound()
     {
-        WwiseManager.PostEvent("GAME_PLAY", Camera.main.gameObject);
+		Debug.Log("first round??");
+		CurrentGameMode.BeginNextRoundExtra();
+
+		WwiseManager.PostEvent("GAME_PLAY", Camera.main.gameObject);
 
         EndRoundEvent();
 
@@ -98,16 +108,25 @@ public class GameController : MonoBehaviour
         NextRound();
     }
 
+	/// <summary>
+	/// Le endgame trigger par la vielle version avec les rounds, discussion a avoir sur les rounds/points etc
+	/// </summary>
     public void EndGame()
     {
-    
-
-        if (TeamController.Instance.TeamList[0].TotalScore > TeamController.Instance.TeamList[1].TotalScore)
+		if (TeamController.Instance.TeamList[0].TotalScore > TeamController.Instance.TeamList[1].TotalScore)
             Instance.StartCoroutine(Instance.EndGameCoRoutine("GAME_END_BLUE", TeamController.Instance.TeamList[0]));
         else
             Instance.StartCoroutine(Instance.EndGameCoRoutine("GAME_END_RED", TeamController.Instance.TeamList[1]));
-
     }
+
+	/// <summary>
+	/// Le endgame trigger par different gameMode
+	/// </summary>
+	/// <param name="winningTeam">Winning team.</param>
+	public void EndGame(Team winningTeam)
+	{
+		CurrentGameMode.EndRound(winningTeam);
+	}
 
 
     public IEnumerator EndGameCoRoutine(string wwiseTeamNameEvent, Team winningTeam)
@@ -157,7 +176,4 @@ public class GameController : MonoBehaviour
         EndRoundEvent = null;
         EndGameEvent = null;
     }
-
-
-
 }

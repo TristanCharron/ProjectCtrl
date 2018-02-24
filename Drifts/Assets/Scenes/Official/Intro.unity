@@ -5852,11 +5852,11 @@ GameObject:
   - component: {fileID: 728200384}
   - component: {fileID: 728200389}
   - component: {fileID: 728200388}
+  - component: {fileID: 728200385}
   - component: {fileID: 728200387}
   - component: {fileID: 728200386}
-  - component: {fileID: 728200385}
   m_Layer: 5
-  m_Name: ScoreMatchMenu
+  m_Name: BellMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5889,7 +5889,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 728200383}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bec783b736a4aaa44b217f6378131f86, type: 3}
+  m_Script: {fileID: 11500000, guid: 70c12dda0a2281c4081bf21a5a9de139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &728200386
@@ -6662,6 +6662,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f967a4d354f50114392242154b4faf47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFreezeFraming: 0
+  isScreenShake: 0
+  shakeAmount: {x: 0, y: 0, z: 0}
   FadeWhiteComponent: {fileID: 1726744116}
 --- !u!114 &1187609241
 MonoBehaviour:

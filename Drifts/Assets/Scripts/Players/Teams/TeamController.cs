@@ -61,11 +61,8 @@ public class TeamController : MonoBehaviour
         }
     }
 
-
-
     void GenerateNewTeams()
     {
-      
         TeamList = new List<Team>();
         NbPlayersCreated = 0;
 
@@ -73,8 +70,6 @@ public class TeamController : MonoBehaviour
         {
             TeamList.Add(GenerateTeam((TeamID)(i), GameController.CurrentGameMode.NbPlayers, i)); 
         }
-
-    
     }
 
 

@@ -28,7 +28,7 @@ public class GameModeDeathMatch : GameMode {
         base.BeginNextRound();
     }
 
-    protected override void EndRound(Team team)
+	public override void EndRound(Team team)
     {
         base.EndRound(team);
     }

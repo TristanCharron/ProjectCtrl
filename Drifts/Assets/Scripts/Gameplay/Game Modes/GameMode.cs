@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public enum GameModeID
 {
     DEATHMATCH = 0,
-    SCOREMATCH = 1
+    BELLMATCH = 1
 }
 
 
@@ -39,6 +39,7 @@ public abstract class GameMode : MonoBehaviour
     {
         Players = players;
         SpawnPoints = spawnPoints;
+		Debug.Log("init mode");
     }
 
 
@@ -49,7 +50,14 @@ public abstract class GameMode : MonoBehaviour
         GameController.Instance.NextRound();
     }
 
+	/// <summary>
+	/// Tant que tout est pas fully swapper au game mode
+	/// </summary>
+	public virtual void BeginNextRoundExtra()
+	{
+		Debug.Log("extra nothing");
 
+	}
 
     public virtual void EnablePlayers()
     {
@@ -68,18 +76,11 @@ public abstract class GameMode : MonoBehaviour
     }
 
 
-
     public virtual void KillPlayer(PlayerController deadPlayer)
     {
-
-        WwiseManager.PostEvent("MONK_DEAD", deadPlayer.gameObject);
-
         bool isTeamDead = false;
 
         TeamController.Instance.TeamList[(int)deadPlayer.CurrentTeamID].KillPlayer(deadPlayer, out isTeamDead);
-
-        deadPlayer.gameObject.SetActive(false);
-
         if (isTeamDead)
         {
             Team winningTeam = TeamController.Instance.GetOtherTeam(TeamController.Instance.TeamList[(int)deadPlayer.CurrentTeamID]);
@@ -87,7 +88,8 @@ public abstract class GameMode : MonoBehaviour
         }
     }
 
-    protected virtual void EndRound(Team team)
+
+    public virtual void EndRound(Team team)
     {
         string wwiseEvent = team.Index == 1 ? "GAME_END_BLUE" : "GAME_END_RED";
         StartCoroutine(EndRoundCoRoutine(wwiseEvent, team));

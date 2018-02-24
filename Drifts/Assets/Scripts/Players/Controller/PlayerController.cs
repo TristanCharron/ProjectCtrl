@@ -117,10 +117,11 @@ public class PlayerController : MonoBehaviour
             {
                 if (!Player.IsDead)
                 {
+					WwiseManager.PostEvent("MONK_DEAD", gameObject);
                     GameObject DeathAnimParticle = Instantiate(Resources.Load<GameObject>("DeathMonkParticle"), gameObject.transform.position, Quaternion.identity) as GameObject;
                     Destroy(DeathAnimParticle, 5);
                     GameController.Instance.KillPlayer(this);
-
+					gameObject.SetActive(false);
                 }
             }
         }

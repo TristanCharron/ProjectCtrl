@@ -53,11 +53,12 @@ public class RoundUIController : MonoBehaviour
 
     public static GameObject GetTeamContainer(Team currentTeam)
     {
+		Debug.Log(currentTeam.Index);
         switch (currentTeam.Index)
         {
-            case 1:
+            case 0:
                 return instance.BlueTeamWin;
-            case 2:
+            case 1:
                 return instance.RedTeamWin;
             default:
                 return instance.BlueTeamWin;

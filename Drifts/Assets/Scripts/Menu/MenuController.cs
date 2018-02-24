@@ -47,11 +47,8 @@ public class MenuController : MonoBehaviour
 
 
 
-    // Update is called once per frame
     void Update()
     {
-
-
         if (!isChangingMenu && isInMainMenu)
         {
             for (int i = 0; i < 4; i++)
@@ -64,12 +61,7 @@ public class MenuController : MonoBehaviour
                 else if (ReInput.players.GetPlayer(i).GetAxis("Move Vertical") < -0.9f)
                     ChangeMenuState(++selectionIndex);
             }
-
-
         }
-
-
-
     }
 
     private void AddMenuState(ref MenuOptionState menuOptionState, Action Select)
@@ -89,7 +81,6 @@ public class MenuController : MonoBehaviour
         {
             Debug.LogError("State " + currentMenuID.ToString() + " already exists in FSM. ");
         }
-
     }
 
 
@@ -139,16 +130,10 @@ public class MenuController : MonoBehaviour
             UIEffectManager.Instance.FadeToWhite(true);
             Camera.main.gameObject.GetComponent<Animator>().enabled = true;
         }
-
-
     }
 
     void StartGameCallback()
     {
         SceneManager.LoadScene(1);
     }
-
-
-
-
 }

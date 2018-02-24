@@ -1270,7 +1270,7 @@ Prefab:
     - target: {fileID: 2300000, guid: ba520e5efa280154b9fd4b57f0ba6c2b, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 72d69399a9e402a448b29dd04b1f725a, type: 2}
+      objectReference: {fileID: 2100000, guid: aaaf597333661c845aa163e792bb1902, type: 2}
     - target: {fileID: 400000, guid: ba520e5efa280154b9fd4b57f0ba6c2b, type: 3}
       propertyPath: m_LocalScale.z
       value: 13.284629
@@ -6405,6 +6405,10 @@ MonoBehaviour:
   intensityShockWave: 0.6
   freezeFrame: 0.15
   screenShake: 15
+  normalColor: {r: 1, g: 0.4627451, b: 0.4627451, a: 1}
+  flashColor1: {r: 1, g: 0.9724138, b: 0, a: 1}
+  flashColor2: {r: 0, g: 0.8758622, b: 1, a: 1}
+  flashColorSpeed: 1
 --- !u!54 &598411524
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7756,6 +7760,10 @@ MonoBehaviour:
   intensityShockWave: 0.6
   freezeFrame: 0.15
   screenShake: 15
+  normalColor: {r: 0.64705884, g: 0.69411767, b: 1, a: 1}
+  flashColor1: {r: 1, g: 0, b: 0, a: 1}
+  flashColor2: {r: 0, g: 1, b: 0.46206903, a: 1}
+  flashColorSpeed: 1
 --- !u!54 &862945152
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -32244,7 +32252,7 @@ Prefab:
     - target: {fileID: 2300000, guid: 4deac4000e48dfe408a0466e6d51364f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 85657c4ed2ecfa245bff5f3ff6c18014, type: 2}
+      objectReference: {fileID: 2100000, guid: aaaf597333661c845aa163e792bb1902, type: 2}
     - target: {fileID: 400000, guid: 4deac4000e48dfe408a0466e6d51364f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -89.981
@@ -32260,6 +32268,10 @@ Prefab:
     - target: {fileID: 100000, guid: 4deac4000e48dfe408a0466e6d51364f, type: 3}
       propertyPath: m_Name
       value: Bell1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 4deac4000e48dfe408a0466e6d51364f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4deac4000e48dfe408a0466e6d51364f, type: 3}

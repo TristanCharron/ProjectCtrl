@@ -7,7 +7,7 @@ using UnityEngine;
 public enum MenuOptionStateID
 {
     PLAYDEATHMATCH = 0,
-    PLAYSCORE = 1,
+    PLAYBELL = 1,
     QUIT = 2
 }
 
