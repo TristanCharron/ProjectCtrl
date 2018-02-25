@@ -28,6 +28,10 @@ public class GameModeDeathMatch : GameMode {
         base.BeginNextRound();
     }
 
+	public override void BeginNextRoundExtra()
+	{
+		Debug.Log("death match test");
+	}
 	public override void EndRound(Team team)
     {
         base.EndRound(team);

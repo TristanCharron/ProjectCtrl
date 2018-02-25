@@ -7,7 +7,8 @@ public class MenuOptionQuit : MenuOptionState
     protected MenuOptionQuit() : base()
     {
         Text = "QUIT GAME";
-        EnumID = MenuOptionStateID.QUIT;
+		EnumID = GameModeID.NONE;
+        //EnumID = MenuOptionStateID.QUIT;
     }
 }
 

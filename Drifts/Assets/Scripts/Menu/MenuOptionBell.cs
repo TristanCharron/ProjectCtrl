@@ -8,7 +8,8 @@ public class MenuOptionBell : MenuOptionState
 	protected MenuOptionBell() : base()
     {
         Text = "PLAY BELL MODE";
-        EnumID = MenuOptionStateID.PLAYBELL;
+        //EnumID = MenuOptionStateID.PLAYBELL;
+		EnumID = GameModeID.BELL;
     }
 
 

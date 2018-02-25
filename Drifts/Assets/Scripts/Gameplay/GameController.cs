@@ -38,24 +38,21 @@ public class GameController : MonoBehaviour
         EndGameEvent += RemoveGameMode;
     }
 
-
-	/// <summary>
-	/// Faudrait passer du menu a ici avec la bonne valeur, maybe un static?
-	/// </summary>
     void SetGameModeByID()
     {
-        GameModeID id = GameModeID.BELLMATCH;
-
-        switch (id)
+        switch (GameMode.currentGameMode)
         {
             case GameModeID.DEATHMATCH:
                 CurrentGameMode = gameObject.AddComponent<GameModeDeathMatch>();
                 CurrentGameMode.Initialize(SpawnPoints, Players);
                 break;
-            case GameModeID.BELLMATCH:
+            case GameModeID.BELL:
 				CurrentGameMode = gameObject.AddComponent<GameModeBell>();
 				CurrentGameMode.Initialize(SpawnPoints, Players);
-			break;
+				break;
+			case GameModeID.NONE:
+				Debug.Log("QUIT");
+				break;
 		default:
 			break;
         }
@@ -66,12 +63,11 @@ public class GameController : MonoBehaviour
         Destroy(CurrentGameMode, 1);
     }
 
-
+	// Bientot obsolete
     public void KillPlayer(PlayerController deadPlayer)
     {
         CurrentGameMode.KillPlayer(deadPlayer);
     }
-
 
 
     public void ChangeGameStartedState(bool state)

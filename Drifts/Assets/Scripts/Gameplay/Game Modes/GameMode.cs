@@ -6,15 +6,16 @@ using UnityEngine.UI;
 
 public enum GameModeID
 {
-    DEATHMATCH = 0,
-    BELLMATCH = 1
+    DEATHMATCH,
+    BELL,
+	NONE
 }
 
 
 
 public abstract class GameMode : MonoBehaviour
 {
-
+	public static GameModeID currentGameMode;
 
     // Game Mode Dependent
 
@@ -61,7 +62,6 @@ public abstract class GameMode : MonoBehaviour
 
     public virtual void EnablePlayers()
     {
-
         for (int x = 0; x < Players.Length; x++)
         {
             if (!Players[x].gameObject.activeInHierarchy)
@@ -70,9 +70,7 @@ public abstract class GameMode : MonoBehaviour
             Players[x].transform.position = SpawnPoints[x].transform.position;
 
         }
-
         RoundUIController.SetGameOverScreen(false);
-
     }
 
 

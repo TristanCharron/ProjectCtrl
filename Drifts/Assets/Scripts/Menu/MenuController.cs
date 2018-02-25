@@ -14,7 +14,8 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     private MenuOptionState[] MenuStates;
 
-    private Dictionary<MenuOptionStateID, MenuOptionState> MenuFSM;
+    //private Dictionary<MenuOptionStateID, MenuOptionState> MenuFSM;
+	private Dictionary<GameModeID, MenuOptionState> MenuFSM;
 
     private MenuOptionState CurrentMenuOptionState;
 
@@ -35,12 +36,12 @@ public class MenuController : MonoBehaviour
     }
 
     void Start()
-    {
-       
+    {    
         AddMenuState(ref MenuStates[0], () => StartGame());
         AddMenuState(ref MenuStates[1], () => StartGame());
         AddMenuState(ref MenuStates[2], () => Application.Quit());
-        StartCoroutine(ChangeMenuState(MenuOptionStateID.PLAYDEATHMATCH));
+        //StartCoroutine(ChangeMenuState(MenuOptionStateID.PLAYDEATHMATCH));
+		StartCoroutine(ChangeMenuState(GameModeID.DEATHMATCH));
         WwiseManager.PostEvent("GAME_OPEN", gameObject);
         isInMainMenu = true;
     }
@@ -66,10 +67,12 @@ public class MenuController : MonoBehaviour
 
     private void AddMenuState(ref MenuOptionState menuOptionState, Action Select)
     {
-        MenuOptionStateID currentMenuID = menuOptionState.EnumID;
+        //MenuOptionStateID currentMenuID = menuOptionState.EnumID;
+		GameModeID currentMenuID = menuOptionState.EnumID;
 
         if (MenuFSM == null)
-            MenuFSM = new Dictionary<MenuOptionStateID, MenuOptionState>();
+			MenuFSM = new Dictionary<GameModeID, MenuOptionState>();
+            //MenuFSM = new Dictionary<MenuOptionStateID, MenuOptionState>();
 
         menuOptionState.Select = Select;
 
@@ -98,8 +101,8 @@ public class MenuController : MonoBehaviour
         WwiseManager.PostEvent("UI_HOVER", Camera.main.gameObject);
     }
 
-
-    private IEnumerator ChangeMenuState(MenuOptionStateID nextMenuID)
+	//private IEnumerator ChangeMenuState(MenuOptionStateID nextMenuID)
+    private IEnumerator ChangeMenuState(GameModeID nextMenuID)
     {
         if (!MenuFSM.ContainsKey(nextMenuID))
         {
@@ -113,12 +116,12 @@ public class MenuController : MonoBehaviour
             }
 
             CurrentMenuOptionState = MenuFSM[nextMenuID];
+			GameMode.currentGameMode = nextMenuID;
             isChangingMenu = true;
             yield return CurrentMenuOptionState.EnterState();
             isChangingMenu = false;
             yield break;
         }
-
     }
 
     void StartGame()

@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+/*
 public enum MenuOptionStateID
 {
     PLAYDEATHMATCH = 0,
     PLAYBELL = 1,
     QUIT = 2
 }
-
+*/
 
 [RequireComponent(typeof(TextMeshPro))]
 public abstract class MenuOptionState : MonoBehaviour
@@ -20,7 +21,9 @@ public abstract class MenuOptionState : MonoBehaviour
 
     public TextMeshPro TextMeshProComponent { private set; get; }
 
-    public MenuOptionStateID EnumID { protected set; get; }
+    //public MenuOptionStateID EnumID { protected set; get; }
+	public GameModeID EnumID { protected set; get; }
+
 
     public Color EnabledColor { get { return Color.white; } }
     public Color DisabledColor { get { return EnabledColor * 0.8f; } }

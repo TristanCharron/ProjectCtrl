@@ -7,6 +7,7 @@ public class MenuOptionDeathMatch : MenuOptionState
     protected MenuOptionDeathMatch() : base()
     {
         Text = "PLAY DEATHMATCH MODE";
-        EnumID = MenuOptionStateID.PLAYDEATHMATCH;
+        //EnumID = MenuOptionStateID.PLAYDEATHMATCH;
+		EnumID = GameModeID.DEATHMATCH;
     } 
 }
