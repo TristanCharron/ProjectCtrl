@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
 	[Header("Component")]
     [SerializeField] Animator handAnimator;
+	[SerializeField] Animator pushAnimator;
     [SerializeField] BoxCollider PushCollider;
 	[SerializeField] BoxCollider PullCollider;
 	[SerializeField] GameObject WindGust;
@@ -142,6 +143,7 @@ public class PlayerController : MonoBehaviour
                 handAnimator.Play("Push");
                 WwiseManager.PostEvent("MONK_WIND", gameObject);
                 StartCoroutine(CoolDown("Push"));
+				pushAnimator.Play ("pushAnim");
 			}
         }
         Charge();
@@ -166,7 +168,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnPush()
     {
-		Debug.Log("on push");
 		float currentPower = Player.Power * (1 + RightTriggerHold.holdingButtonRatio);
 		OrbController.Instance.Push(Cursor.LookingAtAngle * -transform.up, Player.Power, CurrentTeamID);
 		OrbController.Instance.ChangeTeamPossession(CurrentTeamID);
@@ -181,20 +182,18 @@ public class PlayerController : MonoBehaviour
     public void OnPull()
     {
         WwiseManager.PostEvent("MONK_CATCH", gameObject);
-		//Player.SetPulledVelocity(OrbController.Instance.CurrentVelocity);
 		OrbController.Instance.Pull(CurrentTeamID);
-		//OrbController.Instance.ChangeTeamPossession(CurrentTeamID);
     }
 
     void DisplayUIButton()
     {
         if (Player.ID >= ReInput.players.AllPlayers.Count)
         {
-            DisplayUI.CrossFadeAlpha(0, 0.1f, false);
+            DisplayUI.CrossFadeAlpha(0, 0.2f, false);
             return;
         }
 	    float alpha = ReInput.players.GetPlayer(Player.ID).GetButton("ShowUI") ? 1 : 0;
-        DisplayUI.CrossFadeAlpha(alpha, 0.1f, false);
+        DisplayUI.CrossFadeAlpha(alpha, 0.2f, false);
     }
 
     void ChangeCoolDownState(string action, bool state)
@@ -218,7 +217,7 @@ public class PlayerController : MonoBehaviour
         RightTriggerHold.OnReset();
         yield return new WaitForSeconds(.2f);
         ChangeCoolDownState(action, false);
-        yield return new WaitForSeconds(.4f);
+        yield return new WaitForSeconds(.2f);
         WindGust.SetActive(false);
         canDoAction = true;
     }

@@ -8,7 +8,7 @@ public class GameModeBell : GameMode {
 
 	public GameModeBell() : base()
     {
-        NbRounds = 1;
+        NbRounds = 3;
         NbPlayers = 2;
         NbTeams = 2;
     }
@@ -49,10 +49,8 @@ public class GameModeBell : GameMode {
 
 	private void ResetBellsLife()
 	{
-		foreach(Bell bell in FindObjectsOfType<Bell>())
-		{
-			bell.ResetLife();
-		}
+		TeamController.Instance.TeamList[0].TeamBell.ResetLife();
+		TeamController.Instance.TeamList[1].TeamBell.ResetLife();
 	}
 
 	public override void EndRound(Team team)
@@ -64,7 +62,4 @@ public class GameModeBell : GameMode {
     {
         return base.EndRoundCoRoutine(wwiseTeamNameEvent, winningTeam);
     }
-
-   
-
 }

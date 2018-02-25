@@ -27,6 +27,8 @@ public class Bell : MonoBehaviour
 	[SerializeField] Color flashColor2;
 	[SerializeField] float flashColorSpeed = 1;
 
+	[SerializeField] GameObject fracturedBellPrefab;
+
 	void Awake()
 	{
 		material = GetComponent<MeshRenderer>().material;
@@ -57,20 +59,16 @@ public class Bell : MonoBehaviour
     }
 	public void ResetLife()
 	{
+		Debug.Log("reset");
+		gameObject.SetActive(true);
 		currentHp = maxHp;
+		SetShader();
+		UpdateShader();
 	}
 
     public void AssignTeam(Team newTeam)
     {
         assignedTeam = newTeam;
-    }
-
-    void ResetBell()
-    {
-		currentHp = maxHp;
-		SetShader();
-        //curNbBellHits = 0;
-        isActive = true;
     }
 
     private void CheckBellHit()
@@ -82,11 +80,11 @@ public class Bell : MonoBehaviour
         AddScore(TeamController.Instance.GetOtherTeam(assignedTeam));
 		WwiseManager.PostEvent("STAGE_BELL", gameObject);
 		GetComponent<Animator>().Play("DONG", 0, -1);
+		UIEffectManager.Instance.OnFreezeFrame(freezeFrame * GetInvRatioLife());
 
 		float ratio = OrbController.Instance.VelocityRatio;
 		ShockwaveManager.GetInstance().CastShockwave(sizeShockWave*(0.1f+GetInvRatioLife()),transform.position,speedShockWave,colorShockWave,intensityShockWave);
 		UIEffectManager.Instance.OnScreenShake(screenShake * GetInvRatioLife());
-		UIEffectManager.Instance.OnFreezeFrame(freezeFrame * GetInvRatioLife());
 		LooseHp(1);
 	}
 
@@ -98,27 +96,44 @@ public class Bell : MonoBehaviour
 		currentHp -= damage;
 		if(currentHp <= 0)
 		{
-			//MASS EFFECT NICE
-
-			//sound
-			//particle
-			//shatter?
-
+			BellExplode();
 			GameController.Instance.EndGame(TeamController.Instance.GetOtherTeam(assignedTeam));
 		}
-		UpdateShader();
+		else
+		{
+			UpdateShader();
+		}
+	}
+
+	private void BellExplode()
+	{
+		//MASS EFFECT NICE
+		
+		//sound
+
+		//particle
+		ShockwaveManager.GetInstance().CastShockwave(sizeShockWave,transform.position,speedShockWave*0.3f,colorShockWave,intensityShockWave*3);
+
+		GameObject fracBell = Instantiate(fracturedBellPrefab, transform.position, Quaternion.identity);
+		ShatterMesh shatterFracBell = fracBell.GetComponent<ShatterMesh>();
+		shatterFracBell.ColorMesh(normalColor);
+		shatterFracBell.Shatter((OrbController.Instance.CurrentDirection));
+		//Time.timeScale = .5f;
+		gameObject.SetActive(false);
 	}
 
 	private void SetShader()
 	{
 		material.SetColor("_Color", normalColor);
-		material.SetFloat("_FracSpeed", flashColorSpeed);
+		material.SetFloat("_FracSpeed", 0);
 		material.SetColor("_FracColor", flashColor1);
 		material.SetColor("_FracColor2", flashColor2);
 	}
 	private void UpdateShader()
 	{
 		material.SetFloat("_FracRatio", GetInvRatioLife());
+		material.SetFloat("_FracSpeed", GetInvRatioLife() * flashColorSpeed);
+
 	}
 
     private void AddScore(Team team)

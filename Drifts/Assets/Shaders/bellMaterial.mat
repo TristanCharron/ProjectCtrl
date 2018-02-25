@@ -40,11 +40,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _FracTex:
         m_Texture: {fileID: 2800000, guid: 1098c12de4141704a9ffded80dd314fb, type: 3}
-        m_Scale: {x: 50, y: 50}
+        m_Scale: {x: 100, y: 100}
         m_Offset: {x: 0, y: 0}
     - _FracTex2:
-        m_Texture: {fileID: 2800000, guid: 1098c12de4141704a9ffded80dd314fb, type: 3}
-        m_Scale: {x: 50, y: 50}
+        m_Texture: {fileID: 2800000, guid: 19555d7d9d114c7f1100f5ab44295342, type: 3}
+        m_Scale: {x: 100, y: 100}
         m_Offset: {x: 25, y: 25}
     - _MainTex:
         m_Texture: {fileID: 0}

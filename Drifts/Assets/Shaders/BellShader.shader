@@ -58,8 +58,8 @@
 			half sinAnim2 = abs(sin(_Time.w * _FracSpeed));
 
 			//o.Albedo = ((fracture*sinAnim+fracture2*sinAnim2) * (_FracRatio) < .3) ? (_FracColor2 * sinAnim2) + (_FracColor * sinAnim) + c: c;
-			fixed4 col1 = ((1-fracture) * (_FracRatio) > .4) ?  (_FracColor * sinAnim) : c;
-			fixed4 col2 = ((1-fracture2) * (_FracRatio) > .4) ? (_FracColor2 * sinAnim2) : c;
+			fixed4 col1 = ((1-fracture) * (_FracRatio*10) > .6) ?  (_FracColor * sinAnim) : c;
+			fixed4 col2 = ((.5-fracture2) * (_FracRatio) > .1) ? (_FracColor2 * sinAnim2) : c;
 
 			//o.Albedo = (fracture < .1 | fracture2 < .1) ? (_FracColor2 * sinAnim2) + (_FracColor * sinAnim) + c: c;
 			//o.Albedo =  (col1+col2+c) / 3;

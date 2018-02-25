@@ -84,7 +84,6 @@ public class GameController : MonoBehaviour
 	/// </summary>
     public void NextRound()
     {
-		Debug.Log("first round??");
 		CurrentGameMode.BeginNextRoundExtra();
 
 		WwiseManager.PostEvent("GAME_PLAY", Camera.main.gameObject);

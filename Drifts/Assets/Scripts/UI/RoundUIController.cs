@@ -56,9 +56,9 @@ public class RoundUIController : MonoBehaviour
 		Debug.Log(currentTeam.Index);
         switch (currentTeam.Index)
         {
-            case 0:
-                return instance.BlueTeamWin;
             case 1:
+                return instance.BlueTeamWin;
+            case 2:
                 return instance.RedTeamWin;
             default:
                 return instance.BlueTeamWin;

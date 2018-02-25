@@ -10,6 +10,7 @@ public class OrbController : MonoBehaviour
 	public TeamController.TeamID PossessedTeam { private set; get; }
 	public ParticleSystem ParticleSystemRender { get { return Instance.pSystem; } }
 
+	public Vector3 CurrentDirection { get { return rigidBody.velocity.normalized; } }
 	public float CurrentVelocity { get { return rigidBody.velocity.magnitude; } }
 	public float VelocityRatio { get { return Mathf.Clamp01(rigidBody.velocity.magnitude / _MaxVelocity); } }
 	public GameObject mainOrb;
