@@ -2,8 +2,6 @@
 
 using UnityEngine;
 using UnityEditor;
-using System.Diagnostics;
-using System.IO;
 using System.Collections.Generic;
 using System;
 using System.Net;
@@ -12,58 +10,7 @@ using System.Net;
 // This sets the order in which the menus appear.
 public enum AkWwiseMenuOrder : int
 {
-    AndroidDebug = 100,
-    AndroidProfile,
-    AndroidRelease,
-    IosDebug,
-    IosProfile,
-    IosRelease,
-    Linux32Debug,
-    Linux32Profile,
-    Linux32Release,
-    Linux64Debug,
-    Linux64Profile,
-    Linux64Release,
-    MacDebug,
-    MacProfile,
-    MacRelease,
-    WSAWin32Debug,
-    WSAWin32Profile,
-    WSAWin32Release,
-    WSAArmDebug,
-    WSAArmProfile,
-    WSAArmRelease,
-    PS3Debug,
-    PS3Profile,
-    PS3Release,
-    PS4Debug,
-    PS4Profile,
-    PS4Release,
-    VitaDebug,
-    VitaProfile,
-    VitaRelease,
-    VitaHWDebug,
-    VitaHWProfile,
-    VitaHWRelease,
-    WiiUDebug,
-    WiiUProfile,
-    WiiURelease,
-    Win32Debug,
-    Win32Profile,
-    Win32Release,
-    Win64Debug,
-    Win64Profile,
-    Win64Release,
-    Xbox360Debug,
-    Xbox360Profile,
-    Xbox360Release,
-    XboxOneDebug,
-    XboxOneProfile,
-    XboxOneRelease,
-
-    ConvertIDs = 200,
-    Reinstall,
-    Uninstall
+    ConvertIDs = 200
 }
 
 public enum AkWwiseWindowOrder : int
@@ -82,20 +29,20 @@ public class AkUnityAssetsInstaller
     protected string m_platform = "Undefined";
     public string[] m_arches = new string[] { };
     protected string m_assetsDir = Application.dataPath;
-    protected string m_pluginDir = Path.Combine(Application.dataPath, "Plugins");
+    protected string m_pluginDir = System.IO.Path.Combine(Application.dataPath, "Plugins");
 	protected List<string> m_excludes = new List<string>() {".meta"};
 
     // Copy file to destination directory and create the directory when none exists.
     public static bool CopyFileToDirectory(string srcFilePath, string destDir)
     {
-        FileInfo fi = new FileInfo(srcFilePath);
+        var fi = new System.IO.FileInfo(srcFilePath);
 		if ( ! fi.Exists )
         {
             UnityEngine.Debug.LogError(string.Format("WwiseUnity: Failed to copy. Source is missing: {0}.", srcFilePath));
             return false;
         }
 
-        DirectoryInfo di = new DirectoryInfo(destDir);
+        var di = new System.IO.DirectoryInfo(destDir);
 
 		if ( ! di.Exists )
         {
@@ -105,7 +52,7 @@ public class AkUnityAssetsInstaller
         const bool IsToOverwrite = true;
         try
         {
-            fi.CopyTo(Path.Combine(di.FullName, fi.Name), IsToOverwrite);
+            fi.CopyTo(System.IO.Path.Combine(di.FullName, fi.Name), IsToOverwrite);
         }
         catch (Exception ex)
         {
@@ -119,14 +66,14 @@ public class AkUnityAssetsInstaller
     // Copy or overwrite destination file with source file.
     public static bool OverwriteFile(string srcFilePath, string destFilePath)
     {
-        FileInfo fi = new FileInfo(srcFilePath);
+        var fi = new System.IO.FileInfo(srcFilePath);
 		if ( ! fi.Exists )
         {
             UnityEngine.Debug.LogError(string.Format("WwiseUnity: Failed to overwrite. Source is missing: {0}.", srcFilePath));
             return false;
         }
 
-        DirectoryInfo di = new DirectoryInfo(Path.GetDirectoryName(destFilePath));
+        var di = new System.IO.DirectoryInfo(System.IO.Path.GetDirectoryName(destFilePath));
 
 		if ( ! di.Exists )
         {
@@ -150,21 +97,21 @@ public class AkUnityAssetsInstaller
     // Move file to destination directory and create the directory when none exists.
     public static void MoveFileToDirectory(string srcFilePath, string destDir)
     {
-        FileInfo fi = new FileInfo(srcFilePath);
+        var fi = new System.IO.FileInfo(srcFilePath);
 		if ( ! fi.Exists )
         {
             UnityEngine.Debug.LogError(string.Format("WwiseUnity: Failed to move. Source is missing: {0}.", srcFilePath));
             return;
         }
 
-        DirectoryInfo di = new DirectoryInfo(destDir);
+        var di = new System.IO.DirectoryInfo(destDir);
 
 		if ( ! di.Exists )
         {
             di.Create();
         }
 
-        string destFilePath = Path.Combine(di.FullName, fi.Name);
+        string destFilePath = System.IO.Path.Combine(di.FullName, fi.Name);
         try
         {
             fi.MoveTo(destFilePath);
@@ -179,7 +126,7 @@ public class AkUnityAssetsInstaller
     }
 
     // Recursively copy a directory to its destination.
-    public static bool RecursiveCopyDirectory(DirectoryInfo srcDir, DirectoryInfo destDir, List<string> excludeExtensions = null)
+    public static bool RecursiveCopyDirectory(System.IO.DirectoryInfo srcDir, System.IO.DirectoryInfo destDir, List<string> excludeExtensions = null)
     {
     	if ( ! srcDir.Exists )
         {
@@ -193,12 +140,12 @@ public class AkUnityAssetsInstaller
         }
 
         // Copy all files.
-        FileInfo[] files = srcDir.GetFiles();
-        foreach (FileInfo file in files)
+        var files = srcDir.GetFiles();
+        foreach (var file in files)
         {
             if (excludeExtensions != null)
             {
-                string fileExt = Path.GetExtension(file.Name);
+                string fileExt = System.IO.Path.GetExtension(file.Name);
                 bool isFileExcluded = false;
                 foreach (string ext in excludeExtensions)
                 {
@@ -218,7 +165,7 @@ public class AkUnityAssetsInstaller
             const bool IsToOverwrite = true;
             try
             {
-                file.CopyTo(Path.Combine(destDir.FullName, file.Name), IsToOverwrite);
+                file.CopyTo(System.IO.Path.Combine(destDir.FullName, file.Name), IsToOverwrite);
             }
             catch (Exception ex)
             {
@@ -228,14 +175,14 @@ public class AkUnityAssetsInstaller
         }
 
         // Process subdirectories.
-        DirectoryInfo[] dirs = srcDir.GetDirectories();
-        foreach (DirectoryInfo dir in dirs)
+        var dirs = srcDir.GetDirectories();
+        foreach (var dir in dirs)
         {
             // Get destination directory.
-            string destFullPath = Path.Combine(destDir.FullName, dir.Name);
+            string destFullPath = System.IO.Path.Combine(destDir.FullName, dir.Name);
 
             // Recurse
-            bool isSuccess = RecursiveCopyDirectory(dir, new DirectoryInfo(destFullPath), excludeExtensions);
+            bool isSuccess = RecursiveCopyDirectory(dir, new System.IO.DirectoryInfo(destFullPath), excludeExtensions);
             if ( ! isSuccess )
                 return false;
         }
@@ -257,7 +204,7 @@ public class AkUnityPluginInstallerBase : AkUnityAssetsInstaller
         string progMsg = string.Format("Installing plugin for {0} ({1}) from {2} to {3}.", m_platform, config, pluginSrc, pluginDest);
         EditorUtility.DisplayProgressBar(m_progTitle, progMsg, 0.5f);
 
-        bool isSuccess = RecursiveCopyDirectory(new DirectoryInfo(pluginSrc), new DirectoryInfo(pluginDest), m_excludes);
+        bool isSuccess = RecursiveCopyDirectory(new System.IO.DirectoryInfo(pluginSrc), new System.IO.DirectoryInfo(pluginDest), m_excludes);
 		if ( ! isSuccess )
         {
             UnityEngine.Debug.LogError(string.Format("WwiseUnity: Failed to install plugin for {0} ({1}) from {2} to {3}.", m_platform, config, pluginSrc, pluginDest));
@@ -282,7 +229,7 @@ public class AkUnityPluginInstallerBase : AkUnityAssetsInstaller
         string progMsg = string.Format("Installing plugin for {0} ({1}, {2}) from {3} to {4}.", m_platform, arch, config, pluginSrc, pluginDest);
         EditorUtility.DisplayProgressBar(m_progTitle, progMsg, 0.5f);
 
-        bool isSuccess = RecursiveCopyDirectory(new DirectoryInfo(pluginSrc), new DirectoryInfo(pluginDest), m_excludes);
+        bool isSuccess = RecursiveCopyDirectory(new System.IO.DirectoryInfo(pluginSrc), new System.IO.DirectoryInfo(pluginDest), m_excludes);
 		if ( ! isSuccess )
         {
             UnityEngine.Debug.LogError(string.Format("WwiseUnity: Failed to install plugin for {0} ({1}, {2}) from {3} to {4}.", m_platform, arch, config, pluginSrc, pluginDest));
@@ -301,12 +248,12 @@ public class AkUnityPluginInstallerBase : AkUnityAssetsInstaller
 
     protected string GetPluginSrcPathByConfig(string config)
     {
-        return Path.Combine(Path.Combine(Path.Combine(Path.Combine(Path.Combine(m_assetsDir, "Wwise"), "Deployment"), "Plugins"), m_platform), config);
+        return System.IO.Path.Combine(System.IO.Path.Combine(System.IO.Path.Combine(System.IO.Path.Combine(System.IO.Path.Combine(m_assetsDir, "Wwise"), "Deployment"), "Plugins"), m_platform), config);
     }
 
     protected string GetPluginSrcPathByArchConfig(string arch, string config)
     {
-        return Path.Combine(Path.Combine(Path.Combine(Path.Combine(Path.Combine(Path.Combine(m_assetsDir, "Wwise"), "Deployment"), "Plugins"), m_platform), arch), config);
+        return System.IO.Path.Combine(System.IO.Path.Combine(System.IO.Path.Combine(System.IO.Path.Combine(System.IO.Path.Combine(System.IO.Path.Combine(m_assetsDir, "Wwise"), "Deployment"), "Plugins"), m_platform), arch), config);
     }
 
     protected virtual string GetPluginDestPath(string arch)
@@ -319,7 +266,7 @@ public class AkUnityPluginInstallerMultiArchBase : AkUnityPluginInstallerBase
 {
     protected override string GetPluginDestPath(string arch)
     {
-        return Path.Combine(Path.Combine(m_pluginDir, m_platform), arch);
+        return System.IO.Path.Combine(System.IO.Path.Combine(m_pluginDir, m_platform), arch);
     }
 }
 
@@ -350,14 +297,7 @@ public class AkDocHelper
             request.Credentials = CredentialCache.DefaultNetworkCredentials;
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                isConnected = true;
-            }
-            else
-            {
-                isConnected = false;
-            }
+			isConnected = (response.StatusCode == HttpStatusCode.OK);
         }
         catch (Exception)
         {
@@ -394,19 +334,19 @@ public class AkDocHelper
 #else
 		string DestPath = AkUtilities.GetFullPath(Application.dataPath, "../WwiseUnityIntegrationHelp_en");
 		docPath = string.Format ("{0}/html/index.html", DestPath);
-		if (!File.Exists (docPath))
+		if (!System.IO.File.Exists (docPath))
 		{
 			UnzipHelp(DestPath);
 		}
 		
-		if( !File.Exists(docPath))
+		if( !System.IO.File.Exists(docPath))
         {
         	UnityEngine.Debug.Log("WwiseUnity: Unable to show documentation. Please unzip WwiseUnityIntegrationHelp_AppleCommon_en.zip manually.");
 			return string.Empty;
         }
 #endif
 
-        FileInfo fi = new FileInfo(docPath);
+		var fi = new System.IO.FileInfo(docPath);
         if (!fi.Exists)
         {
             UnityEngine.Debug.LogError(string.Format("WwiseUnity: Failed to find documentation: {0}. Aborted.", docPath));
@@ -420,11 +360,11 @@ public class AkDocHelper
     public static void UnzipHelp(string DestPath)
     {
         // Start by extracting the zip, if it exists
-        string ZipPath = Path.Combine(Path.Combine(Path.Combine(Path.Combine(Path.Combine(Application.dataPath, "Wwise"), "Documentation"), "AppleCommon"), "en"), "WwiseUnityIntegrationHelp_en.zip");
+        string ZipPath = System.IO.Path.Combine(System.IO.Path.Combine(System.IO.Path.Combine(System.IO.Path.Combine(System.IO.Path.Combine(Application.dataPath, "Wwise"), "Documentation"), "AppleCommon"), "en"), "WwiseUnityIntegrationHelp_en.zip");
 
-        if (File.Exists(ZipPath))
-        {
-            System.Diagnostics.ProcessStartInfo start = new System.Diagnostics.ProcessStartInfo();
+		if (System.IO.File.Exists(ZipPath))
+		{
+			var start = new System.Diagnostics.ProcessStartInfo();
             start.FileName = "unzip";
 
             start.Arguments = "\"" + ZipPath + "\" -d \"" + DestPath + "\"";
@@ -436,7 +376,7 @@ public class AkDocHelper
             string progTitle = "Unzipping Wwise documentation";
             EditorUtility.DisplayProgressBar(progTitle, progMsg, 0.5f);
 
-            using (System.Diagnostics.Process process = System.Diagnostics.Process.Start(start))
+            using (var process = System.Diagnostics.Process.Start(start))
             {
                 while (!process.WaitForExit(1000))
                 {
@@ -469,7 +409,6 @@ public class AkDocHelper
             }
         }
     }
-
 }
 
 #endif // #if UNITY_EDITOR

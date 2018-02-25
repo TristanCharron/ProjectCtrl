@@ -1,32 +1,33 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
 --- !u!29 &1
-SceneSettings:
+OcclusionCullingSettings:
   m_ObjectHideFlags: 0
-  m_PVSData: 
-  m_PVSObjectsArray: []
-  m_PVSPortalsArray: []
+  serializedVersion: 2
   m_OcclusionBakeSettings:
     smallestOccluder: 5
-    smallestHole: .25
+    smallestHole: 0.25
     backfaceThreshold: 100
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 6
+  serializedVersion: 8
   m_Fog: 0
-  m_FogColor: {r: .5, g: .5, b: .5, a: 1}
+  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
-  m_FogDensity: .00999999978
+  m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: .211999997, g: .226999998, b: .259000003, a: 1}
-  m_AmbientEquatorColor: {r: .114, g: .125, b: .133000001, a: 1}
-  m_AmbientGroundColor: {r: .0469999984, g: .0430000015, b: .0350000001, a: 1}
+  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
-  m_HaloStrength: .5
+  m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
   m_HaloTexture: {fileID: 0}
@@ -37,15 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
---- !u!127 &3
-LevelGameManager:
-  m_ObjectHideFlags: 0
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 5
+  serializedVersion: 11
   m_GIWorkflowMode: 0
-  m_LightmapsMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -56,46 +54,69 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 3
+    serializedVersion: 9
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
     m_TextureHeight: 1024
+    m_AO: 0
     m_AOMaxDistance: 1
-    m_Padding: 2
     m_CompAOExponent: 0
+    m_CompAOExponentDirect: 0
+    m_Padding: 2
     m_LightmapParameters: {fileID: 0}
+    m_LightmapsBakeMode: 1
     m_TextureCompression: 1
     m_FinalGather: 0
+    m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 1024
-  m_LightmapSnapshot: {fileID: 0}
-  m_RuntimeCPUUsage: 25
+    m_ReflectionCompression: 2
+    m_MixedBakeMode: 1
+    m_BakeBackend: 0
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 500
+    m_PVRBounces: 2
+    m_PVRFiltering: 0
+    m_PVRFilteringMode: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousColorSigma: 1
+    m_PVRFilteringAtrousNormalSigma: 1
+    m_PVRFilteringAtrousPositionSigma: 1
+  m_LightingDataAsset: {fileID: 0}
+  m_UseShadowmask: 0
 --- !u!196 &5
 NavMeshSettings:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_BuildSettings:
     serializedVersion: 2
-    agentRadius: .5
+    agentTypeID: 0
+    agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: .400000006
+    agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
-    accuratePlacement: 0
     minRegionArea: 2
-    cellSize: .166666672
     manualCellSize: 0
+    cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
+    accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &16949044
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 16949045}
-  - 114: {fileID: 16949046}
+  - component: {fileID: 16949045}
+  - component: {fileID: 16949046}
   m_Layer: 5
   m_Name: Column
   m_TagString: Untagged
@@ -117,11 +138,12 @@ RectTransform:
   - {fileID: 718175908}
   m_Father: {fileID: 1773420610}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &16949046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,16 +164,18 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &29124412
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 29124415}
-  - 114: {fileID: 29124414}
-  - 114: {fileID: 29124413}
+  - component: {fileID: 29124415}
+  - component: {fileID: 29124414}
+  - component: {fileID: 29124413}
   m_Layer: 0
   m_Name: Rewired Event System
   m_TagString: Untagged
@@ -210,17 +234,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &31296586
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 31296587}
-  - 222: {fileID: 31296589}
-  - 114: {fileID: 31296588}
-  - 114: {fileID: 31296590}
+  - component: {fileID: 31296587}
+  - component: {fileID: 31296589}
+  - component: {fileID: 31296588}
+  - component: {fileID: 31296590}
   m_Layer: 5
   m_Name: Text - Hide when Idle
   m_TagString: Untagged
@@ -240,11 +265,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 279599465}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1, y: .5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &31296588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +284,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
@@ -266,6 +298,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -297,16 +330,17 @@ MonoBehaviour:
   m_PreferredHeight: 36
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &31820369
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 145466, guid: 8711b5b1c35af8a4cae8214b74dae048, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 31820372}
-  - 222: {fileID: 31820371}
-  - 114: {fileID: 31820370}
+  - component: {fileID: 31820372}
+  - component: {fileID: 31820371}
+  - component: {fileID: 31820370}
   m_Layer: 5
   m_Name: Outline
   m_TagString: Untagged
@@ -327,7 +361,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .776470602}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7764706}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: b8d1d095a37b3f944bc7f2898821a393, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -356,20 +396,21 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 90039646}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &90039645
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 171960, guid: 8711b5b1c35af8a4cae8214b74dae048, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 90039646}
-  - 114: {fileID: 90039647}
+  - component: {fileID: 90039646}
+  - component: {fileID: 90039647}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -393,11 +434,12 @@ RectTransform:
   - {fileID: 1976898346}
   m_Father: {fileID: 513033865}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &90039647
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,12 +458,12 @@ MonoBehaviour:
   _allowedMouseButtons: 1
   _transitionType: 1
   _transitionColorTint:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: .235294119}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: .564705908}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: .890196085}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .313725501}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.23529412}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.5647059}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.8901961}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.3137255}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -501,7 +543,7 @@ MonoBehaviour:
   _digitalAxisGravity: 1
   _digitalAxisSensitivity: 1
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -514,18 +556,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -545,8 +590,7 @@ MonoBehaviour:
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -574,10 +618,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 97177098}
-  - 114: {fileID: 97177099}
+  - component: {fileID: 97177098}
+  - component: {fileID: 97177099}
   m_Layer: 5
   m_Name: Column
   m_TagString: Untagged
@@ -599,11 +643,12 @@ RectTransform:
   - {fileID: 678097204}
   m_Father: {fileID: 380920290}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &97177099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -624,16 +669,18 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &101349634
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 101349635}
-  - 114: {fileID: 101349636}
-  - 114: {fileID: 101349637}
+  - component: {fileID: 101349635}
+  - component: {fileID: 101349636}
+  - component: {fileID: 101349637}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -656,11 +703,12 @@ RectTransform:
   - {fileID: 1595609269}
   m_Father: {fileID: 1366246180}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &101349636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,11 +729,11 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
-    m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -727,16 +775,17 @@ MonoBehaviour:
   m_PreferredHeight: 20
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &108416307
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 108416308}
-  - 222: {fileID: 108416310}
-  - 114: {fileID: 108416309}
+  - component: {fileID: 108416308}
+  - component: {fileID: 108416310}
+  - component: {fileID: 108416309}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -756,11 +805,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 949372283}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &108416309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -774,6 +824,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -793,12 +849,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 131391146}
-  - 223: {fileID: 131391149}
-  - 114: {fileID: 131391148}
-  - 114: {fileID: 131391147}
+  - component: {fileID: 131391146}
+  - component: {fileID: 131391149}
+  - component: {fileID: 131391148}
+  - component: {fileID: 131391147}
   m_Layer: 5
   m_Name: Rewired Touch Control Canvas
   m_TagString: Untagged
@@ -819,6 +875,7 @@ RectTransform:
   - {fileID: 1991749805}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -868,7 +925,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 131391145}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
@@ -876,18 +933,21 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &139568038
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 139568039}
-  - 114: {fileID: 139568041}
-  - 114: {fileID: 139568040}
+  - component: {fileID: 139568039}
+  - component: {fileID: 139568041}
+  - component: {fileID: 139568040}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -910,11 +970,12 @@ RectTransform:
   - {fileID: 176975803}
   m_Father: {fileID: 535943882}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &139568040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -933,6 +994,7 @@ MonoBehaviour:
   m_PreferredHeight: 20
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &139568041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -953,11 +1015,11 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: .960784316, g: .960784316, b: .960784316, a: 1}
-    m_PressedColor: {r: .784313738, g: .784313738, b: .784313738, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_DisabledColor: {r: 1, g: 1, b: 1, a: 1}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -986,12 +1048,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 101388, guid: 84ad8947967ac4c4f90ac67bb381529e, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 143094733}
-  - 114: {fileID: 143094736}
-  - 222: {fileID: 143094735}
-  - 114: {fileID: 143094734}
+  - component: {fileID: 143094733}
+  - component: {fileID: 143094736}
+  - component: {fileID: 143094735}
+  - component: {fileID: 143094734}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1012,11 +1074,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 664264718}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &143094734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1031,6 +1094,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 7cd91641af0dda941953c6781ecbdd40, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -1067,9 +1136,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: c4e4fed3f153c1f4c9db64aee2d6b155, type: 3}
@@ -1149,7 +1218,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -1162,18 +1231,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 1380169911}
   _useTouchRegionOnly: 1
@@ -1210,10 +1282,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 171960, guid: 8711b5b1c35af8a4cae8214b74dae048, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 144382314}
-  - 114: {fileID: 144382315}
+  - component: {fileID: 144382314}
+  - component: {fileID: 144382315}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -1237,11 +1309,12 @@ RectTransform:
   - {fileID: 487822915}
   m_Father: {fileID: 2055250933}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &144382315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1260,12 +1333,12 @@ MonoBehaviour:
   _allowedMouseButtons: 1
   _transitionType: 1
   _transitionColorTint:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: .235294119}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: .564705908}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: .890196085}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .313725501}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.23529412}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.5647059}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.8901961}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.3137255}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -1345,7 +1418,7 @@ MonoBehaviour:
   _digitalAxisGravity: 1
   _digitalAxisSensitivity: 1
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -1358,18 +1431,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -1389,8 +1465,7 @@ MonoBehaviour:
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1418,9 +1493,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 176975803}
+  - component: {fileID: 176975803}
   m_Layer: 5
   m_Name: Handle Slide Area
   m_TagString: Untagged
@@ -1441,20 +1516,21 @@ RectTransform:
   - {fileID: 432532649}
   m_Father: {fileID: 139568039}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &180406635
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 180406636}
-  - 114: {fileID: 180406637}
+  - component: {fileID: 180406636}
+  - component: {fileID: 180406637}
   m_Layer: 5
   m_Name: Column
   m_TagString: Untagged
@@ -1477,11 +1553,12 @@ RectTransform:
   - {fileID: 814517139}
   m_Father: {fileID: 1647707791}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &180406637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1502,18 +1579,20 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &190481288
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 190481289}
-  - 114: {fileID: 190481292}
-  - 222: {fileID: 190481291}
-  - 114: {fileID: 190481290}
-  - 114: {fileID: 190481293}
+  - component: {fileID: 190481289}
+  - component: {fileID: 190481292}
+  - component: {fileID: 190481291}
+  - component: {fileID: 190481290}
+  - component: {fileID: 190481293}
   m_Layer: 5
   m_Name: OrangeButton
   m_TagString: Untagged
@@ -1534,6 +1613,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 678097204}
   m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1553,6 +1633,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 56f0c0119b66e6948bd3de969381581b, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -1589,9 +1675,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -1671,7 +1757,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -1684,18 +1770,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -1745,15 +1834,16 @@ MonoBehaviour:
   m_PreferredHeight: 50
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &192761436
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 192761437}
-  - 114: {fileID: 192761438}
+  - component: {fileID: 192761437}
+  - component: {fileID: 192761438}
   m_Layer: 5
   m_Name: Column
   m_TagString: Untagged
@@ -1775,11 +1865,12 @@ RectTransform:
   - {fileID: 1531769767}
   m_Father: {fileID: 1773420610}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &192761438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1800,17 +1891,19 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &230154991
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 230154992}
-  - 222: {fileID: 230154994}
-  - 114: {fileID: 230154993}
-  - 114: {fileID: 230154995}
+  - component: {fileID: 230154992}
+  - component: {fileID: 230154994}
+  - component: {fileID: 230154993}
+  - component: {fileID: 230154995}
   m_Layer: 5
   m_Name: Text - Colors
   m_TagString: Untagged
@@ -1830,11 +1923,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 97177098}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: .5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &230154993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1848,6 +1942,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
@@ -1856,6 +1956,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -1885,15 +1986,16 @@ MonoBehaviour:
   m_PreferredHeight: 12
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &232173270
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 232173271}
-  - 114: {fileID: 232173272}
+  - component: {fileID: 232173271}
+  - component: {fileID: 232173272}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -1914,11 +2016,12 @@ RectTransform:
   - {fileID: 2008822418}
   m_Father: {fileID: 192761437}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &232173272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1937,17 +2040,18 @@ MonoBehaviour:
   m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &237860300
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 237860301}
-  - 222: {fileID: 237860304}
-  - 114: {fileID: 237860303}
-  - 114: {fileID: 237860302}
+  - component: {fileID: 237860301}
+  - component: {fileID: 237860304}
+  - component: {fileID: 237860303}
+  - component: {fileID: 237860302}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1967,11 +2071,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2008822418}
   m_RootOrder: 0
-  m_AnchorMin: {x: .5, y: .5}
-  m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 0, y: 3.4000001}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 3.4}
   m_SizeDelta: {x: 25, y: 20}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &237860302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1986,12 +2091,12 @@ MonoBehaviour:
   _visible: 1
   _transitionType: 1
   _transitionColorTint:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: .294117659}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.29411766}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -2016,7 +2121,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: .860294104, b: .860294104, a: .843137264}
+  m_Color: {r: 1, g: 0.8602941, b: 0.8602941, a: 0.84313726}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 8e0cb7e7dc5f5a54ab9e388c6b9b5999, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2036,11 +2147,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 253627435}
-  - 114: {fileID: 253627436}
-  - 114: {fileID: 253627437}
+  - component: {fileID: 253627435}
+  - component: {fileID: 253627436}
+  - component: {fileID: 253627437}
   m_Layer: 5
   m_Name: Row
   m_TagString: Untagged
@@ -2061,11 +2172,12 @@ RectTransform:
   - {fileID: 1896974237}
   m_Father: {fileID: 440162704}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &253627436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2086,6 +2198,8 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!114 &253627437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2104,18 +2218,19 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: 1
+  m_LayoutPriority: 1
 --- !u!1 &272555647
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 272555648}
-  - 222: {fileID: 272555651}
-  - 114: {fileID: 272555650}
-  - 114: {fileID: 272555649}
-  - 114: {fileID: 272555652}
+  - component: {fileID: 272555648}
+  - component: {fileID: 272555651}
+  - component: {fileID: 272555650}
+  - component: {fileID: 272555649}
+  - component: {fileID: 272555652}
   m_Layer: 0
   m_Name: Touch Region - Move To Touch
   m_TagString: Untagged
@@ -2135,11 +2250,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 811901483}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: 1}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &272555649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2160,9 +2276,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .5}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -2216,7 +2332,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: .25}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.25}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: acd8278e920cf5e46bbef8a57bd04ae5, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -2249,15 +2371,16 @@ MonoBehaviour:
   m_PreferredHeight: 100
   m_FlexibleWidth: 1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &279599464
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 279599465}
-  - 114: {fileID: 279599466}
+  - component: {fileID: 279599465}
+  - component: {fileID: 279599466}
   m_Layer: 5
   m_Name: Column
   m_TagString: Untagged
@@ -2279,11 +2402,12 @@ RectTransform:
   - {fileID: 31296587}
   m_Father: {fileID: 1773420610}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &279599466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2304,16 +2428,18 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &281555289
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 281555290}
-  - 222: {fileID: 281555292}
-  - 114: {fileID: 281555291}
+  - component: {fileID: 281555290}
+  - component: {fileID: 281555292}
+  - component: {fileID: 281555291}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -2333,11 +2459,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 101349635}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: .25}
-  m_AnchorMax: {x: 1, y: .75}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &281555291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2351,6 +2478,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -2370,12 +2503,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 294340185}
-  - 114: {fileID: 294340188}
-  - 222: {fileID: 294340187}
-  - 114: {fileID: 294340186}
+  - component: {fileID: 294340185}
+  - component: {fileID: 294340188}
+  - component: {fileID: 294340187}
+  - component: {fileID: 294340186}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -2396,11 +2529,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1635047854}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &294340186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2415,6 +2549,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2451,9 +2591,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -2533,7 +2673,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -2546,18 +2686,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -2594,13 +2737,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 359297670}
-  - 222: {fileID: 359297673}
-  - 114: {fileID: 359297672}
-  - 114: {fileID: 359297671}
-  - 114: {fileID: 359297674}
+  - component: {fileID: 359297670}
+  - component: {fileID: 359297673}
+  - component: {fileID: 359297672}
+  - component: {fileID: 359297671}
+  - component: {fileID: 359297674}
   m_Layer: 0
   m_Name: Touch Region - Appear
   m_TagString: Untagged
@@ -2620,11 +2763,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1801719370}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: 1}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &359297671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2645,9 +2789,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .5}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -2701,7 +2845,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: .25}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.25}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: acd8278e920cf5e46bbef8a57bd04ae5, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -2734,15 +2884,16 @@ MonoBehaviour:
   m_PreferredHeight: 100
   m_FlexibleWidth: 1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &380920289
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 380920290}
-  - 114: {fileID: 380920291}
+  - component: {fileID: 380920290}
+  - component: {fileID: 380920291}
   m_Layer: 5
   m_Name: ColumnContainer
   m_TagString: Untagged
@@ -2763,11 +2914,12 @@ RectTransform:
   - {fileID: 97177098}
   m_Father: {fileID: 1320630743}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &380920291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2788,16 +2940,18 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &386367843
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 386367844}
-  - 114: {fileID: 386367845}
-  - 114: {fileID: 386367846}
+  - component: {fileID: 386367844}
+  - component: {fileID: 386367845}
+  - component: {fileID: 386367846}
   m_Layer: 5
   m_Name: Row
   m_TagString: Untagged
@@ -2818,11 +2972,12 @@ RectTransform:
   - {fileID: 1647707791}
   m_Father: {fileID: 440162704}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &386367845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2843,6 +2998,8 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!114 &386367846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2861,16 +3018,17 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: 1
+  m_LayoutPriority: 1
 --- !u!1 &432532648
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 432532649}
-  - 222: {fileID: 432532651}
-  - 114: {fileID: 432532650}
+  - component: {fileID: 432532649}
+  - component: {fileID: 432532651}
+  - component: {fileID: 432532650}
   m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
@@ -2890,11 +3048,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 176975803}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &432532650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2908,6 +3067,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -2927,10 +3092,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 440162704}
-  - 114: {fileID: 440162705}
+  - component: {fileID: 440162704}
+  - component: {fileID: 440162705}
   m_Layer: 5
   m_Name: LayoutContainer
   m_TagString: Untagged
@@ -2955,11 +3120,12 @@ RectTransform:
   - {fileID: 1320630743}
   m_Father: {fileID: 1991749805}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &440162705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2980,16 +3146,18 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &456842160
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 456842161}
-  - 222: {fileID: 456842163}
-  - 114: {fileID: 456842162}
+  - component: {fileID: 456842161}
+  - component: {fileID: 456842163}
+  - component: {fileID: 456842162}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -3009,11 +3177,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 955718201}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &456842162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3027,6 +3196,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -3046,10 +3221,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 477675068}
-  - 114: {fileID: 477675069}
+  - component: {fileID: 477675068}
+  - component: {fileID: 477675069}
   m_Layer: 5
   m_Name: Column
   m_TagString: Untagged
@@ -3072,11 +3247,12 @@ RectTransform:
   - {fileID: 1435919791}
   m_Father: {fileID: 1647707791}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &477675069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3097,17 +3273,19 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &487822914
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 135296, guid: 8711b5b1c35af8a4cae8214b74dae048, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 487822915}
-  - 222: {fileID: 487822918}
-  - 114: {fileID: 487822917}
-  - 114: {fileID: 487822916}
+  - component: {fileID: 487822915}
+  - component: {fileID: 487822918}
+  - component: {fileID: 487822917}
+  - component: {fileID: 487822916}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -3128,11 +3306,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 144382314}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &487822916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3151,7 +3330,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .5}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5}
     m_ColorMultiplier: 1
     m_FadeDuration: 0
   _transitionSpriteState:
@@ -3180,6 +3359,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 12
@@ -3188,6 +3373,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -3205,12 +3391,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 495738644}
-  - 222: {fileID: 495738646}
-  - 114: {fileID: 495738645}
-  - 114: {fileID: 495738647}
+  - component: {fileID: 495738644}
+  - component: {fileID: 495738646}
+  - component: {fileID: 495738645}
+  - component: {fileID: 495738647}
   m_Layer: 5
   m_Name: Text - Axis settings
   m_TagString: Untagged
@@ -3230,11 +3416,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1366246180}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &495738645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3248,6 +3435,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
@@ -3256,6 +3449,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -3287,16 +3481,17 @@ MonoBehaviour:
   m_PreferredHeight: 24
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &512519273
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 512519274}
-  - 222: {fileID: 512519276}
-  - 114: {fileID: 512519275}
+  - component: {fileID: 512519274}
+  - component: {fileID: 512519276}
+  - component: {fileID: 512519275}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3316,11 +3511,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1677070000}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -16, y: -16}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &512519275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3334,6 +3530,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 63f851d65d7260443b6c3d1b1d469729, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 7cd91641af0dda941953c6781ecbdd40, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3353,10 +3555,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 513033865}
-  - 114: {fileID: 513033866}
+  - component: {fileID: 513033865}
+  - component: {fileID: 513033866}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -3377,11 +3579,12 @@ RectTransform:
   - {fileID: 90039646}
   m_Father: {fileID: 535943882}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &513033866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3400,16 +3603,17 @@ MonoBehaviour:
   m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &519247842
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 519247843}
-  - 222: {fileID: 519247845}
-  - 114: {fileID: 519247844}
+  - component: {fileID: 519247843}
+  - component: {fileID: 519247845}
+  - component: {fileID: 519247844}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -3429,11 +3633,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 139568039}
   m_RootOrder: 0
-  m_AnchorMin: {x: 0, y: .25}
-  m_AnchorMax: {x: 1, y: .75}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &519247844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3447,6 +3652,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 1
   m_PreserveAspect: 0
@@ -3466,10 +3677,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 535943882}
-  - 114: {fileID: 535943883}
+  - component: {fileID: 535943882}
+  - component: {fileID: 535943883}
   m_Layer: 5
   m_Name: ButtonGroup
   m_TagString: Untagged
@@ -3492,11 +3703,12 @@ RectTransform:
   - {fileID: 139568039}
   m_Father: {fileID: 1058144311}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &535943883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3517,17 +3729,19 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &540507187
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 540507188}
-  - 114: {fileID: 540507191}
-  - 222: {fileID: 540507190}
-  - 114: {fileID: 540507189}
+  - component: {fileID: 540507188}
+  - component: {fileID: 540507191}
+  - component: {fileID: 540507190}
+  - component: {fileID: 540507189}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -3548,11 +3762,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1712982621}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &540507189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3567,6 +3782,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -3603,9 +3824,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -3685,7 +3906,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -3698,18 +3919,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -3746,10 +3970,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 555673541}
-  - 114: {fileID: 555673542}
+  - component: {fileID: 555673541}
+  - component: {fileID: 555673542}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -3770,11 +3994,12 @@ RectTransform:
   - {fileID: 1611439292}
   m_Father: {fileID: 811901483}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &555673542
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3793,17 +4018,18 @@ MonoBehaviour:
   m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &599790253
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 599790254}
-  - 222: {fileID: 599790256}
-  - 114: {fileID: 599790255}
-  - 114: {fileID: 599790257}
+  - component: {fileID: 599790254}
+  - component: {fileID: 599790256}
+  - component: {fileID: 599790255}
+  - component: {fileID: 599790257}
   m_Layer: 5
   m_Name: Text - Use Mouse Buttons
   m_TagString: Untagged
@@ -3823,11 +4049,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2075784234}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1, y: .5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &599790255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3841,6 +4068,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
@@ -3849,6 +4082,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -3878,15 +4112,16 @@ MonoBehaviour:
   m_PreferredHeight: 24
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &664264717
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 664264718}
-  - 114: {fileID: 664264719}
+  - component: {fileID: 664264718}
+  - component: {fileID: 664264719}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -3907,11 +4142,12 @@ RectTransform:
   - {fileID: 143094733}
   m_Father: {fileID: 477675068}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &664264719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3930,15 +4166,16 @@ MonoBehaviour:
   m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &678097203
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 678097204}
-  - 114: {fileID: 678097205}
+  - component: {fileID: 678097204}
+  - component: {fileID: 678097205}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -3970,11 +4207,12 @@ RectTransform:
   - {fileID: 1765678130}
   m_Father: {fileID: 97177098}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &678097205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3995,18 +4233,20 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &697078258
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 697078259}
-  - 114: {fileID: 697078263}
-  - 222: {fileID: 697078262}
-  - 114: {fileID: 697078261}
-  - 114: {fileID: 697078260}
+  - component: {fileID: 697078259}
+  - component: {fileID: 697078263}
+  - component: {fileID: 697078262}
+  - component: {fileID: 697078261}
+  - component: {fileID: 697078260}
   m_Layer: 5
   m_Name: LightBlueButton
   m_TagString: Untagged
@@ -4027,6 +4267,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 678097204}
   m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -4050,6 +4291,7 @@ MonoBehaviour:
   m_PreferredHeight: 50
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &697078261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4064,6 +4306,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 9dcadb48a584dd24083f93a1c1a00aba, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -4100,9 +4348,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -4182,7 +4430,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -4195,18 +4443,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -4243,13 +4494,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 699944711}
-  - 222: {fileID: 699944715}
-  - 114: {fileID: 699944713}
-  - 114: {fileID: 699944712}
-  - 114: {fileID: 699944714}
+  - component: {fileID: 699944711}
+  - component: {fileID: 699944715}
+  - component: {fileID: 699944713}
+  - component: {fileID: 699944712}
+  - component: {fileID: 699944714}
   m_Layer: 0
   m_Name: Touch Region - Remote Activation
   m_TagString: Untagged
@@ -4269,6 +4520,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 180406636}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -4294,9 +4546,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .5}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -4350,7 +4602,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: .250980407}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.2509804}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: acd8278e920cf5e46bbef8a57bd04ae5, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -4377,6 +4635,7 @@ MonoBehaviour:
   m_PreferredHeight: 100
   m_FlexibleWidth: 1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!222 &699944715
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4388,12 +4647,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 718175908}
-  - 222: {fileID: 718175910}
-  - 114: {fileID: 718175909}
-  - 114: {fileID: 718175911}
+  - component: {fileID: 718175908}
+  - component: {fileID: 718175910}
+  - component: {fileID: 718175909}
+  - component: {fileID: 718175911}
   m_Layer: 5
   m_Name: Text - Multiple Transitions
   m_TagString: Untagged
@@ -4413,11 +4672,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 16949045}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1, y: .5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &718175909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4431,6 +4691,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
@@ -4439,6 +4705,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -4470,15 +4737,16 @@ MonoBehaviour:
   m_PreferredHeight: 36
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &731806880
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 731806881}
-  - 114: {fileID: 731806882}
+  - component: {fileID: 731806881}
+  - component: {fileID: 731806882}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -4499,11 +4767,12 @@ RectTransform:
   - {fileID: 1821839041}
   m_Father: {fileID: 1801719370}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &731806882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4522,18 +4791,19 @@ MonoBehaviour:
   m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &745753513
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 745753514}
-  - 114: {fileID: 745753517}
-  - 222: {fileID: 745753516}
-  - 114: {fileID: 745753515}
-  - 114: {fileID: 745753518}
+  - component: {fileID: 745753514}
+  - component: {fileID: 745753517}
+  - component: {fileID: 745753516}
+  - component: {fileID: 745753515}
+  - component: {fileID: 745753518}
   m_Layer: 5
   m_Name: PinkButton
   m_TagString: Untagged
@@ -4554,6 +4824,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 678097204}
   m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -4573,6 +4844,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: f87f61d8b0c32fb409c66f8f90045549, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -4609,9 +4886,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -4691,7 +4968,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -4704,18 +4981,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -4765,15 +5045,16 @@ MonoBehaviour:
   m_PreferredHeight: 50
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &766700585
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 766700586}
-  - 114: {fileID: 766700587}
+  - component: {fileID: 766700586}
+  - component: {fileID: 766700587}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -4794,11 +5075,12 @@ RectTransform:
   - {fileID: 1101939262}
   m_Father: {fileID: 180406636}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &766700587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4817,15 +5099,16 @@ MonoBehaviour:
   m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &811901482
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 811901483}
-  - 114: {fileID: 811901484}
+  - component: {fileID: 811901483}
+  - component: {fileID: 811901484}
   m_Layer: 5
   m_Name: Column
   m_TagString: Untagged
@@ -4848,11 +5131,12 @@ RectTransform:
   - {fileID: 1981553571}
   m_Father: {fileID: 1647707791}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &811901484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4873,17 +5157,19 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &814517138
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 814517139}
-  - 222: {fileID: 814517142}
-  - 114: {fileID: 814517141}
-  - 114: {fileID: 814517140}
+  - component: {fileID: 814517139}
+  - component: {fileID: 814517142}
+  - component: {fileID: 814517141}
+  - component: {fileID: 814517140}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -4903,11 +5189,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 180406636}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &814517140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4926,6 +5213,7 @@ MonoBehaviour:
   m_PreferredHeight: 24
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &814517141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4939,6 +5227,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
@@ -4947,6 +5241,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -4963,10 +5258,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 827651479}
-  - 114: {fileID: 827651480}
+  - component: {fileID: 827651479}
+  - component: {fileID: 827651480}
   m_Layer: 5
   m_Name: Column
   m_TagString: Untagged
@@ -4987,11 +5282,12 @@ RectTransform:
   - {fileID: 1366246180}
   m_Father: {fileID: 1896974237}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &827651480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5012,14 +5308,16 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &949372282
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 949372283}
+  - component: {fileID: 949372283}
   m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
@@ -5040,19 +5338,20 @@ RectTransform:
   - {fileID: 108416308}
   m_Father: {fileID: 101349635}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: .25}
-  m_AnchorMax: {x: 1, y: .75}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &955718200
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 955718201}
+  - component: {fileID: 955718201}
   m_Layer: 5
   m_Name: Fill Area
   m_TagString: Untagged
@@ -5073,20 +5372,21 @@ RectTransform:
   - {fileID: 456842161}
   m_Father: {fileID: 139568039}
   m_RootOrder: 1
-  m_AnchorMin: {x: 0, y: .25}
-  m_AnchorMax: {x: 1, y: .75}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0.25}
+  m_AnchorMax: {x: 1, y: 0.75}
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1000162951
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1000162952}
-  - 114: {fileID: 1000162953}
+  - component: {fileID: 1000162952}
+  - component: {fileID: 1000162953}
   m_Layer: 5
   m_Name: Column
   m_TagString: Untagged
@@ -5108,11 +5408,12 @@ RectTransform:
   - {fileID: 1963580550}
   m_Father: {fileID: 1773420610}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1000162953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5133,17 +5434,19 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &1039811585
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 107876, guid: 68de740e0e61e9741904c17e65592b94, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1039811586}
-  - 114: {fileID: 1039811589}
-  - 222: {fileID: 1039811588}
-  - 114: {fileID: 1039811587}
+  - component: {fileID: 1039811586}
+  - component: {fileID: 1039811589}
+  - component: {fileID: 1039811588}
+  - component: {fileID: 1039811587}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -5164,11 +5467,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1747734167}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1039811587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5183,6 +5487,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 3c72351d99bf64a4eb85a49e5b37ccdf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -5219,9 +5529,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: cbd6dd70d79e29a44a54beee708af991, type: 3}
@@ -5301,7 +5611,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -5314,18 +5624,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -5362,10 +5675,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1058144311}
-  - 114: {fileID: 1058144312}
+  - component: {fileID: 1058144311}
+  - component: {fileID: 1058144312}
   m_Layer: 5
   m_Name: Column
   m_TagString: Untagged
@@ -5386,11 +5699,12 @@ RectTransform:
   - {fileID: 535943882}
   m_Father: {fileID: 1896974237}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1058144312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5411,17 +5725,19 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &1101939261
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 193986, guid: 32572d979f27e364b84cd62a452b078b, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1101939262}
-  - 114: {fileID: 1101939266}
-  - 222: {fileID: 1101939265}
-  - 114: {fileID: 1101939264}
+  - component: {fileID: 1101939262}
+  - component: {fileID: 1101939266}
+  - component: {fileID: 1101939265}
+  - component: {fileID: 1101939264}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -5442,11 +5758,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 766700586}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.62939453e-06, y: 0}
+  m_AnchoredPosition: {x: 0.0000076293945, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1101939264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5461,6 +5778,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 3c72351d99bf64a4eb85a49e5b37ccdf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -5494,12 +5817,12 @@ MonoBehaviour:
   _allowedMouseButtons: 1
   _transitionType: 3
   _transitionColorTint:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: .392156869}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.39215687}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: cbd6dd70d79e29a44a54beee708af991, type: 3}
@@ -5579,7 +5902,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -5592,18 +5915,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 699944712}
   _useTouchRegionOnly: 0
@@ -5640,12 +5966,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 161380, guid: 8711b5b1c35af8a4cae8214b74dae048, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1137516602}
-  - 222: {fileID: 1137516605}
-  - 114: {fileID: 1137516604}
-  - 114: {fileID: 1137516603}
+  - component: {fileID: 1137516602}
+  - component: {fileID: 1137516605}
+  - component: {fileID: 1137516604}
+  - component: {fileID: 1137516603}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -5666,11 +5992,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 90039646}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1137516603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5686,12 +6013,12 @@ MonoBehaviour:
   _visible: 1
   _transitionType: 1
   _transitionColorTint:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: .235294119}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: .564705908}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: .890196085}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .313725501}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.23529412}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.5647059}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.8901961}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.3137255}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -5717,7 +6044,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .717647076}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7176471}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: b1af90ce03a007349aa9428d646a0939, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -5738,13 +6071,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1231945564}
-  - 114: {fileID: 1231945568}
-  - 222: {fileID: 1231945567}
-  - 114: {fileID: 1231945566}
-  - 114: {fileID: 1231945565}
+  - component: {fileID: 1231945564}
+  - component: {fileID: 1231945568}
+  - component: {fileID: 1231945567}
+  - component: {fileID: 1231945566}
+  - component: {fileID: 1231945565}
   m_Layer: 5
   m_Name: MagentaButton
   m_TagString: Untagged
@@ -5765,6 +6098,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 678097204}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -5788,6 +6122,7 @@ MonoBehaviour:
   m_PreferredHeight: 50
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &1231945566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5802,6 +6137,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 9eba4d2bb116dba4ca8673e3c747ebbf, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -5838,9 +6179,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -5920,7 +6261,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -5933,18 +6274,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -5981,12 +6325,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1242329241}
-  - 222: {fileID: 1242329244}
-  - 114: {fileID: 1242329243}
-  - 114: {fileID: 1242329242}
+  - component: {fileID: 1242329241}
+  - component: {fileID: 1242329244}
+  - component: {fileID: 1242329243}
+  - component: {fileID: 1242329242}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -6006,11 +6350,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1267752152}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1242329242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6029,6 +6374,7 @@ MonoBehaviour:
   m_PreferredHeight: 24
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &1242329243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6042,6 +6388,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
@@ -6050,6 +6402,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -6066,10 +6419,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1267752152}
-  - 114: {fileID: 1267752153}
+  - component: {fileID: 1267752152}
+  - component: {fileID: 1267752153}
   m_Layer: 5
   m_Name: Row
   m_TagString: Untagged
@@ -6090,11 +6443,12 @@ RectTransform:
   - {fileID: 1242329241}
   m_Father: {fileID: 440162704}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1267752153
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6115,18 +6469,20 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &1297235611
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1297235612}
-  - 114: {fileID: 1297235616}
-  - 222: {fileID: 1297235615}
-  - 114: {fileID: 1297235614}
-  - 114: {fileID: 1297235613}
+  - component: {fileID: 1297235612}
+  - component: {fileID: 1297235616}
+  - component: {fileID: 1297235615}
+  - component: {fileID: 1297235614}
+  - component: {fileID: 1297235613}
   m_Layer: 5
   m_Name: WhiteButton
   m_TagString: Untagged
@@ -6147,6 +6503,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 678097204}
   m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -6170,6 +6527,7 @@ MonoBehaviour:
   m_PreferredHeight: 50
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &1297235614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6184,6 +6542,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 927901c7309b8f548a698a3625b9f1c0, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -6220,9 +6584,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -6302,7 +6666,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -6315,18 +6679,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -6363,13 +6730,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1309302958}
-  - 20: {fileID: 1309302957}
-  - 92: {fileID: 1309302956}
-  - 124: {fileID: 1309302955}
-  - 81: {fileID: 1309302954}
+  - component: {fileID: 1309302958}
+  - component: {fileID: 1309302957}
+  - component: {fileID: 1309302956}
+  - component: {fileID: 1309302955}
+  - component: {fileID: 1309302954}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -6407,14 +6774,14 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: .192156866, g: .301960796, b: .474509805, a: .0196078438}
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 1
     height: 1
-  near clip plane: .300000012
+  near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
   orthographic: 0
@@ -6426,10 +6793,14 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
+  m_AllowMSAA: 1
+  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
-  m_StereoSeparation: .0219999999
+  m_StereoSeparation: 0.022
+  m_StereoMirrorMode: 0
 --- !u!4 &1309302958
 Transform:
   m_ObjectHideFlags: 0
@@ -6442,15 +6813,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1313371653
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1313371654}
-  - 114: {fileID: 1313371655}
+  - component: {fileID: 1313371654}
+  - component: {fileID: 1313371655}
   m_Layer: 5
   m_Name: Column
   m_TagString: Untagged
@@ -6472,11 +6844,12 @@ RectTransform:
   - {fileID: 1966164466}
   m_Father: {fileID: 1896974237}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1313371655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6497,16 +6870,18 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &1320630742
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1320630743}
-  - 114: {fileID: 1320630744}
-  - 114: {fileID: 1320630745}
+  - component: {fileID: 1320630743}
+  - component: {fileID: 1320630744}
+  - component: {fileID: 1320630745}
   m_Layer: 5
   m_Name: Row
   m_TagString: Untagged
@@ -6527,11 +6902,12 @@ RectTransform:
   - {fileID: 380920290}
   m_Father: {fileID: 440162704}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1320630744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6552,6 +6928,8 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!114 &1320630745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6570,18 +6948,19 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: 1
+  m_LayoutPriority: 1
 --- !u!1 &1337850318
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1337850319}
-  - 114: {fileID: 1337850323}
-  - 222: {fileID: 1337850322}
-  - 114: {fileID: 1337850321}
-  - 114: {fileID: 1337850320}
+  - component: {fileID: 1337850319}
+  - component: {fileID: 1337850323}
+  - component: {fileID: 1337850322}
+  - component: {fileID: 1337850321}
+  - component: {fileID: 1337850320}
   m_Layer: 5
   m_Name: RedButton
   m_TagString: Untagged
@@ -6602,6 +6981,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 678097204}
   m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -6625,6 +7005,7 @@ MonoBehaviour:
   m_PreferredHeight: 50
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &1337850321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6639,6 +7020,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 0891b1f60e141714792340ab4ada1c26, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -6675,9 +7062,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -6757,7 +7144,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -6770,18 +7157,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -6818,10 +7208,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1366246180}
-  - 114: {fileID: 1366246181}
+  - component: {fileID: 1366246180}
+  - component: {fileID: 1366246181}
   m_Layer: 5
   m_Name: ButtonGroup
   m_TagString: Untagged
@@ -6844,11 +7234,12 @@ RectTransform:
   - {fileID: 101349635}
   m_Father: {fileID: 827651479}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1366246181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6869,15 +7260,17 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &1374976537
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 1374976539}
-  - 108: {fileID: 1374976538}
+  - component: {fileID: 1374976539}
+  - component: {fileID: 1374976538}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -6892,9 +7285,9 @@ Light:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1374976537}
   m_Enabled: 1
-  serializedVersion: 6
+  serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: .956862748, b: .839215696, a: 1}
+  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -6902,9 +7295,11 @@ Light:
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
+    m_CustomResolution: -1
     m_Strength: 1
-    m_Bias: .0500000007
-    m_NormalBias: .400000006
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
   m_Cookie: {fileID: 0}
   m_DrawHalo: 0
   m_Flare: {fileID: 0}
@@ -6913,34 +7308,37 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
-  m_AreaSize: {x: 1, y: 1}
 --- !u!4 &1374976539
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1374976537}
-  m_LocalRotation: {x: .408217937, y: -.234569728, z: .109381676, w: .875426054}
+  m_LocalRotation: {x: 0.40821794, y: -0.23456973, z: 0.109381676, w: 0.87542605}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1380169909
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1380169910}
-  - 222: {fileID: 1380169913}
-  - 114: {fileID: 1380169912}
-  - 114: {fileID: 1380169911}
-  - 114: {fileID: 1380169914}
+  - component: {fileID: 1380169910}
+  - component: {fileID: 1380169913}
+  - component: {fileID: 1380169912}
+  - component: {fileID: 1380169911}
+  - component: {fileID: 1380169914}
   m_Layer: 0
   m_Name: Touch Region - Follow Touch
   m_TagString: Untagged
@@ -6960,11 +7358,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 477675068}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: 1}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1380169911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6985,9 +7384,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .5}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -7041,7 +7440,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: .25}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.25}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: acd8278e920cf5e46bbef8a57bd04ae5, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
@@ -7074,15 +7479,16 @@ MonoBehaviour:
   m_PreferredHeight: 100
   m_FlexibleWidth: 1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1398753806
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1398753807}
-  - 114: {fileID: 1398753808}
+  - component: {fileID: 1398753807}
+  - component: {fileID: 1398753808}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -7103,11 +7509,12 @@ RectTransform:
   - {fileID: 1677070000}
   m_Father: {fileID: 16949045}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1398753808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7126,18 +7533,19 @@ MonoBehaviour:
   m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1414901404
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1414901405}
-  - 114: {fileID: 1414901408}
-  - 222: {fileID: 1414901407}
-  - 114: {fileID: 1414901406}
-  - 114: {fileID: 1414901409}
+  - component: {fileID: 1414901405}
+  - component: {fileID: 1414901408}
+  - component: {fileID: 1414901407}
+  - component: {fileID: 1414901406}
+  - component: {fileID: 1414901409}
   m_Layer: 5
   m_Name: GreenButton
   m_TagString: Untagged
@@ -7158,6 +7566,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 678097204}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -7177,6 +7586,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: efb079c54f2c23a4581f993b105d8924, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -7213,9 +7628,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -7295,7 +7710,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -7308,18 +7723,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -7369,16 +7787,17 @@ MonoBehaviour:
   m_PreferredHeight: 50
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1432001562
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 145466, guid: 8711b5b1c35af8a4cae8214b74dae048, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1432001563}
-  - 222: {fileID: 1432001565}
-  - 114: {fileID: 1432001564}
+  - component: {fileID: 1432001563}
+  - component: {fileID: 1432001565}
+  - component: {fileID: 1432001564}
   m_Layer: 5
   m_Name: Outline
   m_TagString: Untagged
@@ -7399,11 +7818,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 144382314}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1432001564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7417,7 +7837,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .776470602}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7764706}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: b8d1d095a37b3f944bc7f2898821a393, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -7438,12 +7864,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1435919791}
-  - 222: {fileID: 1435919793}
-  - 114: {fileID: 1435919792}
-  - 114: {fileID: 1435919794}
+  - component: {fileID: 1435919791}
+  - component: {fileID: 1435919793}
+  - component: {fileID: 1435919792}
+  - component: {fileID: 1435919794}
   m_Layer: 5
   m_Name: Text - Follow Touch
   m_TagString: Untagged
@@ -7463,11 +7889,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 477675068}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1435919792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7481,6 +7908,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
@@ -7489,6 +7922,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -7520,17 +7954,18 @@ MonoBehaviour:
   m_PreferredHeight: 24
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1531769766
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1531769767}
-  - 222: {fileID: 1531769769}
-  - 114: {fileID: 1531769768}
-  - 114: {fileID: 1531769770}
+  - component: {fileID: 1531769767}
+  - component: {fileID: 1531769769}
+  - component: {fileID: 1531769768}
+  - component: {fileID: 1531769770}
   m_Layer: 5
   m_Name: Text - Multi-part Buttons
   m_TagString: Untagged
@@ -7550,11 +7985,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 192761437}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1, y: .5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1531769768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7568,6 +8004,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
@@ -7576,6 +8018,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -7607,16 +8050,17 @@ MonoBehaviour:
   m_PreferredHeight: 36
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1552213696
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1552213697}
-  - 222: {fileID: 1552213699}
-  - 114: {fileID: 1552213698}
+  - component: {fileID: 1552213697}
+  - component: {fileID: 1552213699}
+  - component: {fileID: 1552213698}
   m_Layer: 5
   m_Name: Handle
   m_TagString: Untagged
@@ -7636,11 +8080,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1595609269}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1552213698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7654,6 +8099,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -7673,12 +8124,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 107876, guid: 68de740e0e61e9741904c17e65592b94, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1589905723}
-  - 114: {fileID: 1589905726}
-  - 222: {fileID: 1589905725}
-  - 114: {fileID: 1589905724}
+  - component: {fileID: 1589905723}
+  - component: {fileID: 1589905726}
+  - component: {fileID: 1589905725}
+  - component: {fileID: 1589905724}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -7699,11 +8150,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1678178064}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1589905724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7718,6 +8170,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 3c72351d99bf64a4eb85a49e5b37ccdf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -7754,9 +8212,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: cbd6dd70d79e29a44a54beee708af991, type: 3}
@@ -7836,7 +8294,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -7849,18 +8307,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -7897,9 +8358,9 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1595609269}
+  - component: {fileID: 1595609269}
   m_Layer: 5
   m_Name: Handle Slide Area
   m_TagString: Untagged
@@ -7920,22 +8381,23 @@ RectTransform:
   - {fileID: 1552213697}
   m_Father: {fileID: 101349635}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1611439291
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1611439292}
-  - 114: {fileID: 1611439295}
-  - 222: {fileID: 1611439294}
-  - 114: {fileID: 1611439293}
+  - component: {fileID: 1611439292}
+  - component: {fileID: 1611439295}
+  - component: {fileID: 1611439294}
+  - component: {fileID: 1611439293}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -7956,11 +8418,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 555673541}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -7.62939453e-06, y: 0}
+  m_AnchoredPosition: {x: -0.0000076293945, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1611439293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7975,6 +8438,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -8011,9 +8480,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -8093,7 +8562,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -8106,18 +8575,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 272555649}
   _useTouchRegionOnly: 0
@@ -8154,10 +8626,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1635047854}
-  - 114: {fileID: 1635047855}
+  - component: {fileID: 1635047854}
+  - component: {fileID: 1635047855}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -8178,11 +8650,12 @@ RectTransform:
   - {fileID: 294340185}
   m_Father: {fileID: 1313371654}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1635047855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8201,15 +8674,16 @@ MonoBehaviour:
   m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1647707790
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1647707791}
-  - 114: {fileID: 1647707792}
+  - component: {fileID: 1647707791}
+  - component: {fileID: 1647707792}
   m_Layer: 5
   m_Name: RowContainer
   m_TagString: Untagged
@@ -8233,11 +8707,12 @@ RectTransform:
   - {fileID: 1801719370}
   m_Father: {fileID: 386367844}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1647707792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8258,18 +8733,20 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &1669269407
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1669269408}
-  - 114: {fileID: 1669269411}
-  - 222: {fileID: 1669269410}
-  - 114: {fileID: 1669269409}
-  - 114: {fileID: 1669269412}
+  - component: {fileID: 1669269408}
+  - component: {fileID: 1669269411}
+  - component: {fileID: 1669269410}
+  - component: {fileID: 1669269409}
+  - component: {fileID: 1669269412}
   m_Layer: 5
   m_Name: BlueButton
   m_TagString: Untagged
@@ -8290,6 +8767,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 678097204}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -8309,6 +8787,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 7bec8a03bc5f7c847aa17b2fa41a5836, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -8345,9 +8829,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -8427,7 +8911,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -8440,18 +8924,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -8501,15 +8988,16 @@ MonoBehaviour:
   m_PreferredHeight: 50
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1677069999
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1677070000}
-  - 114: {fileID: 1677070001}
+  - component: {fileID: 1677070000}
+  - component: {fileID: 1677070001}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -8531,11 +9019,12 @@ RectTransform:
   - {fileID: 512519274}
   m_Father: {fileID: 1398753807}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1677070001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8553,12 +9042,12 @@ MonoBehaviour:
   _allowedMouseButtons: 1
   _transitionType: 3
   _transitionColorTint:
-    m_NormalColor: {r: .470588237, g: .623529434, b: .670588255, a: 1}
+    m_NormalColor: {r: 0.47058824, g: 0.62352943, b: 0.67058825, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_PressedColor: {r: .422312349, g: 1, b: .345588207, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .53725493}
+    m_PressedColor: {r: 0.42231235, g: 1, b: 0.3455882, a: 1}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5372549}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: c4e4fed3f153c1f4c9db64aee2d6b155, type: 3}
@@ -8638,7 +9127,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -8651,18 +9140,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -8699,10 +9191,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1678178064}
-  - 114: {fileID: 1678178065}
+  - component: {fileID: 1678178064}
+  - component: {fileID: 1678178065}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -8723,11 +9215,12 @@ RectTransform:
   - {fileID: 1589905723}
   m_Father: {fileID: 279599465}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1678178065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8746,15 +9239,16 @@ MonoBehaviour:
   m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1712982620
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1712982621}
-  - 114: {fileID: 1712982622}
+  - component: {fileID: 1712982621}
+  - component: {fileID: 1712982622}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -8775,11 +9269,12 @@ RectTransform:
   - {fileID: 540507188}
   m_Father: {fileID: 2075784234}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1712982622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8798,15 +9293,16 @@ MonoBehaviour:
   m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1747734166
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1747734167}
-  - 114: {fileID: 1747734168}
+  - component: {fileID: 1747734167}
+  - component: {fileID: 1747734168}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -8827,11 +9323,12 @@ RectTransform:
   - {fileID: 1039811586}
   m_Father: {fileID: 1000162952}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1747734168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8850,18 +9347,19 @@ MonoBehaviour:
   m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1765678129
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1765678130}
-  - 114: {fileID: 1765678134}
-  - 222: {fileID: 1765678133}
-  - 114: {fileID: 1765678132}
-  - 114: {fileID: 1765678131}
+  - component: {fileID: 1765678130}
+  - component: {fileID: 1765678134}
+  - component: {fileID: 1765678133}
+  - component: {fileID: 1765678132}
+  - component: {fileID: 1765678131}
   m_Layer: 5
   m_Name: YellowButton
   m_TagString: Untagged
@@ -8882,6 +9380,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 678097204}
   m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -8905,6 +9404,7 @@ MonoBehaviour:
   m_PreferredHeight: 50
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &1765678132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8919,6 +9419,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 4c79b801f27ad5e4bb9c2ccbc38ec54e, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -8955,9 +9461,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -9037,7 +9543,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -9050,18 +9556,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -9098,10 +9607,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1773420610}
-  - 114: {fileID: 1773420611}
+  - component: {fileID: 1773420610}
+  - component: {fileID: 1773420611}
   m_Layer: 5
   m_Name: RowContainer
   m_TagString: Untagged
@@ -9125,11 +9634,12 @@ RectTransform:
   - {fileID: 16949045}
   m_Father: {fileID: 1865773134}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1773420611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9150,15 +9660,17 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &1801719369
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1801719370}
-  - 114: {fileID: 1801719371}
+  - component: {fileID: 1801719370}
+  - component: {fileID: 1801719371}
   m_Layer: 5
   m_Name: Column
   m_TagString: Untagged
@@ -9181,11 +9693,12 @@ RectTransform:
   - {fileID: 2146454478}
   m_Father: {fileID: 1647707791}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1801719371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9206,18 +9719,20 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &1821839040
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1821839041}
-  - 114: {fileID: 1821839044}
-  - 222: {fileID: 1821839043}
-  - 114: {fileID: 1821839042}
-  - 114: {fileID: 1821839045}
+  - component: {fileID: 1821839041}
+  - component: {fileID: 1821839044}
+  - component: {fileID: 1821839043}
+  - component: {fileID: 1821839042}
+  - component: {fileID: 1821839045}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -9238,11 +9753,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 731806881}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1821839042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9257,6 +9773,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -9293,9 +9815,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -9375,7 +9897,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -9388,18 +9910,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 359297671}
   _useTouchRegionOnly: 1
@@ -9449,16 +9974,17 @@ MonoBehaviour:
   m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1865773133
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1865773134}
-  - 114: {fileID: 1865773135}
-  - 114: {fileID: 1865773136}
+  - component: {fileID: 1865773134}
+  - component: {fileID: 1865773135}
+  - component: {fileID: 1865773136}
   m_Layer: 5
   m_Name: Row
   m_TagString: Untagged
@@ -9479,11 +10005,12 @@ RectTransform:
   - {fileID: 1773420610}
   m_Father: {fileID: 440162704}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1865773135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9504,6 +10031,8 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!114 &1865773136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9522,17 +10051,18 @@ MonoBehaviour:
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: 1
+  m_LayoutPriority: 1
 --- !u!1 &1869205905
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1869205906}
-  - 222: {fileID: 1869205908}
-  - 114: {fileID: 1869205907}
-  - 114: {fileID: 1869205909}
+  - component: {fileID: 1869205906}
+  - component: {fileID: 1869205908}
+  - component: {fileID: 1869205907}
+  - component: {fileID: 1869205909}
   m_Layer: 5
   m_Name: Text - Digital Axis Simulation
   m_TagString: Untagged
@@ -9552,11 +10082,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 535943882}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1869205907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9570,6 +10101,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
@@ -9578,6 +10115,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -9607,15 +10145,16 @@ MonoBehaviour:
   m_PreferredHeight: 24
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1896974235
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1896974237}
-  - 114: {fileID: 1896974236}
+  - component: {fileID: 1896974237}
+  - component: {fileID: 1896974236}
   m_Layer: 5
   m_Name: RowContainer
   m_TagString: Untagged
@@ -9643,6 +10182,8 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!224 &1896974237
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9659,23 +10200,24 @@ RectTransform:
   - {fileID: 827651479}
   m_Father: {fileID: 253627435}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1902051893
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1902051894}
-  - 114: {fileID: 1902051897}
-  - 222: {fileID: 1902051896}
-  - 114: {fileID: 1902051895}
-  - 114: {fileID: 1902051898}
+  - component: {fileID: 1902051894}
+  - component: {fileID: 1902051897}
+  - component: {fileID: 1902051896}
+  - component: {fileID: 1902051895}
+  - component: {fileID: 1902051898}
   m_Layer: 5
   m_Name: BlackButton
   m_TagString: Untagged
@@ -9696,6 +10238,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 678097204}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -9715,6 +10258,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: ca1122763da38c94b8375635418df456, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -9751,9 +10300,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -9833,7 +10382,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -9846,18 +10395,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -9907,18 +10459,19 @@ MonoBehaviour:
   m_PreferredHeight: 50
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1919308422
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1919308423}
-  - 114: {fileID: 1919308427}
-  - 222: {fileID: 1919308426}
-  - 114: {fileID: 1919308425}
-  - 114: {fileID: 1919308424}
+  - component: {fileID: 1919308423}
+  - component: {fileID: 1919308427}
+  - component: {fileID: 1919308426}
+  - component: {fileID: 1919308425}
+  - component: {fileID: 1919308424}
   m_Layer: 5
   m_Name: BrightOrangeButton
   m_TagString: Untagged
@@ -9939,6 +10492,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 678097204}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -9962,6 +10516,7 @@ MonoBehaviour:
   m_PreferredHeight: 50
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!114 &1919308425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9976,6 +10531,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: 63f851d65d7260443b6c3d1b1d469729, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -10012,9 +10573,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -10094,7 +10655,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -10107,18 +10668,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -10155,12 +10719,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 161380, guid: 8711b5b1c35af8a4cae8214b74dae048, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1943161949}
-  - 222: {fileID: 1943161952}
-  - 114: {fileID: 1943161951}
-  - 114: {fileID: 1943161950}
+  - component: {fileID: 1943161949}
+  - component: {fileID: 1943161952}
+  - component: {fileID: 1943161951}
+  - component: {fileID: 1943161950}
   m_Layer: 5
   m_Name: Fill
   m_TagString: Untagged
@@ -10181,11 +10745,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 144382314}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1943161950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10201,12 +10766,12 @@ MonoBehaviour:
   _visible: 1
   _transitionType: 1
   _transitionColorTint:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: .235294119}
-    m_HighlightedColor: {r: 1, g: 1, b: 1, a: .564705908}
-    m_PressedColor: {r: 1, g: 1, b: 1, a: .890196085}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .313725501}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.23529412}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 0.5647059}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 0.8901961}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.3137255}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -10232,7 +10797,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: .717647076}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.7176471}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: b1af90ce03a007349aa9428d646a0939, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -10253,13 +10824,13 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 148808, guid: 7c072e49f26f2814ab2de2b616c1d4b8, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1955104996}
-  - 114: {fileID: 1955104999}
-  - 222: {fileID: 1955104998}
-  - 114: {fileID: 1955104997}
-  - 114: {fileID: 1955105000}
+  - component: {fileID: 1955104996}
+  - component: {fileID: 1955104999}
+  - component: {fileID: 1955104998}
+  - component: {fileID: 1955104997}
+  - component: {fileID: 1955105000}
   m_Layer: 5
   m_Name: CyanButton
   m_TagString: Untagged
@@ -10280,6 +10851,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 678097204}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -10299,6 +10871,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: ca6f286e4e2129944bca184c5f3ff919, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: d79fab95ad3748b48bbc5e703c818f23, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -10335,9 +10913,9 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: f8910b6d8888e5d4a99d1ab4a75b5e1c, type: 3}
@@ -10417,7 +10995,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -10430,18 +11008,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -10491,17 +11072,18 @@ MonoBehaviour:
   m_PreferredHeight: 50
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1961738928
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1961738929}
-  - 222: {fileID: 1961738932}
-  - 114: {fileID: 1961738931}
-  - 114: {fileID: 1961738930}
+  - component: {fileID: 1961738929}
+  - component: {fileID: 1961738932}
+  - component: {fileID: 1961738931}
+  - component: {fileID: 1961738930}
   m_Layer: 5
   m_Name: Base
   m_TagString: Untagged
@@ -10521,11 +11103,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1677070000}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1961738930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10543,7 +11126,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .5}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5}
     m_ColorMultiplier: 1
     m_FadeDuration: 0
   _transitionSpriteState:
@@ -10571,6 +11154,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: fab812a317158ef4681a4e7b07998c2e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -10590,12 +11179,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1963580550}
-  - 222: {fileID: 1963580552}
-  - 114: {fileID: 1963580551}
-  - 114: {fileID: 1963580553}
+  - component: {fileID: 1963580550}
+  - component: {fileID: 1963580552}
+  - component: {fileID: 1963580551}
+  - component: {fileID: 1963580553}
   m_Layer: 5
   m_Name: Text - Toggle Switch
   m_TagString: Untagged
@@ -10615,11 +11204,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1000162952}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1, y: .5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1963580551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10633,6 +11223,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
@@ -10641,6 +11237,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -10670,17 +11267,18 @@ MonoBehaviour:
   m_PreferredHeight: 36
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1966164465
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1966164466}
-  - 222: {fileID: 1966164468}
-  - 114: {fileID: 1966164467}
-  - 114: {fileID: 1966164469}
+  - component: {fileID: 1966164466}
+  - component: {fileID: 1966164468}
+  - component: {fileID: 1966164467}
+  - component: {fileID: 1966164469}
   m_Layer: 5
   m_Name: Text - Swipe In
   m_TagString: Untagged
@@ -10700,11 +11298,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1313371654}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 1, y: .5}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1966164467
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10718,6 +11317,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
@@ -10726,6 +11331,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -10755,17 +11361,18 @@ MonoBehaviour:
   m_PreferredHeight: 24
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1976898345
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 135296, guid: 8711b5b1c35af8a4cae8214b74dae048, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1976898346}
-  - 222: {fileID: 1976898349}
-  - 114: {fileID: 1976898348}
-  - 114: {fileID: 1976898347}
+  - component: {fileID: 1976898346}
+  - component: {fileID: 1976898349}
+  - component: {fileID: 1976898348}
+  - component: {fileID: 1976898347}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -10786,11 +11393,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 90039646}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1976898347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10809,7 +11417,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .5}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5}
     m_ColorMultiplier: 1
     m_FadeDuration: 0
   _transitionSpriteState:
@@ -10838,6 +11446,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 12
@@ -10846,6 +11460,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 4
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -10863,12 +11478,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1981553571}
-  - 222: {fileID: 1981553573}
-  - 114: {fileID: 1981553572}
-  - 114: {fileID: 1981553574}
+  - component: {fileID: 1981553571}
+  - component: {fileID: 1981553573}
+  - component: {fileID: 1981553572}
+  - component: {fileID: 1981553574}
   m_Layer: 5
   m_Name: Text - Move To Touch
   m_TagString: Untagged
@@ -10888,11 +11503,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 811901483}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1981553572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10906,6 +11522,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
@@ -10914,6 +11536,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -10943,15 +11566,16 @@ MonoBehaviour:
   m_PreferredHeight: 24
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &1991749804
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 1991749805}
-  - 114: {fileID: 1991749806}
+  - component: {fileID: 1991749805}
+  - component: {fileID: 1991749806}
   m_Layer: 5
   m_Name: Touch Controller
   m_TagString: Untagged
@@ -10972,11 +11596,12 @@ RectTransform:
   - {fileID: 440162704}
   m_Father: {fileID: 131391146}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1991749806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11008,12 +11633,12 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 107876, guid: 68de740e0e61e9741904c17e65592b94, type: 2}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 2008822418}
-  - 114: {fileID: 2008822421}
-  - 222: {fileID: 2008822420}
-  - 114: {fileID: 2008822419}
+  - component: {fileID: 2008822418}
+  - component: {fileID: 2008822421}
+  - component: {fileID: 2008822420}
+  - component: {fileID: 2008822419}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -11035,11 +11660,12 @@ RectTransform:
   - {fileID: 237860301}
   m_Father: {fileID: 232173271}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2008822419
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11054,6 +11680,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 3c72351d99bf64a4eb85a49e5b37ccdf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
@@ -11087,12 +11719,12 @@ MonoBehaviour:
   _allowedMouseButtons: 1
   _transitionType: 3
   _transitionColorTint:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: .294117659}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0.29411766}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .78125, g: .78125, b: .78125, a: .501960814}
+    m_DisabledColor: {r: 0.78125, g: 0.78125, b: 0.78125, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: .100000001
+    m_FadeDuration: 0.1
   _transitionSpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 21300000, guid: cbd6dd70d79e29a44a54beee708af991, type: 3}
@@ -11172,7 +11804,7 @@ MonoBehaviour:
   _digitalAxisGravity: 3
   _digitalAxisSensitivity: 3
   _axis:
-    _buttonActivationThreshold: .5
+    _buttonActivationThreshold: 0.5
     _calibration:
       _enabled: 1
       _deadZone: 0
@@ -11185,18 +11817,21 @@ MonoBehaviour:
       _sensitivityCurve:
         serializedVersion: 2
         m_Curve:
-        - time: 0
+        - serializedVersion: 2
+          time: 0
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - time: 1
+        - serializedVersion: 2
+          time: 1
           value: 1
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
+        m_RotationOrder: 4
       _applyRangeCalibration: 1
   _touchRegion: {fileID: 0}
   _useTouchRegionOnly: 1
@@ -11233,10 +11868,10 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 4: {fileID: 2043202410}
-  - 114: {fileID: 2043202409}
+  - component: {fileID: 2043202410}
+  - component: {fileID: 2043202409}
   m_Layer: 0
   m_Name: Rewired Input Manager
   m_TagString: Untagged
@@ -11516,13 +12151,15 @@ MonoBehaviour:
       _mouseXYAxisDeltaCalc: 0
       _mouseOtherAxisSensitivity: 1
       _customControllerAxisSensitivity: 1
-      _buttonDoublePressSpeed: .300000012
-      _buttonShortPressTime: .25
+      _buttonDoublePressSpeed: 0.3
+      _buttonShortPressTime: 0.25
       _buttonShortPressExpiresIn: 0
       _buttonLongPressTime: 1
       _buttonLongPressExpiresIn: 0
-      _buttonDeadZone: .5
+      _buttonDeadZone: 0.5
       _buttonDownBuffer: 0
+      _buttonRepeatRate: 30
+      _buttonRepeatDelay: 0
     mapCategories:
     - _name: Default
       _descriptiveName: Default
@@ -12209,15 +12846,16 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2055250932
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 2055250933}
-  - 114: {fileID: 2055250934}
+  - component: {fileID: 2055250933}
+  - component: {fileID: 2055250934}
   m_Layer: 5
   m_Name: ButtonContainer
   m_TagString: Untagged
@@ -12238,11 +12876,12 @@ RectTransform:
   - {fileID: 144382314}
   m_Father: {fileID: 1366246180}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2055250934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12261,15 +12900,16 @@ MonoBehaviour:
   m_PreferredHeight: 75
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1
 --- !u!1 &2075784233
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 2075784234}
-  - 114: {fileID: 2075784235}
+  - component: {fileID: 2075784234}
+  - component: {fileID: 2075784235}
   m_Layer: 5
   m_Name: Column
   m_TagString: Untagged
@@ -12291,11 +12931,12 @@ RectTransform:
   - {fileID: 599790254}
   m_Father: {fileID: 1896974237}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2075784235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12316,17 +12957,19 @@ MonoBehaviour:
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
 --- !u!1 &2146454477
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 2146454478}
-  - 222: {fileID: 2146454480}
-  - 114: {fileID: 2146454479}
-  - 114: {fileID: 2146454481}
+  - component: {fileID: 2146454478}
+  - component: {fileID: 2146454480}
+  - component: {fileID: 2146454479}
+  - component: {fileID: 2146454481}
   m_Layer: 5
   m_Name: Text - Appear on touch
   m_TagString: Untagged
@@ -12346,11 +12989,12 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1801719370}
   m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: .5, y: .5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2146454479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12364,6 +13008,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 10
@@ -12372,6 +13022,7 @@ MonoBehaviour:
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 1
+    m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
@@ -12401,3 +13052,4 @@ MonoBehaviour:
   m_PreferredHeight: 24
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
+  m_LayoutPriority: 1

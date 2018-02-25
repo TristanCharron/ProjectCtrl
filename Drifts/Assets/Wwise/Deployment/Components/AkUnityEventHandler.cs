@@ -1,4 +1,4 @@
-#if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
+#if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
 //////////////////////////////////////////////////////////////////////
 //
 // Copyright (c) 2014 Audiokinetic Inc. / All Rights Reserved
@@ -31,6 +31,13 @@ public abstract class AkUnityEventHandler : MonoBehaviour
 
 	protected virtual void Awake()
 	{
+#if UNITY_EDITOR
+        if (UnityEditor.BuildPipeline.isBuildingPlayer)
+        {
+            return;
+        }
+#endif
+
         RegisterTriggers(triggerList, HandleEvent);
 
 		//Call the Handle event function if registered to the Awake Trigger
@@ -64,7 +71,10 @@ public abstract class AkUnityEventHandler : MonoBehaviour
 		
 		if (triggerList.Contains(DESTROY_TRIGGER_ID))
 		{
-			HandleEvent(null);
+#if UNITY_EDITOR
+            if (!UnityEditor.BuildPipeline.isBuildingPlayer)
+#endif
+            HandleEvent(null);
 		}
 		
 		didDestroy = true;
@@ -124,4 +134,4 @@ public abstract class AkUnityEventHandler : MonoBehaviour
 		}
 	}
 }
-#endif // #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
+#endif // #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.

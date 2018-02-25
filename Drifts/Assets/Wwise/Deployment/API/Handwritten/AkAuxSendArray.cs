@@ -1,4 +1,4 @@
-#if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
+#if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
 //////////////////////////////////////////////////////////////////////
 //
 // Copyright (c) 2012 Audiokinetic Inc. / All Rights Reserved
@@ -6,166 +6,128 @@
 //////////////////////////////////////////////////////////////////////
 
 using System;
-using System.Collections;
 using System.Runtime.InteropServices;
 
-public class AkAuxSendArray
+public class AkAuxSendArray : IDisposable
 {
-	public AkAuxSendArray(uint in_Count)
-	{
-        m_Buffer = Marshal.AllocHGlobal((int)in_Count * (sizeof(uint) + sizeof(float)));
-        m_Current = m_Buffer;
-        m_MaxCount = in_Count;
-        m_Count = 0;
+    const int MAX_COUNT = AkEnvironment.MAX_NB_ENVIRONMENTS;
+    int SIZE_OF_AKAUXSENDVALUE = AkSoundEnginePINVOKE.CSharp_AkAuxSendValue_GetSizeOf();
+
+    public AkAuxSendArray()
+    {
+		m_Buffer = Marshal.AllocHGlobal(MAX_COUNT * SIZE_OF_AKAUXSENDVALUE);
+		m_Count = 0;
     }
 
 	~AkAuxSendArray()
 	{
-        Marshal.FreeHGlobal(m_Buffer);
-        m_Buffer = IntPtr.Zero;
-	}
-	
-	public void Reset()
-	{
-		m_Current = m_Buffer;        
-        m_Count = 0;
-	}
-	
-    public void Add(uint in_EnvID, float in_fValue)
-    {
-        if (m_Count >= m_MaxCount)
-			Resize(m_Count * 2);
-                          
-        Marshal.WriteInt32(m_Current, (int)in_EnvID);
-        m_Current = (IntPtr)(m_Current.ToInt64() + sizeof(uint));		
-        Marshal.WriteInt32(m_Current, BitConverter.ToInt32(BitConverter.GetBytes(in_fValue), 0));  //Marshal doesn't do floats.  So copy the bytes themselves.  Grrr.
-        m_Current = (IntPtr)(m_Current.ToInt64() + sizeof(float));
-        m_Count++;
+        Dispose();
     }
 
-	public void Resize(uint in_size)
+    public void Dispose()
+    {
+        if (m_Buffer != IntPtr.Zero)
+        {
+            Marshal.FreeHGlobal(m_Buffer);
+            m_Buffer = IntPtr.Zero;
+            m_Count = 0;
+        }
+    }
+
+    public void Reset()
 	{
-		if(in_size <= m_Count)
-		{
-			m_Count = in_size;
-			return;
-		}
-		else
-		{
-			m_MaxCount = in_size;
-		}
-
-		IntPtr newBuffer = Marshal.AllocHGlobal ((int)m_MaxCount * (sizeof(uint) + sizeof(float)));
-        IntPtr oldBuffer = m_Buffer;
-		m_Current = newBuffer;
-
-		for(int i = 0; i < m_Count; i++)
-		{
-			Marshal.WriteInt32(m_Current, Marshal.ReadInt32(oldBuffer));
-
-			m_Current	= (IntPtr)(m_Current.ToInt64() + sizeof(uint));
-			oldBuffer	= (IntPtr)(oldBuffer.ToInt64() + sizeof(uint));
-
-			Marshal.WriteInt32(m_Current, Marshal.ReadInt32(oldBuffer));
-
-			m_Current	= (IntPtr)(m_Current.ToInt64() + sizeof(float));
-			oldBuffer	= (IntPtr)(oldBuffer.ToInt64() + sizeof(float));
-		}
-
-		Marshal.FreeHGlobal(m_Buffer);
-		m_Buffer = newBuffer;
+		m_Count = 0;
 	}
 
-	public void Remove(uint in_EnvID)
+	public bool Add(UnityEngine.GameObject in_listenerGameObj, uint in_AuxBusID, float in_fValue)
 	{
-		IntPtr ptr = m_Buffer;
+		if (isFull)
+			return false;
 
-		for(int i = 0; i < m_Count; i++)
-		{
-			if(in_EnvID == (uint)Marshal.ReadInt32(ptr))
-			{
-				IntPtr endPtr = (IntPtr)(m_Buffer.ToInt64() + ((m_Count - 1) * (sizeof(uint) + sizeof(float))));
+		AkSoundEnginePINVOKE.CSharp_AkAuxSendValue_Set(GetObjectPtr(m_Count), AkSoundEngine.GetAkGameObjectID(in_listenerGameObj), in_AuxBusID, in_fValue);
+		m_Count++;
+		return true;
+    }
 
-				Marshal.WriteInt32(ptr, Marshal.ReadInt32(endPtr));
+	public bool Add(uint in_AuxBusID, float in_fValue)
+	{
+		if (isFull)
+			return false;
 
-				ptr		= (IntPtr)(ptr.ToInt64() + sizeof(float));
-				endPtr	= (IntPtr)(endPtr.ToInt64() + sizeof(float));
-
-				Marshal.WriteInt32(ptr, Marshal.ReadInt32(endPtr));
-
-				m_Count--;
-
-				break;
-			}
-
-			ptr = (IntPtr)(ptr.ToInt64() + sizeof(uint) + sizeof(float));
-		}
+		AkSoundEnginePINVOKE.CSharp_AkAuxSendValue_Set(GetObjectPtr(m_Count), AkSoundEngine.AK_INVALID_GAME_OBJECT, in_AuxBusID, in_fValue);
+		m_Count++;
+		return true;
 	}
 
-	public bool Contains(uint in_EnvID)
+	public bool Contains(UnityEngine.GameObject in_listenerGameObj, uint in_AuxBusID)
 	{
-		IntPtr ptr = m_Buffer;
-		
-		for(int i = 0; i < m_Count; i++)
-		{
-			if(in_EnvID == (uint)Marshal.ReadInt32(ptr))
-			{
+		if (m_Buffer == IntPtr.Zero)
+			return false;
+
+		for (int i = 0; i < m_Count; i++)
+			if (AkSoundEnginePINVOKE.CSharp_AkAuxSendValue_IsSame(GetObjectPtr(i), AkSoundEngine.GetAkGameObjectID(in_listenerGameObj), in_AuxBusID))
 				return true;
-			}
-			ptr = (IntPtr)(ptr.ToInt64() + sizeof(uint) + sizeof(float));
-		}
-		
+
 		return false;
 	}
 
-	public int OffsetOf(uint in_EnvID)
+	public bool Contains(uint in_AuxBusID)
 	{
-		int offset = -1;
+		if (m_Buffer == IntPtr.Zero)
+			return false;
 
-		IntPtr ptr = m_Buffer;
-		
-		for(int i = 0; i < m_Count; i++)
+		for (int i = 0; i < m_Count; i++)
+			if (AkSoundEnginePINVOKE.CSharp_AkAuxSendValue_IsSame(GetObjectPtr(i), AkSoundEngine.AK_INVALID_GAME_OBJECT, in_AuxBusID))
+				return true;
+
+		return false;
+	}
+
+	public AKRESULT SetValues(UnityEngine.GameObject gameObject)
+	{
+		return (AKRESULT)AkSoundEnginePINVOKE.CSharp_AkAuxSendValue_SetGameObjectAuxSendValues(m_Buffer, AkSoundEngine.GetAkGameObjectID(gameObject), (uint)m_Count);
+	}
+
+	public AKRESULT GetValues(UnityEngine.GameObject gameObject)
+	{
+		uint count = MAX_COUNT;
+		AKRESULT res = (AKRESULT)AkSoundEnginePINVOKE.CSharp_AkAuxSendValue_GetGameObjectAuxSendValues(m_Buffer, AkSoundEngine.GetAkGameObjectID(gameObject), ref count);
+		m_Count = (int)count;
+		return res;
+	}
+
+	public AkAuxSendValue this[int index]
+	{
+		get
 		{
-			if(in_EnvID == (uint)Marshal.ReadInt32(ptr))
-			{
-				offset = ptr.ToInt32() - m_Buffer.ToInt32();
-				break;
-			}
-			ptr = (IntPtr)(ptr.ToInt64() + sizeof(uint) + sizeof(float));
+			if (index >= m_Count)
+				throw new IndexOutOfRangeException("Out of range access in AkAuxSendArray");
+
+			return new AkAuxSendValue(GetObjectPtr(index), false);
 		}
-
-		return offset;
 	}
 
-	public void RemoveAt(int in_offset)
+	public bool isFull
 	{
-		IntPtr ptr		= (IntPtr)(m_Buffer.ToInt64() + in_offset);
-		IntPtr endPtr	= (IntPtr)(m_Buffer.ToInt64() + ((m_Count - 1) * (sizeof(uint) + sizeof(float))));
-
-		Marshal.WriteInt32(ptr, Marshal.ReadInt32(endPtr));
-		
-		ptr		= (IntPtr)(ptr.ToInt64() + sizeof(float));
-		endPtr	= (IntPtr)(endPtr.ToInt64() + sizeof(float));
-		
-		Marshal.WriteInt32(ptr, Marshal.ReadInt32(endPtr));
-		
-		m_Count--;
+		get { return m_Count >= MAX_COUNT || m_Buffer == IntPtr.Zero; }
 	}
 
-	public void ReplaceAt(int in_offset, uint in_EnvID, float in_fValue)
-	{
-		IntPtr ptr	= (IntPtr)(m_Buffer.ToInt64() + in_offset);
+    public IntPtr GetBuffer()
+    {
+        return m_Buffer;
+    }
 
-		Marshal.WriteInt32(ptr, (int)in_EnvID);
+    public int Count()
+    {
+        return m_Count;
+    }
 
-		ptr	= (IntPtr)(ptr.ToInt64() + sizeof(float));
+    IntPtr GetObjectPtr(int index)
+    {
+		return (IntPtr)(m_Buffer.ToInt64() + SIZE_OF_AKAUXSENDVALUE * index);
+    }
 
-		Marshal.WriteInt32(ptr, BitConverter.ToInt32(BitConverter.GetBytes(in_fValue), 0));
-	}
-
-    public IntPtr m_Buffer;    
-    private IntPtr m_Current;
-    private uint m_MaxCount;
-    public uint m_Count;
+    private IntPtr m_Buffer;
+    private int m_Count;
 };
-#endif // #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
+#endif // #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.

@@ -42,6 +42,8 @@ public class AkWwiseProjectData : ScriptableObject
     [Serializable]
     public class Event : AkInformation
     {
+        public float minDuration;
+        public float maxDuration;
         public float maxAttenuation;
     }
 
@@ -113,7 +115,6 @@ public class AkWwiseProjectData : ScriptableObject
         }
     }
 
-
 	[Serializable]
 	public class EventWorkUnit : WorkUnit
 	{
@@ -145,12 +146,10 @@ public class AkWwiseProjectData : ScriptableObject
             ObjectType = objType;
         }
     }
-    
-#if UNITY_5
-    public string CurrentPluginConfig;
-#endif
 
-    public enum WwiseObjectType
+    public string CurrentPluginConfig;
+
+	public enum WwiseObjectType
     {
         // Insert Wwise icons description here
         NONE,
@@ -165,7 +164,10 @@ public class AkWwiseProjectData : ScriptableObject
         STATEGROUP,
         SWITCH,
         SWITCHGROUP,
-        WORKUNIT
+        WORKUNIT,
+        GAMEPARAMETER,
+        TRIGGER,
+        ACOUSTICTEXTURE
     }
 
 	//Can't use a list of WorkUnit and cast it when needed because unity will serialize it as 
@@ -175,6 +177,9 @@ public class AkWwiseProjectData : ScriptableObject
 	public List<GroupValWorkUnit>	StateWwu 	= new List<GroupValWorkUnit>();
 	public List<GroupValWorkUnit>	SwitchWwu 	= new List<GroupValWorkUnit>();
 	public List<AkInfoWorkUnit>		BankWwu		= new List<AkInfoWorkUnit>();
+	public List<AkInfoWorkUnit>		RtpcWwu		= new List<AkInfoWorkUnit>();
+    public List<AkInfoWorkUnit>     TriggerWwu  = new List<AkInfoWorkUnit>();
+    public List<AkInfoWorkUnit>     AcousticTextureWwu = new List<AkInfoWorkUnit>();
 
 	//Contains the path of all items that are expanded in the Wwise picker
 	public List<string> ExpandedItems = new List<string> ();
@@ -207,6 +212,18 @@ public class AkWwiseProjectData : ScriptableObject
         {
             return ArrayList.Adapter(BankWwu);
         }
+        else if (String.Equals(in_wwuType, "Game Parameters", StringComparison.OrdinalIgnoreCase))
+        {
+            return ArrayList.Adapter(RtpcWwu);
+        }
+        else if (String.Equals(in_wwuType, "Triggers", StringComparison.OrdinalIgnoreCase))
+        {
+            return ArrayList.Adapter(TriggerWwu);
+        }
+        else if (String.Equals(in_wwuType, "Virtual Acoustics", StringComparison.OrdinalIgnoreCase))
+        {
+            return ArrayList.Adapter(AcousticTextureWwu);
+        }
 
         return null;
     }
@@ -221,7 +238,11 @@ public class AkWwiseProjectData : ScriptableObject
 		{
 			return new GroupValWorkUnit();
 		}
-		else if(String.Equals(in_wwuType, "Master-Mixer Hierarchy", StringComparison.OrdinalIgnoreCase) || String.Equals(in_wwuType, "SoundBanks", StringComparison.OrdinalIgnoreCase))
+		else if(String.Equals(in_wwuType, "Master-Mixer Hierarchy", StringComparison.OrdinalIgnoreCase) 
+            || String.Equals(in_wwuType, "SoundBanks", StringComparison.OrdinalIgnoreCase) 
+            || String.Equals(in_wwuType, "Game Parameters", StringComparison.OrdinalIgnoreCase)
+            || String.Equals(in_wwuType, "Virtual Acoustics", StringComparison.OrdinalIgnoreCase)
+            || String.Equals(in_wwuType, "Triggers", StringComparison.OrdinalIgnoreCase))
 		{
 			return new AkInfoWorkUnit();
 		}
@@ -251,6 +272,18 @@ public class AkWwiseProjectData : ScriptableObject
 		{
 			return true;
 		}
+        else if (String.Equals(in_wwuType, "Game Parameters", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+        else if (String.Equals(in_wwuType, "Triggers", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
+        else if (String.Equals(in_wwuType, "Virtual Acoustics", StringComparison.OrdinalIgnoreCase))
+        {
+            return true;
+        }
 		
 		return false;
 	}
@@ -373,13 +406,14 @@ public class AkWwiseProjectData : ScriptableObject
 	//This data is a copy of the AkInitializer parameters.  
 	//We need it to reapply the same values to copies of the object in different scenes
 	//It sits in this object so it is serialized in the same "asset" file
-	public string basePath = AkInitializer.c_DefaultBasePath;
-	public string language = AkInitializer.c_Language;
-	public int defaultPoolSize = AkInitializer.c_DefaultPoolSize;
-	public int lowerPoolSize = AkInitializer.c_LowerPoolSize;
-	public int streamingPoolSize = AkInitializer.c_StreamingPoolSize;
-	public int preparePoolSize = AkInitializer.c_PreparePoolSize;
-	public float memoryCutoffThreshold = AkInitializer.c_MemoryCutoffThreshold;
+	public string basePath               = AkSoundEngineController.s_DefaultBasePath;
+	public string language               = AkSoundEngineController.s_Language;
+	public int defaultPoolSize           = AkSoundEngineController.s_DefaultPoolSize;
+	public int lowerPoolSize             = AkSoundEngineController.s_LowerPoolSize;
+	public int streamingPoolSize         = AkSoundEngineController.s_StreamingPoolSize;
+	public int preparePoolSize           = AkSoundEngineController.s_PreparePoolSize;
+	public float memoryCutoffThreshold   = AkSoundEngineController.s_MemoryCutoffThreshold;
+	public int callbackManagerBufferSize = AkSoundEngineController.s_CallbackManagerBufferSize;
 
 	public void SaveInitSettings(AkInitializer in_AkInit)
 	{
@@ -389,45 +423,49 @@ public class AkWwiseProjectData : ScriptableObject
 		}
 		if (!CompareInitSettings(in_AkInit))
 		{
-            basePath = in_AkInit.basePath;
-			language =              in_AkInit.language;
-			defaultPoolSize =       in_AkInit.defaultPoolSize;
-			lowerPoolSize =         in_AkInit.lowerPoolSize;
-			streamingPoolSize =     in_AkInit.streamingPoolSize;
-			preparePoolSize =     	in_AkInit.preparePoolSize;
-            memoryCutoffThreshold = in_AkInit.memoryCutoffThreshold;
-            EditorUtility.SetDirty(this);
-		}
+			Undo.RecordObject(this, "Save Init Settings");
+
+			basePath = in_AkInit.basePath;
+			language = in_AkInit.language;
+			defaultPoolSize = in_AkInit.defaultPoolSize;
+			lowerPoolSize = in_AkInit.lowerPoolSize;
+			streamingPoolSize = in_AkInit.streamingPoolSize;
+			preparePoolSize = in_AkInit.preparePoolSize;
+			memoryCutoffThreshold = in_AkInit.memoryCutoffThreshold;
+			callbackManagerBufferSize = in_AkInit.callbackManagerBufferSize;
+}
 	}
-	
+
 	public void CopyInitSettings(AkInitializer in_AkInit)
 	{
 		if (!CompareInitSettings(in_AkInit))
 		{
-			in_AkInit.basePath = 				basePath;				
-			in_AkInit.language =                language;              
-			in_AkInit.defaultPoolSize =         defaultPoolSize;
-			in_AkInit.lowerPoolSize =           lowerPoolSize;        
-			in_AkInit.streamingPoolSize =       streamingPoolSize;
-			in_AkInit.preparePoolSize =      	preparePoolSize;
-            in_AkInit.memoryCutoffThreshold = memoryCutoffThreshold;
-            EditorUtility.SetDirty(in_AkInit);
+			Undo.RecordObject(in_AkInit, "Copy Init Settings");
+
+			in_AkInit.basePath = basePath;
+			in_AkInit.language = language;
+			in_AkInit.defaultPoolSize = defaultPoolSize;
+			in_AkInit.lowerPoolSize = lowerPoolSize;
+			in_AkInit.streamingPoolSize = streamingPoolSize;
+			in_AkInit.preparePoolSize = preparePoolSize;
+			in_AkInit.memoryCutoffThreshold = memoryCutoffThreshold;
+			in_AkInit.callbackManagerBufferSize = callbackManagerBufferSize;
 		}
 	}
 
 	private bool CompareInitSettings(AkInitializer in_AkInit)
 	{
-        return basePath == in_AkInit.basePath &&
-            language == in_AkInit.language &&
-            defaultPoolSize == in_AkInit.defaultPoolSize &&
-            lowerPoolSize == in_AkInit.lowerPoolSize &&
-            streamingPoolSize == in_AkInit.streamingPoolSize &&
-            preparePoolSize == in_AkInit.preparePoolSize &&
-            memoryCutoffThreshold == in_AkInit.memoryCutoffThreshold;
+		return basePath == in_AkInit.basePath &&
+			language == in_AkInit.language &&
+			defaultPoolSize == in_AkInit.defaultPoolSize &&
+			lowerPoolSize == in_AkInit.lowerPoolSize &&
+			streamingPoolSize == in_AkInit.streamingPoolSize &&
+			preparePoolSize == in_AkInit.preparePoolSize &&
+			memoryCutoffThreshold == in_AkInit.memoryCutoffThreshold &&
+			callbackManagerBufferSize == in_AkInit.callbackManagerBufferSize;
 	}
 
-
-    public float GetEventMaxAttenuation(int in_eventID)
+	public float GetEventMaxAttenuation(int in_eventID)
     {
 		for(int i = 0; i < EventWwu.Count; i++)
 		{
@@ -447,5 +485,8 @@ public class AkWwiseProjectData : ScriptableObject
 		SwitchWwu = new List<GroupValWorkUnit>();
         BankWwu = new List<AkInfoWorkUnit>();
 		AuxBusWwu = new List<AkInfoWorkUnit>();
+        RtpcWwu = new List<AkInfoWorkUnit>();
+        TriggerWwu = new List<AkInfoWorkUnit>();
+        AcousticTextureWwu = new List<AkInfoWorkUnit>();
     }
 }

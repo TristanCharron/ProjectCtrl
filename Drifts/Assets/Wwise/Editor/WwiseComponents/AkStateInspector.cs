@@ -13,8 +13,6 @@ using System;
 [CustomEditor(typeof(AkState))]
 public class AkStateInspector : AkBaseInspector
 {	
-	SerializedProperty m_groupGuid;
-	SerializedProperty m_valueGuid;
 	SerializedProperty m_groupID;
 	SerializedProperty m_valueID;
 
@@ -36,18 +34,8 @@ public class AkStateInspector : AkBaseInspector
 		m_objectType	= AkWwiseProjectData.WwiseObjectType.STATE;
     }
 
-	public override void OnInspectorGUI()
-	{
-		if(Event.current.type == EventType.DragExited && m_isInDropArea && DragAndDrop.paths.Length >= 4 && DragAndDrop.paths[3].Equals(m_typeName))
-		{
-			AkUtilities.SetByteArrayProperty(m_guidProperty[1], new Guid(DragAndDrop.paths[4]).ToByteArray());
-		}
-
-		base.OnInspectorGUI ();
-	}
-
 	public override void OnChildInspectorGUI ()
-	{				
+	{
 		serializedObject.Update ();
 
 		m_UnityEventHandlerInspector.OnGUI();

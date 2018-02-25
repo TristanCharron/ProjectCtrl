@@ -76,7 +76,7 @@ Material:
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Intensity: 0.6
-    - _Lerp: 0.72672987
+    - _Lerp: 0
     - _LifeTime: 1
     - _Magnitude: 0
     - _MaxRange: 61.1

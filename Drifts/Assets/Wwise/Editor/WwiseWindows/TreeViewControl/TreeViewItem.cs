@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+namespace AK.Wwise.TreeView
+{
 [Serializable]
 public class TreeViewItem
 {
@@ -31,38 +33,38 @@ public class TreeViewItem
 			m_clickCount = in_clickCount;
 		}
     }
-    public EventHandler Click = null;
+    public System.EventHandler Click = null;
 
 
 	public class CheckedEventArgs : System.EventArgs
     {
     }
-    public EventHandler Checked = null;
+    public System.EventHandler Checked = null;
 
     public class UncheckedEventArgs : System.EventArgs
     {
     }
-    public EventHandler Unchecked = null;
+    public System.EventHandler Unchecked = null;
 
     public class SelectedEventArgs : System.EventArgs
     {
     }
-    public EventHandler Selected = null;
+    public System.EventHandler Selected = null;
 
     public class UnselectedEventArgs : System.EventArgs
     {
     }
-    public EventHandler Unselected = null;
+    public System.EventHandler Unselected = null;
 
     public class DragEventArgs : System.EventArgs
     {
     }
-    public EventHandler Dragged = null;
+    public System.EventHandler Dragged = null;
 
     public class CustomIconEventArgs : System.EventArgs
     {
     }
-    public EventHandler CustomIconBuilder = null;
+    public System.EventHandler CustomIconBuilder = null;
 
     /// <summary>
     /// The distance to the hover item
@@ -137,16 +139,8 @@ public class TreeViewItem
 
     public bool HasChildItems()
     {
-        if (null == Items ||
-            Items.Count == 0)
-        {
-            return false;
+			return null != Items && Items.Count > 0;
         }
-        else
-        {
-            return true;
-        }
-    }
 
     public enum SiblingOrder
     {
@@ -180,93 +174,55 @@ public class TreeViewItem
         return Mathf.Abs(midPoint - pointA) / 50f;
     }
 
-    public void DisplayItem(int levels, SiblingOrder siblingOrder)
+		private void SetIconExpansion(SiblingOrder siblingOrder, TextureIcons middle, TextureIcons last)
     {
-        if (null == ParentControl || IsHidden)
-        {
-            return;
-        }
-
-        GUILayout.BeginHorizontal();
-
-        for (int index = 0; index < levels; ++index)
-        {
-            ParentControl.Button(TextureIcons.GUIDE);
-        }
-
-        if (!HasChildItems())
-        {
             bool result;
             switch (siblingOrder)
             {
                 case SiblingOrder.FIRST_CHILD:
-                    result = ParentControl.Button(TextureIcons.MIDDLE_SIBLING_NO_CHILD);
-                    break;
                 case SiblingOrder.MIDDLE_CHILD:
-                    result = ParentControl.Button(TextureIcons.MIDDLE_SIBLING_NO_CHILD);
+					result = ParentControl.Button(middle);
                     break;
                 case SiblingOrder.LAST_CHILD:
-                    result = ParentControl.Button(TextureIcons.LAST_SIBLING_NO_CHILD);
+					result = ParentControl.Button(last);
                     break;
                 default:
                     result = false;
                     break;
             }
+
             if (result)
             {
                 IsExpanded = !IsExpanded;
             }
         }
-        else
+
+		public void DisplayItem(int levels, SiblingOrder siblingOrder)
         {
-            if (IsExpanded)
+			if (null == ParentControl || IsHidden)
             {
-                bool result;
-                switch (siblingOrder)
+				return;
+			}
+
+			GUILayout.BeginHorizontal();
+
+			for (int index = 0; index < levels; ++index)
                 {
-                    case SiblingOrder.FIRST_CHILD:
-                        result = ParentControl.Button(TextureIcons.MIDDLE_SIBLING_EXPANDED);
-                        break;
-                    case SiblingOrder.MIDDLE_CHILD:
-                        result = ParentControl.Button(TextureIcons.MIDDLE_SIBLING_EXPANDED);
-                        break;
-                    case SiblingOrder.LAST_CHILD:
-                        result = ParentControl.Button(TextureIcons.LAST_SIBLING_EXPANDED);
-                        break;
-                    default:
-                        result = false;
-                        break;
+				ParentControl.Button(TextureIcons.GUIDE);
                 }
-                if (result)
+
+			if (!HasChildItems())
                 {
-                    IsExpanded = !IsExpanded;
+				SetIconExpansion(siblingOrder, TextureIcons.MIDDLE_SIBLING_NO_CHILD, TextureIcons.LAST_SIBLING_NO_CHILD);
                 }
+			else if (IsExpanded)
+			{
+				SetIconExpansion(siblingOrder, TextureIcons.MIDDLE_SIBLING_EXPANDED, TextureIcons.LAST_SIBLING_EXPANDED);
             }
             else
             {
-                bool result;
-                switch (siblingOrder)
-                {
-                    case SiblingOrder.FIRST_CHILD:
-                        result = ParentControl.Button(TextureIcons.MIDDLE_SIBLING_COLLAPSED);
-                        break;
-                    case SiblingOrder.MIDDLE_CHILD:
-                        result = ParentControl.Button(TextureIcons.MIDDLE_SIBLING_COLLAPSED);
-                        break;
-                    case SiblingOrder.LAST_CHILD:
-                        result = ParentControl.Button(TextureIcons.LAST_SIBLING_COLLAPSED);
-                        break;
-                    default:
-                        result = false;
-                        break;
+				SetIconExpansion(siblingOrder, TextureIcons.MIDDLE_SIBLING_COLLAPSED, TextureIcons.LAST_SIBLING_COLLAPSED);
                 }
-                if (result)
-                {
-                    IsExpanded = !IsExpanded;
-                }
-            }
-        }
-
 
 		bool clicked = false;
 
@@ -335,8 +291,8 @@ public class TreeViewItem
                 ParentControl.Button(TextureIcons.BLANK);
             }
 
-			if(Event.current.isMouse)
-				s_clickCount = Event.current.clickCount;
+				if (UnityEngine.Event.current.isMouse)
+					s_clickCount = UnityEngine.Event.current.clickCount;
 
 			
             if (ParentControl.IsHoverEnabled)
@@ -396,7 +352,6 @@ public class TreeViewItem
 					}
 					if (null != Click && (uint)s_clickCount <= 2) 
 					{
-						
 						clicked = true;;
 					}
 				}
@@ -414,10 +369,10 @@ public class TreeViewItem
 
         if (ParentControl.IsHoverEnabled)
         {
-            if (null != Event.current &&
-                Event.current.type == EventType.Repaint)
+				if (null != UnityEngine.Event.current &&
+					UnityEngine.Event.current.type == EventType.Repaint)
             {
-                Vector2 mousePos = Event.current.mousePosition;
+					Vector2 mousePos = UnityEngine.Event.current.mousePosition;
                 if (ParentControl.HasFocus(mousePos))
                 {
                     Rect lastRect = GUILayoutUtility.GetLastRect();
@@ -433,7 +388,7 @@ public class TreeViewItem
                     if (ParentControl.IsHoverEnabled &&
                         ParentControl.IsHoverAnimationEnabled)
                     {
-                        m_hoverTime = CalculateHoverTime(lastRect, Event.current.mousePosition);
+							m_hoverTime = CalculateHoverTime(lastRect, UnityEngine.Event.current.mousePosition);
                     }
                 }
             }
@@ -486,27 +441,25 @@ public class TreeViewItem
     void HandleGUIEvents()
     {
         // Handle events
-        Event evt = Event.current;
+			UnityEngine.Event evt = UnityEngine.Event.current;
         EventType currentEventType = evt.type;
 
-
-        if (currentEventType == EventType.DragExited) DragAndDrop.PrepareStartDrag();
-
-        if (currentEventType == EventType.MouseDown)
+        if (currentEventType == EventType.MouseDrag)
         {
-            DragAndDrop.PrepareStartDrag(); // reset data
-        }
-        else if (currentEventType == EventType.MouseDrag)
-        {
-            if (null != Dragged)
-            {
+			if (null != Dragged)
+			{
+					try
+					{
+				DragAndDrop.PrepareStartDrag();
                 Dragged.Invoke(ParentControl.SelectedItem, new DragEventArgs());
                 evt.Use();
+				}
+					catch (Exception e)
+					{
+					Debug.Log (e);
+				}
             }
-        }
-
+		}
     }
-
-
-
+	}
 }

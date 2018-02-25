@@ -11,13 +11,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552e84eadd5acb14b909291ea033b233, type: 3}
   m_Name: AkWwiseProjectData
   m_EditorClassIdentifier: 
+  CurrentPluginConfig: 
   EventWwu:
   - PhysicalPath: Events\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{0DB9C122-73A2-4C6E-BD29-EEAC9CBB0F9B}'
-    m_lastTimePsrt1: -2118978322
-    m_lastTimePart2: -1999371591
+    m_lastTimePsrt1: -200550253
+    m_lastTimePart2: -1999276432
     List:
+    - Name: BALL_IMPACT
+      Path: Default Work Unit\BALL\BALL_IMPACT
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: BALL
+        ObjectType: 4
+      - ElementName: BALL_IMPACT
+        ObjectType: 3
+      ID: 1165162655
+      Guid: d2bdb66483cd89479aeb1ca6e2037e9c
+      minDuration: 0
+      maxDuration: 0
+      maxAttenuation: 0
     - Name: BALL_STATE_DOWN
       Path: Default Work Unit\BALL\BALL_STATE_DOWN
       PathAndIcons:
@@ -29,6 +44,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: -1976462265
       Guid: 9e385f08eefbe04c941f9b71f7f8085e
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: BALL_STATE_UP
       Path: Default Work Unit\BALL\BALL_STATE_UP
@@ -41,6 +58,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: -2114920432
       Guid: 11d3832b1a5587448592e1bf42392e2a
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: GAME_END_BLUE
       Path: Default Work Unit\END\GAME_END_BLUE
@@ -53,6 +72,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: -1145382720
       Guid: ae616a1dcba6fb4db70188ef0f81e715
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: GAME_END_RED
       Path: Default Work Unit\END\GAME_END_RED
@@ -65,6 +86,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: -1570746391
       Guid: 3de7e1b9e0b7da46a06e536b9fb5ee95
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: GAME_GO
       Path: Default Work Unit\GAME\GAME_GO
@@ -77,6 +100,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: -1941744876
       Guid: 5497f4cee1c27e45aa6f54ba72348db7
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: GAME_OPEN
       Path: Default Work Unit\GAME\GAME_OPEN
@@ -89,6 +114,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: 1365208458
       Guid: 47d861ab07bd3a4fb0512a279a98af3b
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: GAME_OVER
       Path: Default Work Unit\END\GAME_OVER
@@ -101,6 +128,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: 1432716332
       Guid: f9e5713e52ce95458a518aaaedcc623a
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: GAME_PLAY
       Path: Default Work Unit\GAME\GAME_PLAY
@@ -113,6 +142,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: 465026768
       Guid: c1689a9acd7f0344806914d01eb0b86c
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: GAME_READY
       Path: Default Work Unit\GAME\GAME_READY
@@ -125,6 +156,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: -1283995761
       Guid: 13ffcc0fced0344d85c40b1c2e11012e
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: GAME_SET
       Path: Default Work Unit\GAME\GAME_SET
@@ -137,6 +170,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: -606126974
       Guid: b5b74ea428f88945bc6aafa993be261c
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: MONK_CATCH
       Path: Default Work Unit\MONK\MONK_CATCH
@@ -149,6 +184,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: 671479072
       Guid: 5204133dbb500749b1e54aee5d1691e9
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: MONK_DEAD
       Path: Default Work Unit\MONK\MONK_DEAD
@@ -161,6 +198,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: 2097794929
       Guid: ec42339e3f42f4468fcda6844d2b8f0a
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: MONK_PITCH
       Path: Default Work Unit\MONK\MONK_PITCH
@@ -173,6 +212,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: 1828712247
       Guid: a4aa2429b000ff479a1e7ae376e1aa16
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: MONK_WIND
       Path: Default Work Unit\MONK\MONK_WIND
@@ -185,30 +226,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: -1668000095
       Guid: ae608699c6ddc1479cc77efdfc9ccfd0
-      maxAttenuation: 0
-    - Name: ROUND_END_BLUE
-      Path: Default Work Unit\END\ROUND_END_BLUE
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: END
-        ObjectType: 4
-      - ElementName: ROUND_END_BLUE
-        ObjectType: 3
-      ID: 820911528
-      Guid: edb61c9d04854f48b1d9cbc2596de4b8
-      maxAttenuation: 0
-    - Name: ROUND_END_RED
-      Path: Default Work Unit\END\ROUND_END_RED
-      PathAndIcons:
-      - ElementName: Default Work Unit
-        ObjectType: 12
-      - ElementName: END
-        ObjectType: 4
-      - ElementName: ROUND_END_RED
-        ObjectType: 3
-      ID: -1831102671
-      Guid: 5d8680184de34d4a9cef4b3a6fec7e97
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: STAGE_BELL
       Path: Default Work Unit\STAGE\STAGE_BELL
@@ -221,6 +240,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: 65694047
       Guid: 8d3dbf53fff76248b803f2008c496199
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: STAGE_FORCE_FIELD
       Path: Default Work Unit\STAGE\STAGE_FORCE_FIELD
@@ -233,6 +254,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: -425903436
       Guid: ee942aa3ffe7b94f84bc1906282cb3dc
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: UI_HOVER
       Path: Default Work Unit\UI_HOVER
@@ -243,6 +266,8 @@ MonoBehaviour:
         ObjectType: 3
       ID: 2118900976
       Guid: 3b30b69cdc980f4495f7b6169997ecda
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
     - Name: UI_SELECT
       Path: Default Work Unit\UI_SELECT
@@ -253,27 +278,29 @@ MonoBehaviour:
         ObjectType: 3
       ID: -1520838174
       Guid: 68c48579fcbdbb4dae476fb3ef68af31
+      minDuration: 0
+      maxDuration: 0
       maxAttenuation: 0
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{1698C7EC-DCF8-4AD3-84C6-1AFC5B27A400}'
-    m_lastTimePsrt1: -189694464
-    m_lastTimePart2: -1999386465
+    m_lastTimePsrt1: -200730278
+    m_lastTimePart2: -1999276432
     List: []
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{87BC7773-A64E-48F1-9BF1-A56563AB726C}'
-    m_lastTimePsrt1: -189694464
-    m_lastTimePart2: -1999386465
+    m_lastTimePsrt1: -200880301
+    m_lastTimePart2: -1999276432
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{FEA3C75C-AC2C-43E2-AB3E-EC2E6BF974B8}'
-    m_lastTimePsrt1: -1210341120
-    m_lastTimePart2: -1999386179
+    m_lastTimePsrt1: -200595258
+    m_lastTimePart2: -1999276432
     List:
     - Name: SwitchMusic
       Path: Default Work Unit\SwitchMusic
@@ -300,20 +327,49 @@ MonoBehaviour:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     Guid: '{A2D49259-6C18-4DCE-BC74-35CB9CF9887A}'
-    m_lastTimePsrt1: -1412633828
-    m_lastTimePart2: -1999374407
+    m_lastTimePsrt1: -1419370662
+    m_lastTimePart2: -1999276421
     List:
-    - Name: Drifts_Wwise_SoundBank
-      Path: Default Work Unit\Drifts_Wwise_SoundBank
+    - Name: DriftNoMusic
+      Path: Default Work Unit\DriftNoMusic
       PathAndIcons:
       - ElementName: Default Work Unit
         ObjectType: 12
-      - ElementName: Drifts_Wwise_SoundBank
+      - ElementName: DriftNoMusic
         ObjectType: 7
-      ID: -708930983
-      Guid: 568e1b64de206444bd432f61dbd5b9f0
-  ExpandedItems:
-  - /drift_sound
+      ID: 2024809976
+      Guid: ec4b457647480b48939206e615aab209
+    - Name: SoundBank_Drifts
+      Path: Default Work Unit\SoundBank_Drifts
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: SoundBank_Drifts
+        ObjectType: 7
+      ID: -1345297169
+      Guid: f0172017a7dbba439c8389be1b282e80
+  RtpcWwu:
+  - PhysicalPath: Game Parameters\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    Guid: '{75194489-53BB-45AC-8381-EE57C255E357}'
+    m_lastTimePsrt1: -200925302
+    m_lastTimePart2: -1999276432
+    List: []
+  TriggerWwu:
+  - PhysicalPath: Triggers\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    Guid: '{00C9EA42-35A1-4DFD-96FF-5333B191D7B9}'
+    m_lastTimePsrt1: -201115331
+    m_lastTimePart2: -1999276432
+    List: []
+  AcousticTextureWwu:
+  - PhysicalPath: Virtual Acoustics\Default Work Unit.wwu
+    ParentPhysicalPath: 
+    Guid: '{907D12A8-2E11-43C8-A7AE-37E97FAD90DE}'
+    m_lastTimePsrt1: -200945296
+    m_lastTimePart2: -1999276432
+    List: []
+  ExpandedItems: []
   m_lastPopulateTimePsrt1: 0
   m_lastPopulateTimePart2: 0
   autoPopulateEnabled: 1
@@ -324,3 +380,4 @@ MonoBehaviour:
   streamingPoolSize: 1024
   preparePoolSize: 0
   memoryCutoffThreshold: 0.95
+  callbackManagerBufferSize: 4

@@ -13,160 +13,177 @@ using System.Reflection;
 
 public class DefaultHandles
 {
-    public static bool Hidden
-    {
-        get
-        {
-            Type type = typeof(Tools);
-            FieldInfo field = type.GetField("s_Hidden", BindingFlags.NonPublic | BindingFlags.Static);
-            return ((bool)field.GetValue(null));
-        }
-        set
-        {
-            Type type = typeof(Tools);
-            FieldInfo field = type.GetField("s_Hidden", BindingFlags.NonPublic | BindingFlags.Static);
-            field.SetValue(null, value);
-        }
-    }
+	public static bool Hidden
+	{
+		get
+		{
+			Type type = typeof(Tools);
+			FieldInfo field = type.GetField("s_Hidden", BindingFlags.NonPublic | BindingFlags.Static);
+			return ((bool)field.GetValue(null));
+		}
+		set
+		{
+			Type type = typeof(Tools);
+			FieldInfo field = type.GetField("s_Hidden", BindingFlags.NonPublic | BindingFlags.Static);
+			field.SetValue(null, value);
+		}
+	}
 }
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(AkGameObj))]
 public class AkGameObjectInspector : Editor
 {
-    AkGameObj m_AkGameObject;    
-	    
-    bool hideDefaultHandle = false;
+	AkGameObj m_AkGameObject;
+	SerializedProperty listeners;
 
-    void OnEnable()
-    {
-        m_AkGameObject = target as AkGameObj;        
+	bool hideDefaultHandle = false;
 
-        DefaultHandles.Hidden = hideDefaultHandle;
-    }
+	void OnEnable()
+	{
+		m_AkGameObject = target as AkGameObj;
+		listeners = serializedObject.FindProperty("m_listeners");
 
-    void OnDisable()
-    {
-        DefaultHandles.Hidden = false;
-    }
+		DefaultHandles.Hidden = hideDefaultHandle;
+	}
 
-    public override void OnInspectorGUI()
-    {           
+	void OnDisable()
+	{
+		DefaultHandles.Hidden = false;
+	}
+
+	public override void OnInspectorGUI()
+	{
+		// Unity tries to construct a AkGameObjPositionOffsetData all the time. Need this ugly workaround
+		// to prevent it from doing this.
+		if (m_AkGameObject.m_positionOffsetData != null)
+		{
+			if (!m_AkGameObject.m_positionOffsetData.KeepMe)
+			{
+				m_AkGameObject.m_positionOffsetData = null;
+			}
+		}
+
+		AkGameObjPositionOffsetData positionOffsetData = m_AkGameObject.m_positionOffsetData;
+		Vector3 positionOffset = Vector3.zero;
+
+		EditorGUI.BeginChangeCheck();
 
 		GUILayout.BeginVertical("Box");
 
-		// Unity tries to construct a AkGameObjPositionOffsetData all the time. Need this ugly workaround
-		// to prevent it from doing this.
-        if (m_AkGameObject.m_positionOffsetData != null)
-        {
-            if(!m_AkGameObject.m_positionOffsetData.KeepMe)
-            {
-                m_AkGameObject.m_positionOffsetData = null;
-            }
-        }
+		bool applyPosOffset = EditorGUILayout.Toggle("Apply Position Offset:", positionOffsetData != null);
 
-		bool applyPosOffset = m_AkGameObject.m_positionOffsetData != null;
-		applyPosOffset = EditorGUILayout.Toggle ("Apply Position Offset: ", applyPosOffset);
-		if(m_AkGameObject.m_positionOffsetData == null && applyPosOffset)
+		if (applyPosOffset != (positionOffsetData != null))
 		{
-			m_AkGameObject.m_positionOffsetData = new AkGameObjPositionOffsetData(true);
-        }
-        else if(!applyPosOffset && m_AkGameObject.m_positionOffsetData != null)
-		{
-			m_AkGameObject.m_positionOffsetData = null;
+			positionOffsetData = applyPosOffset ? new AkGameObjPositionOffsetData(true) : null;
 		}
 
-		if (m_AkGameObject.m_positionOffsetData != null) 
+		if (positionOffsetData != null)
 		{
-			m_AkGameObject.m_positionOffsetData.positionOffset = EditorGUILayout.Vector3Field("Position Offset", m_AkGameObject.m_positionOffsetData.positionOffset);
+			positionOffset = EditorGUILayout.Vector3Field("Position Offset", positionOffsetData.positionOffset);
 
-			GUILayout.Space(2);
-			
+			GUILayout.Space(EditorGUIUtility.standardVerticalSpacing);
+
 			if (hideDefaultHandle)
 			{
-				
 				if (GUILayout.Button("Show Main Transform"))
 				{
 					hideDefaultHandle = false;
 					DefaultHandles.Hidden = hideDefaultHandle;
 				}
 			}
-			else
+			else if (GUILayout.Button("Hide Main Transform"))
 			{
-				if (GUILayout.Button("Hide Main Transform"))
-				{
-					hideDefaultHandle = true;
-					DefaultHandles.Hidden = hideDefaultHandle;
-				}
-			}
-		}
-		else
-		{
-			if (hideDefaultHandle == true)
-			{
-				hideDefaultHandle = false;
+				hideDefaultHandle = true;
 				DefaultHandles.Hidden = hideDefaultHandle;
 			}
 		}
-
-		GUILayout.EndVertical ();
-
-		GUILayout.Space (3);
-
-		GUILayout.BeginVertical ("Box");
-
-
-		m_AkGameObject.isEnvironmentAware = EditorGUILayout.Toggle ("Environment Aware: ", m_AkGameObject.isEnvironmentAware);
-
-		if (m_AkGameObject.isEnvironmentAware && m_AkGameObject.GetComponent<Rigidbody>() == null)
+		else if (hideDefaultHandle)
 		{
+			hideDefaultHandle = false;
+			DefaultHandles.Hidden = hideDefaultHandle;
+		}
+
+		GUILayout.EndVertical();
+
+		GUILayout.Space(EditorGUIUtility.standardVerticalSpacing);
+
+		GUILayout.BeginVertical("Box");
+
+		bool isEnvironmentAware = EditorGUILayout.Toggle("Environment Aware:", m_AkGameObject.isEnvironmentAware);
+
+		GUILayout.EndVertical();
+
+		if (EditorGUI.EndChangeCheck())
+		{
+			Undo.RecordObject(target, "AkGameObj Parameter Change");
+
+			m_AkGameObject.m_positionOffsetData = positionOffsetData;
+
+			if (positionOffsetData != null)
+				m_AkGameObject.m_positionOffsetData.positionOffset = positionOffset;
+
+			m_AkGameObject.isEnvironmentAware = isEnvironmentAware;
+		}
+
+		if (isEnvironmentAware)
+			RigidbodyCheck(m_AkGameObject.gameObject);
+
+		GUILayout.Space(EditorGUIUtility.standardVerticalSpacing);
+
+		GUILayout.BeginVertical("Box");
+		{
+			EditorGUI.BeginChangeCheck();
+			EditorGUILayout.PropertyField(listeners);
+			if (EditorGUI.EndChangeCheck())
+				serializedObject.ApplyModifiedProperties();
+		}
+		GUILayout.EndVertical();
+	}
+
+	public static void RigidbodyCheck(GameObject gameObject)
+	{
+		if (WwiseSetupWizard.Settings.ShowMissingRigidBodyWarning && gameObject.GetComponent<Rigidbody>() == null)
+		{
+			GUILayout.Space(EditorGUIUtility.standardVerticalSpacing);
+
+			GUILayout.BeginVertical("Box");
+
 			GUIStyle style = new GUIStyle();
 			style.normal.textColor = Color.red;
 			style.wordWrap = true;
-			GUILayout.Label("Objects affected by Environment need to have a RigidBody attached.", style);
-			if (GUILayout.Button("Add Rigidbody!"))
+			GUILayout.Label("Interactions between AkGameObj and AkEnvironment or AkRoom require a Rigidbody component on the object or the environment/room.", style);
+			if (GUILayout.Button("Add Rigidbody"))
 			{
-				Rigidbody rb = m_AkGameObject.gameObject.AddComponent<Rigidbody>();
+				Rigidbody rb = Undo.AddComponent<Rigidbody>(gameObject);
 				rb.useGravity = false;
 				rb.isKinematic = true;
 			}
-		} 
 
-		GUILayout.EndVertical (); 
-		
-		GUILayout.Space (3);
-
-		string [] maskLabels = new string[AkSoundEngine.AK_NUM_LISTENERS];
-		for(int i = 0; i < AkSoundEngine.AK_NUM_LISTENERS; i++)
-		{
-			maskLabels[i] = "L" + i;
+			GUILayout.EndVertical();
 		}
-		m_AkGameObject.listenerMask = EditorGUILayout.MaskField("Listeners", m_AkGameObject.listenerMask, maskLabels); 
+	}
 
-        if (GUI.changed)
-        {
-            EditorUtility.SetDirty(m_AkGameObject);
-        }
-    }
-	      
-    void OnSceneGUI()
-    {
-        if (m_AkGameObject.m_positionOffsetData == null)
-            return;
+	void OnSceneGUI()
+	{
+		if (m_AkGameObject.m_positionOffsetData == null)
+			return;
 
-        // Transform local offset to world coordinate
-        Vector3 pos = m_AkGameObject.transform.TransformPoint(m_AkGameObject.m_positionOffsetData.positionOffset);
+		EditorGUI.BeginChangeCheck();
 
-        // Get new handle position
-        pos = Handles.PositionHandle(pos, Quaternion.identity);
+		// Transform local offset to world coordinate
+		Vector3 pos = m_AkGameObject.transform.TransformPoint(m_AkGameObject.m_positionOffsetData.positionOffset);
 
-        // Transform wolrd offset to local coordintae
-        m_AkGameObject.m_positionOffsetData.positionOffset = m_AkGameObject.transform.InverseTransformPoint(pos);
+		// Get new handle position
+		pos = Handles.PositionHandle(pos, Quaternion.identity);
 
-        if (GUI.changed)
-        {
-            EditorUtility.SetDirty(target);
-        }
-    }
+		if (EditorGUI.EndChangeCheck())
+		{
+			Undo.RecordObject(target, "Position Offset Change");
+
+			// Transform world offset to local coordinate
+			m_AkGameObject.m_positionOffsetData.positionOffset = m_AkGameObject.transform.InverseTransformPoint(pos);
+		}
+	}
 }
 #endif

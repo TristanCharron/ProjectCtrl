@@ -1,98 +1,60 @@
 #if UNITY_EDITOR
-
-using UnityEngine;
 using UnityEditor;
-using System.Diagnostics;
-using System.IO;
-using System.Collections.Generic;
-using System;
+using UnityEngine;
 
-
-public class AkWwiseIDConverterMenu : MonoBehaviour {
-
-	private static AkWwiseIDConverter m_converter = new AkWwiseIDConverter(Application.dataPath);
-
-
-	[MenuItem("Assets/Wwise/Convert Wwise SoundBank IDs", false, (int)AkWwiseMenuOrder.ConvertIDs)]
-	public static void ConvertWwiseSoundBankIDs () {
-		m_converter.Convert(true);
-	}
-}
-
-class AkWwiseIDConverter
+static class AkWwiseIDConverter
 {
-	private string m_bankDir = "Undefined";
-	private string m_converterScript = Path.Combine(Path.Combine(Path.Combine(Application.dataPath, "Wwise"), "Tools"), "WwiseIDConverter.py");
-	private string m_progTitle = "WwiseUnity: Converting SoundBank IDs";
+	private static string s_bankDir = Application.dataPath;
+	private static string s_converterScript = System.IO.Path.Combine(System.IO.Path.Combine(System.IO.Path.Combine(Application.dataPath, "Wwise"), "Tools"), "WwiseIDConverter.py");
+	private static string s_progTitle = "WwiseUnity: Converting SoundBank IDs";
 
-	public AkWwiseIDConverter(string bankDir)
+	[UnityEditor.MenuItem("Assets/Wwise/Convert Wwise SoundBank IDs", false, (int)AkWwiseMenuOrder.ConvertIDs)]
+	public static void ConvertWwiseSoundBankIDs()
 	{
-		m_bankDir = bankDir;
-	}
-
-	public void Convert(bool PingUser)
-	{
-		string bankIdHeaderPath;
-		if( PingUser )
+		string bankIdHeaderPath = EditorUtility.OpenFilePanel("Choose Wwise SoundBank ID C++ header", s_bankDir, "h");
+		if (string.IsNullOrEmpty(bankIdHeaderPath))
 		{
-			bankIdHeaderPath = EditorUtility.OpenFilePanel("Choose Wwise SoundBank ID C++ header", m_bankDir, "h");
-	
-			bool isUserCancelled = bankIdHeaderPath == "";
-			if (isUserCancelled)
-			{
-				UnityEngine.Debug.Log("WwiseUnity: User cancelled the action.");
-				return;
-			}
-		}
-		else
-		{
-			bankIdHeaderPath = Path.Combine (m_bankDir, "Wwise_IDs.h");
+			UnityEngine.Debug.Log("WwiseUnity: User canceled the action.");
+			return;
 		}
 
-		ProcessStartInfo start = new ProcessStartInfo();
+		var start = new System.Diagnostics.ProcessStartInfo();
 		start.FileName = "python";
-		
-		start.Arguments = string.Format("\"{0}\" \"{1}\"", m_converterScript, bankIdHeaderPath);
-		
+		start.Arguments = string.Format("\"{0}\" \"{1}\"", s_converterScript, bankIdHeaderPath);
 		start.UseShellExecute = false;
 		start.RedirectStandardOutput = true;
 
 		string progMsg = "WwiseUnity: Converting C++ SoundBank IDs into C# ...";
-		EditorUtility.DisplayProgressBar(m_progTitle, progMsg, 0.5f);
+		EditorUtility.DisplayProgressBar(s_progTitle, progMsg, 0.5f);
 
-		using(Process process = Process.Start(start))
+		using (var process = System.Diagnostics.Process.Start(start))
 		{
-		 	process.WaitForExit();
+			process.WaitForExit();
 			try
 			{
 				//ExitCode throws InvalidOperationException if the process is hanging
-				int returnCode = process.ExitCode;
-
-				bool isBuildSucceeded = ( returnCode == 0 );
-				if ( isBuildSucceeded )
+				if (process.ExitCode == 0)
 				{
-					EditorUtility.DisplayProgressBar(m_progTitle, progMsg, 1.0f);
-				UnityEngine.Debug.Log(string.Format("WwiseUnity: SoundBank ID conversion succeeded. Find generated Unity script under {0}.", m_bankDir));
+					EditorUtility.DisplayProgressBar(s_progTitle, progMsg, 1.0f);
+					UnityEngine.Debug.Log(string.Format("WwiseUnity: SoundBank ID conversion succeeded. Find generated Unity script under {0}.", s_bankDir));
 				}
 				else
 				{
 					UnityEngine.Debug.LogError("WwiseUnity: Conversion failed.");
 				}
-				
-				AssetDatabase.Refresh();
 
-				EditorUtility.ClearProgressBar();
+				AssetDatabase.Refresh();
 			}
-			catch (Exception ex)
+			catch (System.Exception ex)
 			{
 				AssetDatabase.Refresh();
 
 				EditorUtility.ClearProgressBar();
-				UnityEngine.Debug.LogError(string.Format ("WwiseUnity: SoundBank ID conversion process failed with exception: {}. Check detailed logs under the folder: Assets/Wwise/Logs.", ex));
-				EditorUtility.ClearProgressBar();
+				UnityEngine.Debug.LogError(string.Format("WwiseUnity: SoundBank ID conversion process failed with exception: {}. Check detailed logs under the folder: Assets/Wwise/Logs.", ex));
 			}
+
+			EditorUtility.ClearProgressBar();
 		}
 	}
 }
-
-#endif // #if UNITY_EDITOR	
+#endif // #if UNITY_EDITOR

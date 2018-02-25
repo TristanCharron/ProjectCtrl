@@ -1,4 +1,4 @@
-#if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
+#if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
 //////////////////////////////////////////////////////////////////////
 //
 // Copyright (c) 2014 Audiokinetic Inc. / All Rights Reserved
@@ -10,15 +10,14 @@ using System;
 using System.Collections.Generic;
 
 
-/// @brief Use this component to define an area that straddles two different AkEnvironments zones and allow mixing between both zones.
-/// - \ref unity_use_AkEvironment_AkEvironmentPortal
+/// @brief Use this component to define an area that straddles two different AkEnvironments zones and allow mixing between both zones. \ref unity_use_AkEvironment_AkEvironmentPortal
 [AddComponentMenu("Wwise/AkEnvironmentPortal")]
 [RequireComponent (typeof(BoxCollider))]
-[RequireComponent (typeof(Rigidbody))]
 [ExecuteInEditMode]
 public class AkEnvironmentPortal : MonoBehaviour
 {
-	public AkEnvironment[]	environments	= new AkEnvironment[2];	///The array is already sortet by position.
+	public const int MAX_ENVIRONMENTS_PER_PORTAL = 2;
+	public AkEnvironment[]	environments	= new AkEnvironment[MAX_ENVIRONMENTS_PER_PORTAL];	///The array is already sortet by position.
 																	///The first environment is on the negative side of the portal(opposite to the direction of the chosen axis)
 																	///The second environment is on the positive side of the portal
 	
@@ -61,4 +60,4 @@ public class AkEnvironmentPortal : MonoBehaviour
 #endif
 }
 
-#endif // #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
+#endif // #if ! (UNITY_DASHBOARD_WIDGET || UNITY_WEBPLAYER || UNITY_WII || UNITY_WIIU || UNITY_NACL || UNITY_FLASH || UNITY_BLACKBERRY) // Disable under unsupported platforms.
