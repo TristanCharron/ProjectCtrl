@@ -3,7 +3,7 @@
 	<RootPaths>
 		<ProjectRoot>D:\WindowsLibrary\Documents\GitHub\FrenchFrogsCreativeJam\Drifts\drift_sound\</ProjectRoot>
 		<SourceFilesRoot>D:\WindowsLibrary\Documents\GitHub\FrenchFrogsCreativeJam\Drifts\drift_sound\.cache\Windows\</SourceFilesRoot>
-		<SoundBanksRoot>D:\WindowsLibrary\Documents\GitHub\FrenchFrogsCreativeJam\Drifts\drift_sound\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<SoundBanksRoot>D:\WindowsLibrary\Documents\GitHub\FrenchFrogsCreativeJam\Drifts\drift_sound\..\Drifts\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
 		<ExternalSourcesOutputRoot>D:\WindowsLibrary\Documents\GitHub\FrenchFrogsCreativeJam\Drifts\drift_sound\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
 	</RootPaths>
