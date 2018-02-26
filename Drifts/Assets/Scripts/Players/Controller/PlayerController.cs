@@ -119,9 +119,10 @@ public class PlayerController : MonoBehaviour
                 GameObject DeathAnimParticle = Instantiate(Resources.Load<GameObject>("DeathMonkParticle"), gameObject.transform.position, Quaternion.identity) as GameObject;
                 Destroy(DeathAnimParticle, 5);
 
+				float velRatio = OrbController.Instance.VelocityRatio;
 				float deathShakeRatio = 5;
-				UIEffectManager.Instance.OnFreezeFrame(0.3f);
-				GameEffect.Shake(Camera.main.gameObject,deathShakeRatio,.5f);
+				UIEffectManager.Instance.OnFreezeFrame(0.3f*velRatio);
+				GameEffect.Shake(Camera.main.gameObject,deathShakeRatio*velRatio,0.5f*velRatio);
 
                 GameController.Instance.KillPlayer(this);
 				gameObject.SetActive(false);
@@ -137,13 +138,18 @@ public class PlayerController : MonoBehaviour
         if (canDoAction)
         {
             if (ReInput.players.GetPlayer(Player.ID).GetAxis("Push") >= 0.5f)
-                RightTriggerHold.OnUpdate();
-       
+			{  
+				RightTriggerHold.OnUpdate();
+				if(!chargeParticles.gameObject.activeSelf)
+					chargeParticles.gameObject.SetActive(true);
+			}
             else if (ReInput.players.GetPlayer(Player.ID).GetAxisTimeInactive("Push") > 0.01f && RightTriggerHold.holdingButtonRatio > 0)
             {
                 handAnimator.Play("Push");
                 WwiseManager.PostEvent("MONK_WIND", gameObject);
                 StartCoroutine(CoolDown("Push"));
+				chargeParticles.gameObject.SetActive(false);
+
 			}
         }
         Charge();
@@ -182,8 +188,8 @@ public class PlayerController : MonoBehaviour
 		if (velRatio > 0.3f)
 		{	
 			float shakeEffect = 2;
-			UIEffectManager.Instance.OnFreezeFrame(velRatio * 0.6f);
-			GameEffect.Shake(Camera.main.gameObject,velRatio * shakeEffect, velRatio * 0.6f);
+			UIEffectManager.Instance.OnFreezeFrame(velRatio * 0.3f);
+			GameEffect.Shake(Camera.main.gameObject,velRatio * shakeEffect, velRatio * 0.3f);
 		}
 	}
     public void OnPull()

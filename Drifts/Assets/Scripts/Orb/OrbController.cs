@@ -30,6 +30,7 @@ public class OrbController : MonoBehaviour
 	[SerializeField] Rigidbody rigidBody;
     [SerializeField] ParticleSystem pSystem;
     [SerializeField] ParticleSystem pSystemBall;
+
 	[SerializeField] GameObject orbWithAnimation;
 
 	#endregion
