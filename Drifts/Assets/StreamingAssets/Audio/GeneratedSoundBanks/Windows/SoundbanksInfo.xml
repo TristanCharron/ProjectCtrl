@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="11" SoundbankVersion="128">
+	<RootPaths>
+		<ProjectRoot>D:\WindowsLibrary\Documents\GitHub\FrenchFrogsCreativeJam\Drifts\drift_sound\</ProjectRoot>
+		<SourceFilesRoot>D:\WindowsLibrary\Documents\GitHub\FrenchFrogsCreativeJam\Drifts\drift_sound\.cache\Windows\</SourceFilesRoot>
+		<SoundBanksRoot>D:\WindowsLibrary\Documents\GitHub\FrenchFrogsCreativeJam\Drifts\drift_sound\..\Assets\StreamingAssets\Audio\GeneratedSoundBanks\Windows\</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>D:\WindowsLibrary\Documents\GitHub\FrenchFrogsCreativeJam\Drifts\drift_sound\GeneratedSoundBanks\Windows\</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<StreamedFiles/>
+	<MediaFilesNotInAnyBank/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Language="SFX">
+			<ObjectPath>Init</ObjectPath>
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+		</SoundBank>
+		<SoundBank Id="2949670127" Language="SFX">
+			<ObjectPath>\SoundBanks\Default Work Unit\SoundBank_Drifts</ObjectPath>
+			<ShortName>SoundBank_Drifts</ShortName>
+			<Path>SoundBank_Drifts.bnk</Path>
+			<IncludedEvents>
+				<Event Id="1165162655" Name="BALL_IMPACT" ObjectPath="\Events\Default Work Unit\BALL\BALL_IMPACT"/>
+				<Event Id="2318505031" Name="BALL_STATE_DOWN" ObjectPath="\Events\Default Work Unit\BALL\BALL_STATE_DOWN"/>
+				<Event Id="2180046864" Name="BALL_STATE_UP" ObjectPath="\Events\Default Work Unit\BALL\BALL_STATE_UP"/>
+				<Event Id="3149584576" Name="GAME_END_BLUE" ObjectPath="\Events\Default Work Unit\END\GAME_END_BLUE"/>
+				<Event Id="2724220905" Name="GAME_END_RED" ObjectPath="\Events\Default Work Unit\END\GAME_END_RED"/>
+				<Event Id="2353222420" Name="GAME_GO" ObjectPath="\Events\Default Work Unit\GAME\GAME_GO"/>
+				<Event Id="1365208458" Name="GAME_OPEN" ObjectPath="\Events\Default Work Unit\GAME\GAME_OPEN"/>
+				<Event Id="1432716332" Name="GAME_OVER" ObjectPath="\Events\Default Work Unit\END\GAME_OVER"/>
+				<Event Id="465026768" Name="GAME_PLAY" ObjectPath="\Events\Default Work Unit\GAME\GAME_PLAY"/>
+				<Event Id="3010971535" Name="GAME_READY" ObjectPath="\Events\Default Work Unit\GAME\GAME_READY"/>
+				<Event Id="3688840322" Name="GAME_SET" ObjectPath="\Events\Default Work Unit\GAME\GAME_SET"/>
+				<Event Id="671479072" Name="MONK_CATCH" ObjectPath="\Events\Default Work Unit\MONK\MONK_CATCH"/>
+				<Event Id="2097794929" Name="MONK_DEAD" ObjectPath="\Events\Default Work Unit\MONK\MONK_DEAD"/>
+				<Event Id="1828712247" Name="MONK_PITCH" ObjectPath="\Events\Default Work Unit\MONK\MONK_PITCH"/>
+				<Event Id="2626967201" Name="MONK_WIND" ObjectPath="\Events\Default Work Unit\MONK\MONK_WIND"/>
+				<Event Id="65694047" Name="STAGE_BELL" ObjectPath="\Events\Default Work Unit\STAGE\STAGE_BELL"/>
+				<Event Id="3869063860" Name="STAGE_FORCE_FIELD" ObjectPath="\Events\Default Work Unit\STAGE\STAGE_FORCE_FIELD"/>
+				<Event Id="2118900976" Name="UI_HOVER" ObjectPath="\Events\Default Work Unit\UI_HOVER"/>
+				<Event Id="2774129122" Name="UI_SELECT" ObjectPath="\Events\Default Work Unit\UI_SELECT"/>
+			</IncludedEvents>
+			<IncludedMemoryFiles>
+				<File Id="20435260" Language="SFX">
+					<ShortName>VO_ready_04.wav</ShortName>
+					<Path>SFX\VO_ready_04_53CEE377.wem</Path>
+				</File>
+				<File Id="25385823" Language="SFX">
+					<ShortName>SFX_Gong_02.wav</ShortName>
+					<Path>SFX\SFX_Gong_02_53CEE377.wem</Path>
+				</File>
+				<File Id="27969851" Language="SFX">
+					<ShortName>SFX_monk_wind_03.wav</ShortName>
+					<Path>SFX\SFX_monk_wind_03_53CEE377.wem</Path>
+				</File>
+				<File Id="38229194" Language="SFX">
+					<ShortName>UI_hover.wav</ShortName>
+					<Path>SFX\UI_hover_53CEE377.wem</Path>
+				</File>
+				<File Id="43401585" Language="SFX">
+					<ShortName>VO_monk_pitch_07.wav</ShortName>
+					<Path>SFX\VO_monk_pitch_07_53CEE377.wem</Path>
+				</File>
+				<File Id="47837521" Language="SFX">
+					<ShortName>VO_monk_pitch_09.wav</ShortName>
+					<Path>SFX\VO_monk_pitch_09_53CEE377.wem</Path>
+				</File>
+				<File Id="49826921" Language="SFX">
+					<ShortName>VO_monk_dead_05.wav</ShortName>
+					<Path>SFX\VO_monk_dead_05_53CEE377.wem</Path>
+				</File>
+				<File Id="50157710" Language="SFX">
+					<ShortName>VO_go_04.wav</ShortName>
+					<Path>SFX\VO_go_04_53CEE377.wem</Path>
+				</File>
+				<File Id="53519056" Language="SFX">
+					<ShortName>SFX_monk_pitch_03.wav</ShortName>
+					<Path>SFX\SFX_monk_pitch_03_53CEE377.wem</Path>
+				</File>
+				<File Id="59981578" Language="SFX">
+					<ShortName>VO_ready_02.wav</ShortName>
+					<Path>SFX\VO_ready_02_53CEE377.wem</Path>
+				</File>
+				<File Id="67886433" Language="SFX">
+					<ShortName>VO_set_01.wav</ShortName>
+					<Path>SFX\VO_set_01_53CEE377.wem</Path>
+				</File>
+				<File Id="76714761" Language="SFX">
+					<ShortName>SFX_stage_bell_03.wav</ShortName>
+					<Path>SFX\SFX_stage_bell_03_53CEE377.wem</Path>
+				</File>
+				<File Id="101623049" Language="SFX">
+					<ShortName>SFX_ball_impact_07.wav</ShortName>
+					<Path>SFX\SFX_ball_impact_07_53CEE377.wem</Path>
+				</File>
+				<File Id="115286555" Language="SFX">
+					<ShortName>SFX_game_transition_02.wav</ShortName>
+					<Path>SFX\SFX_game_transition_02_53CEE377.wem</Path>
+				</File>
+				<File Id="139779194" Language="SFX">
+					<ShortName>VO_monk_pitch_02.wav</ShortName>
+					<Path>SFX\VO_monk_pitch_02_53CEE377.wem</Path>
+				</File>
+				<File Id="140988573" Language="SFX">
+					<ShortName>VO_red_team_04.wav</ShortName>
+					<Path>SFX\VO_red_team_04_53CEE377.wem</Path>
+				</File>
+				<File Id="142195123" Language="SFX">
+					<ShortName>SFX_monk_dead_01.wav</ShortName>
+					<Path>SFX\SFX_monk_dead_01_53CEE377.wem</Path>
+				</File>
+				<File Id="144397240" Language="SFX">
+					<ShortName>SFX_ball_impact_12.wav</ShortName>
+					<Path>SFX\SFX_ball_impact_12_53CEE377.wem</Path>
+				</File>
+				<File Id="177370756" Language="SFX">
+					<ShortName>VO_go_02.wav</ShortName>
+					<Path>SFX\VO_go_02_53CEE377.wem</Path>
+				</File>
+				<File Id="191926282" Language="SFX">
+					<ShortName>SFX_stage_force_field_03.wav</ShortName>
+					<Path>SFX\SFX_stage_force_field_03_53CEE377.wem</Path>
+				</File>
+				<File Id="215973960" Language="SFX">
+					<ShortName>VO_game_over_01.wav</ShortName>
+					<Path>SFX\VO_game_over_01_53CEE377.wem</Path>
+				</File>
+				<File Id="250296388" Language="SFX">
+					<ShortName>VO_monk_pitch_04.wav</ShortName>
+					<Path>SFX\VO_monk_pitch_04_53CEE377.wem</Path>
+				</File>
+				<File Id="253161790" Language="SFX">
+					<ShortName>VO_blue_team_03.wav</ShortName>
+					<Path>SFX\VO_blue_team_03_53CEE377.wem</Path>
+				</File>
+				<File Id="260064738" Language="SFX">
+					<ShortName>VO_set_04.wav</ShortName>
+					<Path>SFX\VO_set_04_53CEE377.wem</Path>
+				</File>
+				<File Id="261371960" Language="SFX">
+					<ShortName>SFX_monk_wind_02.wav</ShortName>
+					<Path>SFX\SFX_monk_wind_02_53CEE377.wem</Path>
+				</File>
+				<File Id="276694304" Language="SFX">
+					<ShortName>VO_blue_team_02.wav</ShortName>
+					<Path>SFX\VO_blue_team_02_53CEE377.wem</Path>
+				</File>
+				<File Id="294088964" Language="SFX">
+					<ShortName>VO_red_team_02.wav</ShortName>
+					<Path>SFX\VO_red_team_02_53CEE377.wem</Path>
+				</File>
+				<File Id="299205047" Language="SFX">
+					<ShortName>VO_monk_pitch_06.wav</ShortName>
+					<Path>SFX\VO_monk_pitch_06_53CEE377.wem</Path>
+				</File>
+				<File Id="301987023" Language="SFX">
+					<ShortName>SFX_ball_state_change_impact_07.wav</ShortName>
+					<Path>SFX\SFX_ball_state_change_impact_07_53CEE377.wem</Path>
+				</File>
+				<File Id="319476681" Language="SFX">
+					<ShortName>SFX_stage_force_field_07.wav</ShortName>
+					<Path>SFX\SFX_stage_force_field_07_53CEE377.wem</Path>
+				</File>
+				<File Id="324862555" Language="SFX">
+					<ShortName>VO_set_03.wav</ShortName>
+					<Path>SFX\VO_set_03_53CEE377.wem</Path>
+				</File>
+				<File Id="340439844" Language="SFX">
+					<ShortName>SFX_monk_pitch_01.wav</ShortName>
+					<Path>SFX\SFX_monk_pitch_01_53CEE377.wem</Path>
+				</File>
+				<File Id="342984192" Language="SFX">
+					<ShortName>SFX_monk_wind_04.wav</ShortName>
+					<Path>SFX\SFX_monk_wind_04_53CEE377.wem</Path>
+				</File>
+				<File Id="352387304" Language="SFX">
+					<ShortName>SFX_ball_impact_01.wav</ShortName>
+					<Path>SFX\SFX_ball_impact_01_53CEE377.wem</Path>
+				</File>
+				<File Id="358899287" Language="SFX">
+					<ShortName>SFX_stage_force_field_02.wav</ShortName>
+					<Path>SFX\SFX_stage_force_field_02_53CEE377.wem</Path>
+				</File>
+				<File Id="365769185" Language="SFX">
+					<ShortName>AMB_river_01.wav</ShortName>
+					<Path>SFX\AMB_river_01_69E470DD.wem</Path>
+				</File>
+				<File Id="402833836" Language="SFX">
+					<ShortName>SFX_ball_impact_08.wav</ShortName>
+					<Path>SFX\SFX_ball_impact_08_53CEE377.wem</Path>
+				</File>
+				<File Id="409724193" Language="SFX">
+					<ShortName>SFX_stage_force_field_01.wav</ShortName>
+					<Path>SFX\SFX_stage_force_field_01_53CEE377.wem</Path>
+				</File>
+				<File Id="441533319" Language="SFX">
+					<ShortName>SFX_ball_state_change_01.wav</ShortName>
+					<Path>SFX\SFX_ball_state_change_01_53CEE377.wem</Path>
+				</File>
+				<File Id="448870299" Language="SFX">
+					<ShortName>VO_monk_pitch_05.wav</ShortName>
+					<Path>SFX\VO_monk_pitch_05_53CEE377.wem</Path>
+				</File>
+				<File Id="452298535" Language="SFX">
+					<ShortName>VO_monk_dead_08.wav</ShortName>
+					<Path>SFX\VO_monk_dead_08_53CEE377.wem</Path>
+				</File>
+				<File Id="453183788" Language="SFX">
+					<ShortName>VO_game_over_03.wav</ShortName>
+					<Path>SFX\VO_game_over_03_53CEE377.wem</Path>
+				</File>
+				<File Id="479403849" Language="SFX">
+					<ShortName>VO_monk_pitch_10.wav</ShortName>
+					<Path>SFX\VO_monk_pitch_10_53CEE377.wem</Path>
+				</File>
+				<File Id="481973158" Language="SFX">
+					<ShortName>VO_monk_pitch_01.wav</ShortName>
+					<Path>SFX\VO_monk_pitch_01_53CEE377.wem</Path>
+				</File>
+				<File Id="484009721" Language="SFX">
+					<ShortName>MUS_guitare.wav</ShortName>
+					<Path>SFX\MUS_guitare_9452F465.wem</Path>
+				</File>
+				<File Id="487407061" Language="SFX">
+					<ShortName>AMB_wind_loop.wav</ShortName>
+					<Path>SFX\AMB_wind_loop_6BEB94DE.wem</Path>
+				</File>
+				<File Id="495750079" Language="SFX">
+					<ShortName>SFX_stage_force_field_09.wav</ShortName>
+					<Path>SFX\SFX_stage_force_field_09_53CEE377.wem</Path>
+				</File>
+				<File Id="497111161" Language="SFX">
+					<ShortName>VO_monk_dead_03.wav</ShortName>
+					<Path>SFX\VO_monk_dead_03_53CEE377.wem</Path>
+				</File>
+				<File Id="517181763" Language="SFX">
+					<ShortName>SFX_monk_dead_03.wav</ShortName>
+					<Path>SFX\SFX_monk_dead_03_53CEE377.wem</Path>
+				</File>
+				<File Id="545105311" Language="SFX">
+					<ShortName>VO_game_over_02.wav</ShortName>
+					<Path>SFX\VO_game_over_02_53CEE377.wem</Path>
+				</File>
+				<File Id="550775938" Language="SFX">
+					<ShortName>SFX_ball_state_change_impact_05.wav</ShortName>
+					<Path>SFX\SFX_ball_state_change_impact_05_53CEE377.wem</Path>
+				</File>
+				<File Id="553638073" Language="SFX">
+					<ShortName>SFX_stage_bell_02.wav</ShortName>
+					<Path>SFX\SFX_stage_bell_02_53CEE377.wem</Path>
+				</File>
+				<File Id="578602196" Language="SFX">
+					<ShortName>MUS_complet.wav</ShortName>
+					<Path>SFX\MUS_complet_9452F465.wem</Path>
+				</File>
+				<File Id="584609824" Language="SFX">
+					<ShortName>VO_red_team_03.wav</ShortName>
+					<Path>SFX\VO_red_team_03_53CEE377.wem</Path>
+				</File>
+				<File Id="593040896" Language="SFX">
+					<ShortName>SFX_stage_force_field_10.wav</ShortName>
+					<Path>SFX\SFX_stage_force_field_10_53CEE377.wem</Path>
+				</File>
+				<File Id="594738270" Language="SFX">
+					<ShortName>VO_monk_pitch_03.wav</ShortName>
+					<Path>SFX\VO_monk_pitch_03_53CEE377.wem</Path>
+				</File>
+				<File Id="594962202" Language="SFX">
+					<ShortName>VO_ready_01.wav</ShortName>
+					<Path>SFX\VO_ready_01_53CEE377.wem</Path>
+				</File>
+				<File Id="595788183" Language="SFX">
+					<ShortName>SFX_monk_wind_01.wav</ShortName>
+					<Path>SFX\SFX_monk_wind_01_53CEE377.wem</Path>
+				</File>
+				<File Id="599474688" Language="SFX">
+					<ShortName>SFX_ball_impact_09.wav</ShortName>
+					<Path>SFX\SFX_ball_impact_09_53CEE377.wem</Path>
+				</File>
+				<File Id="615863826" Language="SFX">
+					<ShortName>VO_monk_pitch_08.wav</ShortName>
+					<Path>SFX\VO_monk_pitch_08_53CEE377.wem</Path>
+				</File>
+				<File Id="636258489" Language="SFX">
+					<ShortName>SFX_Gong_01.wav</ShortName>
+					<Path>SFX\SFX_Gong_01_53CEE377.wem</Path>
+				</File>
+				<File Id="652897039" Language="SFX">
+					<ShortName>SFX_monk_dead_04.wav</ShortName>
+					<Path>SFX\SFX_monk_dead_04_53CEE377.wem</Path>
+				</File>
+				<File Id="675290095" Language="SFX">
+					<ShortName>VO_game_over_04.wav</ShortName>
+					<Path>SFX\VO_game_over_04_53CEE377.wem</Path>
+				</File>
+				<File Id="679378681" Language="SFX">
+					<ShortName>SFX_stage_bell_04.wav</ShortName>
+					<Path>SFX\SFX_stage_bell_04_53CEE377.wem</Path>
+				</File>
+				<File Id="685376325" Language="SFX">
+					<ShortName>SFX_stage_bell_01.wav</ShortName>
+					<Path>SFX\SFX_stage_bell_01_53CEE377.wem</Path>
+				</File>
+				<File Id="692258731" Language="SFX">
+					<ShortName>VO_go_03.wav</ShortName>
+					<Path>SFX\VO_go_03_53CEE377.wem</Path>
+				</File>
+				<File Id="699771603" Language="SFX">
+					<ShortName>SFX_monk_dead_02.wav</ShortName>
+					<Path>SFX\SFX_monk_dead_02_53CEE377.wem</Path>
+				</File>
+				<File Id="733638433" Language="SFX">
+					<ShortName>SFX_game_transition_01.wav</ShortName>
+					<Path>SFX\SFX_game_transition_01_53CEE377.wem</Path>
+				</File>
+				<File Id="740786913" Language="SFX">
+					<ShortName>SFX_stage_force_field_04.wav</ShortName>
+					<Path>SFX\SFX_stage_force_field_04_53CEE377.wem</Path>
+				</File>
+				<File Id="762416247" Language="SFX">
+					<ShortName>SFX_stage_force_field_11.wav</ShortName>
+					<Path>SFX\SFX_stage_force_field_11_53CEE377.wem</Path>
+				</File>
+				<File Id="827977947" Language="SFX">
+					<ShortName>SFX_ball_state_change_impact_01.wav</ShortName>
+					<Path>SFX\SFX_ball_state_change_impact_01_53CEE377.wem</Path>
+				</File>
+				<File Id="844194393" Language="SFX">
+					<ShortName>AMB_forest_01.wav</ShortName>
+					<Path>SFX\AMB_forest_01_DA1E97A2.wem</Path>
+				</File>
+				<File Id="847576650" Language="SFX">
+					<ShortName>SFX_ball_state_change_impact_03.wav</ShortName>
+					<Path>SFX\SFX_ball_state_change_impact_03_53CEE377.wem</Path>
+				</File>
+				<File Id="855129994" Language="SFX">
+					<ShortName>SFX_monk_wind_05.wav</ShortName>
+					<Path>SFX\SFX_monk_wind_05_53CEE377.wem</Path>
+				</File>
+				<File Id="858460743" Language="SFX">
+					<ShortName>SFX_ball_impact_05.wav</ShortName>
+					<Path>SFX\SFX_ball_impact_05_53CEE377.wem</Path>
+				</File>
+				<File Id="861571880" Language="SFX">
+					<ShortName>VO_red_team_01.wav</ShortName>
+					<Path>SFX\VO_red_team_01_53CEE377.wem</Path>
+				</File>
+				<File Id="864532649" Language="SFX">
+					<ShortName>SFX_ball_impact_10.wav</ShortName>
+					<Path>SFX\SFX_ball_impact_10_53CEE377.wem</Path>
+				</File>
+				<File Id="872109975" Language="SFX">
+					<ShortName>VO_monk_dead_06.wav</ShortName>
+					<Path>SFX\VO_monk_dead_06_53CEE377.wem</Path>
+				</File>
+				<File Id="883639866" Language="SFX">
+					<ShortName>VO_monk_dead_04.wav</ShortName>
+					<Path>SFX\VO_monk_dead_04_53CEE377.wem</Path>
+				</File>
+				<File Id="893219736" Language="SFX">
+					<ShortName>VO_monk_dead_07.wav</ShortName>
+					<Path>SFX\VO_monk_dead_07_53CEE377.wem</Path>
+				</File>
+				<File Id="893996882" Language="SFX">
+					<ShortName>SFX_ball_impact_02.wav</ShortName>
+					<Path>SFX\SFX_ball_impact_02_53CEE377.wem</Path>
+				</File>
+				<File Id="912193778" Language="SFX">
+					<ShortName>VO_monk_dead_01.wav</ShortName>
+					<Path>SFX\VO_monk_dead_01_53CEE377.wem</Path>
+				</File>
+				<File Id="920660837" Language="SFX">
+					<ShortName>VO_blue_team_01.wav</ShortName>
+					<Path>SFX\VO_blue_team_01_53CEE377.wem</Path>
+				</File>
+				<File Id="922727794" Language="SFX">
+					<ShortName>SFX_stage_force_field_08.wav</ShortName>
+					<Path>SFX\SFX_stage_force_field_08_53CEE377.wem</Path>
+				</File>
+				<File Id="935138882" Language="SFX">
+					<ShortName>SFX_monk_pitch_02.wav</ShortName>
+					<Path>SFX\SFX_monk_pitch_02_53CEE377.wem</Path>
+				</File>
+				<File Id="944387481" Language="SFX">
+					<ShortName>VO_monk_dead_02.wav</ShortName>
+					<Path>SFX\VO_monk_dead_02_53CEE377.wem</Path>
+				</File>
+				<File Id="947517471" Language="SFX">
+					<ShortName>SFX_ball_state_change_impact_06.wav</ShortName>
+					<Path>SFX\SFX_ball_state_change_impact_06_53CEE377.wem</Path>
+				</File>
+				<File Id="950887372" Language="SFX">
+					<ShortName>SFX_stage_force_field_05.wav</ShortName>
+					<Path>SFX\SFX_stage_force_field_05_53CEE377.wem</Path>
+				</File>
+				<File Id="962110797" Language="SFX">
+					<ShortName>SFX_ball_state_change_impact_02.wav</ShortName>
+					<Path>SFX\SFX_ball_state_change_impact_02_53CEE377.wem</Path>
+				</File>
+				<File Id="987608260" Language="SFX">
+					<ShortName>VO_ready_03.wav</ShortName>
+					<Path>SFX\VO_ready_03_53CEE377.wem</Path>
+				</File>
+				<File Id="991388798" Language="SFX">
+					<ShortName>SFX_ball_state_change_impact_04.wav</ShortName>
+					<Path>SFX\SFX_ball_state_change_impact_04_53CEE377.wem</Path>
+				</File>
+				<File Id="1000891486" Language="SFX">
+					<ShortName>VO_set_02.wav</ShortName>
+					<Path>SFX\VO_set_02_53CEE377.wem</Path>
+				</File>
+				<File Id="1006472324" Language="SFX">
+					<ShortName>SFX_monk_catch_01.wav</ShortName>
+					<Path>SFX\SFX_monk_catch_01_53CEE377.wem</Path>
+				</File>
+				<File Id="1028499817" Language="SFX">
+					<ShortName>SFX_stage_force_field_06.wav</ShortName>
+					<Path>SFX\SFX_stage_force_field_06_53CEE377.wem</Path>
+				</File>
+			</IncludedMemoryFiles>
+		</SoundBank>
+	</SoundBanks>
+</SoundBanksInfo>

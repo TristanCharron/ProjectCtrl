@@ -17,7 +17,7 @@ public class WwiseManager : MonoBehaviour
 
     void SetWwiseFromState()
     {
-        //Camera.main.gameObject.GetComponent<AkAudioListener>().enabled = IsWwiseEnabled;
+        Camera.main.gameObject.GetComponent<AkAudioListener>().enabled = IsWwiseEnabled;
 
         if (!IsWwiseEnabled)
             Destroy(gameObject);
@@ -28,6 +28,6 @@ public class WwiseManager : MonoBehaviour
 
     public static void PostEvent(string nameEvent, GameObject gObject)
     {
-        //AkSoundEngine.PostEvent(nameEvent, gObject);
+        AkSoundEngine.PostEvent(nameEvent, gObject);
     }
 }
