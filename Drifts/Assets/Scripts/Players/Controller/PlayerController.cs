@@ -111,19 +111,20 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Orb")
+        if (other.gameObject.CompareTag("Orb"))
         {
-
-            if (isHitValid())
+			if (isHitValid() && !Player.IsDead)
             {
-                if (!Player.IsDead)
-                {
-					WwiseManager.PostEvent("MONK_DEAD", gameObject);
-                    GameObject DeathAnimParticle = Instantiate(Resources.Load<GameObject>("DeathMonkParticle"), gameObject.transform.position, Quaternion.identity) as GameObject;
-                    Destroy(DeathAnimParticle, 5);
-                    GameController.Instance.KillPlayer(this);
-					gameObject.SetActive(false);
-                }
+				WwiseManager.PostEvent("MONK_DEAD", gameObject);
+                GameObject DeathAnimParticle = Instantiate(Resources.Load<GameObject>("DeathMonkParticle"), gameObject.transform.position, Quaternion.identity) as GameObject;
+                Destroy(DeathAnimParticle, 5);
+
+				float deathShakeRatio = 5;
+				UIEffectManager.Instance.OnFreezeFrame(0.3f);
+				GameEffect.Shake(Camera.main.gameObject,deathShakeRatio,.5f);
+
+                GameController.Instance.KillPlayer(this);
+				gameObject.SetActive(false);
             }
         }
     }
@@ -143,7 +144,6 @@ public class PlayerController : MonoBehaviour
                 handAnimator.Play("Push");
                 WwiseManager.PostEvent("MONK_WIND", gameObject);
                 StartCoroutine(CoolDown("Push"));
-				pushAnimator.Play ("pushAnim");
 			}
         }
         Charge();
@@ -171,14 +171,21 @@ public class PlayerController : MonoBehaviour
 		float currentPower = Player.Power * (1 + RightTriggerHold.holdingButtonRatio);
 		OrbController.Instance.Push(Cursor.LookingAtAngle * -transform.up, Player.Power, CurrentTeamID);
 		OrbController.Instance.ChangeTeamPossession(CurrentTeamID);
-
-		if (OrbController.Instance.CurrentVelocity > 300)
-			UIEffectManager.Instance.FreezeFrame(OrbController.Instance.VelocityRatio / 6);
-
+		PushEffects();
         WindGust.GetComponent<BoxCollider>().enabled = false;
         WwiseManager.PostEvent("MONK_PITCH", gameObject);
     }
 
+	void PushEffects()
+	{
+		float velRatio = OrbController.Instance.VelocityRatio;
+		if (velRatio > 0.3f)
+		{	
+			float shakeEffect = 2;
+			UIEffectManager.Instance.OnFreezeFrame(velRatio * 0.6f);
+			GameEffect.Shake(Camera.main.gameObject,velRatio * shakeEffect, velRatio * 0.6f);
+		}
+	}
     public void OnPull()
     {
         WwiseManager.PostEvent("MONK_CATCH", gameObject);
@@ -203,6 +210,9 @@ public class PlayerController : MonoBehaviour
             case "Push":
                 WindGust.SetActive(state);
                 WindGust.GetComponent<BoxCollider>().enabled = state;
+				if(state)
+					pushAnimator.Play ("pushAnim");
+
                 break;
             case "Pull":
                 PullCollider.enabled = state;

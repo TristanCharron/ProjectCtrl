@@ -53,15 +53,14 @@ public class RoundUIController : MonoBehaviour
 
     public static GameObject GetTeamContainer(Team currentTeam)
     {
-		Debug.Log(currentTeam.Index);
-        switch (currentTeam.Index)
+        switch (currentTeam.TeamID)
         {
-            case 1:
-                return instance.BlueTeamWin;
-            case 2:
-                return instance.RedTeamWin;
-            default:
-                return instance.BlueTeamWin;
+		case TeamController.TeamID.TeamBlue:
+            return instance.BlueTeamWin;
+		case TeamController.TeamID.TeamRed:
+            return instance.RedTeamWin;
+        default:
+            return instance.BlueTeamWin;
         }
     }
 
@@ -94,11 +93,7 @@ public class RoundUIController : MonoBehaviour
         SetNewRoundScreen(false);
 
         GameController.Instance.ChangeGameStartedState(true);
-
-       
-        
         yield break;
-
     }
 
     public static void SetGameOverScreen(bool state)
@@ -119,8 +114,6 @@ public class RoundUIController : MonoBehaviour
         {
             instance.readyAnimator.Play("readyAnim", -1, 0f);
         }
-        
-
         instance.readyContainer.SetActive(state);
 
     }
@@ -130,9 +123,4 @@ public class RoundUIController : MonoBehaviour
         instance.StartCoroutine(instance.SetUIForNextRound());
         instance.NbRoundText.text = GameController.Instance.NbRoundsPlayed.ToString("00");
     }
-
-
-
-
-
 }

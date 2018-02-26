@@ -13,12 +13,11 @@ public class OrbController : MonoBehaviour
 	public Vector3 CurrentDirection { get { return rigidBody.velocity.normalized; } }
 	public float CurrentVelocity { get { return rigidBody.velocity.magnitude; } }
 	public float VelocityRatio { get { return Mathf.Clamp01(rigidBody.velocity.magnitude / _MaxVelocity); } }
-	public GameObject mainOrb;
 	#endregion
 
 	#region Param
 	[Header("Parameter")]
-    [SerializeField] Color _NeutralColor, _Team1Color, _Team2Color;
+    [SerializeField] Color _NeutralColor, _TeamBlueColor, _TeamRedColor;
 	[SerializeField] float _MaxVelocity, _MinVelocity, _DecreaseVelocity;
 
 	[SerializeField] float thresholdAnim1 = 100;
@@ -31,11 +30,13 @@ public class OrbController : MonoBehaviour
 	[SerializeField] Rigidbody rigidBody;
     [SerializeField] ParticleSystem pSystem;
     [SerializeField] ParticleSystem pSystemBall;
+	[SerializeField] GameObject orbWithAnimation;
+
 	#endregion
 
 	#region LayerMask
-	int layerMask_Team1;
-	int layerMask_Team2;
+	int layerMask_TeamRed;
+	int layerMask_TeamBlue;
 	int layerMask_Orb;
 	#endregion
 
@@ -55,8 +56,8 @@ public class OrbController : MonoBehaviour
 
 	void SetLayerMask()
 	{
-		layerMask_Team1 = LayerMask.NameToLayer("Team1");
-		layerMask_Team2 = LayerMask.NameToLayer("Team2");
+		layerMask_TeamRed = LayerMask.NameToLayer("TeamRed");
+		layerMask_TeamBlue = LayerMask.NameToLayer("TeamBlue");
 		layerMask_Orb = LayerMask.NameToLayer("Orb");
 	}
 
@@ -64,17 +65,17 @@ public class OrbController : MonoBehaviour
 	{
 		switch(newTeam)
 		{
-		case TeamController.TeamID.Team1 : 
-			Physics.IgnoreLayerCollision(layerMask_Team1, layerMask_Orb, true);
-			Physics.IgnoreLayerCollision(layerMask_Team2, layerMask_Orb, false);
+		case TeamController.TeamID.TeamRed : 
+			Physics.IgnoreLayerCollision(layerMask_TeamRed, layerMask_Orb, true);
+			Physics.IgnoreLayerCollision(layerMask_TeamBlue, layerMask_Orb, false);
 			break;
-		case TeamController.TeamID.Team2 :
-			Physics.IgnoreLayerCollision(layerMask_Team1, layerMask_Orb, false);
-			Physics.IgnoreLayerCollision(layerMask_Team2, layerMask_Orb, true);
+		case TeamController.TeamID.TeamBlue :
+			Physics.IgnoreLayerCollision(layerMask_TeamRed, layerMask_Orb, false);
+			Physics.IgnoreLayerCollision(layerMask_TeamBlue, layerMask_Orb, true);
 			break;
 		case TeamController.TeamID.Neutral :
-			Physics.IgnoreLayerCollision(layerMask_Team1, layerMask_Orb, true);
-			Physics.IgnoreLayerCollision(layerMask_Team2, layerMask_Orb, true);
+			Physics.IgnoreLayerCollision(layerMask_TeamRed, layerMask_Orb, true);
+			Physics.IgnoreLayerCollision(layerMask_TeamBlue, layerMask_Orb, true);
 			break;
 		}
 	}
@@ -91,10 +92,10 @@ public class OrbController : MonoBehaviour
 
         if (newTeam == TeamController.TeamID.Neutral)
             col = _NeutralColor;
-        else if (newTeam == TeamController.TeamID.Team1)
-            col = _Team1Color;
-        else if (newTeam == TeamController.TeamID.Team2)
-            col = _Team2Color;
+        else if (newTeam == TeamController.TeamID.TeamRed)
+            col = _TeamRedColor;
+        else if (newTeam == TeamController.TeamID.TeamBlue)
+            col = _TeamBlueColor;
 
 		Instance.UpdateCollisionMatrix(newTeam);
         Instance.StartCoroutine(Instance.LerpBallColorCoRoutine(col));
@@ -159,14 +160,13 @@ public class OrbController : MonoBehaviour
 		rigidBody.velocity = angle.normalized * currentVelocity;
 	}
 
-	//TODO mettre les threshold
-    void onSetBallStage()
+	void onSetBallStage()
     {
         int previousOrbID = OrbStateID;
 		float trueVelocity = GetTrueVelocity();
 		if (trueVelocity > thresholdAnim1)
         {
-            mainOrb.SetActive(true);
+			orbWithAnimation.SetActive(true);
 
 			if (trueVelocity > thresholdAnim3)
                 OrbStateID = 3;
@@ -175,12 +175,12 @@ public class OrbController : MonoBehaviour
             else
                 OrbStateID = 1;
 		
-            mainOrb.GetComponent<Animator>().Play("stage" + OrbStateID.ToString());
+			orbWithAnimation.GetComponent<Animator>().Play("stage" + OrbStateID.ToString());
         }
         else
         {
             OrbStateID = 0;
-            mainOrb.SetActive(false);
+			orbWithAnimation.SetActive(false);
         }
 		
         if (previousOrbID != OrbStateID && GameController.Instance.IsGameStarted)

@@ -97,7 +97,10 @@ public class Bell : MonoBehaviour
 		if(currentHp <= 0)
 		{
 			BellExplode();
-			GameController.Instance.EndGame(TeamController.Instance.GetOtherTeam(assignedTeam));
+			//GameController.Instance.EndGame(TeamController.Instance.GetOtherTeam(assignedTeam));
+			//les bells sont reversed?
+			GameController.Instance.EndGame(assignedTeam);
+
 		}
 		else
 		{

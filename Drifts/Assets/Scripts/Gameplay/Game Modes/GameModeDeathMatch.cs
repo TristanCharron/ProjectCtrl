@@ -11,7 +11,6 @@ public class GameModeDeathMatch : GameMode {
         NbTeams = 2;
     }
 
-
     public override void EnablePlayers()
     {
         base.EnablePlayers();
@@ -21,7 +20,6 @@ public class GameModeDeathMatch : GameMode {
     {
         base.KillPlayer(deadPlayer);
     }
-
     
     protected override void BeginNextRound()
     {
@@ -41,7 +39,4 @@ public class GameModeDeathMatch : GameMode {
     {
         return base.EndRoundCoRoutine(wwiseTeamNameEvent, winningTeam);
     }
-
-   
-
 }

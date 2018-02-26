@@ -11,21 +11,17 @@ public class TeamController : MonoBehaviour
 
     private int NbPlayersCreated;
 
-
     public GameObject BellRoot;
     public GameObject PlayerRoot;
 
 
     public enum TeamID
     {
-        Team1 = 0,
-        Team2 = 1,
-        Neutral = 2,
-       
+        TeamBlue,
+		TeamRed,
+        Neutral
     };
 
-
-    // Use this for initialization
     void Awake()
     {
         Instance = this;
@@ -37,14 +33,14 @@ public class TeamController : MonoBehaviour
 
     public Team GetOtherTeam(Team currentTeam)
     {
-        switch (currentTeam.Index)
+        switch (currentTeam.TeamID)
         {
-            case 1:
-                return TeamList[1];
-            case 2:
-                return TeamList[0];
-            default:
-                return currentTeam;
+		case TeamID.TeamBlue:
+            return TeamList[1];
+		case TeamID.TeamRed:
+            return TeamList[0];
+        default:
+            return currentTeam;
         }
     }
 
@@ -73,7 +69,7 @@ public class TeamController : MonoBehaviour
     }
 
 
-     Team GenerateTeam(TeamID id, int nbPlayers, int teamNb)
+    Team GenerateTeam(TeamID id, int nbPlayers, int teamNb)
     {
         Team newTeam = new Team(id, nbPlayers, teamNb);
 

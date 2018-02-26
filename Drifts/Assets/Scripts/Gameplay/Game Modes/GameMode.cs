@@ -89,13 +89,16 @@ public abstract class GameMode : MonoBehaviour
 
     public virtual void EndRound(Team team)
     {
-        string wwiseEvent = team.Index == 1 ? "GAME_END_BLUE" : "GAME_END_RED";
+		Debug.Log("end round");
+
+        string wwiseEvent = (team.TeamID == TeamController.TeamID.TeamBlue) ? "GAME_END_BLUE" : "GAME_END_RED";
         StartCoroutine(EndRoundCoRoutine(wwiseEvent, team));
     }
 
 
     protected virtual IEnumerator EndRoundCoRoutine(string wwiseTeamNameEvent, Team winningTeam)
     {
+		Debug.Log("end round co routine");
         GameController.Instance.ChangeGameStartedState(false);
         OrbController.Instance.gameObject.SetActive(false);
         RoundUIController.GetTeamContainer(winningTeam).SetActive(true);

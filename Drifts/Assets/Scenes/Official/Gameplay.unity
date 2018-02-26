@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 35232884}
   - component: {fileID: 35232883}
   - component: {fileID: 35232889}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Player3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 115000725}
   - component: {fileID: 115000724}
   - component: {fileID: 115000730}
-  m_Layer: 11
+  m_Layer: 10
   m_Name: Player4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1542,7 +1542,7 @@ Prefab:
     - target: {fileID: 95000010798743742, guid: e6a3b84139895404aa03cabe2375a51f,
         type: 2}
       propertyPath: m_ApplyRootMotion
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e6a3b84139895404aa03cabe2375a51f, type: 2}
@@ -5080,7 +5080,7 @@ GameObject:
   - component: {fileID: 407643784}
   - component: {fileID: 407643783}
   - component: {fileID: 407643789}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Player2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5750,7 +5750,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 521171341}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 327.9, y: -87.6, z: 19}
+  m_LocalPosition: {x: 330.2, y: -87.6, z: 19}
   m_LocalScale: {x: 145, y: 100, z: 150.3544}
   m_Children: []
   m_Father: {fileID: 2059550122}
@@ -6103,7 +6103,7 @@ GameObject:
   - component: {fileID: 544248185}
   - component: {fileID: 544248184}
   m_Layer: 9
-  m_Name: Stage
+  m_Name: orbLayerAnim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7286,7 +7286,7 @@ GameObject:
   - component: {fileID: 793283480}
   - component: {fileID: 793283485}
   - component: {fileID: 793283486}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16095,10 +16095,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be69eb959d54e3446996d5846a9e0a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainOrb: {fileID: 544248182}
   _NeutralColor: {r: 1, g: 1, b: 1, a: 0.19607843}
-  _Team1Color: {r: 0.26666668, g: 0.26666668, b: 1, a: 0.19607843}
-  _Team2Color: {r: 1, g: 0.26666668, b: 0.26666668, a: 0.19607843}
+  _TeamBlueColor: {r: 0.2647059, g: 0.36274537, b: 1, a: 0.491}
+  _TeamRedColor: {r: 1, g: 0.2647059, b: 0.2647059, a: 0.503}
   _MaxVelocity: 1000
   _MinVelocity: 180
   _DecreaseVelocity: 0.8
@@ -16108,6 +16107,7 @@ MonoBehaviour:
   rigidBody: {fileID: 0}
   pSystem: {fileID: 1664275171}
   pSystemBall: {fileID: 1387220414}
+  orbWithAnimation: {fileID: 544248182}
 --- !u!95 &1216636386
 Animator:
   serializedVersion: 3

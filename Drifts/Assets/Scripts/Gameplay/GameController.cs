@@ -108,10 +108,11 @@ public class GameController : MonoBehaviour
 	/// </summary>
     public void EndGame()
     {
+		Debug.Log("score end game");
 		if (TeamController.Instance.TeamList[0].TotalScore > TeamController.Instance.TeamList[1].TotalScore)
-            Instance.StartCoroutine(Instance.EndGameCoRoutine("GAME_END_BLUE", TeamController.Instance.TeamList[0]));
+            StartCoroutine(EndGameCoRoutine("GAME_END_BLUE", TeamController.Instance.TeamList[0]));
         else
-            Instance.StartCoroutine(Instance.EndGameCoRoutine("GAME_END_RED", TeamController.Instance.TeamList[1]));
+            StartCoroutine(EndGameCoRoutine("GAME_END_RED", TeamController.Instance.TeamList[1]));
     }
 
 	/// <summary>
@@ -126,6 +127,7 @@ public class GameController : MonoBehaviour
 
     public IEnumerator EndGameCoRoutine(string wwiseTeamNameEvent, Team winningTeam)
     {
+		Debug.Log("real end game");
         ChangeGameStartedState(false);
         OrbController.Instance.gameObject.SetActive(false);
         RoundUIController.SetGameOverScreen(true);

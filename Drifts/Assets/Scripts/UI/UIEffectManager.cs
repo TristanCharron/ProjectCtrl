@@ -41,16 +41,16 @@ public class UIEffectManager : MonoBehaviour {
 
     public void OnScreenShake(float sec)
     {
-        StartCoroutine(Instance.ScreenShake(sec));
+		StartCoroutine(Instance.ScreenShake(sec));
 
     }
 
-    public IEnumerator FreezeFrame(float sec)
+	public IEnumerator FreezeFrame(float sec)
     {
         if (!isFreezeFraming)
         {
             isFreezeFraming = true;
-            Time.timeScale = 0.01f;
+            Time.timeScale = 0.001f;
             float pauseEndTime = Time.realtimeSinceStartup + sec;
 
             while (Time.realtimeSinceStartup < pauseEndTime)
@@ -64,7 +64,7 @@ public class UIEffectManager : MonoBehaviour {
         yield break;
     }
 
-    public IEnumerator ScreenShake(float sec)
+	public IEnumerator ScreenShake(float sec)
     {
 
 
@@ -78,7 +78,7 @@ public class UIEffectManager : MonoBehaviour {
             while (elapsed < sec * 2)
             {
                 elapsed += Time.deltaTime;
-                shakeAmount = originalCamPos + Random.insideUnitSphere * 50f;
+				shakeAmount = originalCamPos + Random.insideUnitSphere * 50;
 
             }
 

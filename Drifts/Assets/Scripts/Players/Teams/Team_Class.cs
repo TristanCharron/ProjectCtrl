@@ -10,17 +10,13 @@ public class Team
     public TeamController.TeamID TeamID { private set; get; }
 
 
-    [SerializeField]
     public Text RoundScoretxt,TotalScoreTxt;
-
 
     public int CurrentScore { private set; get; }
     public int TotalScore { private set; get; }
     public int NbPlayersActive { private set; get; }
 
-
     public List<PlayerController> PlayerList { private set; get; }
-
     public List<PlayerController> PlayerListDead { protected set; get; }
 
     public Bell TeamBell;
@@ -28,12 +24,9 @@ public class Team
     public int Index { private set; get; }
 
 
-
-
-
     public Team()
     {
-        TeamID = TeamController.TeamID.Team1;
+        TeamID = TeamController.TeamID.TeamRed; //why tho
         NbPlayersActive = GameController.CurrentGameMode.NbPlayers;
         PlayerList = new List<PlayerController>();
     }

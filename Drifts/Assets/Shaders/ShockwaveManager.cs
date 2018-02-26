@@ -46,7 +46,6 @@ public class ShockwaveManager : MonoBehaviour
 		EffectMaterial.SetVector("_Pos", screenPos);
 		EffectMaterial.SetFloat("_Intensity", intensity);
 		EffectMaterial.SetFloat("_ScreenYRatio", screenYRatio);
-		Debug.Log(screenYRatio + " screen ratio");
 
 		while(t < 1)
 		{
@@ -55,7 +54,5 @@ public class ShockwaveManager : MonoBehaviour
 			yield return new WaitForEndOfFrame();
 		}
 		EffectMaterial.SetFloat("_Lerp", 0);
-
 	}
-
 }
