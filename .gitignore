@@ -15,8 +15,6 @@ sysinfo.txt
 # Wwise #
 # ===== #
 drift_sound/
-!*.dll
-!*.pdb
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
