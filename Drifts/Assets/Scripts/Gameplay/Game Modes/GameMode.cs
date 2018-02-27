@@ -89,9 +89,8 @@ public abstract class GameMode : MonoBehaviour
 
     public virtual void EndRound(Team team)
     {
-		Debug.Log("end round");
-
         string wwiseEvent = (team.TeamID == TeamController.TeamID.TeamBlue) ? "GAME_END_BLUE" : "GAME_END_RED";
+		team.GiveVictoryPoints(1);
         StartCoroutine(EndRoundCoRoutine(wwiseEvent, team));
     }
 
@@ -106,6 +105,5 @@ public abstract class GameMode : MonoBehaviour
         yield return new WaitForSeconds(3f);
         RoundUIController.GetTeamContainer(winningTeam).SetActive(false);
         BeginNextRound();
-
     }
 }

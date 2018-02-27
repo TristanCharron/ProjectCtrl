@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Bell : MonoBehaviour
 {
 	private int maxHp = 10;
-	private int currentHp;
+	private int currentHp = 5;
 
     //private int curNbBellHits = 0;
     private Team assignedTeam;
@@ -76,8 +76,10 @@ public class Bell : MonoBehaviour
         //No Team, invalid
 		if (OrbController.Instance.PossessedTeam == TeamController.TeamID.Neutral || assignedTeam == null)
             return;
+
+		//A voir si on met un score similaire dans le futur
+        //AddScore(TeamController.Instance.GetOtherTeam(assignedTeam));
 		
-        AddScore(TeamController.Instance.GetOtherTeam(assignedTeam));
 		WwiseManager.PostEvent("STAGE_BELL", gameObject);
 		GetComponent<Animator>().Play("DONG", 0, -1);
 		UIEffectManager.Instance.OnFreezeFrame(freezeFrame * GetInvRatioLife());
@@ -139,11 +141,13 @@ public class Bell : MonoBehaviour
 
 	}
 
+	/* old score version
     private void AddScore(Team team)
     {
         //curNbBellHits++;
-		team.AddHitScore((int)OrbController.Instance.CurrentVelocity / 3);
+		//team.AddHitScore((int)OrbController.Instance.CurrentVelocity / 3);
     }
+	*/
 
 	float GetRatioLife()
 	{

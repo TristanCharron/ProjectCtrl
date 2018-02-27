@@ -12,8 +12,13 @@ public class Team
 
     public Text RoundScoretxt,TotalScoreTxt;
 
+	/*Maybe to remove*/
     public int CurrentScore { private set; get; }
     public int TotalScore { private set; get; }
+	/*Maybe to remove*/
+
+	public int victoryPoints { private set; get; }
+
     public int NbPlayersActive { private set; get; }
 
     public List<PlayerController> PlayerList { private set; get; }
@@ -39,6 +44,7 @@ public class Team
         Index = _index;
         CurrentScore = 0;
         TotalScore = 0;
+		victoryPoints = 0;
     }
 
     public void Reset()
@@ -57,7 +63,7 @@ public class Team
     {
         TeamBell = bell;
     }
-
+	/*
     public void AddHitScore(int pointsAmount)
     {
         CurrentScore += pointsAmount;
@@ -72,6 +78,16 @@ public class Team
         ScoreController.AddScore(RoundScoretxt, 0);
         ScoreController.AddScore(TotalScoreTxt, TotalScore);
     }
+	*/
+
+	//Sera probablement juste 1
+	public void GiveVictoryPoints(int points)
+	{
+		victoryPoints += points;
+		ScoreController.AddScore(RoundScoretxt, 0);
+		ScoreController.AddScore(TotalScoreTxt, victoryPoints);
+	}
+
 
     public void KillPlayer(PlayerController player, out bool isTeamDead)
     {

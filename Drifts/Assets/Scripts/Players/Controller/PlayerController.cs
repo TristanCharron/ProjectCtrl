@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] BoxCollider PushCollider;
 	[SerializeField] BoxCollider PullCollider;
 	[SerializeField] GameObject WindGust;
-    [SerializeField] ParticleSystem chargeParticles, catchParticles;
+    [SerializeField] ParticleSystem chargeParticles, pullParticles;
 	public Rigidbody rBody;
 
 	SpriteRenderer sRenderer;
@@ -67,7 +67,10 @@ public class PlayerController : MonoBehaviour
         rBody.drag = 5f;
         if (Player != null)
             Player.ResetCharacter();
-    }
+
+		chargeParticles.gameObject.SetActive(false);
+		//pullParticles.gameObject.SetActive(false);
+	}
 
 
 
