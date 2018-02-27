@@ -16,18 +16,12 @@ public class RoundUIController : MonoBehaviour
 
     public CameraActionBoxFollower CameraBoxFollower;
 
-    [SerializeField]
-    public List<Text> playerId = new List<Text>();
-    [SerializeField]
-    public List<Text> roundScoreList = new List<Text>();
-    [SerializeField]
-    public List<Text> totalScoreList = new List<Text>();
-    [SerializeField]
-    private Text NbRoundText;
-
+    [SerializeField] public List<Text> playerId = new List<Text>();
+	[SerializeField] public List<Text> roundScoreList = new List<Text>();
+    [SerializeField] public List<Text> totalScoreList = new List<Text>();
+    [SerializeField] private Text NbRoundText;
 
     public GameObject SakuraParticles;
-
 
     public delegate void RoundDelegate();
 
@@ -74,6 +68,7 @@ public class RoundUIController : MonoBehaviour
     {
         SakuraParticles.SetActive(true);
         CameraBoxFollower.enabled = true;
+		GetComponent<Animator>().enabled = false;
 
         if(EndCinematicEvent != null)
         EndCinematicEvent();

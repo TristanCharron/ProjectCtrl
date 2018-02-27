@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class Bell : MonoBehaviour
 {
 	private int maxHp = 10;
-	private int currentHp = 5;
+	private int currentHp = 10;
 
     //private int curNbBellHits = 0;
     private Team assignedTeam;
@@ -18,7 +18,7 @@ public class Bell : MonoBehaviour
 	[SerializeField] Color colorShockWave;
 	[SerializeField] float intensityShockWave = .9f;
 	[SerializeField] float freezeFrame = .15f;
-	[SerializeField] float screenShake = 15;
+	[SerializeField] float screenShake = 2;
 
 	[Header("Life Shader Param")]
 	private Material material;
@@ -33,6 +33,7 @@ public class Bell : MonoBehaviour
 	{
 		material = GetComponent<MeshRenderer>().material;
 		SetShader();
+		currentHp = maxHp;
 	}
 
     void OnCollisionEnter(Collision other)
@@ -85,8 +86,11 @@ public class Bell : MonoBehaviour
 		UIEffectManager.Instance.OnFreezeFrame(freezeFrame * GetInvRatioLife());
 
 		float ratio = OrbController.Instance.VelocityRatio;
-		ShockwaveManager.GetInstance().CastShockwave(sizeShockWave*(0.1f+GetInvRatioLife()),transform.position,speedShockWave,colorShockWave,intensityShockWave);
-		UIEffectManager.Instance.OnScreenShake(screenShake * GetInvRatioLife());
+		//ShockwaveManager.GetInstance().CastShockwave(sizeShockWave*(0.1f+GetInvRatioLife()),transform.position,speedShockWave,colorShockWave,intensityShockWave);
+		//GameEffect.Shake(Camera.main.gameObject, screenShake * GetInvRatioLife(), 0.5f * GetInvRatioLife(), true);
+		ShockwaveManager.GetInstance().CastShockwave(sizeShockWave*ratio,transform.position,speedShockWave,colorShockWave,intensityShockWave);
+		GameEffect.Shake(Camera.main.gameObject, screenShake * ratio, 0.5f * ratio, true);
+
 		LooseHp(1);
 	}
 
