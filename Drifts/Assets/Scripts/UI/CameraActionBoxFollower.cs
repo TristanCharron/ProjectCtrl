@@ -18,7 +18,7 @@ public class CameraActionBoxFollower : MonoBehaviour {
         currentCamera = GetComponent<Camera>();
     }
 
-    void LateUpdate()
+    void Update()
     {
         Rect boundingBox = CalculateTargetsBoundingBox();
         //currentCamera.orthographicSize = CalculateOrthographicSize(boundingBox);
@@ -57,10 +57,7 @@ public class CameraActionBoxFollower : MonoBehaviour {
     Vector3 CalculateCameraPosition(Rect boundingBox)
     {
         Vector3 boundingBoxCenter = boundingBox.center;
-
-        
 		return new Vector3(boundingBoxCenter.x, boundingBoxCenter.y, boundingBoxCenter.z) + CameraAjust;
-        
     }
 
     /// <summary>

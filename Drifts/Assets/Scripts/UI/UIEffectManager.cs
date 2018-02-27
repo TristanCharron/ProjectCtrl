@@ -12,7 +12,6 @@ public class UIEffectManager : MonoBehaviour {
     [SerializeField]
     private Vector3 shakeAmount;
 
-    private Shake shakeComponent;
 
     [SerializeField] GameObject FadeWhiteComponent;
     private Animator fadeWhiteAnimator;
@@ -20,7 +19,6 @@ public class UIEffectManager : MonoBehaviour {
     // Use this for initialization
     void Awake () {
         Instance = this;
-        shakeComponent = Camera.main.GetComponentInParent<Shake>();
         fadeWhiteAnimator = FadeWhiteComponent.GetComponent<Animator>();
         OnResetProperties();
     }
@@ -39,12 +37,6 @@ public class UIEffectManager : MonoBehaviour {
 
     }
 
-    public void OnScreenShake(float sec)
-    {
-		StartCoroutine(Instance.ScreenShake(sec));
-
-    }
-
 	public IEnumerator FreezeFrame(float sec)
     {
         if (!isFreezeFraming)
@@ -59,46 +51,17 @@ public class UIEffectManager : MonoBehaviour {
             Time.timeScale = 1;
             isFreezeFraming = false;
         }
-
-        shakeComponent.enabled = true;
-        yield break;
-    }
-
-	public IEnumerator ScreenShake(float sec)
-    {
-
-
-        if (!isScreenShake)
-        {
-            isScreenShake = true;
-            float elapsed = 0.0f;
-
-            Vector3 originalCamPos = Camera.main.transform.position;
-
-            while (elapsed < sec * 2)
-            {
-                elapsed += Time.deltaTime;
-				shakeAmount = originalCamPos + Random.insideUnitSphere * 50;
-
-            }
-
-            shakeAmount = Vector3.zero;
-            isScreenShake = false;
-        }
         yield break;
     }
 
     public void FadeToWhite(bool fadeIn)
     {
         StartCoroutine(FadeWhite(fadeIn));
-       
-    
+ 
     }
 
     public IEnumerator FadeWhite(bool fadeIn)
     {
-
-       
         FadeWhiteComponent.SetActive(true);
         fadeWhiteAnimator.enabled = true;
         fadeWhiteAnimator.Play(Animator.StringToHash(fadeIn ? "fadeInWhite" : "fadeOutWhite"));
@@ -108,8 +71,4 @@ public class UIEffectManager : MonoBehaviour {
         fadeWhiteAnimator.enabled = false;
         yield break;
     }
-
-  
-
-
 }

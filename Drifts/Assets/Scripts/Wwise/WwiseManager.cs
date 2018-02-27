@@ -3,8 +3,7 @@ using System.Collections;
 
 public class WwiseManager : MonoBehaviour
 {
-    [SerializeField]
-    private bool IsWwiseEnabled;
+    static bool isWwiseEnabled = true;
 
     public static WwiseManager Instance { private set; get; }
 
@@ -17,9 +16,10 @@ public class WwiseManager : MonoBehaviour
 
     void SetWwiseFromState()
     {
-        Camera.main.gameObject.GetComponent<AkAudioListener>().enabled = IsWwiseEnabled;
 
-        if (!IsWwiseEnabled)
+		Camera.main.gameObject.GetComponent<AkAudioListener>().enabled = WwiseManager.isWwiseEnabled;
+
+		if (!WwiseManager.isWwiseEnabled)
             Destroy(gameObject);
     }
 
@@ -28,6 +28,7 @@ public class WwiseManager : MonoBehaviour
 
     public static void PostEvent(string nameEvent, GameObject gObject)
     {
-        AkSoundEngine.PostEvent(nameEvent, gObject);
+		if(isWwiseEnabled)
+       	 AkSoundEngine.PostEvent(nameEvent, gObject);
     }
 }

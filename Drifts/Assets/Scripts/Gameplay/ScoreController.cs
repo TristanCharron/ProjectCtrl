@@ -11,8 +11,7 @@ public class ScoreController : MonoBehaviour {
     // Use this for initialization
     void Awake () {
         Instance = this;
-        GameController.EndRoundEvent += AddTeamScores;
-
+       // GameController.EndRoundEvent += AddTeamScores;
     }
 
     public static void AddScore(Text teamScoreTxt, int newScore)
@@ -38,6 +37,7 @@ public class ScoreController : MonoBehaviour {
             return ("0" + num.ToString());
     }
 
+	/* Systeme de score qui stack
     public static void AddTeamScores()
     {
         if(GameController.Instance.NbRoundsPlayed > 0)
@@ -47,7 +47,6 @@ public class ScoreController : MonoBehaviour {
                 TeamController.Instance.TeamList[i].AddRoundScore(TeamController.Instance.TeamList[i].CurrentScore);
             }
         }
-      
     }
-
+	 */
 }

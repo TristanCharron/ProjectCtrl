@@ -84,7 +84,8 @@ public class GameController : MonoBehaviour
 
 		WwiseManager.PostEvent("GAME_PLAY", Camera.main.gameObject);
 
-        EndRoundEvent();
+		//Etait active pour les scores mostly
+        //EndRoundEvent();
 
         if (IsLastRound())
             EndGame();
@@ -108,11 +109,18 @@ public class GameController : MonoBehaviour
 	/// </summary>
     public void EndGame()
     {
-		Debug.Log("score end game");
-		if (TeamController.Instance.TeamList[0].TotalScore > TeamController.Instance.TeamList[1].TotalScore)
-            StartCoroutine(EndGameCoRoutine("GAME_END_BLUE", TeamController.Instance.TeamList[0]));
-        else
-            StartCoroutine(EndGameCoRoutine("GAME_END_RED", TeamController.Instance.TeamList[1]));
+//		if (TeamController.Instance.TeamList[0].victoryPoints > TeamController.Instance.TeamList[1].victoryPoints)
+//            StartCoroutine(EndGameCoRoutine("GAME_END_BLUE", TeamController.Instance.TeamList[0]));
+//        else
+//            StartCoroutine(EndGameCoRoutine("GAME_END_RED", TeamController.Instance.TeamList[1]));
+
+		int blueVictoryPoints = TeamController.Instance.GetTeamByID(TeamController.TeamID.TeamBlue).victoryPoints;
+		int redVictoryPoints = TeamController.Instance.GetTeamByID(TeamController.TeamID.TeamRed).victoryPoints;
+
+		if(blueVictoryPoints > redVictoryPoints)
+			StartCoroutine(EndGameCoRoutine("GAME_END_BLUE", TeamController.Instance.GetTeamByID(TeamController.TeamID.TeamBlue)));
+		else
+			StartCoroutine(EndGameCoRoutine("GAME_END_RED", TeamController.Instance.GetTeamByID(TeamController.TeamID.TeamRed)));
     }
 
 	/// <summary>
@@ -150,9 +158,6 @@ public class GameController : MonoBehaviour
 
         SceneManager.LoadScene(0);
     }
-
-
-
 
     public bool IsGameCompleted()
     {

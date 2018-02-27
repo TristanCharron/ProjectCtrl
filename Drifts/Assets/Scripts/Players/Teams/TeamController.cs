@@ -30,22 +30,36 @@ public class TeamController : MonoBehaviour
         GameController.EndGameEvent += () => TeamList.Clear();
     }
 
+	public Team GetTeamByID(TeamID teamID)
+	{
+		Team team = TeamList.Find(t => t.TeamID == teamID);
+		return team;
+	}
 
     public Team GetOtherTeam(Team currentTeam)
     {
-        switch (currentTeam.TeamID)
-        {
+//        switch (currentTeam.TeamID)
+//        {
+//		case TeamID.TeamBlue:
+//            return TeamList[1];
+//		case TeamID.TeamRed:
+//            return TeamList[0];
+//        default:
+//            return currentTeam;
+//        }
+		switch (currentTeam.TeamID)
+		{
 		case TeamID.TeamBlue:
-            return TeamList[1];
+			return GetTeamByID(TeamID.TeamRed);
 		case TeamID.TeamRed:
-            return TeamList[0];
-        default:
-            return currentTeam;
-        }
-    }
-
-
-    private void ResetCurrentTeams()
+			return GetTeamByID(TeamID.TeamBlue);
+		default:
+			return currentTeam;
+		}
+	}
+	
+	
+	private void ResetCurrentTeams()
     {
         for (int i = 0; i < TeamList.Count; i++)
         {
@@ -83,8 +97,6 @@ public class TeamController : MonoBehaviour
         newTeam.Reset();
      
         return newTeam;
-
-
     }
 
     PlayerController GeneratePlayer(int playerID, TeamID assignedTeamID)
@@ -95,7 +107,6 @@ public class TeamController : MonoBehaviour
         NbPlayersCreated++;
         return pController;
     }
-
 
     void AssignBell(Team assignedTeam)
     {
@@ -109,7 +120,5 @@ public class TeamController : MonoBehaviour
         int teamId = (int)assignedTeam.TeamID;
         assignedTeam.AssignScoreText(RoundUIController.Instance.roundScoreList[teamId], RoundUIController.Instance.totalScoreList[teamId]);
     }
-
-
 }
 

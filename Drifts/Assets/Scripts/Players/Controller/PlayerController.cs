@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] BoxCollider PushCollider;
 	[SerializeField] BoxCollider PullCollider;
 	[SerializeField] GameObject WindGust;
-    [SerializeField] ParticleSystem chargeParticles, catchParticles;
+    [SerializeField] ParticleSystem chargeParticles, pullParticles;
 	public Rigidbody rBody;
 
 	SpriteRenderer sRenderer;
@@ -67,7 +67,10 @@ public class PlayerController : MonoBehaviour
         rBody.drag = 5f;
         if (Player != null)
             Player.ResetCharacter();
-    }
+
+		chargeParticles.gameObject.SetActive(false);
+		//pullParticles.gameObject.SetActive(false);
+	}
 
 
 
@@ -120,9 +123,9 @@ public class PlayerController : MonoBehaviour
                 Destroy(DeathAnimParticle, 5);
 
 				float velRatio = OrbController.Instance.VelocityRatio;
-				float deathShakeRatio = 5;
+				float deathShakeRatio = 3;
 				UIEffectManager.Instance.OnFreezeFrame(0.3f*velRatio);
-				GameEffect.Shake(Camera.main.gameObject,deathShakeRatio*velRatio,0.5f*velRatio);
+				GameEffect.Shake(Camera.main.gameObject,deathShakeRatio*velRatio,0.5f*velRatio,true);
 
                 GameController.Instance.KillPlayer(this);
 				gameObject.SetActive(false);
@@ -189,7 +192,7 @@ public class PlayerController : MonoBehaviour
 		{	
 			float shakeEffect = 2;
 			UIEffectManager.Instance.OnFreezeFrame(velRatio * 0.3f);
-			GameEffect.Shake(Camera.main.gameObject,velRatio * shakeEffect, velRatio * 0.3f);
+			GameEffect.Shake(Camera.main.gameObject,velRatio * shakeEffect, velRatio * 0.3f,true);
 		}
 	}
     public void OnPull()
