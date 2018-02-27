@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <WwiseSettings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <WwiseProjectPath>../../Drifts/drift_sound/drift_sound.wproj</WwiseProjectPath>
-  <SoundbankPath>Audio\GeneratedSoundBanks</SoundbankPath>
-  <CopySoundBanksAsPreBuildStep>true</CopySoundBanksAsPreBuildStep>
+  <SoundbankPath>Audio/GeneratedSoundBanks/</SoundbankPath>
+  <CopySoundBanksAsPreBuildStep>false</CopySoundBanksAsPreBuildStep>
   <GenerateSoundBanksAsPreBuildStep>false</GenerateSoundBanksAsPreBuildStep>
   <CreateWwiseGlobal>true</CreateWwiseGlobal>
   <CreateWwiseListener>true</CreateWwiseListener>
   <ShowMissingRigidBodyWarning>true</ShowMissingRigidBodyWarning>
-  <WwiseInstallationPathWindows>C:\Program Files (x86)\Audiokinetic\Wwise 2017.2.1.6524</WwiseInstallationPathWindows>
+  <WwiseInstallationPathWindows>C:\Program Files (x86)\Audiokinetic\Wwise 2017.1.4.6407</WwiseInstallationPathWindows>
   <WwiseInstallationPathMac>null</WwiseInstallationPathMac>
   <CreatedPicker>true</CreatedPicker>
 </WwiseSettings>
