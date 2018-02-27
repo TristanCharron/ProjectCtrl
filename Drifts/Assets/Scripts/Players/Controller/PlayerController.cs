@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using System.Collections;
 using Rewired;
+using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
@@ -126,7 +127,8 @@ public class PlayerController : MonoBehaviour
 				float deathShakeRatio = 3;
 				UIEffectManager.Instance.OnFreezeFrame(0.3f*velRatio);
 				GameEffect.Shake(Camera.main.gameObject,deathShakeRatio*velRatio,0.5f*velRatio,true);
-
+                DOTween.Kill(Time.timeScale);
+                DOTween.To(() => Time.timeScale, timescale => Time.timeScale = timescale, 1f, .5f).SetEase(Ease.InOutQuad);
                 GameController.Instance.KillPlayer(this);
 				gameObject.SetActive(false);
             }
