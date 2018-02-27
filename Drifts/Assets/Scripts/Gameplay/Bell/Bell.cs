@@ -130,7 +130,7 @@ public class Bell : MonoBehaviour
 		shatterFracBell.Shatter((OrbController.Instance.CurrentDirection));
         //Time.timeScale = .5f;
         DOTween.Kill(Time.timeScale);
-        DOTween.To(() => Time.timeScale, timescale => Time.timeScale = timescale, 1f, .2f);
+        DOTween.To(() => Time.timeScale, timescale => Time.timeScale = timescale, 1f, .2f).SetEase(Ease.InOutQuad);
 		gameObject.SetActive(false);
 	}
 
