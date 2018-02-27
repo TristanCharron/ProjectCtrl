@@ -14,7 +14,8 @@ sysinfo.txt
 # ===== #
 # Wwise #
 # ===== #
-drift_sound/
+Drifts/drift_sound/.cache
+Drifts/drift_sound/Originals
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
