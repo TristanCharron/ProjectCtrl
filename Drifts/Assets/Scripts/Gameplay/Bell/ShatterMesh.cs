@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ShatterMesh : MonoBehaviour {
 
@@ -34,9 +35,10 @@ public class ShatterMesh : MonoBehaviour {
 		foreach(Rigidbody rb in meshs)
 		{
 			Vector3 dir = rb.position - transform.position;
+       
 			//rb.AddForce(Random.onUnitSphere * randomDirForce + Vector3.up * verticalForce,ForceMode.VelocityChange);
 			rb.AddForce(directionShatter * impactDirForce + dir * randomDirForce + Vector3.up * verticalForce,ForceMode.VelocityChange);
-			
+
 			
 			rb.angularVelocity = Random.onUnitSphere * angularSpeed;
 			Destroy(rb.gameObject,delayDelete);

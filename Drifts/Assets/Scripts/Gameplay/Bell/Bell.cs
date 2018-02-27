@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class Bell : MonoBehaviour
 {
@@ -127,7 +128,9 @@ public class Bell : MonoBehaviour
 		ShatterMesh shatterFracBell = fracBell.GetComponent<ShatterMesh>();
 		shatterFracBell.ColorMesh(normalColor);
 		shatterFracBell.Shatter((OrbController.Instance.CurrentDirection));
-		//Time.timeScale = .5f;
+        //Time.timeScale = .5f;
+        DOTween.Kill(Time.timeScale);
+        DOTween.To(() => Time.timeScale, timescale => Time.timeScale = timescale, 1f, .2f);
 		gameObject.SetActive(false);
 	}
 

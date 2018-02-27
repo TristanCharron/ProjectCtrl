@@ -330,7 +330,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_enableKerning: 1
@@ -595,7 +595,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_enableKerning: 1
@@ -6056,7 +6056,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_enableKerning: 1
@@ -6731,6 +6731,7 @@ MonoBehaviour:
   - {fileID: 192076024}
   - {fileID: 728200385}
   - {fileID: 82530277}
+  isDebug: 0
 --- !u!114 &1187609245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7527,14 +7528,14 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2139812016}
-  m_LocalRotation: {x: 0, y: 0.9914449, z: 0, w: 0.13052626}
-  m_LocalPosition: {x: 0, y: 0, z: -398.4}
+  m_LocalRotation: {x: 0, y: 0.9824504, z: 0, w: 0.186524}
+  m_LocalPosition: {x: 0, y: 0, z: -403.1}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.35723743}
   m_Children:
   - {fileID: 423858913}
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 165, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 158.5, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 207.6, y: 23.9}

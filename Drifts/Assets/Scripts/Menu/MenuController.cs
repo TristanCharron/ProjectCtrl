@@ -14,6 +14,9 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     private MenuOptionState[] MenuStates;
 
+    [SerializeField]
+    bool isDebug;
+
     //private Dictionary<MenuOptionStateID, MenuOptionState> MenuFSM;
 	private Dictionary<GameModeID, MenuOptionState> MenuFSM;
 
@@ -61,6 +64,14 @@ public class MenuController : MonoBehaviour
                     ChangeMenuState(--selectionIndex);
                 else if (ReInput.players.GetPlayer(i).GetAxis("Move Vertical") < -0.9f)
                     ChangeMenuState(++selectionIndex);
+            }
+        }
+
+        if(isDebug)
+        {
+            if(Input.GetKeyDown(KeyCode.Return))
+            {
+                CurrentMenuOptionState.Select();
             }
         }
     }
